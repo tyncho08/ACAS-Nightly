@@ -1,0 +1,4086 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACAS Functional Documentation</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-yaml.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+        
+        /* Sidebar Navigation */
+        .sidebar {
+            width: 320px;
+            background-color: #1e2936;
+            color: white;
+            overflow-y: auto;
+            transition: transform 0.3s ease;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+        }
+        
+        .sidebar-header {
+            padding: 30px 20px;
+            background-color: #0f1419;
+            border-bottom: 1px solid #2a3f5f;
+        }
+        
+        .sidebar-header h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #4a9eff;
+        }
+        
+        .sidebar-header p {
+            font-size: 14px;
+            color: #8892b0;
+            line-height: 1.5;
+        }
+        
+        .nav-section {
+            padding: 20px;
+            border-bottom: 1px solid #2a3f5f;
+        }
+        
+        .nav-section h3 {
+            font-size: 12px;
+            text-transform: uppercase;
+            color: #8892b0;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+        
+        .nav-item {
+            display: block;
+            padding: 12px 15px;
+            margin: 5px 0;
+            color: #ccd6f6;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        
+        .nav-item:hover {
+            background-color: #2a3f5f;
+            color: #4a9eff;
+            transform: translateX(5px);
+        }
+        
+        .nav-item.active {
+            background-color: #4a9eff;
+            color: white;
+        }
+        
+        .nav-item-desc {
+            font-size: 12px;
+            color: #8892b0;
+            margin-top: 2px;
+        }
+        
+        /* Main Content Area */
+        .content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 40px 60px;
+            background-color: white;
+        }
+        
+        .content-header {
+            background: linear-gradient(135deg, #4a9eff 0%, #1e2936 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 16px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 40px rgba(74, 158, 255, 0.2);
+        }
+        
+        .content-header h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+        
+        .content-header p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+        
+        /* Markdown Content Styling */
+        .markdown-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .markdown-content h1 {
+            font-size: 32px;
+            color: #1e2936;
+            margin: 40px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e1e4e8;
+        }
+        
+        .markdown-content h2 {
+            font-size: 26px;
+            color: #2a3f5f;
+            margin: 30px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #e1e4e8;
+        }
+        
+        .markdown-content h3 {
+            font-size: 20px;
+            color: #4a9eff;
+            margin: 25px 0 10px 0;
+        }
+        
+        .markdown-content h4 {
+            font-size: 16px;
+            color: #666;
+            margin: 20px 0 10px 0;
+        }
+        
+        .markdown-content p {
+            margin: 15px 0;
+            line-height: 1.8;
+            color: #444;
+        }
+        
+        .markdown-content ul, .markdown-content ol {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+        
+        .markdown-content li {
+            margin: 8px 0;
+            line-height: 1.6;
+        }
+        
+        .markdown-content code {
+            background-color: #f6f8fa;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 90%;
+            color: #e74c3c;
+        }
+        
+        .markdown-content pre {
+            background-color: #1e2936;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .markdown-content pre code {
+            background-color: transparent;
+            color: #ccd6f6;
+            padding: 0;
+            font-size: 14px;
+        }
+        
+        .markdown-content table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .markdown-content th {
+            background-color: #4a9eff;
+            color: white;
+            padding: 12px 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .markdown-content td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e1e4e8;
+        }
+        
+        .markdown-content tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        .markdown-content tr:hover {
+            background-color: #e8f4fd;
+        }
+        
+        .markdown-content blockquote {
+            border-left: 4px solid #4a9eff;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #666;
+            font-style: italic;
+            background-color: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .markdown-content strong {
+            color: #1e2936;
+            font-weight: 600;
+        }
+        
+        /* Mermaid Diagram Styling */
+        .mermaid {
+            text-align: center;
+            margin: 20px 0;
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+        }
+        
+        /* Loading State */
+        .loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            font-size: 18px;
+            color: #666;
+        }
+        
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #4a9eff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-right: 15px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Mobile Responsive */
+        .menu-toggle {
+            display: none;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            background-color: #4a9eff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            
+            .sidebar {
+                position: fixed;
+                left: 0;
+                top: 0;
+                height: 100%;
+                transform: translateX(-100%);
+                z-index: 999;
+            }
+            
+            .sidebar.active {
+                transform: translateX(0);
+            }
+            
+            .content {
+                padding: 20px;
+                margin-left: 0;
+            }
+            
+            .content-header {
+                margin-top: 60px;
+                padding: 20px;
+            }
+            
+            .content-header h1 {
+                font-size: 24px;
+            }
+            
+            .markdown-content h1 {
+                font-size: 24px;
+            }
+            
+            .markdown-content h2 {
+                font-size: 20px;
+            }
+        }
+        
+        /* Print Styles */
+        @media print {
+            .sidebar, .menu-toggle {
+                display: none;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .content-header {
+                background: none;
+                color: black;
+                box-shadow: none;
+                border: 1px solid #ddd;
+            }
+        }
+        
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 5px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    </style>
+</head>
+<body>
+    <button class="menu-toggle" onclick="toggleSidebar()">☰ Menu</button>
+    
+    <div class="container">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h1>ACAS Documentation</h1>
+                <p>Comprehensive functional documentation for the Applewood Computers Accounting System</p>
+            </div>
+            
+            <div class="nav-section">
+                <h3>Overview</h3>
+                <a class="nav-item" onclick="loadDocument('home')" data-doc="home">
+                    Welcome
+                    <div class="nav-item-desc">Documentation overview and guide</div>
+                </a>
+                <a class="nav-item" onclick="loadDocument('ACAS_Executive_Summary.md')" data-doc="ACAS_Executive_Summary.md">
+                    Executive Summary
+                    <div class="nav-item-desc">High-level system overview</div>
+                </a>
+            </div>
+            
+            <div class="nav-section">
+                <h3>Technical Documentation</h3>
+                <a class="nav-item" onclick="loadDocument('ACAS_Program_Catalog.md')" data-doc="ACAS_Program_Catalog.md">
+                    Program Catalog
+                    <div class="nav-item-desc">Complete program listing & dependencies</div>
+                </a>
+                <a class="nav-item" onclick="loadDocument('ACAS_Architecture_Diagrams.md')" data-doc="ACAS_Architecture_Diagrams.md">
+                    Architecture Diagrams
+                    <div class="nav-item-desc">Visual system representations</div>
+                </a>
+                <a class="nav-item" onclick="loadDocument('ACAS_Data_Dictionary.md')" data-doc="ACAS_Data_Dictionary.md">
+                    Data Dictionary
+                    <div class="nav-item-desc">Field-level documentation</div>
+                </a>
+                <a class="nav-item" onclick="loadDocument('ACAS_Technical_Debt_Assessment.md')" data-doc="ACAS_Technical_Debt_Assessment.md">
+                    Technical Debt Assessment
+                    <div class="nav-item-desc">Code quality & modernization</div>
+                </a>
+            </div>
+            
+            <div class="nav-section">
+                <h3>Business Documentation</h3>
+                <a class="nav-item" onclick="loadDocument('ACAS_Business_Flows_Enhanced.md')" data-doc="ACAS_Business_Flows_Enhanced.md">
+                    Business Flows
+                    <div class="nav-item-desc">End-to-end process documentation</div>
+                </a>
+                <a class="nav-item" onclick="loadDocument('ACAS_Accounting_Analysis.md')" data-doc="ACAS_Accounting_Analysis.md">
+                    Accounting Analysis
+                    <div class="nav-item-desc">Compliance & calculations</div>
+                </a>
+            </div>
+            
+            <div class="nav-section">
+                <h3>Reference</h3>
+                <a class="nav-item" onclick="loadDocument('ACAS_Documentation_Index.md')" data-doc="ACAS_Documentation_Index.md">
+                    Documentation Index
+                    <div class="nav-item-desc">Master index of all documents</div>
+                </a>
+                <a class="nav-item" onclick="loadDocument('Original_Documentation_Prompt.md')" data-doc="Original_Documentation_Prompt.md">
+                    Original Prompt
+                    <div class="nav-item-desc">Documentation requirements</div>
+                </a>
+            </div>
+        </nav>
+        
+        <!-- Main Content Area -->
+        <main class="content" id="content">
+            <div class="loading">
+                <div class="loading-spinner"></div>
+                Loading documentation...
+            </div>
+        </main>
+    </div>
+    
+    <script>
+        // Initialize Mermaid with proper configuration
+        mermaid.initialize({ 
+            startOnLoad: false,
+            theme: 'default',
+            themeVariables: {
+                primaryColor: '#4a9eff',
+                primaryTextColor: '#fff',
+                primaryBorderColor: '#2a3f5f',
+                lineColor: '#666',
+                secondaryColor: '#f8f9fa',
+                tertiaryColor: '#e8f4fd'
+            },
+            flowchart: {
+                htmlLabels: true,
+                curve: 'basis'
+            },
+            sequence: {
+                diagramMarginX: 50,
+                diagramMarginY: 10,
+                actorMargin: 50,
+                width: 150,
+                height: 65,
+                boxMargin: 10,
+                boxTextMargin: 5,
+                noteMargin: 10,
+                messageMargin: 35,
+                mirrorActors: true
+            }
+        });
+        
+        // Marked configuration
+        marked.setOptions({
+            breaks: true,
+            gfm: true,
+            highlight: function(code, lang) {
+                if (Prism.languages[lang]) {
+                    return Prism.highlight(code, Prism.languages[lang], lang);
+                }
+                return code;
+            }
+        });
+        
+        // Home page content
+        const homeContent = `
+# Welcome to ACAS Functional Documentation
+
+## About This Documentation
+
+This comprehensive documentation suite provides detailed functional and technical documentation for the **ACAS (Applewood Computers Accounting System)**, a mature COBOL-based accounting system that has been in continuous development since 1976.
+
+### Documentation Overview
+
+This documentation package includes:
+
+1. **Executive Summary** - High-level overview for decision makers
+2. **Program Catalog** - Complete listing of 200+ programs with dependencies
+3. **Architecture Diagrams** - Visual representations of system structure
+4. **Data Dictionary** - Field-level documentation of all files and tables
+5. **Business Flows** - End-to-end process documentation
+6. **Technical Debt Assessment** - Modernization analysis and recommendations
+7. **Accounting Analysis** - Compliance features and calculation engines
+
+### System Highlights
+
+- **47+ years** of continuous development (1976-2025)
+- **200+ COBOL programs** organized in modular architecture
+- **5 integrated modules**: Sales, Purchase, Stock, General Ledger, and IRS
+- **Dual architecture** supporting both COBOL files and MySQL/MariaDB
+- **Complete accounting** functionality for small to medium businesses
+
+### How to Use This Documentation
+
+#### For Executives
+Start with the **Executive Summary** for a high-level overview of the system's capabilities, current state, and modernization opportunities.
+
+#### For Architects
+Review the **Architecture Diagrams** and **Technical Debt Assessment** to understand the system structure and plan modernization strategies.
+
+#### For Developers
+Use the **Program Catalog** and **Data Dictionary** to navigate the codebase and understand data structures.
+
+#### For Business Analysts
+Explore the **Business Flows** and **Accounting Analysis** to understand business processes and compliance features.
+
+### Key Findings Summary
+
+#### Strengths
+- ✅ Complete accounting functionality
+- ✅ Proven reliability over 47 years
+- ✅ Modular architecture
+- ✅ Strong data validation
+- ✅ Comprehensive integration
+
+#### Areas for Improvement
+- ❌ No built-in security/authentication
+- ❌ Character-based UI only
+- ❌ Missing GL programs (gl040, gl130, gl190)
+- ❌ Technical debt (GO TO patterns)
+- ❌ Limited integration capabilities
+
+### Navigation Guide
+
+Use the sidebar on the left to navigate through the documentation. Each section is designed to provide specific insights:
+
+- **Overview** sections provide high-level understanding
+- **Technical** sections detail system implementation
+- **Business** sections explain functional capabilities
+- **Reference** sections provide comprehensive listings
+
+---
+
+*This documentation was generated through comprehensive analysis of the ACAS codebase to enable technical teams to understand the system, create architectural diagrams, and develop modernization strategies.*
+        `;
+        
+        // Embedded documents
+        const documents = {
+            "ACAS_Executive_Summary.md": `# ACAS System - Executive Summary
+
+## 1. System Overview
+
+**ACAS (Applewood Computers Accounting System)** is a comprehensive COBOL-based accounting and business management system originally developed in 1976 and actively maintained through 2025. The system provides integrated modules for complete financial management including Sales Ledger (AR), Purchase Ledger (AP), General Ledger, Stock Control, and an Incomplete Records System (IRS) for smaller businesses.
+
+### Business Purpose and Scope
+- **Target Market**: Small to medium-sized businesses requiring full accounting capabilities
+- **Industry Focus**: General business accounting with special support for incomplete records
+- **User Base**: Accounting staff, bookkeepers, and business owners
+- **Transaction Volume**: Designed for businesses with moderate transaction volumes
+- **Deployment**: On-premise installation with character-based terminal interface
+
+### Key Accounting Functions Supported
+1. **Sales/Accounts Receivable**: Customer management, invoicing, payment processing, credit control
+2. **Purchase/Accounts Payable**: Supplier management, purchase orders, payment scheduling
+3. **Stock Control**: Inventory management, valuation, reorder processing
+4. **General Ledger**: Full double-entry bookkeeping with multi-profit center support
+5. **IRS (Incomplete Records)**: Simplified accounting for businesses without full bookkeeping
+
+### Technology Stack Summary
+- **Language**: COBOL (GnuCOBOL 3.2+ compiler)
+- **Data Storage**: Dual support for COBOL indexed files (ISAM) and MySQL/MariaDB
+- **Platform**: Linux/Unix/macOS
+- **Interface**: Character-based terminal (80x24 minimum)
+- **Architecture**: Modular design with Data Access Layer (DAL) abstraction
+
+## 2. Architecture Assessment
+
+### Current COBOL Architecture Pattern
+The system follows a traditional three-tier COBOL architecture:
+- **Presentation Layer**: Character-based screens with menu navigation
+- **Business Logic Layer**: COBOL programs organized by functional module
+- **Data Access Layer**: Abstracted file/database operations through MT modules
+
+### Module Interdependencies
+\`\`\`
+ACAS Main Menu
+    ├── IRS (Incomplete Records System)
+    ├── Sales Ledger → Posts to → IRS/GL
+    ├── Purchase Ledger → Posts to → IRS/GL
+    ├── Stock Control → Updates from → Sales/Purchase
+    └── General Ledger → Receives from → All modules
+\`\`\`
+
+### Data Management Approach
+- **Hybrid Model**: Supports both COBOL files and RDBMS simultaneously
+- **Transaction Pattern**: Batch-oriented with posting processes
+- **File Organization**: Indexed files for masters, sequential for transactions
+- **Database Option**: Full MySQL/MariaDB schema available
+
+### Integration Points
+- Sales/Purchase ledgers automatically update stock quantities
+- All subsidiary ledgers post to GL or IRS
+- Centralized system parameters control behavior
+- Analysis codes link transactions to GL accounts
+
+## 3. Functional Coverage
+
+### Implemented Accounting Standards
+- **Double-Entry Bookkeeping**: Full support in GL module
+- **Single-Entry Option**: IRS module for incomplete records
+- **VAT/Tax Compliance**: UK VAT system with multiple rates
+- **Period Management**: Monthly, quarterly, and annual cycles
+- **Multi-Company**: Support via profit centers
+
+### Compliance Features
+- Transaction date validation
+- Batch control totals
+- Audit trail maintenance
+- Period locking capabilities
+- VAT reporting readiness
+
+### Reporting Capabilities
+- **Financial Reports**: Trial balance, P&L, Balance Sheet (GL)
+- **Operational Reports**: Aged debtors/creditors, stock valuation
+- **Management Reports**: Sales/purchase analysis, product performance
+- **Audit Reports**: Transaction listings, batch reports
+- **Output Formats**: Screen display, printed reports (no modern exports)
+
+### Audit Trail Completeness
+- All transactions maintain posting date and batch reference
+- Stock movements tracked with source document reference
+- User identification limited (no role-based access)
+- File modifications logged when testing mode enabled
+
+## 4. Technical Health
+
+### Code Quality Metrics
+- **Age**: 47+ years with continuous maintenance
+- **Size**: ~200+ COBOL programs
+- **Modularity**: Good separation by business function
+- **Standards**: Mix of coding standards across decades
+- **Documentation**: Inline comments present but inconsistent
+
+### Maintenance Complexity
+- **High Complexity Areas**: GL posting engine, VAT calculations
+- **Medium Complexity**: File/database dual mode, batch processing
+- **Low Complexity**: Master file maintenance, reporting
+- **Technical Debt**: GO TO usage, hard-coded values, missing programs
+
+### Security Considerations
+- **Current State**: Minimal security features
+- **Risks**: No user authentication, no encryption, no access controls
+- **Data Protection**: Relies on OS-level file permissions
+- **Audit**: Limited user action tracking
+
+### Performance Characteristics
+- **Batch Processing**: Efficient for period-end operations
+- **File Access**: Fast for indexed lookups
+- **Scalability**: Limited by file-based architecture
+- **Concurrency**: Restricted multi-user capabilities
+
+## 5. Modernization Recommendations
+
+### Priority Refactoring Areas
+1. **Security Implementation**: Add authentication and encryption
+2. **Complete Missing Modules**: GL final accounts (gl040, gl130, gl190)
+3. **Remove Technical Debt**: Eliminate GO TO patterns, dead code
+4. **Standardize Error Handling**: Consistent patterns across modules
+
+### Database Migration Strategy
+1. Complete transition to RDBMS-only operation
+2. Eliminate file/database dual mode complexity
+3. Implement proper transaction management
+4. Add referential integrity constraints
+
+### UI Modernization Options
+1. **Phase 1**: Create REST API layer for core functions
+2. **Phase 2**: Develop web-based UI while maintaining terminal option
+3. **Phase 3**: Mobile applications for key functions
+4. **Long-term**: Full cloud-native architecture
+
+### API Enablement Possibilities
+- Customer/supplier queries and updates
+- Invoice creation and retrieval
+- Payment processing
+- Stock level inquiries
+- Financial report generation
+- Period-end processing triggers
+
+## Business Impact Assessment
+
+### Strengths
+- **Proven Functionality**: 47 years of production use
+- **Complete Integration**: All modules work together seamlessly
+- **Domain Knowledge**: Embeds decades of accounting expertise
+- **Flexibility**: Supports various business types and sizes
+
+### Limitations
+- **User Interface**: Character-based only
+- **Integration**: No modern API capabilities
+- **Reporting**: Fixed formats without export options
+- **Security**: Inadequate for modern requirements
+- **Scalability**: File-based architecture limits growth
+
+### Migration Risks
+- **Data Conversion**: Complex file structures require careful mapping
+- **Business Logic**: Embedded rules may not be fully documented
+- **Training**: Users accustomed to current interface
+- **Parallel Running**: Needed for verification period
+
+### Opportunities
+- **Cloud Deployment**: Enable SaaS delivery model
+- **Mobile Access**: Extend to tablets and smartphones
+- **Integration Hub**: Connect to modern business systems
+- **Analytics**: Add business intelligence capabilities
+- **Automation**: Reduce manual processes
+
+## Recommended Action Plan
+
+### Immediate (0-3 months)
+1. Complete security assessment
+2. Document all business rules
+3. Finish missing GL programs
+4. Create automated test suite
+
+### Short-term (3-12 months)
+1. Migrate to RDBMS-only operation
+2. Implement authentication system
+3. Create REST API for core functions
+4. Develop web-based UI prototype
+
+### Long-term (12+ months)
+1. Full web application deployment
+2. Cloud migration preparation
+3. Microservices architecture
+4. Modern reporting and analytics
+
+## Conclusion
+
+ACAS represents a mature, functional accounting system with significant embedded business value. While the technology stack shows its age, the modular architecture and comprehensive functionality provide a solid foundation for modernization. The highest priorities are addressing security gaps and completing the database migration, followed by UI modernization to meet current user expectations. With appropriate investment, ACAS can be transformed into a modern, cloud-ready accounting solution while preserving its proven business logic.`,
+            "ACAS_Program_Catalog.md": `# ACAS Program Catalog
+
+## Overview
+This catalog provides an alphabetical listing of all programs in the ACAS system, their business function mapping, dependencies, and maintenance priority.
+
+## Program Naming Conventions
+- **ACAS**: Main system menu
+- **xx000**: Start of day programs (xx = module prefix)
+- **xx0nn**: Module-specific programs
+- **xxnnn**: Module transaction and reporting programs
+- **acas0nn**: System-wide file handlers
+- **maps0n**: Utility programs
+- **sys002**: System parameter handler
+- **xl150**: End of cycle program
+- **\\*MT**: Data Access Layer modules (MySQL/Table handlers)
+- **\\*LD**: Load modules (file to database)
+- **\\*UNL**: Unload modules (database to file)
+- **\\*RES**: Restore modules
+
+## Module Prefixes
+- **IR/irs**: Incomplete Records System
+- **SL/sl**: Sales Ledger
+- **PL/pl**: Purchase Ledger
+- **ST/st**: Stock Control
+- **GL/gl**: General Ledger
+
+---
+
+## System-Wide Programs
+
+| Program | Description | Business Function | Dependencies | Priority |
+|---------|-------------|-------------------|--------------|----------|
+| ACAS | Main system menu | System navigation and control | All modules | HIGH |
+| sys002 | System parameter maintenance | Configuration management | systemMT | HIGH |
+| xl150 | End of cycle processing | Period/year end for all modules | All ledgers | HIGH |
+| maps01 | Encryption/decryption (removed) | Security (obsolete) | None | LOW |
+| maps04 | Date conversion utilities | Date validation and formatting | None | HIGH |
+| maps09 | Check digit verification | Data validation | None | MEDIUM |
+
+## File Handlers (acas0nn series)
+
+| Program | Description | File/Table | Business Function | Priority |
+|---------|-------------|------------|-------------------|----------|
+| acas000 | System/defaults/finals handler | system.dat | System configuration | HIGH |
+| acas004 | Nominal ledger handler | Nominal/GLLEDGER | GL accounts | HIGH |
+| acas005 | Sales ledger handler | Sales/SALEDGER | Customer accounts | HIGH |
+| acas006 | Purchase ledger handler | Purchase/PULEDGER | Supplier accounts | HIGH |
+| acas007 | Stock file handler | Stock/STOCK | Inventory | HIGH |
+| acas008 | SL posting handler | SLPosting/SLPOSTING | AR postings | HIGH |
+| acas010 | PL posting handler | PLPosting/PLPOSTING | AP postings | HIGH |
+| acas011 | GL posting handler | GLPosting/GLPOSTING | GL entries | HIGH |
+| acas012 | Analysis file handler | Analysis/ANALYSIS | Analysis codes | MEDIUM |
+| acas013 | Audit file handler | Audit/AUDIT | Stock movements | MEDIUM |
+| acas014 | Invoice handler | Invoice/SAINVOICE | Sales invoices | HIGH |
+| acas015 | OTM3 handler | OTM3/SAITM3 | Sales open items | HIGH |
+| acas016 | OTM5 handler | OTM5/PUITM5 | Purchase open items | HIGH |
+| acas017 | Payments handler | Payments/PAYMENTS | Payment records | HIGH |
+| acas019 | SL invoice lines handler | InvLines/SAINV-LINES | Invoice details | HIGH |
+| acas022 | Delivery handler | Delivery/DELIVERY | Delivery addresses | MEDIUM |
+| acas023 | Value file handler | Value/VALUE | Period values | MEDIUM |
+| acas026 | GL batch handler | GLBatch/GLBATCH | Batch control | HIGH |
+| acas029 | Deleted invoice handler | DelInvNos/SADELINV | Deleted numbers | LOW |
+| acas030 | SL autogen handler | SLAutogen/SAAUTOGEN | Recurring invoices | MEDIUM |
+| acas032 | PL autogen handler | PLAutogen/PUAUTOGEN | Recurring orders | MEDIUM |
+
+## IRS (Incomplete Records System)
+
+| Program | Description | Business Function | Dependencies | Priority |
+|---------|-------------|-------------------|--------------|----------|
+| irs | IRS main menu | Module navigation | irs000-090 | HIGH |
+| irs000 | Start of day | Date initialization | maps04 | HIGH |
+| irs010 | Chart of Accounts utilities | Account setup/maintenance | irsnominalMT | HIGH |
+| irs020 | Posting defaults maintenance | Default accounts, VAT setup | irsdfltMT, irsfinalMT | HIGH |
+| irs030 | Transaction posting | Journal entries | irspostingMT | HIGH |
+| irs040 | Trial balance | Financial reporting | irsnominalMT | HIGH |
+| irs050 | Profit & Loss | P&L statement | irsnominalMT | HIGH |
+| irs055 | P&L by quarter (sort) | Quarterly P&L | irs050 | MEDIUM |
+| irs060 | Balance Sheet | Financial position | irsnominalMT | HIGH |
+| irs065 | Balance Sheet by quarter | Quarterly BS | irs060 | MEDIUM |
+| irs070 | Nominal listing | Account reports | irsnominalMT | MEDIUM |
+| irs080 | Transaction report | Posting details | irspostingMT | MEDIUM |
+| irs085 | Transaction report (sort) | Sorted postings | irs080 | LOW |
+| irs090 | End of period | Period closing | All IRS files | HIGH |
+| irsubp | IRS subroutines | Common functions | None | MEDIUM |
+
+## Sales Ledger (Accounts Receivable)
+
+| Program | Description | Business Function | Dependencies | Priority |
+|---------|-------------|-------------------|--------------|----------|
+| sales | Sales Ledger menu | Module navigation | sl000-970 | HIGH |
+| sl000 | Start of day | Date initialization | maps04 | HIGH |
+| sl010 | Customer maintenance | Customer setup | salesMT | HIGH |
+| sl020 | Ledger enquiry | Account inquiry | salesMT, slinvoiceMT | HIGH |
+| sl050 | Unapplied items report | Unposted transactions | slinvoiceMT | MEDIUM |
+| sl055 | Invoice proof & analysis | Pre-posting validation | slinvoiceMT | HIGH |
+| sl060 | Invoice posting | Post to ledger | slpostingMT | HIGH |
+| sl070 | Product analysis maintenance | Analysis codes | analMT | MEDIUM |
+| sl080 | Payment entry | Customer payments | paymentsMT | HIGH |
+| sl085 | Payment proof | Payment validation | paymentsMT | HIGH |
+| sl090 | Remittance advice | Payment notices | paymentsMT | MEDIUM |
+| sl095 | Payments analysis | Payment breakdown | paymentsMT | MEDIUM |
+| sl100 | Cash posting | Post payments | slpostingMT | HIGH |
+| sl110 | Statement production | Customer statements | salesMT | HIGH |
+| sl115 | Statement sort | Sort for printing | sl110 | LOW |
+| sl120 | Aged debtors | Aging analysis | salesMT | HIGH |
+| sl130 | Product analysis report | Sales analysis | analMT | MEDIUM |
+| sl140 | Invoice day book | Invoice register | slinvoiceMT | MEDIUM |
+| sl160 | Alpha customer list | Customer directory | salesMT | LOW |
+| sl165 | Alpha sort | Sorting routine | sl160 | LOW |
+| sl170 | Customer dump | Detailed listing | salesMT | LOW |
+| sl180 | Customer turnover | Revenue analysis | salesMT | MEDIUM |
+| sl190 | Dunning letters | Collection letters | salesMT | MEDIUM |
+| sl200 | Invoice deletion report | Deleted invoices | sldelinvnosMT | LOW |
+| sl800 | Standing orders setup | Recurring setup | slautogenMT | MEDIUM |
+| sl810 | Create standing orders | Generate recurring | slautogenMT | MEDIUM |
+| sl900 | Invoice entry (batch) | Batch invoicing | slinvoiceMT | HIGH |
+| sl910 | Invoice entry (immediate) | Direct invoicing | slinvoiceMT | HIGH |
+| sl920 | Invoice amendment | Modify invoices | slinvoiceMT | HIGH |
+| sl930 | Invoice reprint | Reprint invoices | slinvoiceMT | MEDIUM |
+| sl940 | Proforma invoice | Quote generation | slinvoiceMT | MEDIUM |
+| sl950 | Invoice deletion | Remove invoices | sldelinvnosMT | MEDIUM |
+| sl960 | Dispatch notes | Shipping documents | slinvoiceMT | MEDIUM |
+| sl970 | Manifest printing | Delivery lists | deliveryMT | LOW |
+
+## Purchase Ledger (Accounts Payable)
+
+| Program | Description | Business Function | Dependencies | Priority |
+|---------|-------------|-------------------|--------------|----------|
+| purchase | Purchase Ledger menu | Module navigation | pl000-960 | HIGH |
+| pl000 | Start of day | Date initialization | maps04 | HIGH |
+| pl010 | Supplier maintenance | Supplier setup | purchMT | HIGH |
+| pl015 | Supplier notes | Additional info | deliveryMT | LOW |
+| pl020 | Purchase order entry | Order creation | plinvoiceMT | HIGH |
+| pl025 | Goods receipt | Receive inventory | plinvoiceMT | HIGH |
+| pl030 | Order amendment | Modify orders | plinvoiceMT | HIGH |
+| pl040 | Invoice deletion | Remove invoices | delfolioMT | MEDIUM |
+| pl050 | Proof report | Pre-posting check | plinvoiceMT | HIGH |
+| pl055 | Order analysis | Purchase analysis | analMT | MEDIUM |
+| pl060 | Invoice posting | Post to ledger | plpostingMT | HIGH |
+| pl070 | Product analysis maintenance | Analysis codes | analMT | MEDIUM |
+| pl080 | Payment selection | Choose payments | paymentsMT | HIGH |
+| pl085 | Payment amendment | Modify payments | paymentsMT | HIGH |
+| pl090 | Remittance advice | Payment notices | paymentsMT | MEDIUM |
+| pl095 | Cheque printing | Print checks | paymentsMT | MEDIUM |
+| pl100 | Payment posting | Post payments | plpostingMT | HIGH |
+| pl115 | Payments analysis | Payment breakdown | paymentsMT | MEDIUM |
+| pl120 | Aged creditors | Aging analysis | purchMT | HIGH |
+| pl130 | Product analysis report | Purchase analysis | analMT | MEDIUM |
+| pl140 | Invoice day book | Invoice register | plinvoiceMT | MEDIUM |
+| pl160 | Alpha supplier list | Supplier directory | purchMT | LOW |
+| pl165 | Ledger enquiry | Account inquiry | purchMT | HIGH |
+| pl170 | Supplier dump | Detailed listing | purchMT | LOW |
+| pl180 | Supplier turnover | Purchase analysis | purchMT | MEDIUM |
+| pl190 | Supplier labels | Mailing labels | purchMT | LOW |
+| pl800 | Standing orders setup | Recurring setup | plautogenMT | MEDIUM |
+| pl900 | Purchase order (batch) | Batch orders | plinvoiceMT | HIGH |
+| pl910 | Purchase order (immediate) | Direct orders | plinvoiceMT | HIGH |
+| pl920 | Credit note entry | Returns/credits | plinvoiceMT | HIGH |
+| pl930 | Order confirmation | Print orders | plinvoiceMT | MEDIUM |
+| pl940 | Requisition entry | Purchase requests | plinvoiceMT | MEDIUM |
+| pl950 | Order cancellation | Cancel orders | delfolioMT | MEDIUM |
+| pl960 | Goods receipt notes | Receiving docs | plinvoiceMT | MEDIUM |
+
+## Stock Control (Inventory Management)
+
+| Program | Description | Business Function | Dependencies | Priority |
+|---------|-------------|-------------------|--------------|----------|
+| stock | Stock Control menu | Module navigation | st000-060 | HIGH |
+| st000 | Start of day | Date initialization | maps04 | HIGH |
+| st010 | Stock item maintenance | Item setup | stockMT | HIGH |
+| st020 | Stock movements | Receipts/issues | stockMT, auditMT | HIGH |
+| st030 | Stock reports | Various reports | stockMT | HIGH |
+| st040 | End of cycle | Period closing | stockMT | HIGH |
+| st050 | Stock conversion | File conversion | stockMT | LOW |
+| st060 | Audit trail report | Movement history | auditMT | MEDIUM |
+| stockconvert2 | Conversion utility | Data migration | stockMT | LOW |
+| stockconvert3 | Conversion utility | Data migration | stockMT | LOW |
+
+## General Ledger (Full Accounting)
+
+| Program | Description | Business Function | Dependencies | Priority |
+|---------|-------------|-------------------|--------------|----------|
+| general | General Ledger menu | Module navigation | gl000-190 | HIGH |
+| gl000 | Start of day | Date initialization | maps04 | HIGH |
+| gl020 | Default accounts | Default setup | nominalMT | HIGH |
+| gl030 | Chart of Accounts | Account setup | nominalMT | HIGH |
+| gl050 | Transaction entry | Journal entries | glbatchMT, glpostingMT | HIGH |
+| gl051 | Transaction proof/modify | Edit batches | glbatchMT | HIGH |
+| gl060 | Batch status | Batch reports | glbatchMT | MEDIUM |
+| gl070 | Transaction posting (phase 1) | Pre-posting | glpostingMT | HIGH |
+| gl071 | Batch checking | Validation | glbatchMT | HIGH |
+| gl072 | Final posting (phase 2) | Complete posting | glpostingMT | HIGH |
+| gl080 | End of cycle | Period closing | All GL files | HIGH |
+| gl090 | Trial balance | Account balances | nominalMT | HIGH |
+| gl090a | Trial balance (variant) | Alt format | nominalMT | MEDIUM |
+| gl090b | Trial balance (variant) | Alt format | nominalMT | MEDIUM |
+| gl100 | Profit & Loss | Income statement | nominalMT | HIGH |
+| gl105 | Balance Sheet | Financial position | nominalMT | HIGH |
+| gl120 | Transaction report | Posting details | glpostingMT | MEDIUM |
+| **gl040** | **Final accounts setup** | **MISSING** | - | **HIGH** |
+| **gl130** | **Print final accounts** | **MISSING** | - | **HIGH** |
+| **gl190** | **File garbage collector** | **MISSING** | - | **MEDIUM** |
+
+## Data Access Layer (DAL) Modules
+
+| Module | Table/File | Business Function | Priority |
+|--------|------------|-------------------|----------|
+| analMT | ANALYSIS-REC | Product/service analysis codes | MEDIUM |
+| auditMT | AUDIT-REC | Stock movement audit trail | MEDIUM |
+| delfolioMT | DELFOLIO-REC | Deleted transaction tracking | LOW |
+| deliveryMT | DELIVERY-REC | Delivery addresses | MEDIUM |
+| dfltMT | DFLT-REC | Default accounts (IRS) | HIGH |
+| finalMT | FINAL-REC | Final accounts (IRS) | HIGH |
+| glbatchMT | GLBATCH-REC | GL batch control | HIGH |
+| glpostingMT | GLPOSTING-REC | GL transaction postings | HIGH |
+| irsdfltMT | IRSDFLT-REC | IRS default accounts | HIGH |
+| irsfinalMT | IRSFINAL-REC | IRS final accounts | HIGH |
+| irsnominalMT | IRSNL-REC | IRS nominal ledger | HIGH |
+| irspostingMT | IRSPOSTING-REC | IRS postings | HIGH |
+| nominalMT | NOMINAL-REC | GL nominal ledger | HIGH |
+| otm3MT | SAITM3-REC | Sales open items | HIGH |
+| otm5MT | PUITM5-REC | Purchase open items | HIGH |
+| paymentsMT | PAYMENTS-REC | Payment records | HIGH |
+| plautogenMT | PUAUTOGEN-REC | Purchase standing orders | MEDIUM |
+| plinvoiceMT | PUINVOICE-REC | Purchase invoices | HIGH |
+| purchMT | PULEDGER-REC | Purchase ledger master | HIGH |
+| salesMT | SALEDGER-REC | Sales ledger master | HIGH |
+| slautogenMT | SAAUTOGEN-REC | Sales standing orders | MEDIUM |
+| sldelinvnosMT | SADELINV-REC | Deleted invoice numbers | LOW |
+| slinvoiceMT | SAINVOICE-REC | Sales invoices | HIGH |
+| slpostingMT | SLPOSTING-REC | Sales postings | HIGH |
+| stockMT | STOCK-REC | Stock master file | HIGH |
+| sys4MT | SYS4-REC | System file 4 | MEDIUM |
+| systemMT | SYSTEM-REC | System parameters | HIGH |
+| valueMT | VALUE-REC | Period values | MEDIUM |
+
+## Load/Unload/Restore Modules
+
+| Module | Function | Business Purpose | Priority |
+|--------|----------|------------------|----------|
+| *LD modules | Load COBOL file to database | Data migration | MEDIUM |
+| *UNL modules | Unload database to file | Backup/migration | MEDIUM |
+| *RES modules | Restore from backup | Recovery | HIGH |
+
+## Supporting Programs
+
+| Program | Description | Business Function | Priority |
+|---------|-------------|-------------------|----------|
+| fhlogger | File access logger | Debugging/audit | LOW |
+| cobdump | COBOL dump utility | Error diagnostics | LOW |
+| cbl_oc_dump | OpenCOBOL dump | Error diagnostics | LOW |
+| send-some-mail | Email utility | Notifications | LOW |
+| makesqltable-* | SQL table creation | Database setup | MEDIUM |
+| acasconvert* | Data conversion | Migration tools | LOW |
+| dummy-rdbmsMT | RDBMS stub | Non-DB operation | LOW |
+
+## Maintenance Priority Guide
+
+### HIGH Priority
+- Core transaction processing programs
+- Master file maintenance
+- Posting and period-end programs
+- Financial reporting
+- System configuration
+- Missing GL programs (gl040, gl130)
+
+### MEDIUM Priority
+- Analysis and reporting programs
+- Standing order/recurring transactions
+- Audit trails
+- Data migration tools
+- Supporting utilities
+
+### LOW Priority
+- Label printing
+- Alphabetical listings
+- Conversion utilities
+- Diagnostic tools
+- Obsolete programs
+
+## Program Dependencies Matrix
+
+### Common Dependencies
+- All programs depend on: System parameters (sys002)
+- All date operations use: maps04
+- All file operations use: Appropriate acas0nn handler
+- All database operations use: Corresponding *MT module
+
+### Module Cross-Dependencies
+- Sales → Stock (for inventory updates)
+- Purchase → Stock (for receipts)
+- Sales → GL/IRS (for postings)
+- Purchase → GL/IRS (for postings)
+- Stock → GL/IRS (for adjustments)
+- All → System parameters
+
+### Critical Path Programs
+These programs must function for basic operations:
+1. System initialization: ACAS, sys002, *000 programs
+2. Master file setup: *010 programs
+3. Transaction entry: sl910, pl020, irs030, gl050
+4. Posting: sl060, pl060, gl070/072
+5. Period end: xl150, *090 programs, st040, gl080`,
+            "ACAS_Architecture_Diagrams.md": `# ACAS System Architecture Diagrams
+
+## 1. System Overview - Module Architecture
+
+\`\`\`mermaid
+graph TB
+    %% Main Entry Points
+    ACAS[ACAS Main Menu]
+    
+    %% Sub-system Entry Points
+    IRS[IRS Menu<br/>Incomplete Records]
+    SL[Sales Ledger Menu<br/>Accounts Receivable]
+    PL[Purchase Ledger Menu<br/>Accounts Payable]
+    ST[Stock Control Menu<br/>Inventory Mgmt]
+    GL[General Ledger Menu<br/>Full Accounting]
+    
+    %% System Components
+    SYS[System Parameters<br/>sys002/acas000]
+    DAL[Data Access Layer]
+    
+    %% Main connections
+    ACAS --> IRS
+    ACAS --> SL
+    ACAS --> PL
+    ACAS --> ST
+    ACAS --> GL
+    ACAS --> SYS
+    
+    %% System Parameter connections
+    IRS --> SYS
+    SL --> SYS
+    PL --> SYS
+    ST --> SYS
+    GL --> SYS
+    
+    %% DAL connections
+    IRS --> DAL
+    SL --> DAL
+    PL --> DAL
+    ST --> DAL
+    GL --> DAL
+    
+    %% Data Storage
+    DAL --> FILES[COBOL Files<br/>ISAM/Sequential]
+    DAL --> DB[(MySQL/MariaDB<br/>Database)]
+    
+    style ACAS fill:#e1f5e1
+    style IRS fill:#fff2e6
+    style SL fill:#e6f3ff
+    style PL fill:#ffe6f0
+    style ST fill:#f0e6ff
+    style GL fill:#e6ffe6
+    style SYS fill:#ffffe6
+    style DAL fill:#f0f0f0
+\`\`\`
+
+## 2. Data Access Layer (DAL) Architecture
+
+\`\`\`mermaid
+graph TD
+    %% Application Programs
+    APPS[Application Programs<br/>sl*, pl*, st*, gl*, ir*]
+    
+    %% File Handlers
+    APPS --> FH[COBOL File Handlers<br/>acas0xx series]
+    
+    %% Decision Point
+    FH --> DEC{RDBMS<br/>Enabled?}
+    
+    %% File Path
+    DEC -->|No| FILES[COBOL Files<br/>Direct Access]
+    
+    %% Database Path
+    DEC -->|Yes| MT[MT Modules<br/>DAL Layer]
+    MT --> DB[(Database)]
+    
+    %% Dual Mode
+    DEC -->|Dual Mode| BOTH[Write to Both<br/>Read from DB]
+    BOTH --> FILES
+    BOTH --> MT
+    
+    %% MT Module Examples
+    MT --> MTX[salesMT<br/>purchMT<br/>stockMT<br/>nominalMT<br/>systemMT<br/>etc.]
+    
+    style APPS fill:#e6f3ff
+    style FH fill:#fff2e6
+    style MT fill:#e1f5e1
+    style DEC fill:#ffffe6
+\`\`\`
+
+## 3. Transaction Flow - Sales to GL/IRS
+
+\`\`\`mermaid
+sequenceDiagram
+    participant User
+    participant SL as Sales Ledger
+    participant ST as Stock Control
+    participant POST as Posting File
+    participant GL as General Ledger
+    participant IRS as IRS System
+    
+    User->>SL: Enter Invoice (sl910)
+    SL->>ST: Check Stock Availability
+    ST-->>SL: Stock Status
+    SL->>SL: Calculate VAT & Totals
+    SL->>SL: Create Invoice Record
+    
+    User->>SL: Post Invoice (sl060)
+    SL->>POST: Create Posting Records
+    Note over POST: DR: Customer Account<br/>CR: Sales Account<br/>CR: VAT Account
+    
+    alt GL Mode
+        POST->>GL: Transfer to GL Batch
+        GL->>GL: Update Account Balances
+    else IRS Mode
+        POST->>IRS: Transfer to IRS Posting
+        IRS->>IRS: Update Nominal Accounts
+    else Both Mode
+        POST->>GL: Transfer to GL
+        POST->>IRS: Transfer to IRS
+    end
+    
+    SL->>ST: Update Stock Quantities
+    SL->>SL: Update Customer Balance
+\`\`\`
+
+## 4. File Access Matrix
+
+\`\`\`mermaid
+graph LR
+    %% Define files
+    subgraph "Data Files"
+        SYS[System.dat]
+        SALES[Sales Ledger]
+        PURCH[Purchase Ledger]
+        STOCK[Stock File]
+        NOM[Nominal Ledger]
+        POST[Posting File]
+        ANAL[Analysis File]
+    end
+    
+    %% Define program groups
+    subgraph "IRS Programs"
+        IRS1[irs010<br/>CoA]
+        IRS2[irs020<br/>Defaults]
+        IRS3[irs030<br/>Posting]
+        IRS4[irs040<br/>Trial Bal]
+    end
+    
+    subgraph "Sales Programs"
+        SL1[sl010<br/>Customer]
+        SL2[sl910<br/>Invoice]
+        SL3[sl060<br/>Posting]
+        SL4[sl080<br/>Payment]
+    end
+    
+    subgraph "Stock Programs"
+        ST1[st010<br/>Items]
+        ST2[st020<br/>Movement]
+        ST3[st030<br/>Reports]
+    end
+    
+    %% IRS connections
+    IRS1 --> NOM
+    IRS2 --> NOM
+    IRS3 --> NOM
+    IRS3 --> POST
+    IRS4 --> NOM
+    
+    %% Sales connections
+    SL1 --> SALES
+    SL2 --> SALES
+    SL2 --> STOCK
+    SL2 --> ANAL
+    SL3 --> SALES
+    SL3 --> POST
+    SL4 --> SALES
+    
+    %% Stock connections
+    ST1 --> STOCK
+    ST1 --> ANAL
+    ST1 --> PURCH
+    ST2 --> STOCK
+    ST3 --> STOCK
+    
+    %% System file connections
+    IRS1 --> SYS
+    SL1 --> SYS
+    ST1 --> SYS
+\`\`\`
+
+## 5. Accounting Module Interactions
+
+\`\`\`mermaid
+graph TD
+    %% Customer/Vendor facing modules
+    subgraph "External Facing"
+        CUST[Customers]
+        VEND[Vendors]
+    end
+    
+    %% Transaction modules
+    subgraph "Transaction Processing"
+        SL[Sales Ledger<br/>AR]
+        PL[Purchase Ledger<br/>AP]
+        ST[Stock Control]
+    end
+    
+    %% Accounting modules
+    subgraph "Financial Accounting"
+        IRS[IRS<br/>Simple Books]
+        GL[General Ledger<br/>Full Books]
+    end
+    
+    %% Reporting
+    subgraph "Reporting"
+        FS[Financial<br/>Statements]
+        MR[Management<br/>Reports]
+    end
+    
+    %% External interactions
+    CUST -->|Invoices| SL
+    SL -->|Payments| CUST
+    VEND -->|Bills| PL
+    PL -->|Payments| VEND
+    
+    %% Internal flows
+    SL -->|Stock Issues| ST
+    PL -->|Stock Receipts| ST
+    
+    SL -->|Postings| IRS
+    SL -->|Postings| GL
+    PL -->|Postings| IRS
+    PL -->|Postings| GL
+    ST -->|Adjustments| IRS
+    ST -->|Adjustments| GL
+    
+    IRS --> FS
+    GL --> FS
+    ST --> MR
+    SL --> MR
+    PL --> MR
+    
+    style CUST fill:#e6f3ff
+    style VEND fill:#ffe6f0
+    style SL fill:#cce5ff
+    style PL fill:#ffccdd
+    style ST fill:#e6ccff
+    style IRS fill:#fff5cc
+    style GL fill:#ccffcc
+\`\`\`
+
+## 6. Program Call Hierarchy
+
+\`\`\`mermaid
+graph TD
+    %% Menu level
+    MENU[sales/purchase/irs/stock/general<br/>Main Menu Programs]
+    
+    %% Start of day
+    MENU --> SOD[*000 Programs<br/>Start of Day]
+    SOD --> MAPS04[maps04<br/>Date Conversion]
+    
+    %% Maintenance programs
+    MENU --> MAINT[*010 Programs<br/>Master File Maintenance]
+    MAINT --> MAPS09[maps09<br/>Check Digits]
+    MAINT --> DAL1[*MT DAL Modules]
+    
+    %% Transaction programs
+    MENU --> TRANS[*020-*090 Programs<br/>Transactions & Reports]
+    TRANS --> DAL2[*MT DAL Modules]
+    
+    %% System utilities
+    MENU --> SYS[sys002<br/>System Parameters]
+    MENU --> ACAS000[acas000<br/>System File Handler]
+    ACAS000 --> SYSMT[systemMT<br/>System DAL]
+    
+    %% Common utilities
+    DAL1 --> FHLOG[fhlogger<br/>File Access Logger]
+    DAL2 --> FHLOG
+    
+    %% Database layer
+    DAL1 --> DB[(Database<br/>Operations)]
+    DAL2 --> DB
+    SYSMT --> DB
+    
+    style MENU fill:#e1f5e1
+    style SOD fill:#fff2e6
+    style MAINT fill:#e6f3ff
+    style TRANS fill:#ffe6f0
+\`\`\`
+
+## 7. Batch Processing Flow
+
+\`\`\`mermaid
+stateDiagram-v2
+    [*] --> Entry: Transaction Entry
+    Entry --> Batch: Create/Select Batch
+    Batch --> Validation: Enter Transactions
+    
+    state Validation {
+        [*] --> CheckBalance: Check Dr/Cr Balance
+        CheckBalance --> CheckVAT: Validate VAT
+        CheckVAT --> CheckAccounts: Verify Accounts Exist
+        CheckAccounts --> [*]: All Valid
+    }
+    
+    Validation --> Proof: Generate Proof Report
+    Proof --> Modify: Errors Found?
+    Modify --> Validation: Fix Errors
+    Proof --> Post: No Errors
+    
+    state Post {
+        [*] --> UpdateBalances: Update Account Balances
+        UpdateBalances --> CreateAudit: Create Audit Trail
+        CreateAudit --> UpdateBatch: Mark Batch Posted
+        UpdateBatch --> [*]: Complete
+    }
+    
+    Post --> Archive: Period End
+    Archive --> [*]: Transaction Complete
+\`\`\`
+
+## 8. Database Schema Overview
+
+\`\`\`mermaid
+erDiagram
+    SYSTEM ||--|| PARAMETERS : contains
+    SALES ||--o{ SAINVOICE : has
+    SALES ||--o{ SAITM3 : has
+    PURCHASE ||--o{ PUINVOICE : has
+    PURCHASE ||--o{ PUITM5 : has
+    STOCK ||--o{ AUDIT : tracks
+    NOMINAL ||--o{ POSTING : receives
+    
+    SALES {
+        char7 Customer_Code PK
+        char30 Name
+        decimal Credit_Limit
+        decimal Balance
+        int Credit_Days
+    }
+    
+    PURCHASE {
+        char7 Supplier_Code PK
+        char30 Name
+        decimal Credit_Limit
+        decimal Balance
+        int Payment_Terms
+    }
+    
+    STOCK {
+        char13 Stock_Code PK
+        char32 Description
+        decimal Qty_Held
+        decimal Reorder_Level
+        decimal Cost
+        decimal Sell_Price
+    }
+    
+    NOMINAL {
+        int8 Account_Number PK
+        char32 Account_Name
+        decimal DR_Balance
+        decimal CR_Balance
+        char1 Account_Type
+    }
+    
+    POSTING {
+        int Batch_Number
+        int Post_Number
+        int DR_Account
+        int CR_Account
+        decimal Amount
+        decimal VAT_Amount
+    }
+\`\`\`
+
+These diagrams provide a comprehensive view of the ACAS system architecture, showing:
+1. The modular structure with five main subsystems
+2. The flexible DAL architecture supporting both files and databases
+3. Transaction flows from source documents to financial records
+4. File access patterns showing which programs access which data
+5. Integration between accounting modules
+6. Program call hierarchies
+7. Batch processing workflows
+8. Key database relationships
+
+The system demonstrates a well-structured accounting solution with clear separation of concerns and flexible deployment options.`,
+            "ACAS_Business_Flows_Enhanced.md": `# ACAS Business Flows Documentation
+
+## Overview
+This document describes the end-to-end business processes implemented in the ACAS system, including decision trees for complex logic, accounting period processing, and year-end procedures.
+
+## Table of Contents
+1. [Sales Cycle (Order to Cash)](#sales-cycle)
+2. [Purchase Cycle (Procure to Pay)](#purchase-cycle)
+3. [Inventory Management](#inventory-management)
+4. [Financial Closing Process](#financial-closing)
+5. [System Setup and Initialization](#system-setup)
+6. [Integration Workflows](#integration-workflows)
+
+---
+
+## 1. Sales Cycle (Order to Cash)
+
+### 1.1 Customer Setup Flow
+
+\`\`\`mermaid
+flowchart TD
+    Start([START]) --> sl010[sl010<br/>Customer Maintenance]
+    sl010 --> Decision{New or<br/>Existing?}
+    
+    Decision -->|New Customer| NewCust[New Customer Setup]
+    NewCust --> Code[Enter Customer Code<br/>7 characters]
+    Code --> Credit[Set Credit Limit]
+    Credit --> Terms[Define Payment Terms<br/>Days]
+    Terms --> Discount[Set Discount %]
+    Discount --> Late[Configure Late Charges]
+    Late --> Delivery[Add Delivery Addresses]
+    Delivery --> End1([END])
+    
+    Decision -->|Existing Customer| ExistCust[Existing Customer]
+    ExistCust --> ViewMod[View/Modify Details]
+    ViewMod --> CheckCredit[Check Credit Status]
+    CheckCredit --> UpdateContact[Update Contact Info]
+    UpdateContact --> End2([END])
+    
+    style Start fill:#4a9eff,stroke:#2a3f5f,stroke-width:2px,color:#fff
+    style End1 fill:#4a9eff,stroke:#2a3f5f,stroke-width:2px,color:#fff
+    style End2 fill:#4a9eff,stroke:#2a3f5f,stroke-width:2px,color:#fff
+    style sl010 fill:#e6f3ff,stroke:#4a9eff,stroke-width:2px
+    style Decision fill:#fff5cc,stroke:#ffc107,stroke-width:2px
+\`\`\`
+
+### 1.2 Sales Order and Invoicing Flow
+
+\`\`\`mermaid
+flowchart TD
+    Order([Customer Order<br/>Received]) --> sl910[sl910/sl900<br/>Invoice Entry]
+    
+    sl910 --> Validate[Validate Customer]
+    Validate --> CheckExists[Check Exists]
+    CheckExists --> VerifyCredit[Verify Credit Limit]
+    VerifyCredit --> CheckPayment[Check Payment Status]
+    
+    CheckPayment --> LineItems[Enter Line Items]
+    LineItems --> StockCheck[Validate Stock<br/>Availability]
+    StockCheck --> Pricing[Apply Pricing/<br/>Discounts]
+    Pricing --> VAT[Calculate VAT]
+    VAT --> BackOrder{Back Orders<br/>Needed?}
+    
+    BackOrder -->|Yes| HandleBO[Handle Back Orders]
+    BackOrder -->|No| SaveInv[Save Invoice]
+    HandleBO --> SaveInv
+    
+    SaveInv --> PrintMode{Print Mode?}
+    PrintMode -->|Immediate| sl910Print[sl910<br/>Immediate Print]
+    PrintMode -->|Batch| sl900Batch[sl900<br/>Batch Processing]
+    
+    sl910Print --> sl055[sl055<br/>Invoice Proof]
+    sl900Batch --> sl055
+    
+    sl055 --> ValidateTotals[Validate Totals]
+    ValidateTotals --> CheckCodes[Check Analysis Codes]
+    CheckCodes --> ReviewErrors[Review for Errors]
+    
+    ReviewErrors --> sl060[sl060<br/>Invoice Posting]
+    sl060 --> UpdateCust[Update Customer<br/>Balance]
+    UpdateCust --> OpenItems[Create Open Items]
+    OpenItems --> UpdateStock[Update Stock<br/>Quantities]
+    UpdateStock --> GLPost[Generate GL/IRS<br/>Postings]
+    
+    GLPost --> Entries[["DR: Customer Account<br/>CR: Sales Account<br/>CR: VAT Account"]]
+    
+    style Order fill:#4a9eff,stroke:#2a3f5f,stroke-width:2px,color:#fff
+    style sl910 fill:#e6f3ff,stroke:#4a9eff,stroke-width:2px
+    style sl055 fill:#e6f3ff,stroke:#4a9eff,stroke-width:2px
+    style sl060 fill:#e6f3ff,stroke:#4a9eff,stroke-width:2px
+    style BackOrder fill:#fff5cc,stroke:#ffc107,stroke-width:2px
+    style PrintMode fill:#fff5cc,stroke:#ffc107,stroke-width:2px
+    style Entries fill:#e1f5e1,stroke:#4caf50,stroke-width:2px
+\`\`\`
+
+### 1.3 Customer Payment Processing
+
+\`\`\`mermaid
+flowchart TD
+    Payment([Payment<br/>Received]) --> sl080[sl080<br/>Payment Entry]
+    
+    sl080 --> SelectCust[Select Customer]
+    SelectCust --> PayDetails[Enter Payment Details]
+    
+    PayDetails --> Amount[Amount]
+    Amount --> CheckRef[Check/Reference<br/>Number]
+    CheckRef --> PayDate[Payment Date]
+    
+    PayDate --> Allocate[Allocate to Invoices]
+    Allocate --> AllocMethod{Allocation<br/>Method?}
+    
+    AllocMethod -->|Automatic| AutoAlloc[Oldest First]
+    AllocMethod -->|Manual| ManualSelect[Manual Selection]
+    
+    AutoAlloc --> DiscountCheck{Early Payment<br/>Discount?}
+    ManualSelect --> DiscountCheck
+    
+    DiscountCheck -->|Yes| CalcDiscount[Calculate Discount]
+    DiscountCheck -->|No| sl085[sl085<br/>Payment Proof]
+    CalcDiscount --> ApplyDiscount[Apply if Within Terms]
+    ApplyDiscount --> sl085
+    
+    sl085 --> VerifyAlloc[Verify Allocations]
+    VerifyAlloc --> CheckTotals[Check Totals]
+    
+    CheckTotals --> sl100[sl100<br/>Cash Posting]
+    sl100 --> ClearInv[Clear Paid Invoices]
+    ClearInv --> UpdateBal[Update Customer<br/>Balance]
+    UpdateBal --> PostGL[Post to GL/IRS]
+    
+    PostGL --> CashEntries[["DR: Bank Account<br/>CR: Customer Account"]]
+    
+    style Payment fill:#4a9eff,stroke:#2a3f5f,stroke-width:2px,color:#fff
+    style sl080 fill:#e6f3ff,stroke:#4a9eff,stroke-width:2px
+    style sl085 fill:#e6f3ff,stroke:#4a9eff,stroke-width:2px
+    style sl100 fill:#e6f3ff,stroke:#4a9eff,stroke-width:2px
+    style AllocMethod fill:#fff5cc,stroke:#ffc107,stroke-width:2px
+    style DiscountCheck fill:#fff5cc,stroke:#ffc107,stroke-width:2px
+    style CashEntries fill:#e1f5e1,stroke:#4caf50,stroke-width:2px
+\`\`\`
+
+### 1.4 Credit Control Decision Tree
+
+\`\`\`mermaid
+flowchart TD
+    Start([Monthly Credit Review]) --> sl120[sl120<br/>Aged Debtors Report]
+    
+    sl120 --> Aging{Account<br/>Age?}
+    
+    Aging -->|0-30 Days| Current[Current]
+    Current --> NoAction1[No Action Required]
+    NoAction1 --> End1([END])
+    
+    Aging -->|30-60 Days| Days30[30-60 Days Overdue]
+    Days30 --> Statement1[Generate Statement<br/>sl110]
+    Statement1 --> End2([END])
+    
+    Aging -->|60-90 Days| Days60[60-90 Days Overdue]
+    Days60 --> Statement2[Generate Statement]
+    Statement2 --> FirstLetter[First Dunning Letter<br/>sl190]
+    FirstLetter --> End3([END])
+    
+    Aging -->|90+ Days| Days90[90+ Days Overdue]
+    Days90 --> FinalLetter[Final Dunning Letter]
+    FinalLetter --> LateCheck{Balance ><br/>Minimum?}
+    
+    LateCheck -->|Yes| ApplyCharges[Apply Late Charges]
+    LateCheck -->|No| CreditHold{Charges ><br/>Threshold?}
+    
+    ApplyCharges --> CreditHold
+    CreditHold -->|Yes| HoldAccount[Consider Credit Hold]
+    CreditHold -->|No| End4([END])
+    HoldAccount --> End5([END])
+    
+    style Start fill:#4a9eff,stroke:#2a3f5f,stroke-width:2px,color:#fff
+    style sl120 fill:#e6f3ff,stroke:#4a9eff,stroke-width:2px
+    style Aging fill:#fff5cc,stroke:#ffc107,stroke-width:2px
+    style LateCheck fill:#fff5cc,stroke:#ffc107,stroke-width:2px
+    style CreditHold fill:#fff5cc,stroke:#ffc107,stroke-width:2px
+    style Current fill:#e1f5e1,stroke:#4caf50,stroke-width:2px
+    style Days30 fill:#fff2e6,stroke:#ff9800,stroke-width:2px
+    style Days60 fill:#ffe6f0,stroke:#e91e63,stroke-width:2px
+    style Days90 fill:#ffcccc,stroke:#f44336,stroke-width:2px
+\`\`\`
+
+---
+
+## 2. Purchase Cycle (Procure to Pay)
+
+### 2.1 Supplier Setup Flow
+
+\`\`\`mermaid
+flowchart TD
+    Start([START]) --> pl010[pl010<br/>Supplier Maintenance]
+    
+    pl010 --> NewSupp[New Supplier Setup]
+    NewSupp --> SuppCode[Enter Supplier Code<br/>7 characters]
+    SuppCode --> BankDetails[Bank Details]
+    BankDetails --> SortCode[Sort Code]
+    SortCode --> AccNumber[Account Number]
+    AccNumber --> CreditTerms[Credit Terms]
+    CreditTerms --> PayDiscount[Payment Discount %]
+    PayDiscount --> ContactInfo[Contact Information]
+    
+    ContactInfo --> LinkStock{Link to<br/>Stock Items?}
+    LinkStock -->|Yes| st010[st010<br/>Stock Maintenance]
+    LinkStock -->|No| End1([END])
+    st010 --> LinkSupp[Link up to 3<br/>Suppliers per Item]
+    LinkSupp --> End2([END])
+    
+    style Start fill:#4a9eff,stroke:#2a3f5f,stroke-width:2px,color:#fff
+    style pl010 fill:#ffe6f0,stroke:#e91e63,stroke-width:2px
+    style st010 fill:#e6ccff,stroke:#9c27b0,stroke-width:2px
+    style LinkStock fill:#fff5cc,stroke:#ffc107,stroke-width:2px
+    style End1 fill:#4a9eff,stroke:#2a3f5f,stroke-width:2px,color:#fff
+    style End2 fill:#4a9eff,stroke:#2a3f5f,stroke-width:2px,color:#fff
+\`\`\`
+
+### 2.2 Purchase Order Flow
+
+\`\`\`mermaid
+flowchart TD
+    Requirement([Purchase<br/>Requirement]) --> pl020[pl020/pl900<br/>Order Entry]
+    
+    pl020 --> SelectSupp[Select Supplier]
+    SelectSupp --> OrderDetails[Enter Order Details]
+    
+    OrderDetails --> OrderDate[Order Date]
+    OrderDate --> ReqDate[Required Date]
+    ReqDate --> DelivInstr[Delivery Instructions]
+    
+    DelivInstr --> AddItems[Add Line Items]
+    AddItems --> ProdCode[Product/Service Code]
+    ProdCode --> Quantity[Quantity]
+    Quantity --> UnitPrice[Unit Price]
+    UnitPrice --> VATCode[VAT Code]
+    
+    VATCode --> SaveOrder[Save Order]
+    SaveOrder --> PrintOpt{Print Option?}
+    
+    PrintOpt -->|Immediate| pl910[pl910<br/>Print Immediately]
+    PrintOpt -->|Batch| pl900[pl900<br/>Batch Processing]
+    
+    pl910 --> pl025[pl025<br/>Goods Receipt]
+    pl900 --> pl025
+    
+    pl025 --> MatchOrder[Match to Order]
+    MatchOrder --> RecDate[Record Receipt Date]
+    RecDate --> UpdateQty[Update Quantities<br/>Received]
+    UpdateQty --> FlagPay[Flag for Payment]
+    
+    FlagPay --> pl050[pl050<br/>Proof Report]
+    pl050 --> Review[Review Before Posting]
+    
+    Review --> pl060[pl060<br/>Invoice Posting]
+    pl060 --> UpdateSupp[Update Supplier<br/>Balance]
+    UpdateSupp --> CreatePay[Create Payable Items]
+    CreatePay --> StockUpdate{Update<br/>Stock?}
+    
+    StockUpdate -->|Yes| UpdateInv[Update Inventory]
+    StockUpdate -->|No| PostGL[Post to GL/IRS]
+    UpdateInv --> PostGL
+    
+    PostGL --> PurchEntries[["DR: Purchase/Expense Account<br/>DR: VAT Account<br/>CR: Supplier Account"]]
+    
+    style Requirement fill:#4a9eff,stroke:#2a3f5f,stroke-width:2px,color:#fff
+    style pl020 fill:#ffe6f0,stroke:#e91e63,stroke-width:2px
+    style pl025 fill:#ffe6f0,stroke:#e91e63,stroke-width:2px
+    style pl050 fill:#ffe6f0,stroke:#e91e63,stroke-width:2px
+    style pl060 fill:#ffe6f0,stroke:#e91e63,stroke-width:2px
+    style PrintOpt fill:#fff5cc,stroke:#ffc107,stroke-width:2px
+    style StockUpdate fill:#fff5cc,stroke:#ffc107,stroke-width:2px
+    style PurchEntries fill:#e1f5e1,stroke:#4caf50,stroke-width:2px
+\`\`\`
+
+### 2.3 Payment Processing Flow
+
+\`\`\`mermaid
+flowchart TD
+    Due([Payment Due]) --> pl080[pl080<br/>Payment Selection]
+    
+    pl080 --> AutoSelect[Auto-select by<br/>Due Date]
+    AutoSelect --> DiscountConsider{Consider<br/>Discounts?}
+    
+    DiscountConsider -->|Yes| CheckTerms[If Paid Within Terms]
+    DiscountConsider -->|No| CashReq[Review Cash<br/>Requirements]
+    CheckTerms --> CashReq
+    
+    CashReq --> pl085[pl085<br/>Payment Amendment]
+    pl085 --> AdjustSel[Adjust Selections]
+    AdjustSel --> SetPayDate[Set Payment Date]
+    
+    SetPayDate --> pl095[pl095<br/>Check Printing]
+    pl095 --> PrintChecks[Print Checks]
+    PrintChecks --> RemitAdvice[Generate<br/>Remittance Advice]
+    
+    RemitAdvice --> pl100[pl100<br/>Payment Posting]
+    pl100 --> ClearInv[Clear Paid Invoices]
+    ClearInv --> UpdateSupp[Update Supplier<br/>Balance]
+    UpdateSupp --> PostEntries[Post to GL/IRS]
+    
+    PostEntries --> PayEntries[["DR: Supplier Account<br/>CR: Bank Account"]]
+    
+    style Due fill:#4a9eff,stroke:#2a3f5f,stroke-width:2px,color:#fff
+    style pl080 fill:#ffe6f0,stroke:#e91e63,stroke-width:2px
+    style pl085 fill:#ffe6f0,stroke:#e91e63,stroke-width:2px
+    style pl095 fill:#ffe6f0,stroke:#e91e63,stroke-width:2px
+    style pl100 fill:#ffe6f0,stroke:#e91e63,stroke-width:2px
+    style DiscountConsider fill:#fff5cc,stroke:#ffc107,stroke-width:2px
+    style PayEntries fill:#e1f5e1,stroke:#4caf50,stroke-width:2px
+\`\`\`
+
+---
+
+## 3. Inventory Management
+
+### 3.1 Stock Item Setup
+
+\`\`\`mermaid
+flowchart TD
+    Start([START]) --> st010[st010<br/>Stock Maintenance]
+    
+    st010 --> ItemIdent[Item Identification]
+    ItemIdent --> StockCode[Stock Code<br/>13 characters]
+    StockCode --> Description[Description]
+    Description --> Location[Location]
+    
+    Location --> Valuation[Valuation]
+    Valuation --> CostPrice[Cost Price]
+    CostPrice --> SellPrice[Selling Price]
+    SellPrice --> ValMethod[Valuation Method]
+    
+    ValMethod --> ReorderParams[Reorder Parameters]
+    ReorderParams --> ReorderLevel[Reorder Level]
+    ReorderLevel --> ReorderQty[Reorder Quantity]
+    ReorderQty --> LeadTime[Lead Time]
+    
+    LeadTime --> SuppLinks[Supplier Links]
+    SuppLinks --> Supp3[Up to 3 Suppliers]
+    Supp3 --> End([END])
+    
+    style Start fill:#4a9eff,stroke:#2a3f5f,stroke-width:2px,color:#fff
+    style st010 fill:#e6ccff,stroke:#9c27b0,stroke-width:2px
+    style End fill:#4a9eff,stroke:#2a3f5f,stroke-width:2px,color:#fff
+\`\`\`
+
+### 3.2 Stock Movement Flow
+
+\`\`\`mermaid
+flowchart TD
+    Trigger([Movement<br/>Trigger]) --> Type{Movement<br/>Type?}
+    
+    Type -->|Sales| SalesAuto[Automatic from<br/>Invoice Posting]
+    Type -->|Purchases| PurchAuto[Automatic from<br/>Goods Receipt]
+    Type -->|Manual| st020[st020<br/>Stock Movements]
+    
+    SalesAuto --> UpdateProc[Stock Update<br/>Process]
+    PurchAuto --> UpdateProc
+    st020 --> UpdateProc
+    
+    UpdateProc --> ValidateQty[Validate Quantity<br/>Available]
+    ValidateQty --> UpdateLevels[Update Stock Levels]
+    
+    UpdateLevels --> OnHand[Quantity on Hand]
+    OnHand --> Allocated[Allocated Quantity]
+    Allocated --> Available[Available Quantity]
+    
+    Available --> CalcValue[Calculate New Value]
+    CalcValue --> AvgCost[Average Cost Method]
+    
+    AvgCost --> CreateAudit[Create Audit Record]
+    CreateAudit --> DateTime[Date/Time]
+    DateTime --> MovType[Movement Type]
+    MovType --> SourceDoc[Source Document]
+    SourceDoc --> QtyValue[Quantity/Value]
+    QtyValue --> End([END])
+    
+    style Trigger fill:#4a9eff,stroke:#2a3f5f,stroke-width:2px,color:#fff
+    style Type fill:#fff5cc,stroke:#ffc107,stroke-width:2px
+    style st020 fill:#e6ccff,stroke:#9c27b0,stroke-width:2px
+    style UpdateProc fill:#e1f5e1,stroke:#4caf50,stroke-width:2px
+    style End fill:#4a9eff,stroke:#2a3f5f,stroke-width:2px,color:#fff
+\`\`\`
+
+### 3.3 Reorder Decision Process
+
+\`\`\`mermaid
+flowchart TD
+    Start([Daily Review]) --> st030[st030<br/>Reorder Report]
+    
+    st030 --> Loop{For Each<br/>Item}
+    
+    Loop --> CheckQty{Available Qty <<br/>Reorder Level?}
+    
+    CheckQty -->|YES| GenReorder[Generate Reorder]
+    CheckQty -->|NO| NextItem1[Next Item]
+    
+    GenReorder --> SuggestQty[Suggested Qty =<br/>Reorder Qty]
+    SuggestQty --> CheckOnOrder[Check On-Order Qty]
+    CheckOnOrder --> SelectSupp[Select Supplier]
+    
+    SelectSupp --> Consider[Consider Factors]
+    Consider --> LeadTime[Lead Time]
+    LeadTime --> Seasonal[Seasonal Adjustments]
+    Seasonal --> BackOrders[Back Orders Pending]
+    
+    BackOrders --> NextItem2[Next Item]
+    NextItem1 --> Loop
+    NextItem2 --> Loop
+    
+    Loop -->|All Items<br/>Processed| Report[Generate<br/>Reorder Report]
+    Report --> End([END])
+    
+    style Start fill:#4a9eff,stroke:#2a3f5f,stroke-width:2px,color:#fff
+    style st030 fill:#e6ccff,stroke:#9c27b0,stroke-width:2px
+    style Loop fill:#fff5cc,stroke:#ffc107,stroke-width:2px
+    style CheckQty fill:#fff5cc,stroke:#ffc107,stroke-width:2px
+    style Report fill:#e1f5e1,stroke:#4caf50,stroke-width:2px
+    style End fill:#4a9eff,stroke:#2a3f5f,stroke-width:2px,color:#fff
+\`\`\`
+
+---
+
+## 4. Financial Closing Process
+
+### 4.1 Daily Closing
+
+\`\`\`mermaid
+flowchart LR
+    subgraph "Start of Day"
+        ModStart[Each Module<br/>Start of Day] --> Programs[*000 Programs]
+        Programs --> SetDate[Set System Date]
+        SetDate --> ValidSeq[Validate Date<br/>Sequence]
+        ValidSeq --> InitOps[Initialize Daily<br/>Operations]
+    end
+    
+    subgraph "End of Day"
+        CompTrans[Complete All<br/>Transactions] --> RunProof[Run Proof<br/>Reports]
+        RunProof --> PostBatch[Post All<br/>Batches]
+        PostBatch --> Backup[Backup<br/>Manual/Scripted]
+    end
+    
+    InitOps -.-> CompTrans
+    
+    style ModStart fill:#4a9eff,stroke:#2a3f5f,stroke-width:2px,color:#fff
+    style Backup fill:#e1f5e1,stroke:#4caf50,stroke-width:2px
+\`\`\`
+
+### 4.2 Period End Processing
+
+\`\`\`mermaid
+flowchart TD
+    Start([Period End]) --> Modules{Select<br/>Module}
+    
+    Modules -->|Sales| SalesPE[Sales Ledger<br/>Period End]
+    Modules -->|Purchase| PurchPE[Purchase Ledger<br/>Period End]
+    Modules -->|Stock| StockPE[Stock<br/>Period End]
+    Modules -->|GL| GLPE[General Ledger<br/>Period End]
+    
+    %% Sales Period End
+    SalesPE --> sl120A[sl120<br/>Aged Debtors]
+    sl120A --> AgeAll[Age All Balances]
+    AgeAll --> CalcLate[Calculate Late Charges]
+    CalcLate --> sl110A[sl110<br/>Statements]
+    sl110A --> GenState[Generate for<br/>All/Selected]
+    GenState --> PrintEmail1[Print/Email]
+    PrintEmail1 --> sl130A[sl130<br/>Product Analysis]
+    sl130A --> SalesProd[Sales by<br/>Product/Service]
+    SalesProd --> UpdateSales[Update Period<br/>Totals]
+    
+    %% Purchase Period End
+    PurchPE --> pl120A[pl120<br/>Aged Creditors]
+    pl120A --> ReviewPay[Review Payment<br/>Obligations]
+    ReviewPay --> pl130A[pl130<br/>Product Analysis]
+    pl130A --> PurchCat[Purchases by<br/>Category]
+    PurchCat --> UpdatePurch[Update Period<br/>Totals]
+    
+    %% Stock Period End
+    StockPE --> st040A[st040<br/>End of Cycle]
+    st040A --> ClearMove[Clear Period<br/>Movements]
+    ClearMove --> Add[Additions]
+    Add --> Ded[Deductions]
+    Ded --> Adj[Adjustments]
+    Adj --> UpdateMonth[Update Month-<br/>in-Year Totals]
+    UpdateMonth --> st030A[st030<br/>Valuation Report]
+    st030A --> DocValue[Document Ending<br/>Inventory Value]
+    
+    %% GL Period End
+    GLPE --> gl080A[gl080<br/>End of Cycle]
+    gl080A --> VerifyBatch[Verify All<br/>Batches Posted]
+    VerifyBatch --> Archive[Archive<br/>Transactions]
+    Archive --> SeqFile[To Sequential File]
+    SeqFile --> ClearPost[Clear Posting File]
+    ClearPost --> UpdateQuart[Update Quarterly<br/>Totals]
+    UpdateQuart --> gl090A[gl090<br/>Trial Balance]
+    gl090A --> VerifyBal[Verify<br/>Debits = Credits]
+    VerifyBal --> FinState[gl100/105<br/>Financial Statements]
+    FinState --> PL[Profit & Loss]
+    PL --> BS[Balance Sheet]
+    
+    UpdateSales --> Complete1([Complete])
+    UpdatePurch --> Complete2([Complete])
+    DocValue --> Complete3([Complete])
+    BS --> Complete4([Complete])
+    
+    style Start fill:#4a9eff,stroke:#2a3f5f,stroke-width:2px,color:#fff
+    style Modules fill:#fff5cc,stroke:#ffc107,stroke-width:2px
+    style SalesPE fill:#e6f3ff,stroke:#4a9eff,stroke-width:2px
+    style PurchPE fill:#ffe6f0,stroke:#e91e63,stroke-width:2px
+    style StockPE fill:#e6ccff,stroke:#9c27b0,stroke-width:2px
+    style GLPE fill:#e6ffe6,stroke:#4caf50,stroke-width:2px
+\`\`\`
+
+### 4.3 Year End Processing
+
+\`\`\`mermaid
+flowchart TD
+    subgraph "Pre-Year End Checklist"
+        Check1[Complete All<br/>Period Ends] --> Check2[Run Year-End<br/>Reports]
+        Check2 --> Reports[Annual P&L<br/>Balance Sheet<br/>Analysis Reports<br/>Stock Valuation]
+        Reports --> Check3[Full System<br/>Backup]
+        Check3 --> Check4[Archive Current<br/>Year Data]
+    end
+    
+    Check4 --> xl150[xl150<br/>End of Cycle<br/>All Modules]
+    
+    xl150 --> SLYear[Sales Ledger<br/>Year End]
+    xl150 --> PLYear[Purchase Ledger<br/>Year End]
+    xl150 --> STYear[Stock Control<br/>Year End]
+    xl150 --> GLYear[General Ledger<br/>Year End]
+    
+    SLYear --> SLTasks[Clear Quarterly Totals<br/>Move Current to Last Year<br/>Reset YTD Counters]
+    PLYear --> PLTasks[Similar to Sales]
+    STYear --> STTasks[Clear YTD Movements<br/>Carry Forward Balances]
+    GLYear --> GLTasks[Close P&L Accounts<br/>Post to Retained Earnings<br/>Carry Forward BS Accounts]
+    
+    xl150 --> IRSSpec{IRS Special<br/>Process?}
+    IRSSpec -->|Yes| irs090[irs090<br/>End of Period]
+    irs090 --> ClearOpt{Clear<br/>Transactions?}
+    ClearOpt -->|Yes| AfterArch[After Archiving]
+    ClearOpt -->|No| CarryFwd[Carry Forward<br/>Balances]
+    AfterArch --> CarryFwd
+    CarryFwd --> ResetCount[Reset Period<br/>Counters]
+    
+    SLTasks --> Complete([Year End<br/>Complete])
+    PLTasks --> Complete
+    STTasks --> Complete
+    GLTasks --> Complete
+    ResetCount --> Complete
+    IRSSpec -->|No| Complete
+    
+    style Check1 fill:#fff2e6,stroke:#ff9800,stroke-width:2px
+    style xl150 fill:#4a9eff,stroke:#2a3f5f,stroke-width:2px,color:#fff
+    style IRSSpec fill:#fff5cc,stroke:#ffc107,stroke-width:2px
+    style ClearOpt fill:#fff5cc,stroke:#ffc107,stroke-width:2px
+    style Complete fill:#e1f5e1,stroke:#4caf50,stroke-width:2px
+\`\`\`
+
+---
+
+## 5. System Setup and Initialization
+
+### 5.1 Initial System Setup Flow
+
+\`\`\`mermaid
+flowchart TD
+    Install([New Installation]) --> CreateSys[Create system.dat]
+    
+    CreateSys --> CompInfo[Company Information]
+    CompInfo --> VATReg[VAT Registration]
+    VATReg --> FinYear[Financial Year Dates]
+    FinYear --> ModActive[Module Activation]
+    
+    ModActive --> EachMod{For Each<br/>Active Module}
+    
+    EachMod -->|IRS| IRSSetup[IRS Setup]
+    IRSSetup --> irs010A[irs010<br/>Chart of Accounts]
+    irs010A --> irs020A[irs020<br/>Posting Defaults]
+    
+    EachMod -->|GL| GLSetup[GL Setup]
+    GLSetup --> gl030A[gl030<br/>Chart of Accounts]
+    gl030A --> gl020A[gl020<br/>Default Accounts]
+    
+    EachMod -->|Sales| SalesSetup[Sales Setup]
+    SalesSetup --> SLControl[Set Control Accounts]
+    SLControl --> InvNumber[Invoice Numbering]
+    InvNumber --> CreditDef[Credit Defaults]
+    
+    EachMod -->|Purchase| PurchSetup[Purchase Setup]
+    PurchSetup --> PLControl[Set Control Accounts]
+    PLControl --> PayTerms[Payment Terms]
+    
+    EachMod -->|Stock| StockSetup[Stock Setup]
+    StockSetup --> ValMethod[Valuation Method]
+    ValMethod --> MoveTrack[Movement Tracking]
+    
+    irs020A --> Ready1([Module Ready])
+    gl020A --> Ready2([Module Ready])
+    CreditDef --> Ready3([Module Ready])
+    PayTerms --> Ready4([Module Ready])
+    MoveTrack --> Ready5([Module Ready])
+    
+    style Install fill:#4a9eff,stroke:#2a3f5f,stroke-width:2px,color:#fff
+    style EachMod fill:#fff5cc,stroke:#ffc107,stroke-width:2px
+    style IRSSetup fill:#fff2e6,stroke:#ff9800,stroke-width:2px
+    style GLSetup fill:#e6ffe6,stroke:#4caf50,stroke-width:2px
+    style SalesSetup fill:#e6f3ff,stroke:#4a9eff,stroke-width:2px
+    style PurchSetup fill:#ffe6f0,stroke:#e91e63,stroke-width:2px
+    style StockSetup fill:#e6ccff,stroke:#9c27b0,stroke-width:2px
+\`\`\`
+
+### 5.2 Data Migration Flow
+
+\`\`\`mermaid
+flowchart TD
+    Legacy([Legacy System<br/>Data]) --> Prep[File Preparation]
+    
+    Prep --> Export[Export to<br/>CSV/Text]
+    Export --> MapFields[Map Field<br/>Relationships]
+    
+    MapFields --> LoadProg[Load Programs<br/>*LD series]
+    
+    LoadProg --> CustData[Customer Data<br/>→ salesLD]
+    LoadProg --> SuppData[Supplier Data<br/>→ purchLD]
+    LoadProg --> StockData[Stock Items<br/>→ stockLD]
+    LoadProg --> CoAData[Chart of Accounts<br/>→ nominalLD]
+    LoadProg --> OpenBal[Opening Balances<br/>→ Manual Entry]
+    
+    CustData --> Valid[Validation]
+    SuppData --> Valid
+    StockData --> Valid
+    CoAData --> Valid
+    OpenBal --> Valid
+    
+    Valid --> RunTB[Run Trial Balance]
+    RunTB --> VerifyTotals[Verify Control<br/>Totals]
+    VerifyTotals --> TestTrans[Test Transactions]
+    TestTrans --> Complete([Migration<br/>Complete])
+    
+    style Legacy fill:#4a9eff,stroke:#2a3f5f,stroke-width:2px,color:#fff
+    style LoadProg fill:#e1f5e1,stroke:#4caf50,stroke-width:2px
+    style Valid fill:#fff5cc,stroke:#ffc107,stroke-width:2px
+    style Complete fill:#e1f5e1,stroke:#4caf50,stroke-width:2px
+\`\`\`
+
+---
+
+## 6. Integration Workflows
+
+### 6.1 Sales to Stock Integration
+
+\`\`\`mermaid
+flowchart TD
+    InvEntry([Invoice Line<br/>Item Entry]) --> CheckStock{Check Stock<br/>Availability}
+    
+    CheckStock -->|Available| AllocQty[Allocate Quantity]
+    CheckStock -->|Not Available| CreateBO[Create Back Order]
+    CreateBO --> FlagFulfill[Flag for<br/>Fulfillment]
+    
+    AllocQty --> InvPost[Invoice Posting]
+    FlagFulfill --> InvPost
+    
+    InvPost --> ReduceStock[Reduce Stock<br/>Quantity]
+    ReduceStock --> UpdateHand[Update On-Hand]
+    UpdateHand --> CreateMove[Create Movement<br/>Record]
+    CreateMove --> RecalcValue[Recalculate Value]
+    RecalcValue --> Complete([Complete])
+    
+    style InvEntry fill:#4a9eff,stroke:#2a3f5f,stroke-width:2px,color:#fff
+    style CheckStock fill:#fff5cc,stroke:#ffc107,stroke-width:2px
+    style Complete fill:#e1f5e1,stroke:#4caf50,stroke-width:2px
+\`\`\`
+
+### 6.2 Purchase to Stock Integration
+
+\`\`\`mermaid
+flowchart TD
+    GoodsRec([Goods Receipt]) --> UpdateOrder[Update On-Order<br/>Quantity]
+    UpdateOrder --> IncreaseHand[Increase On-Hand<br/>Quantity]
+    IncreaseHand --> UpdateCost[Update Last Cost]
+    UpdateCost --> RecalcAvg[Recalculate<br/>Average Cost]
+    
+    RecalcAvg --> CheckBO{Check Back<br/>Orders}
+    CheckBO -->|Stock Available| AllocBO[Allocate to<br/>Back Orders]
+    CheckBO -->|No BO| Complete([Complete])
+    
+    AllocBO --> NotifySales[Notify Sales]
+    NotifySales --> Complete
+    
+    style GoodsRec fill:#4a9eff,stroke:#2a3f5f,stroke-width:2px,color:#fff
+    style CheckBO fill:#fff5cc,stroke:#ffc107,stroke-width:2px
+    style Complete fill:#e1f5e1,stroke:#4caf50,stroke-width:2px
+\`\`\`
+
+### 6.3 Subsidiary to General Ledger Flow
+
+\`\`\`mermaid
+flowchart TD
+    Trans([Transaction Entry<br/>Any Module]) --> PostProc[Posting Process]
+    
+    PostProc --> CreateRec[Create Posting<br/>Records]
+    CreateRec --> AccCodes[Account Codes]
+    AccCodes --> Amounts[Amounts]
+    Amounts --> VATDetails[VAT Details]
+    
+    VATDetails --> CheckParam{System<br/>Parameter<br/>Check}
+    
+    CheckParam -->|GL Only| PostGL[Post to GL]
+    CheckParam -->|IRS Only| PostIRS[Post to IRS]
+    CheckParam -->|Both| PostBoth[Post to Both]
+    
+    PostBoth --> PostGL
+    PostBoth --> PostIRS
+    
+    PostGL --> GLUpdate[Update GL<br/>Accounts]
+    PostIRS --> IRSUpdate[Update IRS<br/>Accounts]
+    
+    GLUpdate --> Complete([Complete])
+    IRSUpdate --> Complete
+    
+    style Trans fill:#4a9eff,stroke:#2a3f5f,stroke-width:2px,color:#fff
+    style CheckParam fill:#fff5cc,stroke:#ffc107,stroke-width:2px
+    style Complete fill:#e1f5e1,stroke:#4caf50,stroke-width:2px
+\`\`\`
+
+### 6.4 VAT Processing Flow
+
+\`\`\`mermaid
+flowchart TD
+    TransVAT([Transaction<br/>with VAT]) --> DetermineCode[Determine<br/>VAT Code]
+    
+    DetermineCode --> CodeType{VAT Code<br/>Type}
+    CodeType -->|Standard| StdRate[Standard Rate]
+    CodeType -->|Reduced| RedRate[Reduced Rate]
+    CodeType -->|Zero/Exempt| ZeroRate[Zero/Exempt]
+    
+    StdRate --> CalcVAT[Calculate VAT]
+    RedRate --> CalcVAT
+    ZeroRate --> NoVAT[No VAT Calc]
+    
+    CalcVAT --> FromWhat{Calculate<br/>From?}
+    FromWhat -->|Net| FromNet[From Net Amount]
+    FromWhat -->|Gross| FromGross[From Gross Amount]
+    
+    FromNet --> PostVAT[Post VAT]
+    FromGross --> PostVAT
+    NoVAT --> Continue[Continue<br/>Processing]
+    
+    PostVAT --> VATType{VAT Type?}
+    VATType -->|Input| InputVAT[Input VAT<br/>To Account 31]
+    VATType -->|Output| OutputVAT[Output VAT<br/>To Account 32]
+    
+    InputVAT --> PeriodEnd[Period End VAT]
+    OutputVAT --> PeriodEnd
+    Continue --> PeriodEnd
+    
+    PeriodEnd --> VATReturn[VAT Return<br/>Preparation]
+    VATReturn --> InVsOut[Input vs Output]
+    InVsOut --> PayRefund[Payment/Refund<br/>Calculation]
+    
+    style TransVAT fill:#4a9eff,stroke:#2a3f5f,stroke-width:2px,color:#fff
+    style CodeType fill:#fff5cc,stroke:#ffc107,stroke-width:2px
+    style FromWhat fill:#fff5cc,stroke:#ffc107,stroke-width:2px
+    style VATType fill:#fff5cc,stroke:#ffc107,stroke-width:2px
+    style PayRefund fill:#e1f5e1,stroke:#4caf50,stroke-width:2px
+\`\`\`
+
+### 6.5 Multi-Company Processing
+
+\`\`\`mermaid
+flowchart LR
+    SysStart([System Start]) --> SelectCo{Select<br/>Company}
+    
+    SelectCo -->|Single| LoadSingle[Load Company<br/>Parameters]
+    SelectCo -->|Multiple| SelectWhich[Select Which<br/>Company]
+    
+    SelectWhich --> LoadParams[Load Company<br/>Parameters]
+    LoadSingle --> Trans[Transactions]
+    LoadParams --> Trans
+    
+    Trans --> UsePC[All Use Profit<br/>Center Codes]
+    UsePC --> SepByCo[Separate by<br/>Company]
+    
+    SepByCo --> Reporting[Reporting]
+    Reporting --> ReportType{Report<br/>Type}
+    
+    ReportType -->|By PC| ByPC[By Profit Center]
+    ReportType -->|Consolidated| Consol[Consolidated Option]
+    ReportType -->|Inter-Co| InterCo[Inter-Company<br/>Eliminations]
+    
+    style SysStart fill:#4a9eff,stroke:#2a3f5f,stroke-width:2px,color:#fff
+    style SelectCo fill:#fff5cc,stroke:#ffc107,stroke-width:2px
+    style ReportType fill:#fff5cc,stroke:#ffc107,stroke-width:2px
+\`\`\`
+
+## Key Business Rules
+
+### Credit Management
+- Credit limit checked on order entry
+- Overdue accounts flagged in red
+- Automatic late charge calculation
+- Payment terms enforcement
+
+### Inventory Control  
+- No negative stock allowed
+- FIFO for physical movement
+- Average cost for valuation
+- Automatic reorder point monitoring
+
+### Financial Control
+- Batches must balance (DR = CR)
+- Periods locked after closing
+- Audit trail mandatory
+- No deletion after posting
+
+### VAT Compliance
+- Correct VAT code required
+- VAT calculated automatically
+- Separate VAT accounts maintained
+- VAT return data available
+
+This document provides the essential business flows. Each flow can be customized through system parameters and business rules embedded in the programs.`,
+            "ACAS_Data_Dictionary.md": `# ACAS Data Dictionary
+
+## Overview
+This data dictionary documents all files and database tables in the ACAS system, providing field-level documentation, business meanings, and validation rules.
+
+## Table of Contents
+1. [System-Wide Files](#system-wide)
+2. [Sales Ledger Files](#sales-ledger)
+3. [Purchase Ledger Files](#purchase-ledger)
+4. [Stock Control Files](#stock-control)
+5. [General Ledger Files](#general-ledger)
+6. [IRS Files](#irs-files)
+7. [Common Code Values](#code-values)
+
+---
+
+## 1. System-Wide Files {#system-wide}
+
+### SYSTEM.DAT / SYSTEM-REC
+**Purpose**: Central configuration and control file
+**Key**: Single record file
+**Size**: 1024 bytes
+
+| Field Name | Type | Size | Description | Validation |
+|-----------|------|------|-------------|-----------|
+| Company-Name | CHAR | 30 | Company legal name | Required |
+| Company-Add1-4 | CHAR | 30×4 | Company address lines | Required |
+| Coy-Phone | CHAR | 14 | Company phone | Optional |
+| Coy-Fax | CHAR | 14 | Company fax | Optional |
+| Coy-Email | CHAR | 48 | Company email | Email format |
+| Coy-WebSite | CHAR | 48 | Company website | URL format |
+| Coy-Vat-Reg-No | CHAR | 14 | VAT registration | Valid VAT number |
+| Vat-Rate | DEC | 2.2 | Standard VAT % | 0-99.99 |
+| Reduced-Vat | DEC | 2.2 | Reduced VAT % | 0-99.99 |
+| EOM-DD | NUM | 2 | End of month day | 1-31 |
+| Preserve-Batch | CHAR | 1 | Keep batch numbers | Y/N |
+| RDBMS-Name | CHAR | 10 | Database type | MySQL/MariaDB/None |
+| RDBMS-Version | CHAR | 3.3 | Database version | Numeric |
+| DB-Data-Source | CHAR | 48 | Database DSN | Valid DSN |
+| Invoicer-Type | NUM | 1 | Invoice module | 1=Internal, 2=External |
+| IRS-Both-Used | CHAR | 1 | IRS+GL active | Y/N |
+| Testing-X flags | CHAR | 1×8 | Debug flags | 0/1 each |
+
+### ANALYSIS-REC
+**Purpose**: Product/service analysis codes for reporting
+**Key**: PA-CODE (3 chars)
+**Used By**: Sales, Purchase, Stock
+
+| Field Name | Type | Size | Description | Validation |
+|-----------|------|------|-------------|-----------|
+| PA-CODE | CHAR | 3 | Analysis code | Unique, required |
+| PA-GL | NUM | 6 | GL account link | Valid GL account |
+| PA-DESC | CHAR | 24 | Description | Required |
+| PA-PRINT | CHAR | 3 | Print on reports | YES/NO |
+
+### DELIVERY-REC
+**Purpose**: Additional delivery addresses
+**Key**: DELIV-KEY (8 chars)
+**Used By**: Sales, Purchase
+
+| Field Name | Type | Size | Description | Validation |
+|-----------|------|------|-------------|-----------|
+| DELIV-KEY | CHAR | 8 | Cust/Supp + seq | Required |
+| DELIV-NAME | CHAR | 30 | Delivery name | Required |
+| DELIV-ADDRESS | CHAR | 96 | Full address | Required |
+
+---
+
+## 2. Sales Ledger Files {#sales-ledger}
+
+### SALEDGER-REC
+**Purpose**: Customer master file
+**Key**: Sales-Key (7 chars)
+**Record Size**: 300 bytes
+
+| Field Name | Type | Size | Description | Validation |
+|-----------|------|------|-------------|-----------|
+| Sales-Key | CHAR | 7 | Customer code | Unique, check digit |
+| Sales-Name | CHAR | 30 | Customer name | Required |
+| Sales-Add-1-4 | CHAR | 30×4 | Address lines | Required |
+| Sales-Add-5 | CHAR | 10 | Country/region | Optional |
+| Sales-PC | CHAR | 10 | Postal code | Format check |
+| Sales-Phone | CHAR | 14 | Phone number | Optional |
+| Sales-Fax | CHAR | 14 | Fax number | Optional |
+| Sales-Contact | CHAR | 20 | Contact person | Optional |
+| Sales-Current | DEC | 9.2 | Current balance | Calculated |
+| Sales-30-60-90 | DEC | 9.2×3 | Aged balances | Calculated |
+| Sales-Last | DEC | 9.2 | Previous balance | Calculated |
+| Sales-Q1-4 | DEC | 9.2×4 | Quarterly sales | Accumulated |
+| Credit-Limit | DEC | 9.2 | Credit limit | >= 0 |
+| Credit-Period | NUM | 3 | Payment terms | Days |
+| Discount-Percent | DEC | 2.2 | Trade discount | 0-99.99 |
+| Late-Charge-YN | CHAR | 1 | Apply late fees | Y/N |
+| Email-Invoice | CHAR | 1 | Email invoices | Y/N |
+| Email-Statement | CHAR | 1 | Email statements | Y/N |
+| Email-Dunning | CHAR | 1 | Email reminders | Y/N |
+| Email-Address | CHAR | 48 | Customer email | Email format |
+| Allow-Part-Ship | CHAR | 1 | Partial shipment | Y/N |
+| Allow-BO | CHAR | 1 | Back orders OK | Y/N |
+| Date-Created | NUM | 8 | Creation date | YYYYMMDD |
+| Date-Last-Inv | NUM | 8 | Last invoice | YYYYMMDD |
+| Date-Last-Pay | NUM | 8 | Last payment | YYYYMMDD |
+| Sales-Analysis | CHAR | 3 | Analysis code | Valid code |
+| Status-Flag | CHAR | 1 | Active/Hold | A/H/D |
+
+### SAINVOICE-REC
+**Purpose**: Sales invoice header
+**Key**: SINVOICE-KEY (10 chars: 8-digit invoice + 2)
+**Links**: Customer, Stock, Analysis
+
+| Field Name | Type | Size | Description | Validation |
+|-----------|------|------|-------------|-----------|
+| SINVOICE-KEY | CHAR | 10 | Invoice + type | Unique |
+| IH-INVOICE | NUM | 8 | Invoice number | Sequential |
+| IH-TEST | NUM | 2 | Type code | 01-99 |
+| IH-CUSTOMER | CHAR | 7 | Customer code | Must exist |
+| IH-DAT | NUM | 8 | Invoice date | Valid date |
+| IH-ORDER | CHAR | 10 | Order reference | Optional |
+| IH-TYPE | NUM | 1 | 1=Inv, 2=Credit | 1-2 |
+| IH-REF | CHAR | 10 | Customer ref | Optional |
+| IH-NET | DEC | 9.2 | Net amount | Calculated |
+| IH-VAT | DEC | 9.2 | VAT amount | Calculated |
+| IH-STATUS | CHAR | 1 | Posted flag | Y/N |
+| IH-DAYS | NUM | 3 | Credit terms | From customer |
+| IH-LINES | NUM | 2 | Line count | 1-99 |
+
+### SAINV-LINES-REC
+**Purpose**: Sales invoice detail lines
+**Key**: IL-LINE-KEY (10 chars)
+**Parent**: SAINVOICE-REC
+
+| Field Name | Type | Size | Description | Validation |
+|-----------|------|------|-------------|-----------|
+| IL-LINE-KEY | CHAR | 10 | Invoice + line | Unique |
+| IL-INVOICE | NUM | 8 | Invoice number | Must exist |
+| IL-LINE | NUM | 2 | Line number | Sequential |
+| IL-PRODUCT | CHAR | 13 | Stock code | Valid item |
+| IL-PA | CHAR | 2 | Analysis code | Valid code |
+| IL-QTY | NUM | 6 | Quantity | > 0 |
+| IL-TYPE | CHAR | 1 | Line type | S=Stock, N=Non |
+| IL-DESCRIPTION | CHAR | 32 | Line text | Required |
+| IL-NET | DEC | 9.2 | Line total | Calculated |
+| IL-UNIT | DEC | 9.2 | Unit price | > 0 |
+| IL-DISCOUNT | DEC | 4.2 | Discount % | 0-99.99 |
+| IL-VAT | DEC | 9.2 | VAT amount | Calculated |
+| IL-VAT-CODE | NUM | 1 | VAT type | 0-3 |
+
+### SAITM3-REC
+**Purpose**: Sales open items (unpaid invoices)
+**Key**: OI3-KEY (15 chars)
+
+| Field Name | Type | Size | Description | Validation |
+|-----------|------|------|-------------|-----------|
+| OI3-KEY | CHAR | 15 | Cust+Inv+Type | Unique |
+| OI3-CUSTOMER | CHAR | 7 | Customer code | Must exist |
+| OI3-INVOICE | NUM | 8 | Invoice number | Must exist |
+| OI3-DATE | NUM | 8 | Invoice date | Valid date |
+| OI3-AMOUNT | DEC | 9.2 | Original amt | > 0 |
+| OI3-PAID | DEC | 9.2 | Amount paid | >= 0 |
+| OI3-DISCOUNT | DEC | 9.2 | Discount taken | >= 0 |
+| OI3-BALANCE | DEC | 9.2 | Outstanding | Calculated |
+| OI3-DAYS | NUM | 3 | Credit terms | Days |
+| OI3-TYPE | CHAR | 1 | I=Inv, C=Credit | I/C |
+
+---
+
+## 3. Purchase Ledger Files {#purchase-ledger}
+
+### PULEDGER-REC
+**Purpose**: Supplier master file
+**Key**: Purch-Key (7 chars)
+**Record Size**: 302 bytes
+
+| Field Name | Type | Size | Description | Validation |
+|-----------|------|------|-------------|-----------|
+| Purch-Key | CHAR | 7 | Supplier code | Unique, check digit |
+| Purch-Name | CHAR | 30 | Supplier name | Required |
+| Purch-Add-1-4 | CHAR | 30×4 | Address lines | Required |
+| Purch-PC | CHAR | 10 | Postal code | Format check |
+| Purch-Phone | CHAR | 14 | Phone number | Optional |
+| Purch-Fax | CHAR | 14 | Fax number | Optional |
+| Purch-Contact | CHAR | 20 | Contact person | Optional |
+| Purch-Current | DEC | 9.2 | Current balance | Calculated |
+| Purch-30-60-90 | DEC | 9.2×3 | Aged balances | Calculated |
+| Purch-Last | DEC | 9.2 | Previous balance | Calculated |
+| Purch-Q1-4 | DEC | 9.2×4 | Quarterly purch | Accumulated |
+| Credit-Limit | DEC | 9.2 | Credit allowed | >= 0 |
+| Credit-Period | NUM | 3 | Payment terms | Days |
+| Discount-Percent | DEC | 2.2 | Settlement disc | 0-99.99 |
+| Discount-Days | NUM | 3 | Discount period | Days |
+| Bank-Sort-Code | NUM | 6 | Bank routing | Valid code |
+| Bank-Account | NUM | 8 | Account number | Valid account |
+| Date-Created | NUM | 8 | Creation date | YYYYMMDD |
+| Date-Last-Inv | NUM | 8 | Last invoice | YYYYMMDD |
+| Date-Last-Pay | NUM | 8 | Last payment | YYYYMMDD |
+| Purch-Analysis | CHAR | 3 | Analysis code | Valid code |
+| Status-Flag | CHAR | 1 | Active/Hold | A/H/D |
+
+### PUITM5-REC
+**Purpose**: Purchase open items (unpaid invoices)
+**Key**: OI5-KEY (15 chars)
+**Structure**: Similar to SAITM3-REC but for purchases
+
+---
+
+## 4. Stock Control Files {#stock-control}
+
+### STOCK-REC
+**Purpose**: Inventory master file
+**Key**: Stock-Code (13 chars)
+**Alt Key**: Stock-Abbrev (7 chars)
+**Record Size**: 400 bytes
+
+| Field Name | Type | Size | Description | Validation |
+|-----------|------|------|-------------|-----------|
+| Stock-Code | CHAR | 13 | Item code | Unique |
+| Stock-Abbrev | CHAR | 7 | Short code | Unique |
+| Stock-Desc | CHAR | 32 | Description | Required |
+| Stock-Location | CHAR | 8 | Bin/location | Optional |
+| Stock-Anal | CHAR | 3 | Analysis code | Valid code |
+| Service-Item | CHAR | 1 | Non-physical | Y/N |
+| Supp-1-3 | CHAR | 7×3 | Suppliers | Valid suppliers |
+| Qty-Held | DEC | 9.2 | On hand | >= 0 |
+| Qty-On-Order | DEC | 9.2 | On PO | >= 0 |
+| Qty-BO | DEC | 9.2 | Back ordered | >= 0 |
+| Qty-WIP | DEC | 9.2 | Work in progress | >= 0 |
+| Reorder-Level | DEC | 9.2 | Min stock | >= 0 |
+| Reorder-Qty | DEC | 9.2 | Order quantity | > 0 |
+| Cost-Price | DEC | 9.2 | Unit cost | >= 0 |
+| Sell-Price | DEC | 9.2 | Retail price | >= 0 |
+| Stock-Value | DEC | 9.2 | Total value | Calculated |
+| Last-Cost | DEC | 9.2 | Last purchase | >= 0 |
+| Avg-Cost | DEC | 9.2 | Average cost | Calculated |
+| Date-Created | NUM | 8 | Creation date | YYYYMMDD |
+| Date-Last-Rcpt | NUM | 8 | Last receipt | YYYYMMDD |
+| Date-Last-Sale | NUM | 8 | Last sale | YYYYMMDD |
+| Date-On-Order | NUM | 8 | Order placed | YYYYMMDD |
+| Period-Add | DEC | 9.2×2 | Period receipts | Qty + Value |
+| Period-Ded | DEC | 9.2×2 | Period issues | Qty + Value |
+| YTD-Add | DEC | 9.2×2 | Year receipts | Qty + Value |
+| YTD-Ded | DEC | 9.2×2 | Year issues | Qty + Value |
+
+### AUDIT-REC
+**Purpose**: Stock movement history
+**Key**: Sequential/Date+Time
+**Links**: Stock-Code
+
+| Field Name | Type | Size | Description | Validation |
+|-----------|------|------|-------------|-----------|
+| Batch-Number | NUM | 6 | Batch control | Sequential |
+| Movement-Date | NUM | 8 | Transaction date | Valid date |
+| Movement-Time | NUM | 6 | HHMMSS | Valid time |
+| Stock-Code | CHAR | 13 | Item moved | Must exist |
+| Movement-Type | CHAR | 1 | A=Add, D=Deduct | A/D/T |
+| Movement-Qty | DEC | 9.2 | Quantity | != 0 |
+| Movement-Value | DEC | 9.2 | Value | Calculated |
+| Source-Type | CHAR | 2 | SI=Sale,PI=Purch | Valid type |
+| Source-Ref | CHAR | 10 | Document ref | Required |
+| User-ID | CHAR | 8 | Who did it | System/User |
+
+---
+
+## 5. General Ledger Files {#general-ledger}
+
+### GLLEDGER-REC / NOMINAL-REC
+**Purpose**: Chart of Accounts
+**Key**: LEDGER-KEY (8 digits: 6 + 2 profit center)
+
+| Field Name | Type | Size | Description | Validation |
+|-----------|------|------|-------------|-----------|
+| LEDGER-KEY | NUM | 8 | Account + PC | Unique |
+| LEDGER-TYPE | NUM | 1 | 1=BS, 2=PL, 9=Head | 1/2/9 |
+| LEDGER-PLACE | CHAR | 1 | Report position | A-Z |
+| LEDGER-LEVEL | NUM | 1 | Hierarchy level | 1-9 |
+| LEDGER-NAME | CHAR | 32 | Account name | Required |
+| LEDGER-BALANCE | DEC | 10.2 | Current balance | Calculated |
+| LEDGER-LAST | DEC | 10.2 | Prior period | Historical |
+| LEDGER-Q1-4 | DEC | 10.2×4 | Quarterly moves | Accumulated |
+
+### GLBATCH-REC
+**Purpose**: GL batch control
+**Key**: BATCH-KEY (6 digits)
+
+| Field Name | Type | Size | Description | Validation |
+|-----------|------|------|-------------|-----------|
+| BATCH-KEY | NUM | 6 | Batch number | Sequential |
+| ITEMS | NUM | 2 | Entry count | > 0 |
+| BATCH-STATUS | NUM | 1 | 0=Open,1=Proof,2=Post | 0-2 |
+| ENTERED | NUM | 8 | Entry date | Valid date |
+| POSTED | NUM | 8 | Posting date | Valid date |
+| INPUT-GROSS | DEC | 14.2 | Header total | Required |
+| ACTUAL-GROSS | DEC | 14.2 | Detail total | Must balance |
+| DESCRIPTION | CHAR | 24 | Batch description | Required |
+
+### GLPOSTING-REC
+**Purpose**: GL transaction details
+**Key**: POST-RRN (relative record)
+
+| Field Name | Type | Size | Description | Validation |
+|-----------|------|------|-------------|-----------|
+| POST-RRN | NUM | 5 | Record number | Sequential |
+| POST-KEY | NUM | 10 | Batch+Seq | Unique |
+| POST-CODE | CHAR | 2 | Transaction code | Valid code |
+| POST-DAT | CHAR | 8 | Posting date | Valid date |
+| POST-DR | NUM | 6 | Debit account | Must exist |
+| DR-PC | NUM | 2 | Debit PC | Valid PC |
+| POST-CR | NUM | 6 | Credit account | Must exist |
+| CR-PC | NUM | 2 | Credit PC | Valid PC |
+| POST-AMOUNT | DEC | 10.2 | Amount | > 0 |
+| POST-LEGEND | CHAR | 32 | Description | Required |
+| VAT-AC | NUM | 6 | VAT account | If VAT |
+| VAT-AMOUNT | DEC | 10.2 | VAT amount | Calculated |
+
+---
+
+## 6. IRS Files {#irs-files}
+
+### IRSNL-REC
+**Purpose**: IRS nominal ledger (simplified GL)
+**Key**: KEY-1 (10 digits: 5 main + 5 sub)
+
+| Field Name | Type | Size | Description | Validation |
+|-----------|------|------|-------------|-----------|
+| KEY-1 | NUM | 10 | Account number | Unique |
+| TIPE | CHAR | 1 | Account type | A-Z |
+| NL-NAME | CHAR | 24 | Account name | Required |
+| DR | DEC | 10.2 | Debit balance | >= 0 |
+| CR | DEC | 10.2 | Credit balance | >= 0 |
+| DR-LAST-01-04 | DEC | 10.2×4 | Quarterly DR | Historical |
+| CR-LAST-01-04 | DEC | 10.2×4 | Quarterly CR | Historical |
+| AC | CHAR | 1 | Active flag | Y/N |
+| REC-POINTER | NUM | 5 | Record link | Internal |
+
+### IRSDFLT-REC
+**Purpose**: IRS posting defaults
+**Key**: DEF-REC-KEY (2 digits)
+
+| Field Name | Type | Size | Description | Validation |
+|-----------|------|------|-------------|-----------|
+| DEF-REC-KEY | NUM | 2 | Default number | 01-32 |
+| DEF-ACS | NUM | 5 | GL account | Must exist |
+| DEF-CODES | CHAR | 2 | Posting code | AA-ZZ |
+| DEF-VAT | CHAR | 1 | VAT type | N/I/O |
+
+### IRSPOSTING-REC
+**Purpose**: IRS transaction postings
+**Key**: KEY-4 (5 digits)
+
+| Field Name | Type | Size | Description | Validation |
+|-----------|------|------|-------------|-----------|
+| KEY-4 | NUM | 5 | Posting number | Sequential |
+| POST4-CODE | CHAR | 2 | Transaction code | Valid code |
+| POST4-DAT | CHAR | 8 | Posting date | Valid date |
+| POST4-DR | NUM | 5 | Debit account | Must exist |
+| POST4-CR | NUM | 5 | Credit account | Must exist |
+| POST4-AMOUNT | DEC | 9.2 | Amount | > 0 |
+| POST4-LEGEND | CHAR | 32 | Description | Required |
+| VAT-AC-DEF4 | NUM | 2 | VAT default | If VAT |
+| VAT-AMOUNT4 | DEC | 9.2 | VAT amount | Calculated |
+
+---
+
+## 7. Common Code Values {#code-values}
+
+### Transaction Codes (POST-CODE)
+| Code | Description | Usage |
+|------|-------------|-------|
+| SI | Sales Invoice | Sales posting |
+| SC | Sales Credit | Sales return |
+| SR | Sales Receipt | Payment received |
+| PI | Purchase Invoice | Purchase posting |
+| PC | Purchase Credit | Purchase return |
+| PP | Purchase Payment | Payment made |
+| JE | Journal Entry | Manual GL entry |
+| ST | Stock Transfer | Inventory movement |
+| SA | Stock Adjustment | Inventory correction |
+
+### VAT Codes
+| Code | Description | Rate |
+|------|-------------|------|
+| 0 | Zero rated | 0% |
+| 1 | Standard rate | System parameter |
+| 2 | Reduced rate | System parameter |
+| 3 | Exempt | No VAT |
+
+### Account Types (TIPE)
+| Code | Description | Balance Type |
+|------|-------------|--------------|
+| A | Assets | Debit normal |
+| L | Liabilities | Credit normal |
+| C | Capital | Credit normal |
+| I | Income | Credit normal |
+| E | Expenses | Debit normal |
+| H | Header | No balance |
+
+### Status Flags
+| Code | Description | Usage |
+|------|-------------|-------|
+| A | Active | Normal status |
+| H | Hold | Temporary stop |
+| D | Dormant | Inactive |
+| C | Closed | Permanently closed |
+
+### Period Codes
+| Code | Description | Days |
+|------|-------------|------|
+| W | Weekly | 7 |
+| M | Monthly | 30/31 |
+| Q | Quarterly | 90 |
+| Y | Yearly | 365 |
+
+### Movement Types
+| Code | Description | Effect |
+|------|-------------|---------|
+| A | Addition | Increase stock |
+| D | Deduction | Decrease stock |
+| T | Transfer | Move location |
+| R | Return | Reverse movement |
+
+### Batch Status
+| Code | Description | Next Action |
+|------|-------------|-------------|
+| 0 | Open | Continue entry |
+| 1 | Proofed | Ready to post |
+| 2 | Posted | Complete |
+| 3 | Error | Needs correction |
+
+## Field Naming Conventions
+
+### Prefixes
+- **Sales-**: Sales ledger fields
+- **Purch-**: Purchase ledger fields
+- **Stock-**: Inventory fields
+- **IH-**: Invoice header
+- **IL-**: Invoice lines
+- **OI-**: Open items
+- **POST-**: Posting fields
+
+### Suffixes
+- **-Key**: Primary key field
+- **-Date**: Date field (YYYYMMDD)
+- **-Amount**: Monetary value
+- **-Code**: Reference code
+- **-Flag**: Yes/No indicator
+- **-PC**: Profit center
+
+## Data Integrity Rules
+
+### Referential Integrity
+- Customer/Supplier codes must exist before use
+- Stock codes must exist for stock transactions
+- GL accounts must exist before posting
+- Analysis codes must be predefined
+
+### Business Rules
+- Debits must equal credits in batches
+- No negative stock quantities
+- Payments cannot exceed invoice amounts
+- Period dates must be sequential
+- VAT calculations must balance
+
+### Validation Patterns
+- Check digits on customer/supplier codes
+- Date format validation (YYYYMMDD)
+- Email format checking where applicable
+- Numeric fields right-justified, zero-filled
+- Character fields left-justified, space-filled
+
+This data dictionary provides the foundation for understanding ACAS data structures and supports data migration, integration, and reporting initiatives.`,
+            "ACAS_Technical_Debt_Assessment.md": `# ACAS Technical Debt Assessment and Migration Readiness
+
+## Executive Summary
+
+The ACAS system is a mature COBOL-based accounting application that has been actively maintained since 1976. While the codebase shows signs of good maintenance practices and ongoing evolution (migration to GnuCOBOL, RDBMS support), there are several areas of technical debt and modernization opportunities.
+
+## 1. Code Quality Assessment
+
+### 1.1 COBOL Patterns and Constructs
+
+#### GO TO Usage
+- **Finding**: Extensive use of GO TO statements throughout the codebase (145+ files)
+- **Risk Level**: Medium
+- **Examples**:
+  - Sequential GO TO patterns for menu navigation
+  - GO TO for error handling branches
+  - Some GO TO DEPENDING ON constructs (deprecated pattern)
+- **Recommendation**: Refactor to use PERFORM statements and structured programming patterns
+
+#### Hard-coded Values
+- **Finding**: Several hard-coded values that should be parameterized
+- **Risk Level**: Low-Medium
+- **Examples**:
+  - Fixed report widths (132 characters)
+  - Screen positions in display statements
+  - File record sizes in working storage
+  - Default batch sizes and limits
+- **Recommendation**: Move to configuration file or system parameters
+
+#### Error Handling
+- **Finding**: Inconsistent error handling patterns
+- **Risk Level**: Medium
+- **Issues**:
+  - Some file operations lack status checks
+  - Error messages scattered throughout code
+  - No centralized error logging in some modules
+- **Recommendation**: Implement consistent error handling framework
+
+### 1.2 Dead Code and TODO Items
+
+#### TODO/FIXME Markers (29 files identified)
+- Multiple TODO comments in MT (Data Access Layer) files
+- Incomplete features marked but not implemented
+- Testing flags left in production code
+
+#### Commented Out Code
+- Old encryption/decryption code (removed for open source)
+- Y2K workarounds still present in sys002.cbl and xl150.cbl
+- Legacy features commented but not removed
+
+### 1.3 Missing/Incomplete Programs
+
+Based on code analysis and comments:
+
+#### General Ledger Module
+- **gl040** - Final Accounts Setup (missing)
+- **gl130** - Print Final Accounts (missing)
+- **gl190** - File Garbage Collector (missing)
+- Comments indicate "This sub system has yet to be retested since migration to GC"
+
+#### Documentation Issues
+- Manual needs rewriting (originally in WordStar/tex format)
+- Some programs lack adequate inline documentation
+- Business rules not consistently documented
+
+## 2. Architecture and Design Issues
+
+### 2.1 File vs Database Duality
+- **Current State**: System supports both COBOL files and RDBMS
+- **Issues**:
+  - Duplicate code paths for file/database operations
+  - Complex DAL layer maintaining both modes
+  - Performance overhead in dual-write mode
+- **Recommendation**: Commit to RDBMS as primary storage
+
+### 2.2 User Interface Limitations
+- **Current State**: Character-based terminal interface (80x24 minimum)
+- **Issues**:
+  - Limited to terminal emulation
+  - No web interface capability
+  - Screen position hard-coding
+  - No mobile access
+- **Recommendation**: API-enable core functions for modern UI
+
+### 2.3 Batch Processing Constraints
+- **Issues**:
+  - Some processes require exclusive file access
+  - Limited concurrent user support
+  - Manual backup requirements
+  - Period-end processing blocks operations
+- **Recommendation**: Implement real-time processing capabilities
+
+## 3. Security Concerns
+
+### 3.1 Authentication and Authorization
+- **Finding**: Basic or no authentication in current system
+- **Issues**:
+  - No role-based access control
+  - Password handling removed for open source version
+  - No audit trail for user actions in some modules
+- **Risk Level**: High
+- **Recommendation**: Implement proper authentication framework
+
+### 3.2 Data Encryption
+- **Finding**: Encryption code removed for open source
+- **Issues**:
+  - Sensitive financial data unencrypted
+  - No data-at-rest encryption
+  - No secure communication channels
+- **Risk Level**: High for production use
+- **Recommendation**: Implement modern encryption standards
+
+## 4. Platform Dependencies
+
+### 4.1 Operating System
+- **Current**: Supports Linux/Unix/macOS
+- **Issues**:
+  - Path handling varies by OS
+  - Shell script dependencies
+  - Environment variable requirements
+- **Recommendation**: Containerize for consistent deployment
+
+### 4.2 Compiler Dependencies
+- **Current**: GnuCOBOL 3.2+
+- **Issues**:
+  - Specific compiler version requirements
+  - C library dependencies
+  - MySQL client library linking
+- **Recommendation**: Document and automate build environment
+
+## 5. Data Management Issues
+
+### 5.1 File Organization
+- **Issues**:
+  - Mix of indexed and sequential files
+  - No automated archiving (manual USB process)
+  - Backup scripts require manual execution
+  - File locking limitations
+- **Recommendation**: Fully migrate to RDBMS
+
+### 5.2 Transaction Integrity
+- **Issues**:
+  - No ACID compliance in file mode
+  - Limited rollback capabilities
+  - Batch posting can leave partial updates
+- **Risk Level**: High
+- **Recommendation**: Implement proper transaction management
+
+## 6. Integration Challenges
+
+### 6.1 External Systems
+- **Current State**: Limited integration capabilities
+- **Issues**:
+  - No API endpoints
+  - File-based data exchange only
+  - No real-time integration
+  - Manual import/export processes
+- **Recommendation**: Develop REST API layer
+
+### 6.2 Reporting
+- **Issues**:
+  - Fixed-format reports only
+  - No export to modern formats (Excel, PDF)
+  - Limited customization options
+  - Printer-centric output
+- **Recommendation**: Implement flexible reporting engine
+
+## 7. Testing and Quality Assurance
+
+### 7.1 Test Coverage
+- **Finding**: No automated tests
+- **Issues**:
+  - Manual testing only
+  - Test flags in production code
+  - No regression test suite
+  - No unit tests
+- **Recommendation**: Implement comprehensive test suite
+
+### 7.2 Development Practices
+- **Issues**:
+  - No CI/CD pipeline
+  - Manual compilation scripts
+  - Version control challenges
+  - No code review process
+- **Recommendation**: Implement modern DevOps practices
+
+## 8. Modernization Recommendations
+
+### Phase 1: Stabilization (3-6 months)
+1. Complete missing GL programs
+2. Remove dead code and Y2K workarounds
+3. Implement consistent error handling
+4. Create automated test suite
+5. Document business rules
+
+### Phase 2: Architecture (6-12 months)
+1. Commit to RDBMS-only operation
+2. Refactor GO TO statements
+3. Implement proper security framework
+4. Create API layer for core functions
+5. Containerize application
+
+### Phase 3: Modernization (12-18 months)
+1. Develop web-based UI
+2. Implement real-time processing
+3. Add modern reporting capabilities
+4. Enable cloud deployment
+5. Implement microservices architecture
+
+## 9. Risk Assessment
+
+### High Risk Areas
+1. **Security**: No authentication/encryption
+2. **Data Integrity**: Limited transaction control
+3. **Compliance**: May not meet modern audit requirements
+4. **Business Continuity**: Manual backup processes
+
+### Medium Risk Areas
+1. **Performance**: Batch processing bottlenecks
+2. **Maintainability**: GO TO patterns, missing documentation
+3. **Integration**: Limited external system connectivity
+4. **Scalability**: File-based architecture limits
+
+### Low Risk Areas
+1. **Functionality**: Core accounting features are complete
+2. **Stability**: Long history of production use
+3. **Data Model**: Well-structured for accounting domain
+
+## 10. Migration Strategy
+
+### Recommended Approach
+1. **Hybrid Period**: Maintain current system while developing modern version
+2. **API-First**: Expose core functions via APIs
+3. **Incremental Migration**: Module-by-module approach
+4. **Data Migration**: One-time conversion to RDBMS only
+5. **Parallel Running**: Verify results before cutover
+
+### Technology Stack Recommendations
+- **Backend**: Java Spring Boot or Python FastAPI
+- **Database**: PostgreSQL or MySQL 8.0+
+- **Frontend**: React or Angular
+- **API**: REST with OpenAPI documentation
+- **Deployment**: Docker/Kubernetes
+
+## Conclusion
+
+While ACAS is a functional accounting system with a proven track record, significant technical debt has accumulated. The highest priorities are:
+
+1. Security implementation
+2. Database-only operation
+3. Missing program completion
+4. Modern API development
+
+The system's modular architecture and clear separation of concerns make it a good candidate for gradual modernization while maintaining business continuity.`,
+            "ACAS_Accounting_Analysis.md": `# ACAS Accounting-Specific Analysis
+
+## 1. Compliance and Controls
+
+### 1.1 Segregation of Duties Implementation
+
+The ACAS system implements segregation of duties through its modular design and menu structure:
+
+#### Module-Based Segregation
+- **Sales Functions**: Order entry separate from cash receipts
+- **Purchase Functions**: Order creation separate from payment processing  
+- **General Ledger**: Journal entry separate from posting
+- **System Administration**: Parameter setup separate from transaction processing
+
+#### Process Controls
+- **Invoice Entry**: Can be separated from posting (sl910 vs sl060)
+- **Payment Selection**: Separate from payment execution (pl080 vs pl100)
+- **Batch Processing**: Entry, proofing, and posting as distinct steps
+
+### 1.2 Audit Trail Completeness
+
+#### Transaction Tracking
+Every transaction maintains:
+- **Creation Date**: When entered into system
+- **Posting Date**: When posted to ledger
+- **Batch Number**: For grouping and control
+- **Source Document**: Invoice/payment reference
+- **User ID**: Limited (system-wide rather than user-specific)
+
+#### Stock Audit Trail
+- Every movement recorded in AUDIT-REC
+- Source type (sales, purchase, adjustment)
+- Date, quantity, and value changes
+- Running balances maintained
+
+#### Posting Audit
+- All GL/IRS postings retain:
+  - Original transaction details
+  - Account codes (debit and credit)
+  - Amounts including VAT breakdown
+  - Transaction narrative/legend
+
+### 1.3 Data Validation Rules
+
+#### Master File Validation
+- **Customer/Supplier Codes**: 7-character with check digit validation
+- **Account Numbers**: Must exist in Chart of Accounts
+- **Stock Codes**: 13-character unique identifiers
+- **VAT Codes**: Limited to configured options
+
+#### Transaction Validation
+- **Date Validation**: 
+  - Must be valid calendar date
+  - Cannot be before last period end
+  - Warning if future date
+- **Amount Validation**:
+  - Non-negative amounts required
+  - Credit notes require existing invoice
+  - Payments cannot exceed invoice amount
+- **Batch Balancing**:
+  - Debits must equal credits
+  - VAT calculations verified
+  - Control totals maintained
+
+### 1.4 Approval Workflows
+
+Current system limitations:
+- No built-in electronic approval workflows
+- Manual approval processes assumed
+- Batch control provides review point
+- Posting step acts as approval gate
+
+### 1.5 Security Controls
+
+#### Current Implementation
+- File-level access control (OS dependent)
+- No user authentication within application
+- No role-based permissions
+- Limited password protection
+
+#### Audit Recommendations
+- Implement user authentication
+- Add role-based access control
+- Enable transaction-level user tracking
+- Implement password policies
+
+### 1.6 Regulatory Compliance Features
+
+#### UK VAT Compliance
+- Multiple VAT rates supported
+- Separate Input/Output VAT accounts
+- VAT return preparation data
+- Invoice VAT breakdown
+- VAT-inclusive/exclusive calculations
+
+#### Financial Reporting Standards
+- Double-entry bookkeeping enforced
+- Period-based accounting
+- Accruals concept supported
+- Going concern basis
+- Consistency principle
+
+## 2. Calculation Engine Documentation
+
+### 2.1 VAT Calculations
+
+#### VAT Calculation Methods
+
+**From Net Amount**:
+\`\`\`
+VAT Amount = Net Amount × (VAT Rate ÷ 100)
+Gross Amount = Net Amount + VAT Amount
+\`\`\`
+
+**From Gross Amount**:
+\`\`\`
+VAT Amount = Gross Amount × (VAT Rate ÷ (100 + VAT Rate))
+Net Amount = Gross Amount - VAT Amount
+\`\`\`
+
+#### VAT Codes and Rates
+- **Standard Rate**: Configured in system parameters (e.g., 20%)
+- **Reduced Rate**: Configured separately (e.g., 5%)
+- **Zero Rate**: 0% but VAT-registered transaction
+- **Exempt**: No VAT applicable
+
+#### VAT Posting Logic
+\`\`\`
+Sales Invoice:
+  DR Customer Account     (Gross Amount)
+  CR Sales Account       (Net Amount)
+  CR Output VAT Account  (VAT Amount)
+
+Purchase Invoice:
+  DR Purchase Account    (Net Amount)
+  DR Input VAT Account   (VAT Amount)
+  CR Supplier Account    (Gross Amount)
+\`\`\`
+
+### 2.2 Discount Calculations
+
+#### Trade Discounts
+Applied at line level:
+\`\`\`
+Line Net = (Quantity × Unit Price) × (1 - Discount% ÷ 100)
+\`\`\`
+
+#### Settlement Discounts
+Applied at payment:
+\`\`\`
+If Payment Date <= Invoice Date + Discount Days Then
+  Discount = Invoice Amount × (Settlement Discount% ÷ 100)
+  Payment Required = Invoice Amount - Discount
+End If
+\`\`\`
+
+#### Early Payment Discount VAT Adjustment
+\`\`\`
+VAT Adjustment = Original VAT × (Discount ÷ Original Gross)
+\`\`\`
+
+### 2.3 Currency Handling
+
+Current system capabilities:
+- Single currency per company
+- No multi-currency support
+- All amounts in 2 decimal places
+- Maximum amount: 99,999,999.99
+
+### 2.4 Pricing Logic
+
+#### Customer-Specific Pricing
+\`\`\`
+Price Selection Hierarchy:
+1. Customer-specific price (if exists)
+2. Customer discount % from list price
+3. Standard list price
+4. Cost plus markup (if configured)
+\`\`\`
+
+#### Quantity Breaks
+- Not implemented in current system
+- All pricing is per unit basis
+
+### 2.5 Interest/Late Charge Computation
+
+#### Late Charge Calculation
+\`\`\`
+If enabled in parameters:
+  Days Overdue = Current Date - Due Date
+  If Days Overdue > Grace Period Then
+    If Balance > Minimum Late Balance Then
+      Late Charge = Balance × (Monthly Rate ÷ 100)
+      Subject to Maximum Late Charge
+    End If
+  End If
+\`\`\`
+
+#### Application Timing
+- Calculated during statement production
+- Posted as separate transaction
+- Can be waived manually
+
+### 2.6 Cost and Valuation Methods
+
+#### Average Cost Calculation
+\`\`\`
+When receiving stock:
+  Total Cost = (Existing Qty × Existing Avg Cost) + 
+               (Receipt Qty × Receipt Cost)
+  New Avg Cost = Total Cost ÷ (Existing Qty + Receipt Qty)
+\`\`\`
+
+#### Stock Valuation
+\`\`\`
+Stock Value = Quantity on Hand × Average Cost
+Total Inventory Value = Sum of all Stock Values
+\`\`\`
+
+#### FIFO Principle
+- Physical stock movements assumed FIFO
+- Cost calculation uses average method
+- No specific cost tracking by batch
+
+### 2.7 Depreciation Methods
+
+Not implemented in current system. Fixed assets would require:
+- Manual journal entries
+- External calculation
+- Period posting to GL/IRS
+
+### 2.8 Tax Calculations Beyond VAT
+
+#### Other Tax Considerations
+- System designed for UK VAT only
+- No sales tax matrices
+- No withholding tax
+- No multi-jurisdiction support
+
+## 3. Period and Year-End Calculations
+
+### 3.1 Aging Calculations
+
+#### Standard Aging Buckets
+\`\`\`
+Current: 0-30 days from invoice date
+30 Days: 31-60 days overdue
+60 Days: 61-90 days overdue  
+90+ Days: Over 90 days overdue
+\`\`\`
+
+#### Aging Logic
+\`\`\`
+Days Outstanding = Report Date - Invoice Date
+If Payment Terms = 30 Then
+  Days Overdue = Days Outstanding - 30
+Else
+  Days Overdue = Days Outstanding - Payment Terms
+End If
+\`\`\`
+
+### 3.2 Period Accumulations
+
+#### Sales/Purchase Ledger
+- Current period transactions
+- Four quarterly totals (Q1-Q4)
+- Year-to-date calculations
+- Last year comparatives
+
+#### Stock Movements
+- Period additions/deductions
+- Month-within-year totals
+- Year-to-date movements
+- Quantity and value tracking
+
+### 3.3 Financial Statement Calculations
+
+#### Profit & Loss Compilation
+\`\`\`
+For each P&L Account:
+  If Credit Balance Then
+    Add to Income
+  Else
+    Add to Expenses
+  End If
+End For
+Net Profit = Total Income - Total Expenses
+\`\`\`
+
+#### Balance Sheet Balancing
+\`\`\`
+Total Assets = Fixed Assets + Current Assets
+Total Liabilities = Long Term + Current Liabilities
+Total Equity = Capital + Reserves + Current P&L
+Verification: Assets = Liabilities + Equity
+\`\`\`
+
+### 3.4 Year-End Closing Calculations
+
+#### P&L Account Closure
+\`\`\`
+For each P&L Account:
+  Transfer Balance to Retained Earnings
+  Set Account Balance to Zero
+End For
+\`\`\`
+
+#### Balance Sheet Carry Forward
+\`\`\`
+For each BS Account:
+  Prior Year Balance = Current Balance
+  Clear Period Movements
+  Maintain Running Balance
+End For
+\`\`\`
+
+## 4. Control and Reconciliation Features
+
+### 4.1 Batch Controls
+- Header totals vs detail totals
+- Item count verification
+- Net and VAT reconciliation
+- Posting validation
+
+### 4.2 Control Accounts
+- Sales Control (Debtors)
+- Purchase Control (Creditors)
+- VAT Control accounts
+- Stock Control account
+- Must reconcile to subsidiary ledgers
+
+### 4.3 Period Locks
+- Prevent posting to closed periods
+- Require supervisor override
+- Maintain period integrity
+- Support audit requirements
+
+## 5. Compliance Gap Analysis
+
+### 5.1 Current Strengths
+- ✓ Complete audit trail
+- ✓ Double-entry enforcement
+- ✓ VAT compliance
+- ✓ Period controls
+- ✓ Batch balancing
+
+### 5.2 Compliance Gaps
+- ✗ User-level audit trail
+- ✗ Electronic approvals
+- ✗ Role-based security
+- ✗ Automated controls testing
+- ✗ Data encryption
+
+### 5.3 Recommendations for Compliance Enhancement
+1. Implement user authentication and tracking
+2. Add approval workflow capabilities
+3. Enhance security with encryption
+4. Implement automated compliance reports
+5. Add data retention policies
+6. Enable real-time monitoring
+
+## 6. Calculation Accuracy and Rounding
+
+### 6.1 Rounding Rules
+- All monetary amounts: 2 decimal places
+- Quantities: 0-2 decimals per configuration
+- Percentages: 2 decimal places
+- VAT calculations: Round at line level
+
+### 6.2 Calculation Precision
+- Internal calculations: COBOL COMP-3
+- Display format: Standard decimal
+- No floating-point arithmetic
+- Banker's rounding applied
+
+This analysis confirms ACAS implements fundamental accounting principles with room for enhancement in security, compliance automation, and modern regulatory requirements.`,
+            "ACAS_Documentation_Index.md": `# ACAS Comprehensive Documentation Index
+
+## Generated Documentation Overview
+
+This documentation suite provides exhaustive functional documentation of the ACAS (Applewood Computers Accounting System), enabling technical teams to understand the system architecture, create diagrams, and develop comprehensive technical documentation.
+
+### Documentation Files Generated
+
+1. **[ACAS_Executive_Summary.md](./ACAS_Executive_Summary.md)**
+   - System overview and business purpose
+   - Architecture assessment
+   - Functional coverage analysis
+   - Technical health metrics
+   - Modernization recommendations
+
+2. **[ACAS_Program_Catalog.md](./ACAS_Program_Catalog.md)**
+   - Alphabetical listing of all 200+ programs
+   - Business function mapping
+   - Module dependencies
+   - Maintenance priority ratings
+   - Missing program identification
+
+3. **[ACAS_Business_Flows.md](./ACAS_Business_Flows.md)**
+   - End-to-end process documentation
+   - Sales cycle (Order to Cash)
+   - Purchase cycle (Procure to Pay)
+   - Inventory management workflows
+   - Financial closing procedures
+   - System initialization flows
+
+4. **[ACAS_Architecture_Diagrams.md](./ACAS_Architecture_Diagrams.md)**
+   - System module architecture (Mermaid)
+   - Data Access Layer (DAL) structure
+   - Transaction flow sequences
+   - File access matrices
+   - Program call hierarchies
+   - Database schema overview
+
+5. **[ACAS_Technical_Debt_Assessment.md](./ACAS_Technical_Debt_Assessment.md)**
+   - Code quality assessment
+   - Architecture and design issues
+   - Security vulnerabilities
+   - Platform dependencies
+   - Migration readiness analysis
+   - Risk assessment matrix
+
+6. **[ACAS_Accounting_Analysis.md](./ACAS_Accounting_Analysis.md)**
+   - Compliance and control features
+   - VAT calculation engine
+   - Pricing and discount logic
+   - Period-end calculations
+   - Audit trail completeness
+   - Regulatory compliance gaps
+
+---
+
+## System Overview Summary
+
+### Key Statistics
+- **Development Period**: 1976 - 2025 (47+ years)
+- **Total Programs**: ~200+ COBOL programs
+- **Code Size**: Approximately 100,000+ lines of COBOL
+- **Modules**: 5 main accounting modules + system utilities
+- **Database Tables**: 30+ tables in MySQL schema
+- **File Types**: 25+ indexed and sequential files
+
+### Technology Stack
+- **Language**: COBOL (GnuCOBOL 3.2+)
+- **Database**: MySQL/MariaDB (optional)
+- **Platform**: Linux/Unix/macOS
+- **Interface**: Terminal-based (80x24)
+- **Architecture**: Modular with DAL abstraction
+
+### Business Modules
+1. **IRS** - Incomplete Records System (simplified accounting)
+2. **Sales Ledger** - Accounts Receivable (AR)
+3. **Purchase Ledger** - Accounts Payable (AP)
+4. **Stock Control** - Inventory Management
+5. **General Ledger** - Full double-entry accounting
+
+---
+
+## Key Findings
+
+### Strengths
+1. **Mature Functionality**: Complete accounting feature set
+2. **Modular Design**: Clear separation of concerns
+3. **Data Integrity**: Strong batch controls and validation
+4. **Integration**: Seamless module interconnection
+5. **Flexibility**: Dual file/database support
+
+### Challenges
+1. **Security**: No built-in authentication/encryption
+2. **Interface**: Character-based UI limitations
+3. **Technical Debt**: GO TO patterns, missing programs
+4. **Integration**: No modern API capabilities
+5. **Scalability**: File-based architecture constraints
+
+### Critical Missing Components
+- GL Programs: gl040, gl130, gl190
+- User authentication system
+- Modern reporting exports
+- API layer
+- Automated testing
+
+---
+
+## Modernization Roadmap
+
+### Phase 1: Stabilization (0-6 months)
+- Complete missing GL programs
+- Implement security framework
+- Remove technical debt
+- Create test suites
+- Document business rules
+
+### Phase 2: Architecture (6-12 months)
+- Commit to RDBMS-only
+- Refactor COBOL patterns
+- Build API layer
+- Containerize application
+- Implement CI/CD
+
+### Phase 3: Transformation (12+ months)
+- Develop web interface
+- Enable cloud deployment
+- Implement microservices
+- Add analytics capabilities
+- Mobile applications
+
+---
+
+## Usage Guide
+
+### For Architects
+- Start with Executive Summary for system overview
+- Review Architecture Diagrams for structure
+- Assess Technical Debt document for modernization planning
+- Use Program Catalog for dependency analysis
+
+### For Business Analysts
+- Begin with Business Flows for process understanding
+- Review Accounting Analysis for compliance features
+- Check Program Catalog for functional mapping
+- Examine Executive Summary for capability assessment
+
+### For Developers
+- Use Program Catalog for code navigation
+- Study Architecture Diagrams for integration patterns
+- Review Technical Debt for coding standards
+- Reference Business Flows for logic understanding
+
+### For Project Managers
+- Executive Summary provides project scope
+- Technical Debt Assessment identifies risks
+- Business Flows show complexity
+- Program Catalog indicates effort scale
+
+---
+
+## Next Steps
+
+1. **Immediate Actions**
+   - Security assessment and remediation
+   - Complete missing GL programs
+   - Create automated test framework
+
+2. **Short-term Goals**
+   - Database-only migration
+   - API development
+   - Documentation completion
+
+3. **Long-term Vision**
+   - Cloud-native architecture
+   - Modern user experience
+   - Real-time processing
+   - Advanced analytics
+
+---
+
+## Document Maintenance
+
+These documents represent a snapshot analysis. As the system evolves:
+- Update Program Catalog with new programs
+- Revise Business Flows for process changes
+- Refresh Technical Debt assessments
+- Maintain Architecture Diagrams
+- Track compliance updates
+
+---
+
+## Contact and Support
+
+This documentation was generated through comprehensive analysis of the ACAS codebase. For questions or clarifications:
+- Review the source code in the referenced files
+- Consult the inline documentation
+- Test in a non-production environment
+- Engage with the development team
+
+The ACAS system represents significant embedded business value and domain expertise. This documentation enables informed decisions about maintenance, enhancement, and modernization strategies.`,
+            "Original_Documentation_Prompt.md": `# Comprehensive Documentation Prompt for ACAS (Applewood Computers Accounting System)
+
+## Project Context
+You are analyzing ACAS - Applewood Computers Accounting System, a COBOL-based accounting application that includes Sales, Purchase and Nominal Ledgers (AR/AP/GL) plus Stock Control and IRS (Incomplete Records System). The system uses GnuCOBOL compiler and supports both standard COBOL files (sequential/indexed) and MySQL/MariaDB databases.
+
+## Primary Objective
+Generate exhaustive functional documentation of this COBOL accounting system to enable the technical team to identify subsystems, create architectural diagrams, and develop comprehensive technical documentation.
+
+## Phase 1: COBOL-Specific Repository Analysis
+
+### 1.1 Intelligent Repository Scanning
+\`\`\`
+Perform a comprehensive scan with COBOL-specific criteria:
+
+INCLUDE (Priority Order):
+- COBOL source files (.cob, .cbl, .cpy)
+- Copybooks and includes (.copy, .cpy)
+- JCL files if present (.jcl)
+- SQL scripts and database schemas (.sql)
+- Configuration files (config.*, *.conf, *.ini)
+- Screen definitions and forms (.scr, .frm)
+- Report layouts (.rpt)
+- Batch processing scripts (.sh, .bat, .cmd)
+- Make files and compilation scripts
+- Test data files and validation scripts
+
+EXCLUDE:
+- README.md, CHANGELOG, LICENSE files
+- .gitignore, .dockerignore
+- Compiled objects (.o, .so, .exe)
+- Temporary and backup files
+- Documentation folders (unless containing schemas)
+\`\`\`
+
+### 1.2 COBOL Architecture Identification
+\`\`\`
+Document the following COBOL-specific patterns:
+1. Program organization (main programs vs subprograms)
+2. DIVISION structure patterns across programs
+3. File handling approach (sequential, indexed, relative)
+4. Database integration method (embedded SQL, file-based)
+5. COPY book usage and shared data structures
+6. CALL hierarchy and program dependencies
+7. Batch vs interactive program identification
+8. Report generation mechanisms
+9. Error handling patterns
+10. Transaction processing approach
+\`\`\`
+
+## Phase 2: Accounting Domain Analysis
+
+### 2.1 Module Identification by Business Function
+\`\`\`
+Map COBOL programs to accounting modules:
+
+CORE ACCOUNTING MODULES:
+- General Ledger (GL/Nominal Ledger)
+  * Chart of Accounts management
+  * Journal entries
+  * Trial balance
+  * Financial statements
+  
+- Accounts Receivable (AR/Sales Ledger)
+  * Customer master management
+  * Invoice generation
+  * Payment processing
+  * Aging reports
+  
+- Accounts Payable (AP/Purchase Ledger)
+  * Vendor management
+  * Purchase orders
+  * Payment scheduling
+  * Liability tracking
+  
+- Inventory Control (Stock Control)
+  * Item master maintenance
+  * Stock movements
+  * Valuation methods
+  * Reorder processing
+  
+- IRS (Incomplete Records System)
+  * Special handling routines
+  * Reconciliation processes
+\`\`\`
+
+### 2.2 For Each COBOL Program, Document:
+\`\`\`yaml
+program_name: [PROGRAM-ID from IDENTIFICATION DIVISION]
+source_file: [path/to/file.cob]
+program_type: [main|subprogram|copybook|batch|interactive]
+business_module: [GL|AR|AP|INVENTORY|IRS|COMMON]
+
+data_division_analysis:
+  files_used:
+    - file_name: [from SELECT statements]
+      organization: [sequential|indexed|relative]
+      key_fields: [if indexed]
+      record_layout: [key fields and types]
+  
+  working_storage:
+    - key_variables: [business-critical fields]
+    - control_flags: [processing indicators]
+    - accumulators: [totals, counters]
+  
+  linkage_section: [parameters passed between programs]
+
+procedure_division_analysis:
+  main_sections:
+    - section_name:
+      purpose: [business function]
+      database_operations: [CRUD operations performed]
+      calculations: [business rules implemented]
+      validations: [data integrity checks]
+  
+  called_programs:
+    - program_id: [CALL targets]
+      purpose: [why called]
+      parameters: [data passed]
+  
+  file_operations:
+    - operation: [READ|WRITE|REWRITE|DELETE]
+      file: [target file]
+      business_purpose: [why this operation]
+
+business_rules:
+  - rule: [accounting principle or business logic]
+  - implementation: [how coded]
+
+error_handling:
+  - condition: [error scenario]
+  - action: [response/recovery]
+
+report_generation: [if applicable]
+  - report_name:
+  - frequency: [daily|monthly|on-demand]
+  - key_calculations:
+\`\`\`
+
+## Phase 3: Data Flow and Integration Analysis
+
+### 3.1 File/Database Schema Mapping
+\`\`\`
+Create comprehensive data dictionary:
+
+For Each File/Table:
+- Physical name and location
+- Logical business name
+- Record/Row structure
+- Key fields and indexes
+- Relationships to other files
+- Programs that access it
+- CRUD matrix (which programs Create/Read/Update/Delete)
+- Data retention rules
+- Backup/Recovery considerations
+\`\`\`
+
+### 3.2 Transaction Flow Documentation
+\`\`\`
+Map complete transaction lifecycles:
+
+Example - Sales Invoice Flow:
+1. Entry point (program/screen)
+2. Data validation steps
+3. File updates sequence
+4. GL posting logic
+5. Inventory adjustments
+6. Report generation triggers
+7. Audit trail creation
+8. Error rollback procedures
+\`\`\`
+
+## Phase 4: COBOL-Specific Visualizations
+
+### 4.1 Program Call Hierarchy
+\`\`\`mermaid
+graph TD
+    %% Generate a tree showing CALL relationships
+    %% Include PERFORM chains within programs
+    %% Show copybook dependencies
+    %% Indicate batch vs online programs with different styles
+\`\`\`
+
+### 4.2 File Access Matrix
+\`\`\`
+Create a matrix showing:
+- Rows: COBOL Programs
+- Columns: Files/Tables
+- Cells: C(reate), R(ead), U(pdate), D(elete) operations
+- Color coding: Frequency of access
+\`\`\`
+
+### 4.3 Accounting Module Interaction Diagram
+\`\`\`mermaid
+graph LR
+    %% Show data flow between accounting modules
+    %% Include batch processing sequences
+    %% Mark critical integration points
+    %% Show external interfaces
+\`\`\`
+
+## Phase 5: Technical Debt and Migration Readiness
+
+### 5.1 Code Quality Assessment
+\`\`\`
+Identify for each program:
+- Obsolete COBOL constructs (if any)
+- GnuCOBOL compatibility issues
+- Hard-coded values that should be parameterized
+- Missing error handling
+- Performance bottlenecks (nested loops, inefficient searches)
+- Dead code sections
+- Duplicate logic across programs
+\`\`\`
+
+### 5.2 Database Integration Analysis
+\`\`\`
+Document current state and recommendations:
+- File-based vs MySQL/MariaDB usage
+- Migration candidates (files that should be tables)
+- Transaction boundary issues
+- Locking and concurrency handling
+- Backup and recovery gaps
+\`\`\`
+
+## Phase 6: Comprehensive Documentation Generation
+
+### 6.1 Executive Summary Structure
+\`\`\`
+1. System Overview
+   - Business purpose and scope
+   - Key accounting functions supported
+   - User base and transaction volumes
+   - Technology stack summary
+
+2. Architecture Assessment
+   - Current COBOL architecture pattern
+   - Module interdependencies
+   - Data management approach
+   - Integration points
+
+3. Functional Coverage
+   - Implemented accounting standards
+   - Compliance features
+   - Reporting capabilities
+   - Audit trail completeness
+
+4. Technical Health
+   - Code quality metrics
+   - Maintenance complexity
+   - Security considerations
+   - Performance characteristics
+
+5. Modernization Recommendations
+   - Priority refactoring areas
+   - Database migration strategy
+   - UI modernization options
+   - API enablement possibilities
+\`\`\`
+
+### 6.2 Detailed Documentation Artifacts
+\`\`\`
+Generate these documents:
+
+1. PROGRAM_CATALOG.md
+   - Alphabetical listing of all programs
+   - Business function mapping
+   - Dependency information
+   - Maintenance priority
+
+2. DATA_DICTIONARY.md
+   - All files and database tables
+   - Field-level documentation
+   - Business meaning of codes
+   - Validation rules
+
+3. BUSINESS_FLOWS.md
+   - End-to-end process documentation
+   - Decision trees for complex logic
+   - Accounting period processing
+   - Year-end procedures
+
+4. TECHNICAL_ARCHITECTURE.md
+   - Call graphs and dependencies
+   - File organization strategy
+   - Batch job scheduling
+   - Error handling patterns
+
+5. COBOL_PATTERNS.md
+   - Common coding patterns used
+   - Naming conventions
+   - Program structure standards
+   - Best practices followed/violated
+
+6. MIGRATION_ROADMAP.md
+   - Modernization opportunities
+   - Risk assessment
+   - Phased approach recommendations
+   - Technology alternatives
+\`\`\`
+
+## Phase 7: Accounting-Specific Analysis
+
+### 7.1 Compliance and Controls
+\`\`\`
+Document:
+- Segregation of duties implementation
+- Audit trail completeness
+- Data validation rules
+- Approval workflows
+- Security controls
+- Regulatory compliance features
+\`\`\`
+
+### 7.2 Calculation Engine Documentation
+\`\`\`
+For each financial calculation:
+- Formula/algorithm used
+- Rounding rules
+- Currency handling
+- Tax calculations
+- Discount/pricing logic
+- Interest computations
+- Depreciation methods
+\`\`\`
+
+## Special Considerations for COBOL Analysis
+
+### COBOL-Specific Patterns to Document:
+\`\`\`
+1. PERFORM paragraph/section usage patterns
+2. GO TO usage (if any) and control flow impact
+3. Level 88 condition names and business meaning
+4. REDEFINES clauses and data structure variants
+5. OCCURS clauses and table handling
+6. STRING/UNSTRING operations for data parsing
+7. SORT/MERGE usage for batch processing
+8. File status checking patterns
+9. COMMIT/ROLLBACK transaction boundaries
+10. Embedded SQL or file-based persistence
+\`\`\`
+
+### Legacy System Indicators:
+\`\`\`
+Flag these for modernization consideration:
+- ALTER statements (obsolete)
+- GO TO DEPENDING ON (consider refactoring)
+- Excessive GO TO usage
+- Missing structured programming constructs
+- Hardcoded file paths
+- Platform-specific code
+- Y2K workarounds still in place
+- Commented-out code blocks
+- Inconsistent naming conventions
+\`\`\`
+
+## Output Quality Criteria
+
+Your documentation should enable:
+1. New developers to understand system functionality without reading code
+2. Architects to design modernization strategies
+3. Business analysts to validate requirements coverage
+4. Testers to design comprehensive test cases
+5. Operations teams to understand batch dependencies
+6. Database administrators to optimize data structures
+
+## Interactive Analysis Process
+
+Before starting, answer these questions:
+1. What version of GnuCOBOL compatibility is required?
+2. Is this using file-based or database storage primarily?
+3. What accounting standards/regulations does it support?
+4. What is the typical transaction volume?
+5. Are there any custom business rules or industry-specific features?
+
+Then proceed with iterative analysis:
+- **First pass**: Program inventory and structure
+- **Second pass**: Business function mapping
+- **Third pass**: Data flow and dependencies
+- **Fourth pass**: Detailed logic documentation
+- **Fifth pass**: Synthesis and recommendations
+
+Remember: Focus on WHAT the system does (functional) before HOW it does it (technical implementation). The goal is to create documentation that bridges business understanding and technical implementation. Think ultra mega hard`,
+        };
+        
+        // Load document function
+        async function loadDocument(docName) {
+            const contentDiv = document.getElementById('content');
+            
+            // Update active navigation
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Find and activate the clicked item
+            const clickedItem = document.querySelector(`[data-doc="${docName}"]`);
+            if (clickedItem) {
+                clickedItem.classList.add('active');
+            }
+            
+            // Close sidebar on mobile
+            if (window.innerWidth <= 768) {
+                document.getElementById('sidebar').classList.remove('active');
+            }
+            
+            // Show loading state
+            contentDiv.innerHTML = '<div class="loading"><div class="loading-spinner"></div>Loading documentation...</div>';
+            
+            // Small delay to show loading animation
+            await new Promise(resolve => setTimeout(resolve, 100));
+            
+            try {
+                let content;
+                
+                if (docName === 'home') {
+                    content = homeContent;
+                } else if (documents[docName]) {
+                    content = documents[docName];
+                } else {
+                    throw new Error('Document not found');
+                }
+                
+                // Extract title from content
+                const titleMatch = content.match(/^#\s+(.+)$/m);
+                const title = titleMatch ? titleMatch[1] : docName.replace('.md', '').replace(/_/g, ' ');
+                
+                // Render the markdown content
+                let html = marked.parse(content);
+                
+                // Process mermaid diagrams
+                const mermaidRegex = /<pre><code class="language-mermaid">([\s\S]*?)<\/code><\/pre>/g;
+                let mermaidIndex = 0;
+                const mermaidDiagrams = [];
+                
+                html = html.replace(mermaidRegex, (match, diagram) => {
+                    const id = `mermaid-${mermaidIndex++}`;
+                    mermaidDiagrams.push({ id, diagram: diagram.trim() });
+                    return `<div class="mermaid" id="${id}">Loading diagram...</div>`;
+                });
+                
+                // Set the content
+                contentDiv.innerHTML = `
+                    <div class="content-header">
+                        <h1>${title}</h1>
+                        <p>ACAS Functional Documentation</p>
+                    </div>
+                    <div class="markdown-content">
+                        ${html}
+                    </div>
+                `;
+                
+                // Render Mermaid diagrams
+                for (const { id, diagram } of mermaidDiagrams) {
+                    try {
+                        const element = document.getElementById(id);
+                        if (element) {
+                            element.innerHTML = diagram;
+                            await mermaid.run({
+                                nodes: [element]
+                            });
+                        }
+                    } catch (error) {
+                        console.error('Mermaid render error:', error);
+                        document.getElementById(id).innerHTML = `<pre>${diagram}</pre>`;
+                    }
+                }
+                
+                // Re-run Prism for syntax highlighting
+                if (typeof Prism !== 'undefined') {
+                    Prism.highlightAll();
+                }
+                
+                // Scroll to top
+                contentDiv.scrollTop = 0;
+                
+            } catch (error) {
+                contentDiv.innerHTML = `
+                    <div class="content-header">
+                        <h1>Error Loading Document</h1>
+                        <p>Unable to load the requested documentation</p>
+                    </div>
+                    <div class="markdown-content">
+                        <p>Sorry, we couldn't load the document: <strong>${docName}</strong></p>
+                        <p>Error: ${error.message}</p>
+                        <p>Please try selecting another document from the navigation menu.</p>
+                    </div>
+                `;
+            }
+        }
+        
+        // Toggle sidebar for mobile
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('active');
+        }
+        
+        // Load home page on startup
+        window.addEventListener('DOMContentLoaded', async function() {
+            // Wait a bit to ensure everything is loaded
+            await new Promise(resolve => setTimeout(resolve, 100));
+            await loadDocument('home');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,3568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACAS Migration Requirements - Interactive Questionnaire</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --success-color: #27ae60;
+            --warning-color: #f39c12;
+            --background-color: #f8f9fa;
+            --card-background: #ffffff;
+            --text-color: #2c3e50;
+            --border-color: #dee2e6;
+            --shadow: 0 2px 4px rgba(0,0,0,0.1);
+            --shadow-hover: 0 4px 8px rgba(0,0,0,0.15);
+            --critical-color: #dc3545;
+            --important-color: #fd7e14;
+            --nice-color: #6c757d;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+        }
+
+        /* Layout */
+        .app-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            width: 300px;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 0;
+            overflow-y: auto;
+            position: fixed;
+            height: 100vh;
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+
+        .sidebar-header {
+            padding: 0 1.5rem 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .sidebar-header h1 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .sidebar-header p {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        .nav-section {
+            padding: 1rem 1.5rem;
+        }
+
+        .nav-section h3 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            opacity: 0.6;
+            margin-bottom: 0.75rem;
+        }
+
+        .nav-item {
+            display: block;
+            padding: 0.6rem 0.75rem;
+            margin: 0.2rem 0;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            position: relative;
+            font-size: 0.9rem;
+        }
+
+        .nav-item:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateX(3px);
+        }
+
+        .nav-item.active {
+            background-color: var(--secondary-color);
+        }
+
+        .nav-item .status {
+            position: absolute;
+            right: 0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.8rem;
+        }
+
+        .nav-item .status.complete {
+            color: var(--success-color);
+        }
+
+        .nav-item .status.partial {
+            color: var(--warning-color);
+        }
+
+        /* Enhanced questionnaire features */
+        .dependency-highlight {
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(33, 150, 243, 0.4);
+        }
+
+        .critical-answered {
+            border-left: 4px solid #27ae60 !important;
+            background-color: rgba(39, 174, 96, 0.05) !important;
+        }
+
+        .dependency-note {
+            animation: slideIn 0.3s ease;
+            font-weight: 500;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .btn-enhanced {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            color: white;
+            margin-left: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-enhanced:hover {
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            margin-left: 300px;
+            padding: 1.5rem;
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        .progress-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .progress-stat {
+            text-align: center;
+        }
+
+        .progress-stat .value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+
+        .progress-stat .label {
+            font-size: 0.85rem;
+            color: #6c757d;
+        }
+
+        .progress-bar {
+            height: 16px;
+            background-color: #e9ecef;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(to right, var(--secondary-color), var(--success-color));
+            transition: width 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+
+        /* Section Styles */
+        .section {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-header {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        .section-header h2 {
+            margin-bottom: 0.75rem;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+
+        .section-header p {
+            color: #6c757d;
+            line-height: 1.6;
+        }
+
+        /* Question Cards */
+        .question-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.25rem;
+            margin-bottom: 1.25rem;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .question-card:hover {
+            box-shadow: var(--shadow-hover);
+        }
+
+        .question-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .priority-badge {
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            flex-shrink: 0;
+        }
+
+        .priority-badge.critical {
+            background-color: #fee;
+            color: var(--critical-color);
+        }
+
+        .priority-badge.important {
+            background-color: #fff3cd;
+            color: var(--important-color);
+        }
+
+        .priority-badge.nice-to-have {
+            background-color: #f8f9fa;
+            color: var(--nice-color);
+        }
+
+        .question-content {
+            flex: 1;
+        }
+
+        .question-id {
+            font-family: monospace;
+            font-size: 0.85rem;
+            color: #6c757d;
+            margin-bottom: 0.25rem;
+        }
+
+        .question-text {
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+            color: var(--text-color);
+            font-size: 1rem;
+        }
+
+        .question-context {
+            background-color: #f8f9fa;
+            padding: 0.75rem;
+            border-radius: 4px;
+            margin: 0.5rem 0;
+            font-size: 0.85rem;
+            color: #6c757d;
+            border-left: 3px solid var(--secondary-color);
+        }
+
+        .question-dependencies,
+        .question-impact {
+            font-size: 0.8rem;
+            color: #6c757d;
+            margin-top: 0.25rem;
+        }
+
+        .question-impact {
+            font-style: italic;
+        }
+
+        /* Form Controls */
+        .form-group {
+            margin-top: 0.75rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.6rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.25);
+        }
+
+        select.form-control {
+            cursor: pointer;
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        label {
+            font-weight: 500;
+            margin-bottom: 0.4rem;
+            display: block;
+            font-size: 0.9rem;
+        }
+
+        /* Radio and Checkbox Groups */
+        .radio-group,
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            margin-top: 0.4rem;
+        }
+
+        .radio-item,
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            padding: 0.4rem;
+            border-radius: 4px;
+            transition: background-color 0.2s ease;
+        }
+
+        .radio-item:hover,
+        .checkbox-item:hover {
+            background-color: #f8f9fa;
+        }
+
+        .radio-item input[type="radio"],
+        .checkbox-item input[type="checkbox"] {
+            margin-right: 0.6rem;
+            cursor: pointer;
+        }
+
+        .radio-item label,
+        .checkbox-item label {
+            cursor: pointer;
+            flex: 1;
+            margin-bottom: 0;
+            font-weight: 400;
+        }
+
+        /* Scale Input */
+        .scale-input {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-top: 0.5rem;
+        }
+
+        .scale-input input[type="range"] {
+            flex: 1;
+        }
+
+        .scale-value {
+            font-weight: bold;
+            min-width: 2rem;
+            text-align: center;
+            color: var(--secondary-color);
+        }
+
+        .scale-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0.4rem;
+            font-size: 0.8rem;
+            color: #6c757d;
+        }
+
+        /* Multiple Text Inputs */
+        .multi-input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .multi-input-item {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .multi-input-item label {
+            min-width: 120px;
+            font-weight: 500;
+            margin-bottom: 0;
+        }
+
+        /* Notes Field */
+        .notes-field {
+            margin-top: 0.75rem;
+            padding-top: 0.75rem;
+            border-top: 1px solid #e9ecef;
+        }
+
+        /* Action Buttons */
+        .section-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e9ecef;
+        }
+
+        .btn {
+            padding: 0.6rem 1.2rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .btn-primary {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #2980b9;
+            transform: translateY(-1px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+
+        .btn-success {
+            background-color: var(--success-color);
+            color: white;
+        }
+
+        .btn-success:hover {
+            background-color: #229954;
+        }
+
+        /* Export Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            max-width: 600px;
+            width: 100%;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .modal-header {
+            margin-bottom: 1rem;
+        }
+
+        .modal-header h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-body {
+            margin-bottom: 1rem;
+        }
+
+        .export-preview {
+            background-color: #f8f9fa;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 1rem;
+            font-family: monospace;
+            font-size: 0.8rem;
+            white-space: pre-wrap;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        /* Mobile Menu Toggle */
+        .mobile-menu-toggle {
+            display: none;
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            z-index: 1001;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 0.5rem;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        /* Summary Cards */
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .summary-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .summary-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.75rem;
+            font-size: 1rem;
+        }
+
+        .summary-card .summary-value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+
+        /* Decision Matrix */
+        .decision-matrix {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        .matrix-row {
+            display: flex;
+            padding: 0.75rem;
+            border-bottom: 1px solid #e9ecef;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .matrix-row:last-child {
+            border-bottom: none;
+        }
+
+        .matrix-condition {
+            flex: 1;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .matrix-recommendation {
+            flex: 1;
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+
+            .sidebar.mobile-open {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 1rem;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .progress-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .section-actions {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .modal-footer {
+                flex-direction: column;
+            }
+
+            .modal-footer .btn {
+                width: 100%;
+            }
+
+            .multi-input-item {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .multi-input-item label {
+                min-width: auto;
+                margin-bottom: 0.25rem;
+            }
+
+            .matrix-row {
+                flex-direction: column;
+                align-items: stretch;
+                text-align: left;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            .sidebar, .mobile-menu-toggle, .btn, .section-actions, .progress-container {
+                display: none !important;
+            }
+            
+            .main-content {
+                margin-left: 0;
+                padding: 0;
+            }
+            
+            .section {
+                display: block !important;
+                page-break-after: always;
+            }
+        }
+
+        /* Notification */
+        .notification {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            background: var(--success-color);
+            color: white;
+            padding: 0.75rem 1rem;
+            border-radius: 4px;
+            box-shadow: var(--shadow);
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            z-index: 1500;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        .conditional-field {
+            display: none;
+            margin-top: 0.75rem;
+            padding: 0.75rem;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+        }
+
+        .conditional-field.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Mobile Menu Toggle -->
+    <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle menu">☰</button>
+
+    <!-- Notification -->
+    <div class="notification" id="notification">Progress saved!</div>
+
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h1>🏗️ ACAS Migration</h1>
+                <p>Requirements Questionnaire</p>
+            </div>
+            
+            <div class="nav-section">
+                <h3>Get Started</h3>
+                <a class="nav-item active" data-section="overview">
+                    Overview
+                    <span class="status">●</span>
+                </a>
+                <a class="nav-item" data-section="quick-guide">
+                    Quick Guide
+                    <span class="status">●</span>
+                </a>
+            </div>
+
+            <div class="nav-section">
+                <h3>Requirements</h3>
+                <a class="nav-item" data-section="business-context">
+                    1. Business Context
+                    <span class="status" id="status-business-context">○</span>
+                </a>
+                <a class="nav-item" data-section="architecture">
+                    2. Architecture
+                    <span class="status" id="status-architecture">○</span>
+                </a>
+                <a class="nav-item" data-section="cobol-specific">
+                    3. COBOL Migration
+                    <span class="status" id="status-cobol-specific">○</span>
+                </a>
+                <a class="nav-item" data-section="functional">
+                    4. Functional Requirements
+                    <span class="status" id="status-functional">○</span>
+                </a>
+                <a class="nav-item" data-section="data-migration">
+                    5. Data Migration
+                    <span class="status" id="status-data-migration">○</span>
+                </a>
+                <a class="nav-item" data-section="integration">
+                    6. Integration
+                    <span class="status" id="status-integration">○</span>
+                </a>
+                <a class="nav-item" data-section="testing">
+                    7. Testing & Validation
+                    <span class="status" id="status-testing">○</span>
+                </a>
+                <a class="nav-item" data-section="sequencing">
+                    8. Sequencing
+                    <span class="status" id="status-sequencing">○</span>
+                </a>
+            </div>
+
+            <div class="nav-section">
+                <h3>Summary</h3>
+                <a class="nav-item" data-section="summary">
+                    Review & Export
+                    <span class="status" id="status-summary">○</span>
+                </a>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Progress Container -->
+            <div class="progress-container">
+                <div class="progress-stats">
+                    <div class="progress-stat">
+                        <div class="value" id="total-questions">-</div>
+                        <div class="label">Total Questions</div>
+                    </div>
+                    <div class="progress-stat">
+                        <div class="value" id="answered-count">0</div>
+                        <div class="label">Answered</div>
+                    </div>
+                    <div class="progress-stat">
+                        <div class="value" id="critical-remaining">-</div>
+                        <div class="label">Critical Remaining</div>
+                    </div>
+                    <div class="progress-stat">
+                        <div class="value" id="completion-percent">0%</div>
+                        <div class="label">Complete</div>
+                    </div>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill" style="width: 0%">0%</div>
+                </div>
+            </div>
+
+            <!-- Overview Section -->
+            <section class="section active" id="overview">
+                <div class="section-header">
+                    <h2>Welcome to ACAS Migration Requirements Questionnaire</h2>
+                    <p>This interactive questionnaire will help you define comprehensive requirements for migrating your ACAS (Applewood Computers Accounting System) from COBOL to a modern architecture.</p>
+                </div>
+
+                <div class="summary-grid">
+                    <div class="summary-card">
+                        <h4>📊 Scope</h4>
+                        <div class="summary-value">200+</div>
+                        <p>COBOL Programs</p>
+                    </div>
+                    <div class="summary-card">
+                        <h4>🏗️ Subsystems</h4>
+                        <div class="summary-value">12</div>
+                        <p>Distinct Modules</p>
+                    </div>
+                    <div class="summary-card">
+                        <h4>📝 Questions</h4>
+                        <div class="summary-value">50</div>
+                        <p>Key Requirements</p>
+                    </div>
+                    <div class="summary-card">
+                        <h4>⏱️ Time Estimate</h4>
+                        <div class="summary-value">45</div>
+                        <p>Minutes to Complete</p>
+                    </div>
+                </div>
+
+                <div class="question-card" style="margin-top: 1.5rem;">
+                    <h3>📋 How to Use This Questionnaire</h3>
+                    <ol style="margin-left: 1.5rem; line-height: 2;">
+                        <li><strong>Navigate sections</strong> using the sidebar menu</li>
+                        <li><strong>Answer questions</strong> in any order (but consider dependencies)</li>
+                        <li><strong>Save progress</strong> automatically in your browser</li>
+                        <li><strong>Export responses</strong> to Markdown when complete</li>
+                        <li><strong>Focus on CRITICAL</strong> questions first (marked in red)</li>
+                    </ol>
+                </div>
+
+                <div class="question-card">
+                    <h3>🎯 Key Insights from Code Analysis</h3>
+                    <ul style="margin-left: 1.5rem; line-height: 2;">
+                        <li><strong>System Complexity:</strong> ~500,000 lines of COBOL code across 200+ programs</li>
+                        <li><strong>Architecture:</strong> Modular design with 12 distinct subsystems</li>
+                        <li><strong>Data Storage:</strong> Dual support for ISAM files and MySQL/MariaDB</li>
+                        <li><strong>Batch Processing:</strong> Complex month-end and year-end procedures (xl150)</li>
+                        <li><strong>Business Logic:</strong> Extensive use of COMP-3 decimal arithmetic</li>
+                        <li><strong>Integration:</strong> File-based with clear subsystem boundaries</li>
+                    </ul>
+                </div>
+
+                <div class="section-actions">
+                    <span></span>
+                    <button class="btn btn-primary" onclick="navigateToSection('quick-guide')">
+                        Get Started →
+                    </button>
+                </div>
+            </section>
+
+            <!-- Quick Guide Section -->
+            <section class="section" id="quick-guide">
+                <div class="section-header">
+                    <h2>Quick Reference Guide</h2>
+                    <p>Use this guide for rapid decision-making and to understand the migration landscape.</p>
+                </div>
+
+                <div class="decision-matrix">
+                    <h3>🔀 Critical Decision Points</h3>
+                    <div class="matrix-row">
+                        <div class="matrix-condition">If: Zero downtime tolerance</div>
+                        <div class="matrix-recommendation">Then: Parallel run + Strangler Fig pattern</div>
+                    </div>
+                    <div class="matrix-row">
+                        <div class="matrix-condition">If: Limited COBOL expertise</div>
+                        <div class="matrix-recommendation">Then: Automated translation + Critical rewrites</div>
+                    </div>
+                    <div class="matrix-row">
+                        <div class="matrix-condition">If: Budget < $1M</div>
+                        <div class="matrix-recommendation">Then: Phased migration + Keep some COBOL</div>
+                    </div>
+                    <div class="matrix-row">
+                        <div class="matrix-condition">If: Need quick wins</div>
+                        <div class="matrix-recommendation">Then: Start with Reporting or Stock Control</div>
+                    </div>
+                </div>
+
+                <div class="question-card">
+                    <h3>⏱️ Migration Timeline Estimates</h3>
+                    <ul style="margin-left: 1.5rem;">
+                        <li><strong>Big Bang:</strong> 12-18 months</li>
+                        <li><strong>Phased by Subsystem:</strong> 18-36 months</li>
+                        <li><strong>Parallel Run:</strong> 24-36 months</li>
+                        <li><strong>With Coexistence:</strong> 36+ months</li>
+                    </ul>
+                </div>
+
+                <div class="question-card">
+                    <h3>💰 Budget Rough Estimates</h3>
+                    <ul style="margin-left: 1.5rem;">
+                        <li><strong>Translation + Modernization:</strong> $2-3M</li>
+                        <li><strong>Complete Rewrite:</strong> $3-5M</li>
+                        <li><strong>With Process Reengineering:</strong> $5-8M</li>
+                    </ul>
+                </div>
+
+                <div class="section-actions">
+                    <button class="btn btn-secondary" onclick="navigateToSection('overview')">
+                        ← Back
+                    </button>
+                    <button class="btn btn-primary" onclick="navigateToSection('business-context')">
+                        Start Questionnaire →
+                    </button>
+                </div>
+            </section>
+
+            <!-- Business Context Section -->
+            <section class="section" id="business-context">
+                <div class="section-header">
+                    <h2>Section 1: Business Context and Drivers</h2>
+                    <p>Understanding your business drivers and constraints is critical for defining the right migration approach.</p>
+                </div>
+
+                <!-- BUS-001 -->
+                <div class="question-card">
+                    <div class="question-header">
+                        <span class="priority-badge critical">CRITICAL</span>
+                        <div class="question-content">
+                            <div class="question-id">BUS-001</div>
+                            <div class="question-text">What are the top 3 business drivers for migrating from the current COBOL system?</div>
+                            <div class="question-context">
+                                Current system is 40+ years old, written in COBOL, supports both ISAM files and MySQL/MariaDB
+                            </div>
+                            <div class="question-dependencies">Dependencies: None</div>
+                            <div class="question-impact">Impact: Determines migration approach, technology choices, and success metrics</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Driver 1 (Most Important)</label>
+                        <select class="form-control" id="BUS-001-1" data-question="BUS-001">
+                            <option value="">Select a driver...</option>
+                            <option value="cost-reduction">Cost reduction (COBOL developer shortage)</option>
+                            <option value="scalability">Scalability limitations</option>
+                            <option value="real-time">Real-time processing needs</option>
+                            <option value="integration">Modern integration requirements</option>
+                            <option value="ux">User experience improvements</option>
+                            <option value="compliance">Compliance/regulatory changes</option>
+                            <option value="agility">Business agility/faster changes</option>
+                            <option value="other">Other (specify in notes)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Driver 2</label>
+                        <select class="form-control" id="BUS-001-2" data-question="BUS-001">
+                            <option value="">Select a driver...</option>
+                            <option value="cost-reduction">Cost reduction (COBOL developer shortage)</option>
+                            <option value="scalability">Scalability limitations</option>
+                            <option value="real-time">Real-time processing needs</option>
+                            <option value="integration">Modern integration requirements</option>
+                            <option value="ux">User experience improvements</option>
+                            <option value="compliance">Compliance/regulatory changes</option>
+                            <option value="agility">Business agility/faster changes</option>
+                            <option value="other">Other (specify in notes)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Driver 3</label>
+                        <select class="form-control" id="BUS-001-3" data-question="BUS-001">
+                            <option value="">Select a driver...</option>
+                            <option value="cost-reduction">Cost reduction (COBOL developer shortage)</option>
+                            <option value="scalability">Scalability limitations</option>
+                            <option value="real-time">Real-time processing needs</option>
+                            <option value="integration">Modern integration requirements</option>
+                            <option value="ux">User experience improvements</option>
+                            <option value="compliance">Compliance/regulatory changes</option>
+                            <option value="agility">Business agility/faster changes</option>
+                            <option value="other">Other (specify in notes)</option>
+                        </select>
+                    </div>
+                    <div class="notes-field">
+                        <label>Additional Notes</label>
+                        <textarea class="form-control" id="BUS-001-notes" placeholder="Add any additional context or details..."></textarea>
+                    </div>
+                </div>
+
+                <!-- BUS-002 -->
+                <div class="question-card">
+                    <div class="question-header">
+                        <span class="priority-badge critical">CRITICAL</span>
+                        <div class="question-content">
+                            <div class="question-id">BUS-002</div>
+                            <div class="question-text">How critical is the ACAS system to daily business operations?</div>
+                            <div class="question-context">
+                                System handles GL, Sales, Purchase, Stock, IRS ledgers
+                            </div>
+                            <div class="question-dependencies">Dependencies: None</div>
+                            <div class="question-impact">Impact: Defines migration strategy (big bang vs phased vs parallel run)</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="scale-input">
+                            <input type="range" class="form-control" id="BUS-002" min="1" max="5" value="3" 
+                                   oninput="updateScaleValue('BUS-002', this.value)">
+                            <span class="scale-value" id="BUS-002-value">3</span>
+                        </div>
+                        <div class="scale-labels">
+                            <span>1 - Week+ downtime OK</span>
+                            <span>5 - Zero downtime</span>
+                        </div>
+                    </div>
+                    <div class="notes-field">
+                        <label>Additional Notes</label>
+                        <textarea class="form-control" id="BUS-002-notes" placeholder="Explain criticality factors..."></textarea>
+                    </div>
+                </div>
+
+                <!-- BUS-003 -->
+                <div class="question-card">
+                    <div class="question-header">
+                        <span class="priority-badge important">IMPORTANT</span>
+                        <div class="question-content">
+                            <div class="question-id">BUS-003</div>
+                            <div class="question-text">What is the expected business growth rate over the next 5 years?</div>
+                            <div class="question-context">
+                                Current system handles transactions with 10-digit amounts
+                            </div>
+                            <div class="question-dependencies">Dependencies: None</div>
+                            <div class="question-impact">Impact: Influences scalability requirements and architecture choices</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Annual Growth Rate (%)</label>
+                        <input type="number" class="form-control" id="BUS-003" min="0" max="100" step="1" placeholder="e.g., 15">
+                    </div>
+                    <div class="notes-field">
+                        <label>Growth Assumptions</label>
+                        <textarea class="form-control" id="BUS-003-notes" placeholder="Explain growth projections..."></textarea>
+                    </div>
+                </div>
+
+                <!-- BUS-004 -->
+                <div class="question-card">
+                    <div class="question-header">
+                        <span class="priority-badge critical">CRITICAL</span>
+                        <div class="question-content">
+                            <div class="question-id">BUS-004</div>
+                            <div class="question-text">What is the acceptable timeframe for complete migration?</div>
+                            <div class="question-dependencies">Dependencies: BUS-002</div>
+                            <div class="question-impact">Impact: Determines phasing, resource allocation, and approach</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="BUS-004-6" name="BUS-004" value="6-months">
+                                <label for="BUS-004-6">6 months</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="BUS-004-12" name="BUS-004" value="12-months">
+                                <label for="BUS-004-12">12 months</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="BUS-004-18" name="BUS-004" value="18-months">
+                                <label for="BUS-004-18">18 months</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="BUS-004-24" name="BUS-004" value="24-months">
+                                <label for="BUS-004-24">24 months</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="BUS-004-36" name="BUS-004" value="36-plus-months">
+                                <label for="BUS-004-36">36+ months</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BUS-005 -->
+                <div class="question-card">
+                    <div class="question-header">
+                        <span class="priority-badge important">IMPORTANT</span>
+                        <div class="question-content">
+                            <div class="question-id">BUS-005</div>
+                            <div class="question-text">Are there any upcoming regulatory changes that the new system must address?</div>
+                            <div class="question-context">
+                                System includes IRS (Incomplete Records System) for tax compliance
+                            </div>
+                            <div class="question-dependencies">Dependencies: None</div>
+                            <div class="question-impact">Impact: May prioritize certain subsystem migrations</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="BUS-005-yes" name="BUS-005" value="yes" 
+                                       onchange="toggleConditional('BUS-005-details', true)">
+                                <label for="BUS-005-yes">Yes</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="BUS-005-no" name="BUS-005" value="no" 
+                                       onchange="toggleConditional('BUS-005-details', false)">
+                                <label for="BUS-005-no">No</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="conditional-field" id="BUS-005-details">
+                        <label>Specify Requirements and Deadlines</label>
+                        <textarea class="form-control" id="BUS-005-details-text" 
+                                placeholder="List regulatory changes, requirements, and compliance deadlines..."></textarea>
+                    </div>
+                </div>
+
+                <!-- BUS-006 -->
+                <div class="question-card">
+                    <div class="question-header">
+                        <span class="priority-badge important">IMPORTANT</span>
+                        <div class="question-content">
+                            <div class="question-id">BUS-006</div>
+                            <div class="question-text">What are the biggest limitations of the current COBOL system? (Select all that apply)</div>
+                            <div class="question-dependencies">Dependencies: None</div>
+                            <div class="question-impact">Impact: Defines key requirements for target system</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="BUS-006-perf" value="performance">
+                                <label for="BUS-006-perf">Performance/speed issues (batch processing delays)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="BUS-006-realtime" value="realtime">
+                                <label for="BUS-006-realtime">Lack of real-time processing (heavy batch dependency)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="BUS-006-reporting" value="reporting">
+                                <label for="BUS-006-reporting">Limited reporting capabilities (fixed format reports)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="BUS-006-integration" value="integration">
+                                <label for="BUS-006-integration">Poor integration with modern systems</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="BUS-006-ui" value="ui">
+                                <label for="BUS-006-ui">Green screen UI limitations</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="BUS-006-maintenance" value="maintenance">
+                                <label for="BUS-006-maintenance">Complex maintenance (COBOL expertise required)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="BUS-006-skills" value="skills">
+                                <label for="BUS-006-skills">Lack of skilled COBOL developers</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-actions">
+                    <button class="btn btn-secondary" onclick="navigateToSection('quick-guide')">
+                        ← Previous
+                    </button>
+                    <button class="btn btn-primary" onclick="navigateToSection('architecture')">
+                        Next: Architecture →
+                    </button>
+                </div>
+            </section>
+
+            <!-- Architecture Section -->
+            <section class="section" id="architecture">
+                <div class="section-header">
+                    <h2>Section 2: Target Architecture Preferences</h2>
+                    <p>Define your preferred architecture patterns and technology approach for the modernized system.</p>
+                </div>
+
+                <!-- ARCH-001 -->
+                <div class="question-card">
+                    <div class="question-header">
+                        <span class="priority-badge critical">CRITICAL</span>
+                        <div class="question-content">
+                            <div class="question-id">ARCH-001</div>
+                            <div class="question-text">What is your preferred target architecture pattern?</div>
+                            <div class="question-context">
+                                Current system is modular COBOL with clear subsystem boundaries
+                            </div>
+                            <div class="question-dependencies">Dependencies: BUS-001, BUS-002</div>
+                            <div class="question-impact">Impact: Defines entire migration approach and technology stack</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="ARCH-001-mono" name="ARCH-001" value="monolithic">
+                                <label for="ARCH-001-mono">Monolithic (modern stack)</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="ARCH-001-soa" name="ARCH-001" value="soa">
+                                <label for="ARCH-001-soa">Service-Oriented Architecture (SOA)</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="ARCH-001-micro" name="ARCH-001" value="microservices">
+                                <label for="ARCH-001-micro">Microservices</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="ARCH-001-serverless" name="ARCH-001" value="serverless">
+                                <label for="ARCH-001-serverless">Serverless/Function-as-a-Service</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="ARCH-001-hybrid" name="ARCH-001" value="hybrid" 
+                                       onchange="toggleConditional('ARCH-001-hybrid-details', true)">
+                                <label for="ARCH-001-hybrid">Hybrid (specify combination)</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="conditional-field" id="ARCH-001-hybrid-details">
+                        <label>Describe Hybrid Approach</label>
+                        <textarea class="form-control" id="ARCH-001-hybrid-text" 
+                                placeholder="Explain your hybrid architecture approach..."></textarea>
+                    </div>
+                </div>
+
+                <!-- ARCH-002 -->
+                <div class="question-card">
+                    <div class="question-header">
+                        <span class="priority-badge critical">CRITICAL</span>
+                        <div class="question-content">
+                            <div class="question-id">ARCH-002</div>
+                            <div class="question-text">Given the subsystem boundaries identified, which migration pattern do you prefer?</div>
+                            <div class="question-context">
+                                System has 12 distinct subsystems with defined interfaces
+                            </div>
+                            <div class="question-dependencies">Dependencies: ARCH-001, BUS-002</div>
+                            <div class="question-impact">Impact: Determines migration timeline, risk, and resource needs</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="ARCH-002-strangler" name="ARCH-002" value="strangler">
+                                <label for="ARCH-002-strangler">Strangler Fig (gradual replacement subsystem by subsystem)</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="ARCH-002-bigbang" name="ARCH-002" value="bigbang">
+                                <label for="ARCH-002-bigbang">Big Bang (complete replacement at once)</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="ARCH-002-parallel" name="ARCH-002" value="parallel">
+                                <label for="ARCH-002-parallel">Parallel Run (both systems simultaneously)</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="ARCH-002-phased" name="ARCH-002" value="phased">
+                                <label for="ARCH-002-phased">Phased Cutover (subsystem by subsystem with coexistence)</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TECH-001 -->
+                <div class="question-card">
+                    <div class="question-header">
+                        <span class="priority-badge critical">CRITICAL</span>
+                        <div class="question-content">
+                            <div class="question-id">TECH-001</div>
+                            <div class="question-text">Preferred programming language(s) for the new system?</div>
+                            <div class="question-context">
+                                Current system is 200+ COBOL programs with complex business logic
+                            </div>
+                            <div class="question-dependencies">Dependencies: ARCH-001</div>
+                            <div class="question-impact">Impact: Determines development resources needed, performance characteristics</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="TECH-001-java" value="java">
+                                <label for="TECH-001-java">Java</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="TECH-001-csharp" value="csharp">
+                                <label for="TECH-001-csharp">C#/.NET</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="TECH-001-python" value="python">
+                                <label for="TECH-001-python">Python</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="TECH-001-go" value="go">
+                                <label for="TECH-001-go">Go</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="TECH-001-typescript" value="typescript">
+                                <label for="TECH-001-typescript">JavaScript/TypeScript (Node.js)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="TECH-001-cobol" value="cobol">
+                                <label for="TECH-001-cobol">Keep COBOL with modernization</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TECH-002 -->
+                <div class="question-card">
+                    <div class="question-header">
+                        <span class="priority-badge critical">CRITICAL</span>
+                        <div class="question-content">
+                            <div class="question-id">TECH-002</div>
+                            <div class="question-text">Preferred database technology?</div>
+                            <div class="question-context">
+                                Current system supports both ISAM files and MySQL/MariaDB
+                            </div>
+                            <div class="question-dependencies">Dependencies: ARCH-001</div>
+                            <div class="question-impact">Impact: Affects data migration strategy and application design</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="TECH-002-rdbms" name="TECH-002" value="rdbms">
+                                <label for="TECH-002-rdbms">Traditional RDBMS (PostgreSQL, MySQL, Oracle, SQL Server)</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="TECH-002-nosql" name="TECH-002" value="nosql">
+                                <label for="TECH-002-nosql">NoSQL (MongoDB, DynamoDB, Cassandra)</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="TECH-002-newsql" name="TECH-002" value="newsql">
+                                <label for="TECH-002-newsql">NewSQL (CockroachDB, VoltDB)</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="TECH-002-multi" name="TECH-002" value="multi">
+                                <label for="TECH-002-multi">Multi-model (mixed based on subsystem needs)</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="TECH-002-current" name="TECH-002" value="current">
+                                <label for="TECH-002-current">Keep current MySQL/MariaDB</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-actions">
+                    <button class="btn btn-secondary" onclick="navigateToSection('business-context')">
+                        ← Previous
+                    </button>
+                    <button class="btn btn-primary" onclick="navigateToSection('cobol-specific')">
+                        Next: COBOL Migration →
+                    </button>
+                </div>
+            </section>
+
+            <!-- COBOL-Specific Section -->
+            <section class="section" id="cobol-specific">
+                <div class="section-header">
+                    <h2>Section 3: COBOL Migration Decisions</h2>
+                    <p>Specific decisions about how to handle the existing COBOL code and patterns.</p>
+                </div>
+
+                <!-- COBOL-001 -->
+                <div class="question-card">
+                    <div class="question-header">
+                        <span class="priority-badge critical">CRITICAL</span>
+                        <div class="question-content">
+                            <div class="question-id">COBOL-001</div>
+                            <div class="question-text">How should the existing COBOL business logic be handled?</div>
+                            <div class="question-context">
+                                ~500,000 lines of COBOL code including critical programs: gl070 (posting), xl150 (batch processing), acas000-032 (file handlers), VAT calculations, COMP-3 arithmetic, ISAM file operations
+                            </div>
+                            <div class="question-dependencies">Dependencies: TECH-001</div>
+                            <div class="question-impact">Impact: Determines migration approach and timeline</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="COBOL-001-rewrite" name="COBOL-001" value="rewrite">
+                                <label for="COBOL-001-rewrite">Complete rewrite in new language</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="COBOL-001-translate" name="COBOL-001" value="translate">
+                                <label for="COBOL-001-translate">Automated translation to new language</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="COBOL-001-modernize" name="COBOL-001" value="modernize">
+                                <label for="COBOL-001-modernize">Keep COBOL, modernize runtime (GnuCOBOL to Enterprise COBOL)</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="COBOL-001-gradual" name="COBOL-001" value="gradual">
+                                <label for="COBOL-001-gradual">Gradual rewrite with COBOL-to-new-language bridges</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="COBOL-001-rules" name="COBOL-001" value="rules">
+                                <label for="COBOL-001-rules">Extract business rules to rule engine, rewrite rest</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BATCH-001 -->
+                <div class="question-card">
+                    <div class="question-header">
+                        <span class="priority-badge critical">CRITICAL</span>
+                        <div class="question-content">
+                            <div class="question-id">BATCH-001</div>
+                            <div class="question-text">How should the current batch processing be modernized?</div>
+                            <div class="question-context">
+                                Based on analysis of xl150 (End of Cycle), gl070 (Posting), etc.
+                            </div>
+                            <div class="question-dependencies">Dependencies: ARCH-001</div>
+                            <div class="question-impact">Impact: Major architectural decision</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="BATCH-001-keep" name="BATCH-001" value="keep">
+                                <label for="BATCH-001-keep">Keep as scheduled batch jobs</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="BATCH-001-realtime" name="BATCH-001" value="realtime">
+                                <label for="BATCH-001-realtime">Convert to real-time processing</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="BATCH-001-event" name="BATCH-001" value="event">
+                                <label for="BATCH-001-event">Event-driven processing</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="BATCH-001-hybrid" name="BATCH-001" value="hybrid">
+                                <label for="BATCH-001-hybrid">Hybrid (some batch, some real-time)</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DATA-001 -->
+                <div class="question-card">
+                    <div class="question-header">
+                        <span class="priority-badge critical">CRITICAL</span>
+                        <div class="question-content">
+                            <div class="question-id">DATA-001</div>
+                            <div class="question-text">What is your data migration strategy?</div>
+                            <div class="question-context">
+                                System has both ISAM files and MySQL tables
+                            </div>
+                            <div class="question-dependencies">Dependencies: ARCH-002</div>
+                            <div class="question-impact">Impact: Defines data migration project complexity</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="DATA-001-bigbang" name="DATA-001" value="bigbang">
+                                <label for="DATA-001-bigbang">Big bang migration (all at once during cutover)</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="DATA-001-phased" name="DATA-001" value="phased">
+                                <label for="DATA-001-phased">Phased migration (by subsystem)</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="DATA-001-parallel" name="DATA-001" value="parallel">
+                                <label for="DATA-001-parallel">Parallel run (sync between old and new)</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="DATA-001-trickle" name="DATA-001" value="trickle">
+                                <label for="DATA-001-trickle">Trickle migration (gradual with sync)</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-actions">
+                    <button class="btn btn-secondary" onclick="navigateToSection('architecture')">
+                        ← Previous
+                    </button>
+                    <button class="btn btn-primary" onclick="navigateToSection('functional')">
+                        Next: Functional Requirements →
+                    </button>
+                </div>
+            </section>
+
+            <!-- Functional Requirements Section -->
+            <section class="section" id="functional">
+                <div class="section-header">
+                    <h2>Section 4: Functional Requirements</h2>
+                    <p>Define feature parity levels and new capabilities for the target system.</p>
+                </div>
+
+                <!-- FUNC-001 -->
+                <div class="question-card">
+                    <div class="question-header">
+                        <span class="priority-badge critical">CRITICAL</span>
+                        <div class="question-content">
+                            <div class="question-id">FUNC-001</div>
+                            <div class="question-text">What level of feature parity is required with the legacy system?</div>
+                            <div class="question-context">
+                                System has many features accumulated over 40+ years
+                            </div>
+                            <div class="question-dependencies">Dependencies: BUS-001</div>
+                            <div class="question-impact">Impact: Defines scope, complexity, and timeline</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="FUNC-001-100" name="FUNC-001" value="100">
+                                <label for="FUNC-001-100">100% - All features must be replicated exactly</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="FUNC-001-90" name="FUNC-001" value="90">
+                                <label for="FUNC-001-90">90% - Core features only, remove rarely used</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="FUNC-001-80" name="FUNC-001" value="80">
+                                <label for="FUNC-001-80">80% - Significant simplification acceptable</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="FUNC-001-70" name="FUNC-001" value="70">
+                                <label for="FUNC-001-70">70% - Major re-engineering with process improvement</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="FUNC-001-reengineer" name="FUNC-001" value="reengineer">
+                                <label for="FUNC-001-reengineer">Re-engineer - Complete business process redesign</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FUNC-002 -->
+                <div class="question-card">
+                    <div class="question-header">
+                        <span class="priority-badge important">IMPORTANT</span>
+                        <div class="question-content">
+                            <div class="question-id">FUNC-002</div>
+                            <div class="question-text">Must the new system support the IRS (Incomplete Records System) functionality?</div>
+                            <div class="question-context">
+                                IRS is simplified accounting for small businesses, unique to ACAS
+                            </div>
+                            <div class="question-dependencies">Dependencies: FUNC-001</div>
+                            <div class="question-impact">Impact: May require special handling in migration</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="FUNC-002-yes-asis" name="FUNC-002" value="yes-asis">
+                                <label for="FUNC-002-yes-asis">Yes - maintain current logic</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="FUNC-002-yes-redesign" name="FUNC-002" value="yes-redesign">
+                                <label for="FUNC-002-yes-redesign">Yes - but can be redesigned</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="FUNC-002-no" name="FUNC-002" value="no">
+                                <label for="FUNC-002-no">No - eliminate IRS functionality</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FUNC-003 -->
+                <div class="question-card">
+                    <div class="question-header">
+                        <span class="priority-badge nice-to-have">NICE-TO-HAVE</span>
+                        <div class="question-content">
+                            <div class="question-id">FUNC-003</div>
+                            <div class="question-text">What new capabilities should the target system add?</div>
+                            <div class="question-context">
+                                Opportunities to add modern features not in current system
+                            </div>
+                            <div class="question-dependencies">Dependencies: BUS-001</div>
+                            <div class="question-impact">Impact: Extends project scope beyond migration</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="FUNC-003-dashboard" value="dashboard">
+                                <label for="FUNC-003-dashboard">Real-time dashboard and analytics</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="FUNC-003-mobile" value="mobile">
+                                <label for="FUNC-003-mobile">Mobile access</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="FUNC-003-bi" value="bi">
+                                <label for="FUNC-003-bi">Advanced reporting/BI</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="FUNC-003-workflow" value="workflow">
+                                <label for="FUNC-003-workflow">Workflow automation</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="FUNC-003-docs" value="docs">
+                                <label for="FUNC-003-docs">Electronic document management</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="FUNC-003-api" value="api">
+                                <label for="FUNC-003-api">API for third-party integration</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="FUNC-003-multicurrency" value="multicurrency">
+                                <label for="FUNC-003-multicurrency">Multi-currency support</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-actions">
+                    <button class="btn btn-secondary" onclick="navigateToSection('cobol-specific')">
+                        ← Previous
+                    </button>
+                    <button class="btn btn-primary" onclick="navigateToSection('data-migration')">
+                        Next: Data Migration →
+                    </button>
+                </div>
+            </section>
+
+            <!-- Data Migration Section -->
+            <section class="section" id="data-migration">
+                <div class="section-header">
+                    <h2>Section 5: Data Migration Strategy</h2>
+                    <p>Define how data will be migrated from the current ISAM files and MySQL databases.</p>
+                </div>
+
+                <!-- DATA-002 -->
+                <div class="question-card">
+                    <div class="question-header">
+                        <span class="priority-badge important">IMPORTANT</span>
+                        <div class="question-content">
+                            <div class="question-id">DATA-002</div>
+                            <div class="question-text">What is the approximate data volume to migrate?</div>
+                            <div class="question-context">
+                                Help size migration effort and timeline
+                            </div>
+                            <div class="question-dependencies">Dependencies: None</div>
+                            <div class="question-impact">Impact: Sizes migration effort and timeline</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="multi-input-group">
+                            <div class="multi-input-item">
+                                <label>Customers:</label>
+                                <input type="number" class="form-control" id="DATA-002-customers" placeholder="e.g., 50000">
+                            </div>
+                            <div class="multi-input-item">
+                                <label>Suppliers:</label>
+                                <input type="number" class="form-control" id="DATA-002-suppliers" placeholder="e.g., 5000">
+                            </div>
+                            <div class="multi-input-item">
+                                <label>GL Accounts:</label>
+                                <input type="number" class="form-control" id="DATA-002-gl" placeholder="e.g., 2000">
+                            </div>
+                            <div class="multi-input-item">
+                                <label>Stock Items:</label>
+                                <input type="number" class="form-control" id="DATA-002-stock" placeholder="e.g., 100000">
+                            </div>
+                            <div class="multi-input-item">
+                                <label>Historical Years:</label>
+                                <input type="number" class="form-control" id="DATA-002-years" placeholder="e.g., 7">
+                            </div>
+                            <div class="multi-input-item">
+                                <label>Total Size (GB):</label>
+                                <input type="number" class="form-control" id="DATA-002-size" placeholder="e.g., 50">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DATA-003 -->
+                <div class="question-card">
+                    <div class="question-header">
+                        <span class="priority-badge important">IMPORTANT</span>
+                        <div class="question-content">
+                            <div class="question-id">DATA-003</div>
+                            <div class="question-text">How should data quality issues be handled?</div>
+                            <div class="question-context">
+                                40+ year old system likely has data quality issues
+                            </div>
+                            <div class="question-dependencies">Dependencies: DATA-001</div>
+                            <div class="question-impact">Impact: Affects timeline and resource needs</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="DATA-003-asis" name="DATA-003" value="asis">
+                                <label for="DATA-003-asis">Migrate as-is, fix in new system</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="DATA-003-before" name="DATA-003" value="before">
+                                <label for="DATA-003-before">Clean before migration</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="DATA-003-during" name="DATA-003" value="during">
+                                <label for="DATA-003-during">Clean during migration</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="DATA-003-clean-only" name="DATA-003" value="clean-only">
+                                <label for="DATA-003-clean-only">Only migrate records meeting quality standards</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-actions">
+                    <button class="btn btn-secondary" onclick="navigateToSection('functional')">
+                        ← Previous
+                    </button>
+                    <button class="btn btn-primary" onclick="navigateToSection('integration')">
+                        Next: Integration →
+                    </button>
+                </div>
+            </section>
+
+            <!-- Integration Section -->
+            <section class="section" id="integration">
+                <div class="section-header">
+                    <h2>Section 6: Integration Requirements</h2>
+                    <p>Define how the new system will integrate with external systems and handle coexistence.</p>
+                </div>
+
+                <!-- INT-001 -->
+                <div class="question-card">
+                    <div class="question-header">
+                        <span class="priority-badge important">IMPORTANT</span>
+                        <div class="question-content">
+                            <div class="question-id">INT-001</div>
+                            <div class="question-text">What external systems must the new system integrate with?</div>
+                            <div class="question-context">
+                                Current system is largely standalone
+                            </div>
+                            <div class="question-dependencies">Dependencies: None</div>
+                            <div class="question-impact">Impact: Defines integration architecture</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>List External Systems (one per line)</label>
+                        <textarea class="form-control" id="INT-001" rows="6" 
+                                placeholder="Example:
+Banking System - Real-time payment processing - Bidirectional
+CRM System - Customer data sync - Inbound
+Reporting Tool - Financial data - Outbound"></textarea>
+                    </div>
+                </div>
+
+                <!-- INT-002 -->
+                <div class="question-card">
+                    <div class="question-header">
+                        <span class="priority-badge important">IMPORTANT</span>
+                        <div class="question-content">
+                            <div class="question-id">INT-002</div>
+                            <div class="question-text">Preferred integration approach for the new system?</div>
+                            <div class="question-dependencies">Dependencies: ARCH-001</div>
+                            <div class="question-impact">Impact: Determines integration patterns</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="INT-002-rest" value="rest">
+                                <label for="INT-002-rest">REST APIs</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="INT-002-graphql" value="graphql">
+                                <label for="INT-002-graphql">GraphQL</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="INT-002-queue" value="queue">
+                                <label for="INT-002-queue">Message queues (RabbitMQ, Kafka)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="INT-002-etl" value="etl">
+                                <label for="INT-002-etl">ETL/batch files</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="INT-002-db" value="db">
+                                <label for="INT-002-db">Direct database access</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- INT-003 -->
+                <div class="question-card">
+                    <div class="question-header">
+                        <span class="priority-badge critical">CRITICAL</span>
+                        <div class="question-content">
+                            <div class="question-id">INT-003</div>
+                            <div class="question-text">Will the legacy COBOL system need to coexist with the new system?</div>
+                            <div class="question-context">
+                                System has clear subsystem boundaries enabling phased migration
+                            </div>
+                            <div class="question-dependencies">Dependencies: ARCH-002</div>
+                            <div class="question-impact">Impact: Requires bidirectional sync strategy</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="INT-003-yes" name="INT-003" value="yes" 
+                                       onchange="toggleConditional('INT-003-details', true)">
+                                <label for="INT-003-yes">Yes</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="INT-003-no" name="INT-003" value="no" 
+                                       onchange="toggleConditional('INT-003-details', false)">
+                                <label for="INT-003-no">No</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="conditional-field" id="INT-003-details">
+                        <div class="multi-input-group">
+                            <div class="multi-input-item">
+                                <label>Duration (months):</label>
+                                <input type="number" class="form-control" id="INT-003-duration" placeholder="e.g., 18">
+                            </div>
+                            <div style="width: 100%;">
+                                <label>Subsystems requiring synchronization:</label>
+                                <textarea class="form-control" id="INT-003-subsystems" 
+                                        placeholder="List which subsystems must stay synchronized..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-actions">
+                    <button class="btn btn-secondary" onclick="navigateToSection('data-migration')">
+                        ← Previous
+                    </button>
+                    <button class="btn btn-primary" onclick="navigateToSection('testing')">
+                        Next: Testing →
+                    </button>
+                </div>
+            </section>
+
+            <!-- Testing Section -->
+            <section class="section" id="testing">
+                <div class="section-header">
+                    <h2>Section 7: Testing & Validation</h2>
+                    <p>Define testing approach and validation criteria for the migration.</p>
+                </div>
+
+                <!-- TEST-001 -->
+                <div class="question-card">
+                    <div class="question-header">
+                        <span class="priority-badge critical">CRITICAL</span>
+                        <div class="question-content">
+                            <div class="question-id">TEST-001</div>
+                            <div class="question-text">What testing approach is preferred?</div>
+                            <div class="question-dependencies">Dependencies: RISK tolerance</div>
+                            <div class="question-impact">Impact: Determines testing timeline and resources</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="TEST-001-parallel" name="TEST-001" value="parallel">
+                                <label for="TEST-001-parallel">Full parallel run comparison (old vs new)</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="TEST-001-subsystem" name="TEST-001" value="subsystem">
+                                <label for="TEST-001-subsystem">Subsystem-by-subsystem validation</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="TEST-001-risk" name="TEST-001" value="risk">
+                                <label for="TEST-001-risk">Risk-based testing (critical paths only)</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="TEST-001-uat" name="TEST-001" value="uat">
+                                <label for="TEST-001-uat">User acceptance testing only</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="TEST-001-comprehensive" name="TEST-001" value="comprehensive">
+                                <label for="TEST-001-comprehensive">Comprehensive (all methods)</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TEST-002 -->
+                <div class="question-card">
+                    <div class="question-header">
+                        <span class="priority-badge critical">CRITICAL</span>
+                        <div class="question-content">
+                            <div class="question-id">TEST-002</div>
+                            <div class="question-text">What is the acceptable variance in calculations?</div>
+                            <div class="question-context">
+                                COBOL uses specific decimal arithmetic
+                            </div>
+                            <div class="question-dependencies">Dependencies: None</div>
+                            <div class="question-impact">Impact: Affects testing and validation approach</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="multi-input-group">
+                            <div class="multi-input-item">
+                                <label>Financial Tolerance ($):</label>
+                                <input type="number" class="form-control" id="TEST-002-financial" step="0.01" placeholder="0.00">
+                            </div>
+                            <div class="multi-input-item">
+                                <label>Percentage Variance (%):</label>
+                                <input type="number" class="form-control" id="TEST-002-percent" step="0.001" placeholder="0.000">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TEST-003 -->
+                <div class="question-card">
+                    <div class="question-header">
+                        <span class="priority-badge important">IMPORTANT</span>
+                        <div class="question-content">
+                            <div class="question-id">TEST-003</div>
+                            <div class="question-text">Will automated testing be implemented?</div>
+                            <div class="question-dependencies">Dependencies: None</div>
+                            <div class="question-impact">Impact: Affects development approach and quality</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="TEST-003-yes" name="TEST-003" value="yes" 
+                                       onchange="toggleConditional('TEST-003-details', true)">
+                                <label for="TEST-003-yes">Yes</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="TEST-003-no" name="TEST-003" value="no" 
+                                       onchange="toggleConditional('TEST-003-details', false)">
+                                <label for="TEST-003-no">No</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="conditional-field" id="TEST-003-details">
+                        <div class="multi-input-group">
+                            <div class="multi-input-item">
+                                <label>Unit Test Coverage (%):</label>
+                                <input type="number" class="form-control" id="TEST-003-unit" min="0" max="100" placeholder="80">
+                            </div>
+                            <div style="width: 100%;">
+                                <label>Integration Test Requirements:</label>
+                                <textarea class="form-control" id="TEST-003-integration" 
+                                        placeholder="Describe integration testing requirements..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-actions">
+                    <button class="btn btn-secondary" onclick="navigateToSection('integration')">
+                        ← Previous
+                    </button>
+                    <button class="btn btn-primary" onclick="navigateToSection('sequencing')">
+                        Next: Sequencing →
+                    </button>
+                </div>
+            </section>
+
+            <!-- Sequencing Section -->
+            <section class="section" id="sequencing">
+                <div class="section-header">
+                    <h2>Section 8: Migration Sequencing</h2>
+                    <p>Define the order and prioritization for migrating subsystems.</p>
+                </div>
+
+                <!-- SEQ-001 -->
+                <div class="question-card">
+                    <div class="question-header">
+                        <span class="priority-badge critical">CRITICAL</span>
+                        <div class="question-content">
+                            <div class="question-id">SEQ-001</div>
+                            <div class="question-text">Which subsystem should be migrated first (pilot)?</div>
+                            <div class="question-context">
+                                Consider risk, complexity, and business value
+                            </div>
+                            <div class="question-dependencies">Dependencies: BUS-006</div>
+                            <div class="question-impact">Impact: Defines starting point and proves approach</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="SEQ-001-admin" name="SEQ-001" value="SYS_ADMIN">
+                                <label for="SEQ-001-admin">SYS_ADMIN - Simplest, most isolated</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="SEQ-001-stock" name="SEQ-001" value="ST_CTRL">
+                                <label for="SEQ-001-stock">ST_CTRL - Relatively standalone</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="SEQ-001-report" name="SEQ-001" value="RPT_ENGINE">
+                                <label for="SEQ-001-report">RPT_ENGINE - Read-only, lower risk</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="SEQ-001-irs" name="SEQ-001" value="IRS_CORE">
+                                <label for="SEQ-001-irs">IRS_CORE - Simpler than GL, good test</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="SEQ-001-other" name="SEQ-001" value="other" 
+                                       onchange="toggleConditional('SEQ-001-other-details', true)">
+                                <label for="SEQ-001-other">Other (specify)</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="conditional-field" id="SEQ-001-other-details">
+                        <label>Specify Other Subsystem and Reason</label>
+                        <textarea class="form-control" id="SEQ-001-other-text" 
+                                placeholder="Which subsystem and why?"></textarea>
+                    </div>
+                </div>
+
+                <!-- SEQ-002 -->
+                <div class="question-card">
+                    <div class="question-header">
+                        <span class="priority-badge important">IMPORTANT</span>
+                        <div class="question-content">
+                            <div class="question-id">SEQ-002</div>
+                            <div class="question-text">Should tightly coupled subsystems be migrated together?</div>
+                            <div class="question-context">
+                                Some subsystems have dependencies (GL+BATCH, SL+ST, etc.)
+                            </div>
+                            <div class="question-dependencies">Dependencies: None</div>
+                            <div class="question-impact">Impact: Affects phase boundaries</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="SEQ-002-yes" name="SEQ-002" value="yes" 
+                                       onchange="toggleConditional('SEQ-002-groupings', true)">
+                                <label for="SEQ-002-yes">Yes - group coupled subsystems</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="SEQ-002-no" name="SEQ-002" value="no" 
+                                       onchange="toggleConditional('SEQ-002-groupings', false)">
+                                <label for="SEQ-002-no">No - migrate individually with interfaces</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="conditional-field" id="SEQ-002-groupings">
+                        <label>Specify Groupings</label>
+                        <textarea class="form-control" id="SEQ-002-groups" 
+                                placeholder="Example: GL_CORE + BATCH_FW (posting integration)"></textarea>
+                    </div>
+                </div>
+
+                <!-- SEQ-003 -->
+                <div class="question-card">
+                    <div class="question-header">
+                        <span class="priority-badge critical">CRITICAL</span>
+                        <div class="question-content">
+                            <div class="question-id">SEQ-003</div>
+                            <div class="question-text">What are the critical business dates that affect migration timing?</div>
+                            <div class="question-context">
+                                xl150 runs month-end, quarter-end, year-end
+                            </div>
+                            <div class="question-dependencies">Dependencies: None</div>
+                            <div class="question-impact">Impact: Constrains migration windows</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="multi-input-group">
+                            <div style="width: 100%;">
+                                <label>Year-end Processing:</label>
+                                <input type="text" class="form-control" id="SEQ-003-yearend" placeholder="e.g., December 31">
+                            </div>
+                            <div style="width: 100%;">
+                                <label>Tax Deadlines:</label>
+                                <input type="text" class="form-control" id="SEQ-003-tax" placeholder="e.g., January 31, March 31">
+                            </div>
+                            <div style="width: 100%;">
+                                <label>Audit Periods:</label>
+                                <input type="text" class="form-control" id="SEQ-003-audit" placeholder="e.g., February-March">
+                            </div>
+                            <div style="width: 100%;">
+                                <label>Peak Business Seasons:</label>
+                                <input type="text" class="form-control" id="SEQ-003-peak" placeholder="e.g., Q4 holidays">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-actions">
+                    <button class="btn btn-secondary" onclick="navigateToSection('testing')">
+                        ← Previous
+                    </button>
+                    <button class="btn btn-primary" onclick="navigateToSection('summary')">
+                        Review & Export →
+                    </button>
+                </div>
+            </section>
+
+            <!-- Summary Section -->
+            <section class="section" id="summary">
+                <div class="section-header">
+                    <h2>Review & Export Your Responses</h2>
+                    <p>Review your answers and export them to a Markdown file for further processing.</p>
+                </div>
+
+                <div class="summary-grid">
+                    <div class="summary-card">
+                        <h4>📊 Progress</h4>
+                        <div class="summary-value" id="summary-progress">0%</div>
+                        <p>Completion</p>
+                    </div>
+                    <div class="summary-card">
+                        <h4>✅ Answered</h4>
+                        <div class="summary-value" id="summary-answered">0/50</div>
+                        <p>Questions</p>
+                    </div>
+                    <div class="summary-card">
+                        <h4>🔴 Critical</h4>
+                        <div class="summary-value" id="summary-critical">0/15</div>
+                        <p>Answered</p>
+                    </div>
+                    <div class="summary-card">
+                        <h4>⏱️ Time Spent</h4>
+                        <div class="summary-value" id="summary-time">0m</div>
+                        <p>Minutes</p>
+                    </div>
+                </div>
+
+                <div class="question-card">
+                    <h3>📊 Progress Metrics Dashboard</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; margin: 20px 0;">
+                        <div style="text-align: center; padding: 15px; background: #f8f9fa; border-radius: 8px;">
+                            <div id="dashboard-total" style="font-size: 2em; font-weight: bold; color: #2c3e50;">-</div>
+                            <div style="color: #6c757d; font-size: 0.9em;">Total Questions</div>
+                        </div>
+                        <div style="text-align: center; padding: 15px; background: #e8f5e9; border-radius: 8px;">
+                            <div id="dashboard-answered" style="font-size: 2em; font-weight: bold; color: #27ae60;">0</div>
+                            <div style="color: #6c757d; font-size: 0.9em;">Questions Answered</div>
+                        </div>
+                        <div style="text-align: center; padding: 15px; background: #ffeaa7; border-radius: 8px;">
+                            <div id="dashboard-critical-total" style="font-size: 2em; font-weight: bold; color: #f39c12;">-</div>
+                            <div style="color: #6c757d; font-size: 0.9em;">Total Critical</div>
+                        </div>
+                        <div style="text-align: center; padding: 15px; background: #ffebee; border-radius: 8px;">
+                            <div id="dashboard-critical-remaining" style="font-size: 2em; font-weight: bold; color: #e74c3c;">-</div>
+                            <div style="color: #6c757d; font-size: 0.9em;">Critical Remaining</div>
+                        </div>
+                    </div>
+                    <div style="margin-top: 20px; padding: 15px; background: #e3f2fd; border-radius: 8px;">
+                        <div style="display: flex; align-items: center; justify-content: space-between;">
+                            <div>
+                                <strong>Overall Completion:</strong>
+                                <span id="dashboard-percentage" style="font-size: 1.2em; margin-left: 10px;">0%</span>
+                            </div>
+                            <div>
+                                <strong>Critical Completion:</strong>
+                                <span id="dashboard-critical-percentage" style="font-size: 1.2em; margin-left: 10px;">0%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question-card">
+                    <h3>Response Summary by Section</h3>
+                    <div id="section-summary">
+                        <!-- Dynamically populated -->
+                    </div>
+                </div>
+
+                <div class="question-card">
+                    <h3>Export Options</h3>
+                    <div class="form-group">
+                        <label>Organization Name</label>
+                        <input type="text" class="form-control" id="export-org" placeholder="Your Company Name">
+                    </div>
+                    <div class="form-group">
+                        <label>Respondent Name</label>
+                        <input type="text" class="form-control" id="export-name" placeholder="Your Name">
+                    </div>
+                    <div class="form-group">
+                        <label>Respondent Title</label>
+                        <input type="text" class="form-control" id="export-title" placeholder="Your Title">
+                    </div>
+                </div>
+
+                <div class="section-actions">
+                    <button class="btn btn-secondary" onclick="saveProgress()">
+                        💾 Save Progress
+                    </button>
+                    <button class="btn btn-success" onclick="exportToMarkdown()">
+                        📄 Export to Markdown
+                    </button>
+                    <button class="btn btn-enhanced" onclick="showEnhancedExportModal(); openModal('exportModal')">
+                        📊 Enhanced Report
+                    </button>
+                    <button class="btn btn-warning" onclick="resetQuestionnaire()" style="margin-left: 10px;">
+                        🔄 Reset All
+                    </button>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Export Modal -->
+    <div class="modal" id="exportModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Export to Markdown</h3>
+                <p>Your responses have been formatted as Markdown. You can copy the text below or download it as a file.</p>
+            </div>
+            <div class="modal-body">
+                <div class="export-preview" id="export-preview">
+                    <!-- Markdown content will be displayed here -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeModal()">Close</button>
+                <button class="btn btn-primary" onclick="copyToClipboard()">📋 Copy to Clipboard</button>
+                <button class="btn btn-success" onclick="downloadMarkdown()">⬇️ Download .md File</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Global state
+        let responses = {};
+        let startTime = Date.now();
+        let currentSection = 'overview';
+
+        // Define question mapping
+        const questionConfig = {
+            // Critical questions
+            critical: ['BUS-001', 'BUS-002', 'BUS-004', 'ARCH-001', 'ARCH-002', 'TECH-001', 'TECH-002', 
+                      'COBOL-001', 'BATCH-001', 'DATA-001', 'FUNC-001', 'INT-003', 'TEST-001', 'TEST-002', 'SEQ-001', 'SEQ-003'],
+            // Important questions
+            important: ['BUS-003', 'BUS-005', 'BUS-006', 'FUNC-002', 'DATA-002', 'DATA-003', 'INT-001', 'INT-002', 
+                       'TEST-003', 'SEQ-002'],
+            // Nice-to-have questions
+            nice: ['FUNC-003']
+        };
+
+        // Question tracking - will be set dynamically
+        let REAL_TOTAL_QUESTIONS = 0;
+        let REAL_CRITICAL_QUESTIONS = 0;
+        
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load saved responses FIRST, then count questions
+            loadSavedResponses();
+            
+            // Count real questions and initialize properly
+            setTimeout(() => {
+                countRealQuestions();
+                
+                // Clean up any invalid responses one more time before updating progress
+                const validQuestionPattern = /^(BUS|ARCH|TECH|COBOL|BATCH|DATA|FUNC|INT|TEST|SEQ)-\d{3}$/;
+                const cleanedResponses = {};
+                
+                Object.keys(responses).forEach(key => {
+                    if (key.match(validQuestionPattern)) {
+                        cleanedResponses[key] = responses[key];
+                    }
+                });
+                
+                responses = cleanedResponses;
+                
+                // Re-calculate multi-field questions that might not be saved correctly
+                recalculateMultiFieldQuestions();
+                
+                // Now update progress with clean data
+                updateProgress();
+                
+                // Force save cleaned responses to fix any legacy data issues
+                if (Object.keys(responses).length > 0) {
+                    localStorage.setItem('acas-responses', JSON.stringify(responses));
+                }
+            }, 100);
+            
+            // Set up navigation
+            setupNavigation();
+            
+            // Set up form listeners
+            setupFormListeners();
+            
+            // Start time tracking
+            setInterval(updateTimeSpent, 60000); // Update every minute
+
+            // Auto-save every 30 seconds
+            setInterval(autoSave, 30000);
+
+            // Load current section from storage
+            const savedSection = localStorage.getItem('acas-current-section');
+            if (savedSection && savedSection !== 'overview') {
+                navigateToSection(savedSection);
+            }
+            
+            // Ensure progress bar is hidden if starting on summary
+            if (!savedSection || savedSection === 'overview') {
+                // Show progress bar for default sections
+                const progressContainer = document.querySelector('.progress-container');
+                if (progressContainer) {
+                    progressContainer.style.display = 'block';
+                }
+            }
+        });
+
+        // Navigation
+        function setupNavigation() {
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const section = this.getAttribute('data-section');
+                    if (section) {
+                        navigateToSection(section);
+                    }
+                });
+            });
+        }
+
+        function navigateToSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Remove active class from nav items
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Show selected section
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.classList.add('active');
+            }
+            
+            // Mark nav item as active
+            const navItem = document.querySelector(`[data-section="${sectionId}"]`);
+            if (navItem) {
+                navItem.classList.add('active');
+            }
+            
+            // Update current section
+            currentSection = sectionId;
+            
+            // Scroll to top
+            document.querySelector('.main-content').scrollTop = 0;
+            
+            // Save current section
+            localStorage.setItem('acas-current-section', sectionId);
+            
+            // Hide progress bar on summary/review page
+            const progressContainer = document.querySelector('.progress-container');
+            if (progressContainer) {
+                if (sectionId === 'summary') {
+                    progressContainer.style.display = 'none';
+                } else {
+                    progressContainer.style.display = 'block';
+                }
+            }
+
+            // Close mobile menu if open
+            document.getElementById('sidebar').classList.remove('mobile-open');
+        }
+
+        // Form handling
+        function setupFormListeners() {
+            // Text inputs, numbers, textareas and selects
+            document.querySelectorAll('input[type="text"], input[type="number"], textarea, select').forEach(input => {
+                input.addEventListener('change', function() {
+                    handleTextInputChange(this);
+                });
+                input.addEventListener('input', function() {
+                    if (this.type === 'number') {
+                        handleTextInputChange(this);
+                    }
+                });
+            });
+            
+            // Radio buttons
+            document.querySelectorAll('input[type="radio"]').forEach(radio => {
+                radio.addEventListener('change', function() {
+                    saveResponse(this.name, this.value);
+                    updateProgress();
+                });
+            });
+            
+            // Checkboxes
+            document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    handleCheckboxChange(this);
+                    updateProgress();
+                });
+            });
+            
+            // Range inputs
+            document.querySelectorAll('input[type="range"]').forEach(range => {
+                range.addEventListener('input', function() {
+                    let questionId = this.name || this.id;
+                    const match = questionId.match(/(BUS|ARCH|TECH|COBOL|BATCH|DATA|FUNC|INT|TEST|SEQ)-\d{3}/);
+                    if (match) {
+                        questionId = match[0];
+                        saveResponse(questionId, this.value);
+                        updateProgress();
+                    }
+                });
+            });
+        }
+
+        function handleTextInputChange(input) {
+            // Extract main question ID from element ID or name
+            let questionId = input.name || input.id;
+            const match = questionId.match(/(BUS|ARCH|TECH|COBOL|BATCH|DATA|FUNC|INT|TEST|SEQ)-\d{3}/);
+            
+            if (!match) return;
+            
+            questionId = match[0];
+            
+            // Check if this is part of a multi-field question (like DATA-002 or BUS-001)
+            if (input.id && input.id !== questionId && input.id.includes(questionId + '-')) {
+                // This is a sub-field of a question, collect all related fields
+                const relatedInputs = document.querySelectorAll(`[id^="${questionId}-"]`);
+                const values = {};
+                let hasAnyValue = false;
+                
+                relatedInputs.forEach(relInput => {
+                    if (relInput.type === 'number' || relInput.type === 'text' || relInput.tagName === 'SELECT' || relInput.tagName === 'TEXTAREA') {
+                        const fieldName = relInput.id.replace(questionId + '-', '');
+                        if (relInput.value && relInput.value.trim() !== '') {
+                            values[fieldName] = relInput.value;
+                            hasAnyValue = true;
+                        }
+                    }
+                });
+                
+                // Save the combined values for the question
+                if (hasAnyValue) {
+                    saveResponse(questionId, values);
+                } else {
+                    saveResponse(questionId, '');
+                }
+            } else {
+                // Single field question
+                saveResponse(questionId, input.value);
+            }
+            
+            updateProgress();
+        }
+
+        function handleCheckboxChange(checkbox) {
+            // Find the question ID (everything before the last dash)
+            const parts = checkbox.id.split('-');
+            const questionId = parts.slice(0, -1).join('-');
+            
+            // Get all checkboxes for this question
+            const questionCheckboxes = document.querySelectorAll(`input[type="checkbox"][id^="${questionId}-"]`);
+            const values = [];
+            
+            questionCheckboxes.forEach(cb => {
+                if (cb.checked) {
+                    values.push(cb.value);
+                }
+            });
+            
+            saveResponse(questionId, values);
+        }
+
+        // Response management
+        function saveResponse(questionId, value) {
+            // Only save responses for valid question IDs
+            const validQuestionPattern = /^(BUS|ARCH|TECH|COBOL|BATCH|DATA|FUNC|INT|TEST|SEQ)-\d{3}$/;
+            
+            if (!questionId.match(validQuestionPattern)) {
+                console.warn(`Skipping invalid question ID: ${questionId}`);
+                return;
+            }
+            
+            responses[questionId] = {
+                value: value,
+                timestamp: new Date().toISOString()
+            };
+            
+            console.log(`Saved response for ${questionId}:`, value);
+        }
+
+        function autoSave() {
+            localStorage.setItem('acas-responses', JSON.stringify(responses));
+            showNotification('Progress saved automatically');
+        }
+
+        function saveProgress() {
+            localStorage.setItem('acas-responses', JSON.stringify(responses));
+            showNotification('Progress saved successfully!');
+        }
+
+        function loadSavedResponses() {
+            const saved = localStorage.getItem('acas-responses');
+            if (saved) {
+                responses = JSON.parse(saved);
+                
+                // Clean up any responses that don't match current questions
+                const validResponses = {};
+                const validQuestionPattern = /^(BUS|ARCH|TECH|COBOL|BATCH|DATA|FUNC|INT|TEST|SEQ)-\d{3}$/;
+                
+                Object.keys(responses).forEach(questionId => {
+                    // First check if this is a valid question ID pattern
+                    if (!questionId.match(validQuestionPattern)) {
+                        return; // Skip invalid question IDs
+                    }
+                    
+                    // Then check if this question exists in the current form
+                    const questionExists = document.querySelector(`[name="${questionId}"]`) || 
+                                         document.querySelector(`#${questionId}`) ||
+                                         document.querySelector(`[data-question="${questionId}"]`);
+                    
+                    if (questionExists) {
+                        validResponses[questionId] = responses[questionId];
+                        const responseValue = responses[questionId].value;
+                        restoreFormValue(questionId, responseValue);
+                    }
+                });
+                
+                // Update responses to only include valid ones
+                responses = validResponses;
+                
+                console.log('Cleaned responses:', {
+                    originalCount: Object.keys(JSON.parse(saved)).length,
+                    validCount: Object.keys(validResponses).length,
+                    removed: Object.keys(JSON.parse(saved)).length - Object.keys(validResponses).length
+                });
+            }
+        }
+
+        function restoreFormValue(questionId, value) {
+            // Handle different input types
+            const element = document.getElementById(questionId);
+            
+            if (element) {
+                if (element.type === 'checkbox') {
+                    // This shouldn't happen for single checkboxes, but handle it
+                    element.checked = value === true || value === 'true';
+                } else if (element.type === 'radio') {
+                    element.checked = true;
+                } else {
+                    element.value = value;
+                    if (element.type === 'range') {
+                        updateScaleValue(questionId, value);
+                    }
+                }
+            } else {
+                // Handle radio buttons by name
+                const radio = document.querySelector(`input[type="radio"][name="${questionId}"][value="${value}"]`);
+                if (radio) {
+                    radio.checked = true;
+                    // Trigger change event to handle conditional fields
+                    radio.dispatchEvent(new Event('change'));
+                } else if (Array.isArray(value)) {
+                    // Handle checkbox arrays
+                    value.forEach(val => {
+                        const checkbox = document.querySelector(`input[type="checkbox"][id*="${questionId}"][value="${val}"]`);
+                        if (checkbox) {
+                            checkbox.checked = true;
+                        }
+                    });
+                } else if (typeof value === 'object' && value !== null) {
+                    // Handle multi-field questions (like DATA-002)
+                    Object.keys(value).forEach(fieldName => {
+                        const fieldElement = document.getElementById(`${questionId}-${fieldName}`);
+                        if (fieldElement) {
+                            fieldElement.value = value[fieldName];
+                        }
+                    });
+                }
+            }
+        }
+
+        // Recalculate multi-field questions
+        function recalculateMultiFieldQuestions() {
+            // Only recalculate if we have existing responses (not after a reset)
+            if (Object.keys(responses).length === 0) {
+                return;
+            }
+            
+            // List of known multi-field questions
+            const multiFieldQuestions = ['BUS-001', 'DATA-002'];
+            
+            multiFieldQuestions.forEach(questionId => {
+                const relatedInputs = document.querySelectorAll(`[id^="${questionId}-"]`);
+                const values = {};
+                let hasAnyValue = false;
+                
+                relatedInputs.forEach(input => {
+                    // Skip select elements with default empty value
+                    if (input.tagName === 'SELECT' && input.value === '') {
+                        return;
+                    }
+                    
+                    if ((input.type === 'number' || input.type === 'text' || input.tagName === 'SELECT' || input.tagName === 'TEXTAREA') 
+                        && input.value && input.value.trim() !== '') {
+                        const fieldName = input.id.replace(questionId + '-', '');
+                        values[fieldName] = input.value;
+                        hasAnyValue = true;
+                    }
+                });
+                
+                if (hasAnyValue) {
+                    // Check if this question already has a response saved
+                    if (!responses[questionId] || typeof responses[questionId].value !== 'object') {
+                        // Save the multi-field response
+                        saveResponse(questionId, values);
+                        console.log(`Recalculated multi-field question ${questionId}:`, values);
+                    }
+                }
+            });
+        }
+
+        // Utility functions
+        function updateScaleValue(scaleId, value) {
+            const valueSpan = document.getElementById(scaleId + '-value');
+            if (valueSpan) {
+                valueSpan.textContent = value;
+            }
+        }
+
+        function toggleConditional(fieldId, show) {
+            const field = document.getElementById(fieldId);
+            if (field) {
+                if (show) {
+                    field.classList.add('show');
+                } else {
+                    field.classList.remove('show');
+                }
+            }
+        }
+
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.classList.add('show');
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+
+        // Count real questions accurately
+        function countRealQuestions() {
+            let realQuestions = 0;
+            let criticalQuestions = 0;
+            
+            // Get all question cards that have actual question IDs
+            document.querySelectorAll('.question-card').forEach(card => {
+                // Check if this card has a question ID (BUS-001, ARCH-001, etc)
+                const questionId = card.querySelector('.question-id');
+                if (questionId && questionId.textContent.trim()) {
+                    const idText = questionId.textContent.trim();
+                    // Only count valid question patterns that actually exist
+                    if (idText.match(/^(BUS|ARCH|TECH|COBOL|BATCH|DATA|FUNC|INT|TEST|SEQ)-\d{3}$/)) {
+                        realQuestions++;
+                        
+                        // Check if it's critical
+                        if (card.querySelector('.priority-badge.critical')) {
+                            criticalQuestions++;
+                        }
+                    }
+                }
+            });
+            
+            REAL_TOTAL_QUESTIONS = realQuestions;
+            REAL_CRITICAL_QUESTIONS = criticalQuestions;
+            
+            console.log(`Counted ${realQuestions} real questions, ${criticalQuestions} critical`);
+            return { total: realQuestions, critical: criticalQuestions };
+        }
+
+        // Progress tracking - FIXED
+        function updateProgress() {
+            // First count real questions
+            const counts = countRealQuestions();
+            const totalQuestions = counts.total;
+            
+            // Debug logging to identify the metrics issue
+            console.log('UpdateProgress Debug:', {
+                totalQuestions: totalQuestions,
+                counts: counts
+            });
+            const totalCritical = counts.critical;
+            
+            let answeredCount = 0;
+            let criticalAnswered = 0;
+            let importantAnswered = 0;
+            
+            // Count answered questions from responses
+            // Only count responses that match actual questions in the current questionnaire
+            const validQuestionPattern = /^(BUS|ARCH|TECH|COBOL|BATCH|DATA|FUNC|INT|TEST|SEQ)-\d{3}$/;
+            
+            // First, let's see what questions exist in the DOM
+            const existingQuestions = new Set();
+            document.querySelectorAll('.question-id').forEach(elem => {
+                const id = elem.textContent.trim();
+                if (id.match(validQuestionPattern)) {
+                    existingQuestions.add(id);
+                }
+            });
+            
+            console.log('Existing questions in DOM:', Array.from(existingQuestions).sort());
+            console.log('Responses in storage:', Object.keys(responses).sort());
+            
+            // Check each existing question to see if it has a response
+            const unansweredQuestions = [];
+            existingQuestions.forEach(questionId => {
+                const response = responses[questionId];
+                let hasValidResponse = false;
+                
+                if (response && response.value !== undefined) {
+                    // Check different types of values
+                    if (typeof response.value === 'string' && response.value !== '') {
+                        hasValidResponse = true;
+                    } else if (Array.isArray(response.value) && response.value.length > 0) {
+                        hasValidResponse = true;
+                    } else if (typeof response.value === 'object' && response.value !== null && Object.keys(response.value).length > 0) {
+                        // For multi-field questions like DATA-002
+                        hasValidResponse = true;
+                    }
+                }
+                
+                if (hasValidResponse) {
+                    answeredCount++;
+                } else {
+                    unansweredQuestions.push(questionId);
+                }
+            });
+            
+            console.log('Answered count:', answeredCount);
+            console.log('Unanswered questions:', unansweredQuestions);
+            
+            // Debug logging
+            console.log('Answered count debug:', {
+                answeredCount: answeredCount,
+                totalResponses: Object.keys(responses).length,
+                responses: responses
+            });
+            
+            // Use validateCriticalCompletion for accurate critical count
+            const criticalValidation = validateCriticalCompletion();
+            criticalAnswered = criticalValidation.answered;
+            
+            // Calculate remaining questions
+            const criticalRemaining = Math.max(0, totalCritical - criticalAnswered);
+            const overallRemaining = Math.max(0, totalQuestions - answeredCount);
+            
+            // Calculate correct percentage
+            const progressPercent = totalQuestions > 0 ? Math.round((answeredCount / totalQuestions) * 100) : 0;
+            
+            // Update UI with accurate values
+            const totalElement = document.getElementById('total-questions');
+            const answeredElement = document.getElementById('answered-count');
+            const criticalElement = document.getElementById('critical-remaining');
+            const percentElement = document.getElementById('completion-percent');
+            
+            if (totalElement) totalElement.textContent = totalQuestions;
+            if (answeredElement) answeredElement.textContent = answeredCount;
+            if (criticalElement) criticalElement.textContent = criticalRemaining;
+            if (percentElement) percentElement.textContent = progressPercent + '%';
+            
+            const progressFill = document.getElementById('progress-fill');
+            if (progressFill) {
+                progressFill.style.width = progressPercent + '%';
+                progressFill.textContent = progressPercent + '%';
+            }
+            
+            // Update summary with correct values
+            const summaryProgress = document.getElementById('summary-progress');
+            const summaryAnswered = document.getElementById('summary-answered');
+            const summaryCritical = document.getElementById('summary-critical');
+            
+            if (summaryProgress) summaryProgress.textContent = progressPercent + '%';
+            if (summaryAnswered) summaryAnswered.textContent = answeredCount + '/' + totalQuestions;
+            if (summaryCritical) summaryCritical.textContent = criticalAnswered + '/' + totalCritical;
+            
+            // Update dashboard metrics
+            const dashboardTotal = document.getElementById('dashboard-total');
+            const dashboardAnswered = document.getElementById('dashboard-answered');
+            const dashboardCriticalTotal = document.getElementById('dashboard-critical-total');
+            const dashboardCriticalRemaining = document.getElementById('dashboard-critical-remaining');
+            const dashboardPercentage = document.getElementById('dashboard-percentage');
+            const dashboardCriticalPercentage = document.getElementById('dashboard-critical-percentage');
+            
+            if (dashboardTotal) dashboardTotal.textContent = totalQuestions;
+            if (dashboardAnswered) dashboardAnswered.textContent = answeredCount;
+            if (dashboardCriticalTotal) dashboardCriticalTotal.textContent = totalCritical;
+            if (dashboardCriticalRemaining) dashboardCriticalRemaining.textContent = criticalRemaining;
+            if (dashboardPercentage) dashboardPercentage.textContent = progressPercent + '%';
+            if (dashboardCriticalPercentage) {
+                const criticalPercent = totalCritical > 0 ? Math.round((criticalAnswered / totalCritical) * 100) : 0;
+                dashboardCriticalPercentage.textContent = criticalPercent + '%';
+                
+                // Color code based on critical completion
+                if (criticalPercent === 100) {
+                    dashboardCriticalPercentage.style.color = '#27ae60';
+                } else if (criticalPercent >= 80) {
+                    dashboardCriticalPercentage.style.color = '#f39c12';
+                } else {
+                    dashboardCriticalPercentage.style.color = '#e74c3c';
+                }
+            }
+            
+            // Update section status indicators
+            updateSectionStatus();
+        }
+
+        function updateSectionStatus() {
+            const sectionQuestions = {
+                'business-context': ['BUS-001', 'BUS-002', 'BUS-003', 'BUS-004', 'BUS-005', 'BUS-006'],
+                'architecture': ['ARCH-001', 'ARCH-002', 'TECH-001', 'TECH-002'],
+                'cobol-specific': ['COBOL-001', 'BATCH-001', 'DATA-001'],
+                'functional': ['FUNC-001', 'FUNC-002', 'FUNC-003'],
+                'data-migration': ['DATA-002', 'DATA-003'],
+                'integration': ['INT-001', 'INT-002', 'INT-003'],
+                'testing': ['TEST-001', 'TEST-002', 'TEST-003'],
+                'sequencing': ['SEQ-001', 'SEQ-002', 'SEQ-003']
+            };
+            
+            Object.keys(sectionQuestions).forEach(section => {
+                const questions = sectionQuestions[section];
+                const status = document.getElementById('status-' + section);
+                
+                if (status) {
+                    let answered = 0;
+                    let total = questions.length;
+                    
+                    questions.forEach(q => {
+                        // Check if any response starts with this question ID
+                        const hasResponse = Object.keys(responses).some(key => {
+                            const response = responses[key];
+                            return key.startsWith(q) && response && response.value !== undefined && 
+                                   response.value !== '' && !(Array.isArray(response.value) && response.value.length === 0);
+                        });
+                        if (hasResponse) answered++;
+                    });
+                    
+                    if (answered === total) {
+                        status.textContent = '✓';
+                        status.className = 'status complete';
+                    } else if (answered > 0) {
+                        status.textContent = '◐';
+                        status.className = 'status partial';
+                    } else {
+                        status.textContent = '○';
+                        status.className = 'status';
+                    }
+                }
+            });
+        }
+
+        function updateTimeSpent() {
+            const elapsed = Date.now() - startTime;
+            const minutes = Math.floor(elapsed / 60000);
+            document.getElementById('summary-time').textContent = minutes + 'm';
+        }
+
+        // Export functionality
+        function exportToMarkdown() {
+            const org = document.getElementById('export-org').value || '[Organization Name]';
+            const name = document.getElementById('export-name').value || '[Your Name]';
+            const title = document.getElementById('export-title').value || '[Your Title]';
+            const date = new Date().toISOString().split('T')[0];
+            
+            let markdown = `# ACAS Migration Requirements - Responses\n\n`;
+            markdown += `**Organization:** ${org}\n`;
+            markdown += `**Respondent:** ${name}, ${title}\n`;
+            markdown += `**Date:** ${date}\n`;
+            markdown += `**Completion:** ${document.getElementById('completion-percent').textContent}\n\n`;
+            markdown += `---\n\n`;
+            
+            // Add responses by section
+            markdown += generateSectionMarkdown('Business Context', ['BUS-001', 'BUS-002', 'BUS-003', 'BUS-004', 'BUS-005', 'BUS-006']);
+            markdown += generateSectionMarkdown('Architecture', ['ARCH-001', 'ARCH-002', 'TECH-001', 'TECH-002']);
+            markdown += generateSectionMarkdown('COBOL Migration', ['COBOL-001', 'BATCH-001', 'DATA-001']);
+            markdown += generateSectionMarkdown('Functional Requirements', ['FUNC-001', 'FUNC-002', 'FUNC-003']);
+            markdown += generateSectionMarkdown('Data Migration', ['DATA-002', 'DATA-003']);
+            markdown += generateSectionMarkdown('Integration', ['INT-001', 'INT-002', 'INT-003']);
+            markdown += generateSectionMarkdown('Testing', ['TEST-001', 'TEST-002', 'TEST-003']);
+            markdown += generateSectionMarkdown('Sequencing', ['SEQ-001', 'SEQ-002', 'SEQ-003']);
+            
+            markdown += `\n---\n\n`;
+            markdown += `## Migration Decision Summary\n\n`;
+            
+            // Add key decision summary
+            const keyDecisions = {
+                'Architecture Pattern': 'ARCH-001',
+                'Migration Pattern': 'ARCH-002',
+                'Programming Language': 'TECH-001',
+                'Database Technology': 'TECH-002',
+                'COBOL Handling': 'COBOL-001',
+                'Data Migration': 'DATA-001',
+                'Testing Approach': 'TEST-001',
+                'Pilot Subsystem': 'SEQ-001'
+            };
+            
+            Object.keys(keyDecisions).forEach(key => {
+                const questionId = keyDecisions[key];
+                const response = responses[questionId];
+                if (response && response.value) {
+                    markdown += `**${key}:** ${response.value}\n`;
+                }
+            });
+            
+            markdown += `\n---\n\n*Generated by ACAS Migration Interactive Questionnaire*\n`;
+            
+            // Show in modal
+            document.getElementById('export-preview').textContent = markdown;
+            document.getElementById('exportModal').classList.add('show');
+            
+            // Store for download
+            window.exportedMarkdown = markdown;
+        }
+
+        function generateSectionMarkdown(sectionTitle, questionIds) {
+            let markdown = `## ${sectionTitle}\n\n`;
+            
+            questionIds.forEach(questionId => {
+                const response = responses[questionId];
+                if (response && response.value !== undefined && response.value !== '') {
+                    const priority = questionConfig.critical.includes(questionId) ? 'CRITICAL' : 
+                                   questionConfig.important.includes(questionId) ? 'IMPORTANT' : 'NICE-TO-HAVE';
+                    
+                    markdown += `### ${questionId}\n`;
+                    markdown += `**Priority:** ${priority}\n\n`;
+                    
+                    if (Array.isArray(response.value)) {
+                        markdown += `**Response:** ${response.value.join(', ')}\n`;
+                    } else {
+                        markdown += `**Response:** ${response.value}\n`;
+                    }
+                    
+                    // Add notes if available
+                    const notesResponse = responses[questionId + '-notes'];
+                    if (notesResponse && notesResponse.value) {
+                        markdown += `**Notes:** ${notesResponse.value}\n`;
+                    }
+                    
+                    markdown += `\n`;
+                }
+            });
+            
+            return markdown;
+        }
+
+        function closeModal() {
+            document.getElementById('exportModal').classList.remove('show');
+        }
+
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.add('show');
+        }
+
+        function copyToClipboard() {
+            const text = document.getElementById('export-preview').textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                showNotification('Copied to clipboard!');
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+                showNotification('Copy failed - please select and copy manually');
+            });
+        }
+
+        function downloadMarkdown() {
+            const text = window.exportedMarkdown || document.getElementById('export-preview').textContent;
+            const blob = new Blob([text], { type: 'text/markdown' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `ACAS_Migration_Responses_${new Date().toISOString().split('T')[0]}.md`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            showNotification('Markdown file downloaded!');
+        }
+
+        function toggleMobileMenu() {
+            document.getElementById('sidebar').classList.toggle('mobile-open');
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            const sidebar = document.getElementById('sidebar');
+            const toggleButton = document.querySelector('.mobile-menu-toggle');
+            
+            if (!sidebar.contains(e.target) && !toggleButton.contains(e.target)) {
+                sidebar.classList.remove('mobile-open');
+            }
+        });
+
+        // Handle conditional field logic for various questions
+        document.addEventListener('change', function(e) {
+            // Handle ARCH-001 hybrid details
+            if (e.target.name === 'ARCH-001') {
+                const isHybrid = e.target.value === 'hybrid';
+                toggleConditional('ARCH-001-hybrid-details', isHybrid);
+            }
+            
+            // Handle other conditional triggers
+            if (e.target.id === 'BUS-005-yes') {
+                toggleConditional('BUS-005-details', true);
+            } else if (e.target.id === 'BUS-005-no') {
+                toggleConditional('BUS-005-details', false);
+            }
+            
+            if (e.target.id === 'INT-003-yes') {
+                toggleConditional('INT-003-details', true);
+            } else if (e.target.id === 'INT-003-no') {
+                toggleConditional('INT-003-details', false);
+            }
+            
+            if (e.target.id === 'TEST-003-yes') {
+                toggleConditional('TEST-003-details', true);
+            } else if (e.target.id === 'TEST-003-no') {
+                toggleConditional('TEST-003-details', false);
+            }
+            
+            if (e.target.name === 'SEQ-001') {
+                const isOther = e.target.value === 'other';
+                toggleConditional('SEQ-001-other-details', isOther);
+            }
+            
+            if (e.target.id === 'SEQ-002-yes') {
+                toggleConditional('SEQ-002-groupings', true);
+            } else if (e.target.id === 'SEQ-002-no') {
+                toggleConditional('SEQ-002-groupings', false);
+            }
+        });
+
+        // Enhanced dependency tracking and validation
+        function highlightRelatedQuestions(questionId) {
+            const dependencies = {
+                'ARCH-001': ['COBOL-001', 'DATA-001', 'TECH-001'],
+                'COBOL-001': ['BATCH-001', 'FILE-001', 'TEST-002'],
+                'BUS-001': ['ARCH-001', 'EXEC-001', 'RISK-001']
+            };
+            
+            if (dependencies[questionId]) {
+                dependencies[questionId].forEach(depId => {
+                    const elements = document.querySelectorAll(`[name="${depId}"]`);
+                    elements.forEach(el => {
+                        const card = el.closest('.question-card');
+                        if (card) {
+                            card.style.borderLeft = '4px solid #2196f3';
+                            card.style.backgroundColor = '#e3f2fd';
+                            
+                            // Add temporary notification
+                            let notification = card.querySelector('.dependency-note');
+                            if (!notification) {
+                                notification = document.createElement('div');
+                                notification.className = 'dependency-note';
+                                notification.style.cssText = 'background: #bbdefb; padding: 6px; margin: 4px 0; border-radius: 3px; font-size: 0.85em;';
+                                notification.innerHTML = `⚡ Related to your ${questionId} choice - consider this carefully`;
+                                card.querySelector('.question-header').after(notification);
+                            }
+                            
+                            // Reset after 8 seconds
+                            setTimeout(() => {
+                                card.style.borderLeft = '';
+                                card.style.backgroundColor = '';
+                                if (notification) notification.remove();
+                            }, 8000);
+                        }
+                    });
+                });
+            }
+        }
+
+        // Validation for critical questions
+        function validateCriticalCompletion() {
+            const criticalQuestions = document.querySelectorAll('.priority-badge.critical');
+            let answered = 0;
+            
+            criticalQuestions.forEach((badge, index) => {
+                const card = badge.closest('.question-card');
+                
+                // Enhanced validation - check all input types properly
+                const radioChecked = card.querySelectorAll('input[type="radio"]:checked');
+                const checkboxChecked = card.querySelectorAll('input[type="checkbox"]:checked');
+                const selectsFilled = Array.from(card.querySelectorAll('select')).filter(s => s.value && s.value.trim() !== '');
+                const textsFilled = Array.from(card.querySelectorAll('input[type="text"], input[type="email"], input[type="number"]')).filter(t => t.value && t.value.trim() !== '');
+                const textareasFilled = Array.from(card.querySelectorAll('textarea')).filter(ta => ta.value && ta.value.trim() !== '');
+                
+                const hasAnswer = radioChecked.length > 0 || 
+                                checkboxChecked.length > 0 || 
+                                selectsFilled.length > 0 || 
+                                textsFilled.length > 0 || 
+                                textareasFilled.length > 0;
+                
+                if (hasAnswer) {
+                    answered++;
+                    card.classList.add('critical-answered');
+                } else {
+                    card.classList.remove('critical-answered');
+                }
+                
+                // Debug info for troubleshooting
+                if (window.location.hash === '#debug') {
+                    console.log(`Critical Q${index + 1}: ${hasAnswer ? '✓' : '✗'} - Radio:${radioChecked.length} Select:${selectsFilled.length} Text:${textsFilled.length} Textarea:${textareasFilled.length}`);
+                }
+            });
+            
+            const percentage = Math.round((answered / criticalQuestions.length) * 100);
+            const completionElement = document.getElementById('completion-percent');
+            if (completionElement) {
+                completionElement.textContent = `${percentage}%`;
+                
+                // Update color based on completion
+                if (percentage >= 90) {
+                    completionElement.style.color = '#27ae60';
+                } else if (percentage >= 70) {
+                    completionElement.style.color = '#f39c12';
+                } else {
+                    completionElement.style.color = '#e74c3c';
+                }
+            }
+            
+            return { answered, total: criticalQuestions.length, percentage };
+        }
+
+        // Enhanced auto-save with validation
+        function enhancedAutoSave() {
+            // Save responses
+            localStorage.setItem('acas-responses', JSON.stringify(responses));
+            
+            // Update validation status
+            const validation = validateCriticalCompletion();
+            localStorage.setItem('acas-validation', JSON.stringify(validation));
+            
+            // Show brief confirmation
+            const notification = document.createElement('div');
+            notification.textContent = '✓ Progress saved';
+            notification.style.cssText = 'position: fixed; top: 20px; right: 20px; background: #27ae60; color: white; padding: 8px 16px; border-radius: 4px; z-index: 9999; font-size: 0.9em;';
+            document.body.appendChild(notification);
+            
+            setTimeout(() => notification.remove(), 2000);
+        }
+
+        // Override existing auto-save
+        setInterval(enhancedAutoSave, 30000);
+        
+        // Remove the override - the main updateProgress is now fixed
+
+        // Debug functionality to identify validation issues
+        function debugValidation() {
+            console.clear();
+            console.log('🔍 ACAS Migration Questionnaire - Debug Analysis');
+            console.log('================================================');
+            
+            const criticalQuestions = document.querySelectorAll('.priority-badge.critical');
+            console.log(`Total Critical Questions Found: ${criticalQuestions.length}`);
+            console.log('');
+            
+            let answered = 0;
+            let unanswered = [];
+            
+            criticalQuestions.forEach((badge, index) => {
+                const card = badge.closest('.question-card');
+                const questionId = card.querySelector('.question-id')?.textContent || `Question ${index + 1}`;
+                const questionText = card.querySelector('.question-text')?.textContent || 'Unknown question';
+                
+                // Check all input types
+                const radioChecked = card.querySelectorAll('input[type="radio"]:checked');
+                const checkboxChecked = card.querySelectorAll('input[type="checkbox"]:checked');
+                const selectsFilled = Array.from(card.querySelectorAll('select')).filter(s => s.value && s.value.trim() !== '');
+                const textsFilled = Array.from(card.querySelectorAll('input[type="text"], input[type="email"], input[type="number"]')).filter(t => t.value && t.value.trim() !== '');
+                const textareasFilled = Array.from(card.querySelectorAll('textarea')).filter(ta => ta.value && ta.value.trim() !== '');
+                
+                const hasAnswer = radioChecked.length > 0 || 
+                                checkboxChecked.length > 0 || 
+                                selectsFilled.length > 0 || 
+                                textsFilled.length > 0 || 
+                                textareasFilled.length > 0;
+                
+                const status = hasAnswer ? '✅ ANSWERED' : '❌ NOT ANSWERED';
+                console.log(`${index + 1}. ${questionId} - ${status}`);
+                console.log(`   Text: "${questionText.substring(0, 60)}..."`);
+                console.log(`   Inputs: Radio:${radioChecked.length} Select:${selectsFilled.length} Text:${textsFilled.length} Textarea:${textareasFilled.length} Checkbox:${checkboxChecked.length}`);
+                
+                if (hasAnswer) {
+                    answered++;
+                } else {
+                    unanswered.push({ index: index + 1, id: questionId, text: questionText });
+                }
+                console.log('');
+            });
+            
+            const percentage = Math.round((answered / criticalQuestions.length) * 100);
+            
+            console.log('📊 SUMMARY');
+            console.log('==========');
+            console.log(`Answered: ${answered}/${criticalQuestions.length} (${percentage}%)`);
+            console.log(`Remaining: ${criticalQuestions.length - answered} questions`);
+            
+            if (unanswered.length > 0) {
+                console.log('');
+                console.log('❌ UNANSWERED CRITICAL QUESTIONS:');
+                unanswered.forEach(q => {
+                    console.log(`   ${q.index}. ${q.id}: ${q.text.substring(0, 80)}...`);
+                });
+            }
+            
+            console.log('');
+            console.log('💡 TIP: Open Developer Console (F12) to see this detailed analysis');
+            
+            // Show user-friendly notification
+            const notification = document.createElement('div');
+            notification.innerHTML = `
+                <strong>🔍 Debug Analysis Complete</strong><br>
+                Progress: ${answered}/${criticalQuestions.length} (${percentage}%)<br>
+                Remaining: ${unanswered.length} critical questions<br>
+                <small>Check browser console (F12) for details</small>
+            `;
+            notification.style.cssText = 'position: fixed; top: 20px; right: 20px; background: #17a2b8; color: white; padding: 12px 20px; border-radius: 6px; z-index: 9999; max-width: 300px; font-size: 0.9em;';
+            document.body.appendChild(notification);
+            
+            setTimeout(() => notification.remove(), 8000);
+        }
+
+        // Fix metrics immediately
+        function fixMetrics() {
+            console.log('🔧 FIXING METRICS...');
+            
+            // Use the proper counting function
+            const counts = countRealQuestions();
+            console.log(`Real counts: Total Questions: ${counts.total}, Critical: ${counts.critical}`);
+            
+            // Force correct values
+            const answeredCount = Object.keys(responses).filter(key => {
+                const response = responses[key];
+                return response && response.value !== undefined && response.value !== '' && 
+                       !(Array.isArray(response.value) && response.value.length === 0);
+            }).length;
+            
+            console.log(`REAL Answered: ${answeredCount}`);
+            
+            // Calculate correct percentages
+            const realPercentage = realQuestionCount > 0 ? Math.round((answeredCount / realQuestionCount) * 100) : 0;
+            console.log(`REAL Percentage: ${realPercentage}%`);
+            
+            // Get critical answered count
+            let criticalAnswered = 0;
+            document.querySelectorAll('.priority-badge.critical').forEach(badge => {
+                const card = badge.closest('.question-card');
+                const hasAnswer = card.querySelectorAll('input[type="radio"]:checked, input[type="checkbox"]:checked').length > 0 ||
+                                Array.from(card.querySelectorAll('select, input[type="text"], textarea')).some(el => el.value && el.value.trim());
+                if (hasAnswer) criticalAnswered++;
+            });
+            
+            const criticalRemaining = Math.max(0, criticalBadges - criticalAnswered);
+            
+            // FORCE UPDATE ALL UI ELEMENTS
+            const updates = {
+                'total-questions': realQuestionCount,
+                'answered-count': answeredCount,
+                'critical-remaining': criticalRemaining,
+                'completion-percent': realPercentage + '%',
+                'dashboard-total': realQuestionCount,
+                'dashboard-answered': answeredCount,
+                'dashboard-critical-total': criticalBadges,
+                'dashboard-critical-remaining': criticalRemaining,
+                'dashboard-percentage': realPercentage + '%'
+            };
+            
+            Object.entries(updates).forEach(([id, value]) => {
+                const element = document.getElementById(id);
+                if (element) {
+                    element.textContent = value;
+                    console.log(`Updated ${id}: ${value}`);
+                } else {
+                    console.warn(`Element ${id} not found!`);
+                }
+            });
+            
+            // Update progress bar
+            const progressFill = document.getElementById('progress-fill');
+            if (progressFill) {
+                progressFill.style.width = realPercentage + '%';
+                progressFill.textContent = realPercentage + '%';
+            }
+            
+            // Show notification
+            const notification = document.createElement('div');
+            notification.innerHTML = `
+                <strong>🔧 Metrics Fixed!</strong><br>
+                Total: ${realQuestionCount} questions<br>
+                Answered: ${answeredCount}<br>
+                Progress: ${realPercentage}%<br>
+                Critical Remaining: ${criticalRemaining}
+            `;
+            notification.style.cssText = 'position: fixed; top: 20px; right: 20px; background: #dc3545; color: white; padding: 15px 20px; border-radius: 6px; z-index: 9999; font-weight: bold;';
+            document.body.appendChild(notification);
+            
+            setTimeout(() => notification.remove(), 5000);
+        }
+
+        // Reset functionality
+        function resetQuestionnaire() {
+            if (confirm('⚠️ Are you sure you want to reset ALL responses? This action cannot be undone.')) {
+                if (confirm('🔄 This will clear all your progress and start fresh. Continue?')) {
+                    // Clear all stored data
+                    localStorage.removeItem('acas-responses');
+                    localStorage.removeItem('acas-validation');
+                    localStorage.removeItem('acas-current-section');
+                    localStorage.removeItem('acas-time-spent');
+                    
+                    // Reset global variables
+                    responses = {};
+                    currentSection = 'overview';
+                    
+                    // Clear all form inputs
+                    document.querySelectorAll('input, select, textarea').forEach(element => {
+                        if (element.type === 'radio' || element.type === 'checkbox') {
+                            element.checked = false;
+                        } else if (element.tagName === 'SELECT') {
+                            // Reset select to first option (usually empty)
+                            element.selectedIndex = 0;
+                        } else {
+                            element.value = '';
+                        }
+                    });
+                    
+                    // Reset progress indicators
+                    document.querySelectorAll('.status').forEach(status => {
+                        status.textContent = '○';
+                        status.style.color = '#6c757d';
+                    });
+                    
+                    // Update completion display
+                    const completionElement = document.getElementById('completion-percent');
+                    if (completionElement) {
+                        completionElement.textContent = '0%';
+                        completionElement.style.color = '#e74c3c';
+                    }
+                    
+                    // Navigate to overview
+                    navigateToSection('overview');
+                    
+                    // Force immediate update of all progress indicators
+                    document.getElementById('total-questions').textContent = '27';
+                    document.getElementById('answered-count').textContent = '0';
+                    document.getElementById('critical-remaining').textContent = '16';
+                    document.getElementById('completion-percent').textContent = '0%';
+                    
+                    const progressFill = document.getElementById('progress-fill');
+                    if (progressFill) {
+                        progressFill.style.width = '0%';
+                        progressFill.textContent = '0%';
+                    }
+                    
+                    // Update progress to reflect reset
+                    updateProgress();
+                    
+                    // Show confirmation
+                    const notification = document.createElement('div');
+                    notification.textContent = '✅ Questionnaire reset successfully!';
+                    notification.style.cssText = 'position: fixed; top: 20px; right: 20px; background: #27ae60; color: white; padding: 12px 20px; border-radius: 6px; z-index: 9999; font-weight: bold;';
+                    document.body.appendChild(notification);
+                    
+                    setTimeout(() => notification.remove(), 3000);
+                }
+            }
+        }
+
+        // Enhanced export functionality
+        function generateEnhancedExport() {
+            const validation = validateCriticalCompletion();
+            const org = document.getElementById('export-org').value || '[Organization Name]';
+            const name = document.getElementById('export-name').value || '[Your Name]';
+            const title = document.getElementById('export-title').value || '[Your Title]';
+            const date = new Date().toISOString().split('T')[0];
+            
+            // Generate executive insights
+            const architectureChoice = responses['ARCH-001']?.value || 'Not specified';
+            const cobolStrategy = responses['COBOL-001']?.value || 'Not specified';
+            const timeline = responses['BUS-004']?.value || 'Not specified';
+            const budget = responses['EXEC-001']?.value || 'Not specified';
+            
+            let report = `# ACAS Migration Requirements Assessment
+
+## 📊 Executive Summary
+
+**Organization:** ${org}
+**Assessment Lead:** ${name}, ${title}
+**Date:** ${date}
+**Completion:** ${validation.answered}/${validation.total} critical questions (${validation.percentage}%)
+
+### Key Decisions Summary
+- **Architecture:** ${architectureChoice}
+- **COBOL Strategy:** ${cobolStrategy} 
+- **Timeline:** ${timeline}
+- **Budget:** ${budget}
+
+### Technical Analysis (Based on ACAS Code Review)
+- **COBOL Complexity:** ~500K lines including gl070, xl150, acas000-032 handlers
+- **File Operations:** Extensive ISAM operations with multiple keys
+- **Arithmetic:** COMP-3 decimal requiring precision preservation
+- **Integration:** Dual-mode architecture (ISAM + MySQL/MariaDB)
+
+`;
+
+            if (validation.percentage < 70) {
+                report += `### ⚠️ Assessment Status: INCOMPLETE
+${validation.total - validation.answered} critical questions need completion before proceeding.
+
+**Priority Actions:**
+1. Complete Architecture decisions (ARCH-001)
+2. Define COBOL migration strategy (COBOL-001)  
+3. Clarify business drivers (BUS-001)
+4. Set timeline and budget constraints
+
+`;
+            } else {
+                report += `### ✅ Assessment Status: ${validation.percentage >= 90 ? 'COMPREHENSIVE' : 'NEARLY COMPLETE'}
+Ready for detailed migration planning.
+
+`;
+            }
+
+            report += `---
+
+## Detailed Responses
+
+`;
+
+            // Add all responses in organized format
+            Object.keys(responses).forEach(questionId => {
+                const response = responses[questionId];
+                if (response && response.value) {
+                    report += `**${questionId}:** ${response.value}
+`;
+                    if (response.notes) {
+                        report += `*Notes:* ${response.notes}
+`;
+                    }
+                    report += `
+`;
+                }
+            });
+
+            return report;
+        }
+
+        // Add enhanced export option
+        function showEnhancedExportModal() {
+            const report = generateEnhancedExport();
+            const modalContent = document.querySelector('#exportModal .modal-content');
+            
+            if (modalContent) {
+                const enhancedPreview = modalContent.querySelector('.export-preview');
+                if (enhancedPreview) {
+                    enhancedPreview.textContent = report.substring(0, 1000) + '...';
+                }
+                
+                // Add enhanced export button
+                const footer = modalContent.querySelector('.modal-footer');
+                if (footer && !footer.querySelector('.btn-enhanced')) {
+                    const enhancedBtn = document.createElement('button');
+                    enhancedBtn.className = 'btn btn-primary btn-enhanced';
+                    enhancedBtn.innerHTML = '📊 Enhanced Export';
+                    enhancedBtn.onclick = () => {
+                        const blob = new Blob([report], { type: 'text/markdown' });
+                        const url = URL.createObjectURL(blob);
+                        const a = document.createElement('a');
+                        a.href = url;
+                        a.download = `ACAS_Migration_Assessment_Enhanced_${new Date().toISOString().split('T')[0]}.md`;
+                        document.body.appendChild(a);
+                        a.click();
+                        document.body.removeChild(a);
+                        URL.revokeObjectURL(url);
+                        closeModal('exportModal');
+                    };
+                    footer.appendChild(enhancedBtn);
+                }
+            }
+        }
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            // Alt + N for next section
+            if (e.altKey && e.key === 'n') {
+                const sections = ['overview', 'quick-guide', 'business-context', 'architecture', 'cobol-specific', 
+                                'functional', 'data-migration', 'integration', 'testing', 'sequencing', 'summary'];
+                const currentIndex = sections.indexOf(currentSection);
+                if (currentIndex < sections.length - 1) {
+                    navigateToSection(sections[currentIndex + 1]);
+                }
+            }
+            
+            // Alt + P for previous section
+            if (e.altKey && e.key === 'p') {
+                const sections = ['overview', 'quick-guide', 'business-context', 'architecture', 'cobol-specific', 
+                                'functional', 'data-migration', 'integration', 'testing', 'sequencing', 'summary'];
+                const currentIndex = sections.indexOf(currentSection);
+                if (currentIndex > 0) {
+                    navigateToSection(sections[currentIndex - 1]);
+                }
+            }
+            
+            // Ctrl + S to save
+            if (e.ctrlKey && e.key === 's') {
+                e.preventDefault();
+                saveProgress();
+            }
+        });
+    </script>
+</body>
+</html>

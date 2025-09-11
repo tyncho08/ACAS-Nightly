@@ -1,0 +1,673 @@
+# ACAS Migration Requirements Response Template
+# Instructions: Fill out this YAML template with your responses to the migration questionnaire
+# Date: [YYYY-MM-DD]
+# Organization: [Company Name]
+# Respondent: [Name, Title]
+# Version: 1.0
+
+# ============================================================================
+# SECTION 1: BUSINESS CONTEXT AND DRIVERS
+# ============================================================================
+
+Business_Context:
+  BUS-001:
+    question: "What are the top 3 business drivers for migrating from COBOL?"
+    answer: 
+      driver_1: ""  # e.g., "Lack of COBOL developers"
+      driver_2: ""  # e.g., "Need for real-time processing"
+      driver_3: ""  # e.g., "Integration with modern systems"
+    notes: ""
+  
+  BUS-002:
+    question: "How critical is ACAS to daily operations? (1-5 scale)"
+    answer: ""  # 1=week+ downtime OK, 5=zero downtime
+    notes: ""
+  
+  BUS-003:
+    question: "Expected business growth rate over 5 years?"
+    answer: ""  # percentage
+    notes: ""
+  
+  BUS-004:
+    question: "Acceptable timeframe for complete migration?"
+    answer: ""  # 6/12/18/24/36+ months
+    notes: ""
+  
+  BUS-005:
+    question: "Any upcoming regulatory changes?"
+    answer: ""  # yes/no
+    requirements: ""
+    deadline: ""
+  
+  BUS-006:
+    question: "Which subsystems cause the most operational issues?"
+    answer:
+      most_problematic: ""  # e.g., "BATCH_FW"
+      second: ""
+      third: ""
+    specific_issues: ""
+  
+  BUS-007:
+    question: "Biggest limitations of current COBOL system?"
+    answer: []  # List limitations
+    notes: ""
+  
+  BUS-008:
+    question: "Number of business workarounds?"
+    answer: ""  # count
+    descriptions: ""
+  
+  BUS-009:
+    question: "Is dual-mode operation (ISAM+MySQL) causing issues?"
+    answer: ""  # yes/no
+    specific_problems: ""
+
+# ============================================================================
+# SECTION 2: TARGET ARCHITECTURE
+# ============================================================================
+
+Architecture:
+  ARCH-001:
+    question: "Preferred target architecture pattern?"
+    answer: ""  # Monolithic/SOA/Microservices/Serverless/Event-driven/Hybrid
+    notes: ""
+  
+  ARCH-002:
+    question: "Which migration pattern?"
+    answer: ""  # StranglerFig/BigBang/ParallelRun/PhasedCutover/Hybrid
+    notes: ""
+  
+  ARCH-003:
+    question: "Maintain current subsystem boundaries?"
+    answer: ""  # yes/no
+    changes_desired: ""
+  
+  ARCH-004:
+    question: "Cloud strategy?"
+    answer: ""  # On-premises/Private/Public/Hybrid/Multi-cloud
+    preferred_provider: ""  # AWS/Azure/GCP/Other
+  
+  ARCH-005:
+    question: "Preserve menu-driven navigation?"
+    answer: ""  # yes/no
+    preferred_ux: ""
+
+Technology:
+  TECH-001:
+    question: "Preferred programming languages?"
+    answer:
+      primary: ""  # e.g., "Java"
+      secondary: ""  # e.g., "Python"
+      tertiary: ""  # e.g., "TypeScript"
+    notes: ""
+  
+  TECH-002:
+    question: "Preferred database technology?"
+    answer: ""  # PostgreSQL/MySQL/Oracle/SQLServer/NoSQL/etc
+    notes: ""
+  
+  TECH-003:
+    question: "How to migrate file-based storage?"
+    answer: ""  # Direct/Redesign/Hybrid/EventSourcing/Document
+    notes: ""
+  
+  TECH-004:
+    question: "Preferred UI approach?"
+    answer: ""  # WebSPA/WebTraditional/Desktop/Mobile/API-only/Multiple
+    notes: ""
+  
+  TECH-005:
+    question: "Support multiple UI themes?"
+    answer: ""  # yes/no
+    include_classic_mode: ""  # yes/no
+
+# ============================================================================
+# SECTION 3: COBOL-SPECIFIC DECISIONS
+# ============================================================================
+
+COBOL_Migration:
+  COBOL-001:
+    question: "How to handle existing COBOL business logic?"
+    answer: ""  # Rewrite/Translate/KeepCOBOL/GradualBridge/RulesEngine
+    notes: ""
+  
+  COBOL-002:
+    question: "Maintain COBOL PICTURE clause precision?"
+    answer: ""  # yes/no
+    critical_calculations: ""
+  
+  COBOL-003:
+    question: "How to handle COBOL copybooks?"
+    answer: ""  # Convert/Generate/Dictionary/Embed
+    notes: ""
+  
+  COBOL-004:
+    question: "Support COBOL-style file operations?"
+    answer: ""  # yes/no
+    notes: ""
+
+Batch_Processing:
+  BATCH-001:
+    question: "How to modernize batch processing?"
+    answer: ""  # KeepBatch/RealTime/EventDriven/Hybrid/Microservices
+    notes: ""
+  
+  BATCH-002:
+    question: "Which batch processes to preserve?"
+    answer:
+      GL_posting: ""  # KeepBatch/RealTime/Eliminate
+      Period_closing: ""
+      Invoice_posting: ""
+      Report_generation: ""
+      Statement_production: ""
+      File_reorganization: ""
+    notes: ""
+  
+  BATCH-003:
+    question: "Support current posting period concept?"
+    answer: ""  # yes/no
+    simplifications_possible: ""
+
+File_Migration:
+  FILE-001:
+    question: "How to convert ISAM structures?"
+    answer: ""  # DirectTable/Normalized/Document/Mixed
+    notes: ""
+  
+  FILE-002:
+    question: "Maintain current record locking?"
+    answer: ""  # yes/no
+    notes: ""
+  
+  FILE-003:
+    question: "How to modernize audit trails?"
+    answer: ""  # DatabaseAudit/EventSourcing/AuditService/Blockchain/Current
+    notes: ""
+
+# ============================================================================
+# SECTION 4: FUNCTIONAL REQUIREMENTS
+# ============================================================================
+
+Functional_Requirements:
+  FUNC-001:
+    question: "Level of feature parity required?"
+    answer: ""  # 100%/90%/80%/70%/Re-engineer
+    notes: ""
+  
+  FUNC-002:
+    question: "Support IRS functionality?"
+    answer: ""  # yes/no
+    can_redesign: ""  # yes/no
+  
+  FUNC-003:
+    question: "Enhance multi-company processing?"
+    answer: ""  # yes/no
+    requirements: ""
+  
+  FUNC-004:
+    question: "New capabilities to add?"
+    answer:
+      real_time_dashboard: ""  # yes/no
+      mobile_access: ""
+      advanced_reporting: ""
+      workflow_automation: ""
+      document_management: ""
+      api_integration: ""
+      multi_currency: ""
+      advanced_inventory: ""
+      other: []
+    priorities: ""
+  
+  FUNC-005:
+    question: "How to modernize reporting?"
+    answer: ""  # Maintain/BI-tool/Self-service/Dashboards/API/All
+    notes: ""
+
+Business_Rules:
+  FUNC-006:
+    question: "How to handle complex business logic?"
+    answer: ""  # Translate/Re-implement/RulesEngine/Microservice/Simplify
+    notes: ""
+  
+  FUNC-007:
+    question: "Financial calculations documented?"
+    answer: ""  # yes/no
+    validation_needed: ""
+  
+  FUNC-008:
+    question: "Accounting standards compliance?"
+    answer:
+      standards: []  # e.g., ["GAAP", "IFRS", "SOX"]
+      industry_specific: ""
+      country_specific: ""
+  
+  FUNC-009:
+    question: "Enhance double-entry validation?"
+    answer: ""  # yes/no
+    requirements: ""
+
+# ============================================================================
+# SECTION 5: DATA MIGRATION
+# ============================================================================
+
+Data_Migration:
+  DATA-001:
+    question: "Data migration strategy?"
+    answer: ""  # BigBang/Phased/Parallel/Trickle/Archive
+    notes: ""
+  
+  DATA-002:
+    question: "Data volume to migrate?"
+    answer:
+      customers: ""
+      suppliers: ""
+      gl_accounts: ""
+      stock_items: ""
+      history_years: ""
+      total_size_gb: ""
+  
+  DATA-003:
+    question: "How to handle data quality?"
+    answer: ""  # AsIs/CleanBefore/CleanDuring/OnlyClean/Manual
+    notes: ""
+  
+  DATA-004:
+    question: "Historical audit trail critical?"
+    answer: ""  # yes/no
+    years_required: ""
+    can_archive: ""
+  
+  DATA-005:
+    question: "Handle file-to-database dual mode?"
+    answer: ""  # ISAMOnly/MySQLOnly/Reconcile/KeepBoth
+    notes: ""
+  
+  DATA-006:
+    question: "Migrate inactive records?"
+    answer: ""  # yes/no
+    to_archive: ""  # yes/no
+
+# ============================================================================
+# SECTION 6: INTEGRATION
+# ============================================================================
+
+Integration:
+  INT-001:
+    question: "External systems to integrate?"
+    answer:
+      - system_name: ""
+        purpose: ""
+        current_method: ""
+        desired_method: ""
+        data_direction: ""  # Inbound/Outbound/Bidirectional
+        frequency: ""
+    notes: ""
+  
+  INT-002:
+    question: "Preferred integration approach?"
+    answer: ""  # REST/GraphQL/MessageQueue/ETL/Database/SOAP/Mixed
+    notes: ""
+  
+  INT-003:
+    question: "Legacy system coexistence required?"
+    answer: ""  # yes/no
+    duration_months: ""
+    subsystems_to_sync: []
+  
+  INT-004:
+    question: "Master data management during migration?"
+    answer: ""  # LegacyUntilCutover/MigrateImmediately/DualMaintenance/MDM/Subsystem
+    notes: ""
+  
+  INT-005:
+    question: "Real-time banking integration?"
+    answer: ""  # yes/no
+    for_payments: ""
+    for_reconciliation: ""
+
+# ============================================================================
+# SECTION 7: NON-FUNCTIONAL REQUIREMENTS
+# ============================================================================
+
+Performance:
+  NFR-001:
+    question: "Transaction volume requirements?"
+    answer:
+      peak_tps: ""
+      daily_transactions: ""
+      monthly_growth_rate: ""
+      peak_period_multiplier: ""
+  
+  NFR-002:
+    question: "Response time requirements?"
+    answer:
+      online_transaction_ms: ""
+      query_response_sec: ""
+      report_generation_sec: ""
+      batch_window_hours: ""
+  
+  NFR-003:
+    question: "Subsystem performance criticality (1-5)?"
+    answer:
+      GL_CORE: ""
+      IRS_CORE: ""
+      SL_MGMT: ""
+      PL_MGMT: ""
+      ST_CTRL: ""
+      BATCH_FW: ""
+      RPT_ENGINE: ""
+  
+  NFR-004:
+    question: "Concurrent users?"
+    answer:
+      data_entry: ""
+      query_report: ""
+      peak_concurrent: ""
+
+Security:
+  NFR-005:
+    question: "Authentication method?"
+    answer: ""  # Username/SSO/OAuth/MFA/Biometric/Certificate/AD
+    notes: ""
+  
+  NFR-006:
+    question: "Encryption requirements?"
+    answer: ""  # yes/no
+    at_rest: ""
+    in_transit: ""
+    key_management: ""
+  
+  NFR-007:
+    question: "Audit trail requirements?"
+    answer:
+      preserve_current: ""  # yes/no
+      additional_requirements: ""
+      retention_years: ""
+  
+  NFR-008:
+    question: "Role-based access control?"
+    answer: ""  # yes/no
+    requirements: ""
+
+Availability:
+  NFR-009:
+    question: "Availability requirements?"
+    answer:
+      uptime_percent: ""
+      maintenance_window: ""
+      max_unplanned_downtime_hours: ""
+  
+  NFR-010:
+    question: "Disaster recovery?"
+    answer: ""  # yes/no
+    rpo_hours: ""
+    rto_hours: ""
+    geographic_redundancy: ""
+
+# ============================================================================
+# SECTION 8: MIGRATION EXECUTION
+# ============================================================================
+
+Execution:
+  EXEC-001:
+    question: "Budget range?"
+    answer: ""  # <500K/500K-1M/1M-3M/3M-5M/5M-10M/>10M
+    notes: ""
+  
+  EXEC-002:
+    question: "Available resources?"
+    answer:
+      internal_developers: ""
+      external_consultants: ""
+      business_analysts: ""
+      qa_testers: ""
+      project_managers: ""
+      cobol_developers: ""
+  
+  EXEC-003:
+    question: "COBOL expertise available?"
+    answer: ""  # yes/no
+    number_of_developers: ""
+    duration_available: ""
+    knows_acas: ""
+  
+  EXEC-004:
+    question: "Team structure?"
+    answer: ""  # Single/PerSubsystem/Separate/VendorLed/Hybrid
+    notes: ""
+  
+  EXEC-005:
+    question: "Continue legacy enhancements?"
+    answer: ""  # yes/no
+    sync_strategy: ""
+
+Risk_Management:
+  RISK-001:
+    question: "Risk tolerance (1-5)?"
+    answer: ""  # 1=Conservative, 5=Aggressive
+    notes: ""
+  
+  RISK-002:
+    question: "Fallback strategy?"
+    answer: ""  # Rollback/Parallel/FixForward/Hybrid/Incremental
+    notes: ""
+  
+  RISK-003:
+    question: "No-go scenarios?"
+    answer: []  # List unacceptable risks
+    notes: ""
+  
+  RISK-004:
+    question: "Data loss acceptable?"
+    answer: ""  # yes/no
+    acceptable_scenarios: ""
+  
+  RISK-005:
+    question: "How to handle calculation differences?"
+    answer: ""  # MatchPenny/RoundingOK/SmallVariance/MaterialOnly
+    notes: ""
+
+# ============================================================================
+# SECTION 9: TESTING AND VALIDATION
+# ============================================================================
+
+Testing:
+  TEST-001:
+    question: "Testing approach?"
+    answer: ""  # Parallel/Subsystem/RiskBased/UAT/Comprehensive
+    notes: ""
+  
+  TEST-002:
+    question: "Acceptable calculation variance?"
+    answer:
+      financial_tolerance_dollars: ""
+      inventory_tolerance_units: ""
+      report_tolerance_dollars: ""
+      percentage_variance: ""
+  
+  TEST-003:
+    question: "Automated testing?"
+    answer: ""  # yes/no
+    unit_test_coverage: ""
+    integration_test: ""
+    performance_test: ""
+    regression_test: ""
+  
+  TEST-004:
+    question: "Critical programs for validation?"
+    answer:
+      critical: ["gl090", "gl100", "gl105", "sl130", "pl130", "st080"]
+      additional: []
+  
+  TEST-005:
+    question: "Parallel run duration?"
+    answer: ""  # 1month/3months/6months/FullCycle/UntilTargets
+    notes: ""
+
+Data_Validation:
+  TEST-006:
+    question: "Validate migrated data?"
+    answer: ""  # yes/no
+    record_counts: ""
+    balance_totals: ""
+    relationships: ""
+    historical: ""
+  
+  TEST-007:
+    question: "Historical transaction testing?"
+    answer: ""  # SpotCheck/Sampling/FullYear/MultiYear/Critical
+    notes: ""
+
+# ============================================================================
+# SECTION 10: POST-MIGRATION
+# ============================================================================
+
+Post_Migration:
+  POST-001:
+    question: "Who will support?"
+    answer: ""  # Internal/OriginalTeam/MSP/Vendor/Hybrid
+    notes: ""
+  
+  POST-002:
+    question: "Maintain legacy as backup?"
+    answer: ""  # yes/no
+    duration_months: ""
+    reversion_triggers: ""
+    maintainer: ""
+  
+  POST-003:
+    question: "Success metrics?"
+    answer:
+      technical_metrics: []
+      business_metrics: []
+      user_satisfaction_metrics: []
+      measurement_timeline: ""
+  
+  POST-004:
+    question: "Training strategy?"
+    answer: ""  # Classroom/Online/TrainTrainer/Documentation/Embedded/Phased
+    notes: ""
+  
+  POST-005:
+    question: "Classic mode UI?"
+    answer: ""  # yes/no
+    for_transition: ""
+    permanent_feature: ""
+
+# ============================================================================
+# SECTION 11: PRIORITIES AND SEQUENCING
+# ============================================================================
+
+Sequencing:
+  SEQ-001:
+    question: "Migration priority ranking?"
+    answer:
+      1: 
+        subsystem: ""
+        reason: ""
+      2:
+        subsystem: ""
+        reason: ""
+      3:
+        subsystem: ""
+        reason: ""
+      4:
+        subsystem: ""
+        reason: ""
+      5:
+        subsystem: ""
+        reason: ""
+      6:
+        subsystem: ""
+        reason: ""
+      7:
+        subsystem: ""
+        reason: ""
+      8:
+        subsystem: ""
+        reason: ""
+      9:
+        subsystem: ""
+        reason: ""
+      10:
+        subsystem: ""
+        reason: ""
+      11:
+        subsystem: ""
+        reason: ""
+      12:
+        subsystem: ""
+        reason: ""
+  
+  SEQ-002:
+    question: "Best pilot subsystem?"
+    answer: ""  # SYS_ADMIN/ST_CTRL/RPT_ENGINE/IRS_CORE/Other
+    reason: ""
+  
+  SEQ-003:
+    question: "Migrate coupled subsystems together?"
+    answer: ""  # yes/no
+    groupings:
+      - group: []
+        reason: ""
+  
+  SEQ-004:
+    question: "Critical business dates?"
+    answer:
+      year_end: ""
+      tax_deadlines: []
+      audit_periods: []
+      peak_seasons: []
+      board_reporting: []
+      other: []
+  
+  SEQ-005:
+    question: "Align with fiscal year?"
+    answer: ""  # yes/no
+    target_fiscal_year: ""
+
+# ============================================================================
+# DECISION SUMMARY
+# ============================================================================
+
+Decision_Summary:
+  migration_approach: ""
+  architecture_pattern: ""
+  technology_stack:
+    language: ""
+    database: ""
+    ui_framework: ""
+  timeline_months: ""
+  budget_range: ""
+  key_risks: []
+  success_criteria: []
+  next_steps: []
+
+# ============================================================================
+# ADDITIONAL NOTES
+# ============================================================================
+
+Additional_Notes: |
+  # Add any additional context, concerns, or requirements not covered above
+  
+  
+
+# ============================================================================
+# SIGN-OFF
+# ============================================================================
+
+Sign_Off:
+  prepared_by:
+    name: ""
+    title: ""
+    date: ""
+  
+  reviewed_by:
+    - name: ""
+      title: ""
+      date: ""
+  
+  approved_by:
+    name: ""
+    title: ""
+    date: ""

@@ -1,0 +1,91 @@
+%% ACAS System Context Diagram
+%% Shows external actors and high-level subsystem interactions
+
+graph TB
+    %% External Actors
+    subgraph External
+        USER[Users]
+        BANK[Banks]
+        TAX[Tax Authorities]
+        CUST[Customers]
+        SUPP[Suppliers]
+        AUDIT[Auditors]
+    end
+    
+    %% ACAS Boundary
+    subgraph "ACAS System"
+        %% Core Subsystems
+        subgraph "Financial Core"
+            GL[GL_CORE<br/>General Ledger]
+            IRS[IRS_CORE<br/>Incomplete Records]
+        end
+        
+        subgraph "Operations"
+            SL[SL_MGMT<br/>Sales Ledger]
+            PL[PL_MGMT<br/>Purchase Ledger]
+            ST[ST_CTRL<br/>Stock Control]
+        end
+        
+        subgraph "Infrastructure"
+            SYS[SYS_ADMIN<br/>Configuration]
+            DAL[DAL<br/>Data Access]
+            BATCH[BATCH_FW<br/>Processing]
+        end
+        
+        %% Internal connections
+        SL --> GL
+        SL --> IRS
+        PL --> GL
+        PL --> IRS
+        ST --> GL
+        ST --> IRS
+        
+        SL --> ST
+        PL --> ST
+        
+        GL --> DAL
+        IRS --> DAL
+        SL --> DAL
+        PL --> DAL
+        ST --> DAL
+        
+        BATCH --> GL
+        BATCH --> IRS
+        
+        SYS --> GL
+        SYS --> IRS
+        SYS --> SL
+        SYS --> PL
+        SYS --> ST
+    end
+    
+    %% External connections
+    USER -->|Transactions| SL
+    USER -->|Orders| PL
+    USER -->|Movements| ST
+    USER -->|Journals| GL
+    USER -->|Setup| SYS
+    
+    CUST -->|Orders| SL
+    CUST -->|Payments| SL
+    
+    SUPP -->|Invoices| PL
+    PL -->|Payments| SUPP
+    
+    GL -->|Statements| BANK
+    GL -->|Returns| TAX
+    GL -->|Reports| AUDIT
+    
+    IRS -->|Reports| TAX
+    IRS -->|Statements| AUDIT
+    
+    %% Styling
+    classDef external fill:#e1f5e1,stroke:#4caf50,stroke-width:2px
+    classDef financial fill:#fff2e6,stroke:#ff9800,stroke-width:2px
+    classDef operations fill:#e6f3ff,stroke:#2196f3,stroke-width:2px
+    classDef infrastructure fill:#f3e5f5,stroke:#9c27b0,stroke-width:2px
+    
+    class USER,BANK,TAX,CUST,SUPP,AUDIT external
+    class GL,IRS financial
+    class SL,PL,ST operations
+    class SYS,DAL,BATCH infrastructure

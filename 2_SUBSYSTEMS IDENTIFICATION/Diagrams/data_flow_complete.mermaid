@@ -1,0 +1,188 @@
+%% ACAS Complete Data Flow Diagram
+%% Shows how data moves through the system from entry to reporting
+
+flowchart TB
+    %% External Inputs
+    subgraph "External Inputs"
+        CO[Customer Orders]
+        CP[Customer Payments]
+        SI[Supplier Invoices]
+        SP[Supplier Info]
+        SR[Stock Receipts]
+        SA[Stock Adjustments]
+        JE[Journal Entries]
+    end
+    
+    %% Transaction Entry
+    subgraph "Transaction Entry Layer"
+        subgraph "Sales Entry"
+            IE[Invoice Entry<br/>sl910/920]
+            PE[Payment Entry<br/>sl080]
+        end
+        
+        subgraph "Purchase Entry"
+            POE[PO Entry<br/>pl020]
+            GR[Goods Receipt<br/>pl025]
+            PIE[Invoice Entry<br/>pl920]
+        end
+        
+        subgraph "Stock Entry"
+            SM[Stock Movement<br/>st020]
+            SAJ[Stock Adjust<br/>st020]
+        end
+        
+        subgraph "GL Entry"
+            JEE[Journal Entry<br/>gl050]
+            IRSE[IRS Entry<br/>irs030]
+        end
+    end
+    
+    %% Validation Layer
+    subgraph "Validation & Control"
+        IVL[Invoice Validation<br/>sl055/pl050]
+        PVL[Payment Validation<br/>sl085/pl085]
+        BVL[Batch Validation<br/>gl071]
+        SVL[Stock Validation]
+    end
+    
+    %% Master Data Updates
+    subgraph "Master Data Updates"
+        CU[Customer<br/>Balances]
+        SU[Supplier<br/>Balances]
+        STU[Stock<br/>Quantities]
+        GLU[GL Account<br/>Balances]
+    end
+    
+    %% Posting Files
+    subgraph "Integration Files"
+        SLP[SL Posting<br/>SLPOSTING]
+        PLP[PL Posting<br/>PLPOSTING]
+        GLP[GL Posting<br/>GLPOSTING]
+        AUDIT[Stock Audit<br/>Trail]
+    end
+    
+    %% Batch Processing
+    subgraph "Batch Processing"
+        SLBP[SL Batch Post<br/>sl060/100]
+        PLBP[PL Batch Post<br/>pl060/100]
+        GLBP[GL Batch Post<br/>gl070/072]
+        IRSBP[IRS Batch Post]
+    end
+    
+    %% Financial Updates
+    subgraph "Financial Ledgers"
+        GL[General Ledger<br/>Accounts]
+        IRS[IRS Ledger<br/>Accounts]
+    end
+    
+    %% Reporting Layer
+    subgraph "Reports & Documents"
+        subgraph "Financial Reports"
+            TB[Trial Balance]
+            PNL[P&L Statement]
+            BS[Balance Sheet]
+        end
+        
+        subgraph "Operational Reports"
+            AR[Aged Receivables]
+            AP[Aged Payables]
+            SV[Stock Valuation]
+            SA_REP[Sales Analysis]
+        end
+        
+        subgraph "Documents"
+            INV[Invoices]
+            STM[Statements]
+            CHK[Cheques]
+            DN[Delivery Notes]
+        end
+    end
+    
+    %% Data Flows
+    
+    %% Sales Flow
+    CO --> IE
+    IE --> IVL
+    IVL --> SLP
+    IVL --> STU
+    SLP --> SLBP
+    SLBP --> CU
+    SLBP --> GL
+    SLBP --> IRS
+    
+    CP --> PE
+    PE --> PVL
+    PVL --> CU
+    PVL --> SLP
+    
+    %% Purchase Flow
+    SP --> POE
+    POE --> IVL
+    SR --> GR
+    GR --> STU
+    SI --> PIE
+    PIE --> PLP
+    PLP --> PLBP
+    PLBP --> SU
+    PLBP --> GL
+    PLBP --> IRS
+    
+    %% Stock Flow
+    SA --> SM
+    SM --> SVL
+    SVL --> STU
+    STU --> AUDIT
+    AUDIT --> GLP
+    
+    %% GL Flow
+    JE --> JEE
+    JEE --> BVL
+    BVL --> GLP
+    GLP --> GLBP
+    GLBP --> GLU
+    GLU --> GL
+    
+    %% IRS Alternative
+    JE --> IRSE
+    IRSE --> IRSBP
+    IRSBP --> IRS
+    
+    %% Report Generation
+    GL --> TB
+    GL --> PNL
+    GL --> BS
+    
+    IRS --> TB
+    IRS --> PNL
+    IRS --> BS
+    
+    CU --> AR
+    CU --> STM
+    SU --> AP
+    STU --> SV
+    
+    IE --> INV
+    GR --> DN
+    PLBP --> CHK
+    
+    SLP --> SA_REP
+    PLP --> SA_REP
+    
+    %% Styling
+    classDef external fill:#ffebee,stroke:#f44336,stroke-width:2px
+    classDef entry fill:#e8f5e9,stroke:#4caf50,stroke-width:2px
+    classDef validation fill:#fff3e0,stroke:#ff9800,stroke-width:2px
+    classDef master fill:#e3f2fd,stroke:#2196f3,stroke-width:2px
+    classDef integration fill:#f3e5f5,stroke:#9c27b0,stroke-width:2px
+    classDef batch fill:#e0f2f1,stroke:#009688,stroke-width:2px
+    classDef ledger fill:#fce4ec,stroke:#e91e63,stroke-width:2px
+    classDef report fill:#e8eaf6,stroke:#3f51b5,stroke-width:2px
+    
+    class CO,CP,SI,SP,SR,SA,JE external
+    class IE,PE,POE,GR,PIE,SM,SAJ,JEE,IRSE entry
+    class IVL,PVL,BVL,SVL validation
+    class CU,SU,STU,GLU master
+    class SLP,PLP,GLP,AUDIT integration
+    class SLBP,PLBP,GLBP,IRSBP batch
+    class GL,IRS ledger
+    class TB,PNL,BS,AR,AP,SV,SA_REP,INV,STM,CHK,DN report

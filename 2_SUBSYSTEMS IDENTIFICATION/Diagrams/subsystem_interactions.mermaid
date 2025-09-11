@@ -1,0 +1,127 @@
+%% ACAS Detailed Subsystem Interaction Diagram
+%% Shows data flows and integration patterns between subsystems
+
+graph LR
+    %% Define subsystems with clear boundaries
+    subgraph "User Interface Layer"
+        MENU[Menu Programs<br/>ACAS, sales, purchase,<br/>stock, general, irs]
+    end
+    
+    subgraph "Business Logic Layer"
+        subgraph "Sales Domain"
+            SLMGMT[SL_MGMT<br/>●Customer Master<br/>●Invoice Processing<br/>●Payment Handling<br/>●Credit Control]
+        end
+        
+        subgraph "Purchase Domain"
+            PLMGMT[PL_MGMT<br/>●Supplier Master<br/>●Order Processing<br/>●Goods Receipt<br/>●Payment Selection]
+        end
+        
+        subgraph "Inventory Domain"
+            STCTRL[ST_CTRL<br/>●Stock Master<br/>●Movement Control<br/>●Valuation<br/>●Reordering]
+        end
+        
+        subgraph "Financial Domain"
+            GLCORE[GL_CORE<br/>●Chart of Accounts<br/>●Journal Processing<br/>●Financial Reports<br/>●Multi-branch]
+            
+            IRSCORE[IRS_CORE<br/>●Simple Accounting<br/>●Single Entry<br/>●Tax Tracking<br/>●Small Business]
+        end
+    end
+    
+    subgraph "Processing Layer"
+        BATCH[BATCH_FW<br/>●Validation<br/>●Posting Control<br/>●Error Handling]
+        
+        PERIOD[PERIOD_PROC<br/>●Month End<br/>●Year End<br/>●Archival]
+        
+        RPT[RPT_ENGINE<br/>●Report Generation<br/>●Document Printing<br/>●Analysis]
+    end
+    
+    subgraph "Data Layer"
+        subgraph "Data Access"
+            DAL[DAL Layer<br/>●File Handlers<br/>●*MT Modules<br/>●Load/Unload]
+        end
+        
+        subgraph "Storage"
+            FILES[COBOL Files<br/>●ISAM<br/>●Sequential]
+            
+            DB[(RDBMS<br/>●MySQL<br/>●MariaDB)]
+        end
+    end
+    
+    subgraph "Infrastructure"
+        SYSADMIN[SYS_ADMIN<br/>●Parameters<br/>●Configuration<br/>●Security]
+        
+        UTIL[COMMON_UTIL<br/>●Date Functions<br/>●Validation<br/>●Check Digits]
+    end
+    
+    %% User interactions
+    MENU -->|Navigation| SLMGMT
+    MENU -->|Navigation| PLMGMT
+    MENU -->|Navigation| STCTRL
+    MENU -->|Navigation| GLCORE
+    MENU -->|Navigation| IRSCORE
+    
+    %% Business process flows
+    SLMGMT -->|Invoice Posting| BATCH
+    PLMGMT -->|Order Posting| BATCH
+    BATCH -->|Validated Entries| GLCORE
+    BATCH -->|Validated Entries| IRSCORE
+    
+    %% Stock integration
+    SLMGMT -->|Stock Deduction| STCTRL
+    PLMGMT -->|Stock Addition| STCTRL
+    STCTRL -->|Adjustments| BATCH
+    
+    %% Data access patterns
+    SLMGMT --> DAL
+    PLMGMT --> DAL
+    STCTRL --> DAL
+    GLCORE --> DAL
+    IRSCORE --> DAL
+    
+    DAL --> FILES
+    DAL --> DB
+    
+    %% Configuration access
+    SLMGMT -.->|Config| SYSADMIN
+    PLMGMT -.->|Config| SYSADMIN
+    STCTRL -.->|Config| SYSADMIN
+    GLCORE -.->|Config| SYSADMIN
+    IRSCORE -.->|Config| SYSADMIN
+    
+    %% Utility usage
+    SLMGMT -.->|Functions| UTIL
+    PLMGMT -.->|Functions| UTIL
+    GLCORE -.->|Functions| UTIL
+    
+    %% Period processing
+    PERIOD -->|Close Sales| SLMGMT
+    PERIOD -->|Close Purchase| PLMGMT
+    PERIOD -->|Close Stock| STCTRL
+    PERIOD -->|Archive| GLCORE
+    PERIOD -->|Archive| IRSCORE
+    
+    %% Reporting
+    SLMGMT --> RPT
+    PLMGMT --> RPT
+    STCTRL --> RPT
+    GLCORE --> RPT
+    IRSCORE --> RPT
+    
+    %% Styling
+    classDef menu fill:#e8f5e9,stroke:#4caf50,stroke-width:2px
+    classDef sales fill:#e3f2fd,stroke:#2196f3,stroke-width:2px
+    classDef purchase fill:#fce4ec,stroke:#e91e63,stroke-width:2px
+    classDef stock fill:#f3e5f5,stroke:#9c27b0,stroke-width:2px
+    classDef financial fill:#fff3e0,stroke:#ff9800,stroke-width:2px
+    classDef processing fill:#e0f2f1,stroke:#009688,stroke-width:2px
+    classDef data fill:#eceff1,stroke:#607d8b,stroke-width:2px
+    classDef infra fill:#fffde7,stroke:#fbc02d,stroke-width:2px
+    
+    class MENU menu
+    class SLMGMT sales
+    class PLMGMT purchase
+    class STCTRL stock
+    class GLCORE,IRSCORE financial
+    class BATCH,PERIOD,RPT processing
+    class DAL,FILES,DB data
+    class SYSADMIN,UTIL infra

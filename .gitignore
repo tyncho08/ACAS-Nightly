@@ -254,6 +254,9 @@ SYS-DISPLAY.log
 .env
 .env.local
 
+# VS Code configuration
+.vscode/
+
 # ==========================================
 # Project specific
 # ==========================================

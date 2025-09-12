@@ -1,0 +1,21 @@
+{
+  "name": "cobol-parser-analysis",
+  "version": "1.0.0",
+  "description": "COBOL Parser Analysis, Visualization, and Dashboard Tools",
+  "main": "index.js",
+  "scripts": {
+    "generate-flowcharts": "node scripts/generate-flowcharts.js",
+    "generate-callgraph": "node scripts/generate-callgraph.js",
+    "generate-docs": "node scripts/generate-documentation.js",
+    "analyze-metrics": "node scripts/analyze-metrics.js",
+    "build-dashboard": "node scripts/build-dashboard.js",
+    "start-dashboard": "node dashboard/server.js",
+    "all": "npm run generate-flowcharts && npm run generate-callgraph && npm run generate-docs && npm run analyze-metrics && npm run build-dashboard"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "fs-extra": "^11.2.0",
+    "glob": "^10.3.10",
+    "sqlite3": "^5.1.6"
+  }
+}

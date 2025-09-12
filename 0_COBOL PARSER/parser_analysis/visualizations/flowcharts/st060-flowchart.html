@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flowchart: st060</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 10px;
+        }
+        .info {
+            background-color: #e8f5e9;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .mermaid {
+            text-align: center;
+            background-color: #fafafa;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        .legend {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Flowchart: st060</h1>
+        
+        <div class="info">
+            <strong>Source:</strong> stock/st060.cbl<br>
+            <strong>Divisions:</strong> 4<br>
+            <strong>Sections:</strong> 18<br>
+            <strong>Paragraphs:</strong> 33<br>
+            <strong>PERFORM statements:</strong> 0<br>
+            <strong>CALL statements:</strong> 5<br>
+            <strong>File operations:</strong> 2
+        </div>
+        
+        <div class="mermaid">
+graph TD
+    Start([Start])
+    Start --> Divisions
+    Divisions[/"4 Divisions"\]
+    Section0["input-output            section."]
+    Section1["file section."]
+    Section2["working-storage section."]
+    Section3["linkage section."]
+    Section4["File-Error-On-IF section."]
+    Section5["aa000-Core              section."]
+    Section6["ba000-Import-Stock      section."]
+    Section7["exit     section."]
+    Section8["zz010-Display-Heading      section."]
+    Section9["exit     section."]
+    Section10["zz025-Format-Number       section."]
+    Section11["exit     section."]
+    Section12["zz027-Clean-Number        section."]
+    Section13["exit     section."]
+    Section14["zz030-Format-Amount       section."]
+    Section15["exit     section."]
+    Section16["zz050-Validate-Date       section."]
+    Section17["exit     section."]
+    Para0("file-control")
+    Para1("file-defs")
+    Para2("Declaratives")
+    Para3("a00-IF-Error-1")
+    Para4("Eval-Status")
+    Para5("main-exit")
+    Para6("exit")
+    Para7("GOBACK")
+    Para8("aa010-Get-File-for-Import")
+    Para9("a10-Stock-Error-1")
+    Para10("goback")
+    Para11("Eval-Status-2")
+    Para12("maps04")
+    Para13("aa999-Exit")
+    Para14("goback")
+    Para15("ba010-Get-A-Record")
+    Para16("ba020-Process-Regular")
+    Para17("ba030-Process-Comma")
+    Para18("end-if")
+    Para19("ba040-Write-Stock")
+    Para20("ba998-Main-End")
+    Para21("ba999-Exit")
+    Para22("zz010-convert-date")
+    Para23("end-if")
+    Para24("zz010-exit")
+    Para25("end-perform")
+    Para26("zz025-Exit")
+    Para27("end-if")
+    Para28("zz027-Exit")
+    Para29("end-if")
+    Para30("zz030-Exit")
+    Para31("zz050-test-date")
+    Para32("zz050-exit")
+    %% External CALL relationships
+    Call0[["BLK"]]
+    Para0 ==>|CALL| Call0
+    Call1[["ACAS011"]]
+    Para0 ==>|CALL| Call1
+    Call2[["AS"]]
+    Para0 ==>|CALL| Call2
+    Call3[["MAPS04"]]
+    Para0 ==>|CALL| Call3
+    Call4[["SL070"]]
+    Para0 ==>|CALL| Call4
+    %% File operations
+    File0[("SELECT IMPORT-FILE")]
+    File1[("IMPORT-FILE")]
+    End([End])
+
+        </div>
+        
+        <div class="legend">
+            <h3>Legend</h3>
+            <ul>
+                <li><strong>Rounded rectangles:</strong> Start/End points</li>
+                <li><strong>Rectangles:</strong> Sections and divisions</li>
+                <li><strong>Rounded rectangles with parentheses:</strong> Paragraphs</li>
+                <li><strong>Double-bordered rectangles:</strong> External CALL targets</li>
+                <li><strong>Cylinders:</strong> File operations</li>
+                <li><strong>Dashed arrows:</strong> PERFORM relationships</li>
+                <li><strong>Thick arrows:</strong> CALL relationships</li>
+            </ul>
+        </div>
+    </div>
+    
+    <script>
+        mermaid.initialize({ 
+            startOnLoad: true,
+            theme: 'default',
+            flowchart: {
+                useMaxWidth: true,
+                htmlLabels: true,
+                curve: 'basis'
+            }
+        });
+    </script>
+</body>
+</html>

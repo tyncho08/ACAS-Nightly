@@ -1,0 +1,83 @@
+{
+  "testFile": "/Users/MartinGonella/Desktop/Demos/ACAS-Nightly/common/ACAS.cbl",
+  "parseTimestamp": "2025-09-12T13:49:24.624Z",
+  "structure": {
+    "programId": null,
+    "divisions": [
+      "IDENTIFICATION          DIVISION.",
+      "ENVIRONMENT             DIVISION.",
+      "DATA  DIVISION.",
+      "PROCEDURE DIVISION."
+    ],
+    "sections": [
+      "INPUT-OUTPUT            SECTION.",
+      "WORKING-STORAGE SECTION.",
+      "ZZ060-CONVERT-DATE        SECTION.",
+      "EXIT     SECTION.",
+      "MAPS04       SECTION.",
+      "EXIT     SECTION.",
+      "ZZ100-ACAS-IRS-CALLS  SECTION."
+    ],
+    "paragraphs": [
+      "ACAS-MAIN",
+      "GET-TERM-SETTINGS",
+      "OPEN-SYSTEM",
+      "END-IF",
+      "DISPLAY-MENU",
+      "CONV-DATE",
+      "END-IF",
+      "CONV-DATE-END",
+      "DISPLAY-GO",
+      "ACCEPT-LOOP",
+      "CALL-SYSTEM-SETUP",
+      "FILE-DEFS",
+      "OVERREWRITE",
+      "OVERCLOSE",
+      "GOBACK",
+      "LOAD-IT",
+      "LOADERROR",
+      "LOAD00",
+      "LOAD00-EXIT",
+      "LOAD01",
+      "LOAD02",
+      "LOAD03",
+      "LOAD04",
+      "LOAD05",
+      "LOAD06",
+      "LOAD07",
+      "LOAD08",
+      "LOAD09",
+      "LOAD23",
+      "LOADSR",
+      "LOADSR2",
+      "MAIN-EXIT",
+      "ZZ060-EXIT",
+      "MAPS04-EXIT",
+      "ACAS000",
+      "END-CALL",
+      "SYSTEM-OPEN",
+      "SYSTEM-OPEN-INPUT",
+      "SYSTEM-CLOSE",
+      "SYSTEM-READ-NEXT",
+      "SYSTEM-READ-INDEXED",
+      "SYSTEM-WRITE",
+      "SYSTEM-REWRITE",
+      "SYSTEM-CHECK-4-ERRORS",
+      "END-IF",
+      "GOBACK"
+    ],
+    "copyStatements": [
+      "MUST",
+      "OF"
+    ],
+    "callStatements": [
+      "MAPS04",
+      "MAPS04",
+      "ACAS000"
+    ],
+    "fileDescriptions": []
+  },
+  "ast": {
+    "error": "CobolParser.program.parse is not a function"
+  }
+}

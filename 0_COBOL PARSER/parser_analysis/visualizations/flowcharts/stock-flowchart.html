@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flowchart: stock</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 10px;
+        }
+        .info {
+            background-color: #e8f5e9;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .mermaid {
+            text-align: center;
+            background-color: #fafafa;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        .legend {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Flowchart: stock</h1>
+        
+        <div class="info">
+            <strong>Source:</strong> stock/stock.cbl<br>
+            <strong>Divisions:</strong> 4<br>
+            <strong>Sections:</strong> 8<br>
+            <strong>Paragraphs:</strong> 34<br>
+            <strong>PERFORM statements:</strong> 0<br>
+            <strong>CALL statements:</strong> 5<br>
+            <strong>File operations:</strong> 0
+        </div>
+        
+        <div class="mermaid">
+graph TD
+    Start([Start])
+    Start --> Divisions
+    Divisions[/"4 Divisions"\]
+    Section0["input-output            section."]
+    Section1["file section."]
+    Section2["working-storage section."]
+    Section3["aa000-General-Control  Section."]
+    Section4["zz060-Convert-Date        section."]
+    Section5["exit     section."]
+    Section6["maps04       section."]
+    Section7["exit     section."]
+    Para0("file-control")
+    Para1("goback")
+    Para2("goback")
+    Para3("File-Duplicates-In-Use")
+    Para4("end-if")
+    Para5("aa010-Get-System-Recs")
+    Para6("end-if")
+    Para7("File-Info")
+    Para8("aa030-display-menu")
+    Para9("aa035-Conv-Date")
+    Para10("end-if")
+    Para11("aa035-Conv-Date-End")
+    Para12("aa040-Display-Go")
+    Para13("aa050-Accept-Loop")
+    Para14("goback")
+    Para15("goback")
+    Para16("aa090-Load-It")
+    Para17("loader")
+    Para18("load00")
+    Para19("file-defs")
+    Para20("Load00-No-Jump")
+    Para21("load00-exit")
+    Para22("load01")
+    Para23("load02")
+    Para24("load03")
+    Para25("load04")
+    Para26("load05")
+    Para27("load06")
+    Para28("load25")
+    Para29("loadsr")
+    Para30("aa999-exit")
+    Para31("goback")
+    Para32("zz060-Exit")
+    Para33("maps04-exit")
+    %% External CALL relationships
+    Call0[["BLK"]]
+    Para0 ==>|CALL| Call0
+    Call1[["WS-CALLED"]]
+    Para0 ==>|CALL| Call1
+    Call2[["SL070"]]
+    Para0 ==>|CALL| Call2
+    Call3[["MAPS04"]]
+    Para0 ==>|CALL| Call3
+    Call4[["SYSTEM"]]
+    Para0 ==>|CALL| Call4
+    End([End])
+
+        </div>
+        
+        <div class="legend">
+            <h3>Legend</h3>
+            <ul>
+                <li><strong>Rounded rectangles:</strong> Start/End points</li>
+                <li><strong>Rectangles:</strong> Sections and divisions</li>
+                <li><strong>Rounded rectangles with parentheses:</strong> Paragraphs</li>
+                <li><strong>Double-bordered rectangles:</strong> External CALL targets</li>
+                <li><strong>Cylinders:</strong> File operations</li>
+                <li><strong>Dashed arrows:</strong> PERFORM relationships</li>
+                <li><strong>Thick arrows:</strong> CALL relationships</li>
+            </ul>
+        </div>
+    </div>
+    
+    <script>
+        mermaid.initialize({ 
+            startOnLoad: true,
+            theme: 'default',
+            flowchart: {
+                useMaxWidth: true,
+                htmlLabels: true,
+                curve: 'basis'
+            }
+        });
+    </script>
+</body>
+</html>

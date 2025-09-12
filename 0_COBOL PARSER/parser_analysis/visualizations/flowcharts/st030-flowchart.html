@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flowchart: st030</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 10px;
+        }
+        .info {
+            background-color: #e8f5e9;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .mermaid {
+            text-align: center;
+            background-color: #fafafa;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        .legend {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Flowchart: st030</h1>
+        
+        <div class="info">
+            <strong>Source:</strong> stock/st030.cbl<br>
+            <strong>Divisions:</strong> 4<br>
+            <strong>Sections:</strong> 44<br>
+            <strong>Paragraphs:</strong> 64<br>
+            <strong>PERFORM statements:</strong> 1<br>
+            <strong>CALL statements:</strong> 3<br>
+            <strong>File operations:</strong> 0
+        </div>
+        
+        <div class="mermaid">
+graph TD
+    Start([Start])
+    Start --> Divisions
+    Divisions[/"4 Divisions"\]
+    Section0["input-output            section."]
+    Section1["file section."]
+    Section2["working-storage section."]
+    Section3["linkage section."]
+    Section4["Screen Section."]
+    Section5["AA000-Core                 section."]
+    Section6["BA000-Process-Valuations section."]
+    Section7["exit     section."]
+    Section8["CA000-Process-Activity section."]
+    Section9["exit     section."]
+    Section10["DA000-Process-ReOrder section."]
+    Section11["exit     section."]
+    Section12["EA000-Process-Stock-Lists section."]
+    Section13["exit     section."]
+    Section14["EB000-Process-Stock-Desc section."]
+    Section15["FA000-Process-History section."]
+    Section16["exit     section."]
+    Section17["GA000-Process-Location section."]
+    Section18["exit     section."]
+    Section19["ZZ002-Print-Head-Top      section."]
+    Section20["exit     section."]
+    Section21["ZZ004-String-Range        section."]
+    Section22["exit     section."]
+    Section23["ZZ006-String-Range        section."]
+    Section24["exit     section."]
+    Section25["ZZ010-Print-Heads         section."]
+    Section26["exit     section."]
+    Section27["ZZ020-Print-Heads         section."]
+    Section28["exit     section."]
+    Section29["ZZ025-Print-Heads         section."]
+    Section30["Exit     section."]
+    Section31["ZZ030-Print-Heads         section."]
+    Section32["Exit     section."]
+    Section33["ZZ035-Print-Heads         section."]
+    Section34["ZZ040-Print-Heads         section."]
+    Section35["exit     section."]
+    Section36["ZZ045-Print-Heads         section."]
+    Section37["exit     section."]
+    Section38["ZZ050-Report-Selection  section."]
+    Section39["exit     section."]
+    Section40["ZZ060-Convert-Date        section."]
+    Section41["exit     section."]
+    Section42["ZZ070-Convert-Date        section."]
+    Section43["exit     section."]
+    Para0("file-control")
+    Para1("file-defs")
+    Para2("WS-Todate-Period")
+    Para3("AA010-Display-Headings")
+    Para4("AA020-Display-Heads")
+    Para5("AA030-DH-End")
+    Para6("aa100-Main-Menu")
+    Para7("aa110-Accept-Loop")
+    Para8("end-evaluate")
+    Para9("maps04")
+    Para10("aa999-Exit")
+    Para11("end-if")
+    Para12("BA010-Read-Rec")
+    Para13("BA020-Print-Rec")
+    Para14("BA030-Finish-Report")
+    Para15("ba999-Exit")
+    Para16("end-if")
+    Para17("CA010-Read-Rec")
+    Para18("CA020-Print-Rec")
+    Para19("CA030-Finish-Report")
+    Para20("ca999-Exit")
+    Para21("end-if")
+    Para22("DA010-Read-Rec")
+    Para23("DA013-End-Range-Test")
+    Para24("DA020-Print-Rec")
+    Para25("DA030-Finish-Report")
+    Para26("da999-Exit")
+    Para27("EA010-Read-Rec")
+    Para28("EA020-Print-Rec")
+    Para29("EA030-Totals")
+    Para30("ea999-Exit")
+    Para31("EB010-Read-Rec")
+    Para32("EB020-Print-Rec")
+    Para33("EB030-Totals")
+    Para34("FA010-Read-Rec")
+    Para35("FA020-Print-Rec")
+    Para36("FA030-Finish-Report")
+    Para37("FA999-Exit")
+    Para38("C")
+    Para39("GA010-Read-Rec")
+    Para40("end-perform")
+    Para41("GA030-Finish-Report")
+    Para42("GA999-Exit")
+    Para43("line-0")
+    Para44("ZZ002-Exit")
+    Para45("ZZ004-Exit")
+    Para46("end-if")
+    Para47("ZZ006-Exit")
+    Para48("ZZ010-Exit")
+    Para49("ZZ020-Exit")
+    Para50("ZZ025-Exit")
+    Para51("ZZ030-Exit")
+    Para52("ZZ040-Exit")
+    Para53("ZZ045-Exit")
+    Para54("ZZ050-Report-Selection-Main")
+    Para55("WS-Location-To-Cnt")
+    Para56("ZZ050-Get-Disp-01")
+    Para57("ZZ050-Get-Disp-03")
+    Para58("ZZ050-Get-Disp-04")
+    Para59("end-perform")
+    Para60("end-perform")
+    Para61("ZZ050-Exit")
+    Para62("ZZ060-Exit")
+    Para63("ZZ070-Exit")
+    %% PERFORM relationships
+    %% External CALL relationships
+    Call0[["BLK"]]
+    Para0 ==>|CALL| Call0
+    Call1[["SYSTEM"]]
+    Para0 ==>|CALL| Call1
+    Call2[["MAPS04"]]
+    Para0 ==>|CALL| Call2
+    End([End])
+
+        </div>
+        
+        <div class="legend">
+            <h3>Legend</h3>
+            <ul>
+                <li><strong>Rounded rectangles:</strong> Start/End points</li>
+                <li><strong>Rectangles:</strong> Sections and divisions</li>
+                <li><strong>Rounded rectangles with parentheses:</strong> Paragraphs</li>
+                <li><strong>Double-bordered rectangles:</strong> External CALL targets</li>
+                <li><strong>Cylinders:</strong> File operations</li>
+                <li><strong>Dashed arrows:</strong> PERFORM relationships</li>
+                <li><strong>Thick arrows:</strong> CALL relationships</li>
+            </ul>
+        </div>
+    </div>
+    
+    <script>
+        mermaid.initialize({ 
+            startOnLoad: true,
+            theme: 'default',
+            flowchart: {
+                useMaxWidth: true,
+                htmlLabels: true,
+                curve: 'basis'
+            }
+        });
+    </script>
+</body>
+</html>

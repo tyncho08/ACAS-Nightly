@@ -1,0 +1,7624 @@
+{
+  "nodes": [
+    {
+      "id": "stockconvert3.cbl",
+      "label": "stockconvert3.cbl",
+      "type": "program",
+      "path": "stock/stockconvert3.cbl",
+      "subsystem": "stock"
+    },
+    {
+      "id": "stockconvert2.cbl",
+      "label": "stockconvert2.cbl",
+      "type": "program",
+      "path": "stock/stockconvert2.cbl",
+      "subsystem": "stock"
+    },
+    {
+      "id": "stock.cbl",
+      "label": "stock.cbl",
+      "type": "program",
+      "path": "stock/stock.cbl",
+      "subsystem": "stock"
+    },
+    {
+      "id": "st060.cbl",
+      "label": "st060.cbl",
+      "type": "program",
+      "path": "stock/st060.cbl",
+      "subsystem": "stock"
+    },
+    {
+      "id": "st050.cbl",
+      "label": "st050.cbl",
+      "type": "program",
+      "path": "stock/st050.cbl",
+      "subsystem": "stock"
+    },
+    {
+      "id": "st040.cbl",
+      "label": "st040.cbl",
+      "type": "program",
+      "path": "stock/st040.cbl",
+      "subsystem": "stock"
+    },
+    {
+      "id": "st030.cbl",
+      "label": "st030.cbl",
+      "type": "program",
+      "path": "stock/st030.cbl",
+      "subsystem": "stock"
+    },
+    {
+      "id": "st020.cbl",
+      "label": "st020.cbl",
+      "type": "program",
+      "path": "stock/st020.cbl",
+      "subsystem": "stock"
+    },
+    {
+      "id": "st010.cbl",
+      "label": "st010.cbl",
+      "type": "program",
+      "path": "stock/st010.cbl",
+      "subsystem": "stock"
+    },
+    {
+      "id": "st000.cbl",
+      "label": "st000.cbl",
+      "type": "program",
+      "path": "stock/st000.cbl",
+      "subsystem": "stock"
+    },
+    {
+      "id": "dummy-rdbmsMT.cbl",
+      "label": "dummy-rdbmsMT.cbl",
+      "type": "program",
+      "path": "stock/dummy-rdbmsMT.cbl",
+      "subsystem": "stock"
+    },
+    {
+      "id": "acasconvert1.cbl",
+      "label": "acasconvert1.cbl",
+      "type": "program",
+      "path": "stock/acasconvert1.cbl",
+      "subsystem": "stock"
+    },
+    {
+      "id": "sl970.cbl",
+      "label": "sl970.cbl",
+      "type": "program",
+      "path": "sales/sl970.cbl",
+      "subsystem": "sales"
+    },
+    {
+      "id": "sl960.cbl",
+      "label": "sl960.cbl",
+      "type": "program",
+      "path": "sales/sl960.cbl",
+      "subsystem": "sales"
+    },
+    {
+      "id": "sl950.cbl",
+      "label": "sl950.cbl",
+      "type": "program",
+      "path": "sales/sl950.cbl",
+      "subsystem": "sales"
+    },
+    {
+      "id": "sl940.cbl",
+      "label": "sl940.cbl",
+      "type": "program",
+      "path": "sales/sl940.cbl",
+      "subsystem": "sales"
+    },
+    {
+      "id": "sl930.cbl",
+      "label": "sl930.cbl",
+      "type": "program",
+      "path": "sales/sl930.cbl",
+      "subsystem": "sales"
+    },
+    {
+      "id": "sl920.cbl",
+      "label": "sl920.cbl",
+      "type": "program",
+      "path": "sales/sl920.cbl",
+      "subsystem": "sales"
+    },
+    {
+      "id": "sl910.cbl",
+      "label": "sl910.cbl",
+      "type": "program",
+      "path": "sales/sl910.cbl",
+      "subsystem": "sales"
+    },
+    {
+      "id": "sl900.cbl",
+      "label": "sl900.cbl",
+      "type": "program",
+      "path": "sales/sl900.cbl",
+      "subsystem": "sales"
+    },
+    {
+      "id": "sl830.cbl",
+      "label": "sl830.cbl",
+      "type": "program",
+      "path": "sales/sl830.cbl",
+      "subsystem": "sales"
+    },
+    {
+      "id": "sl820.cbl",
+      "label": "sl820.cbl",
+      "type": "program",
+      "path": "sales/sl820.cbl",
+      "subsystem": "sales"
+    },
+    {
+      "id": "sl810.cbl",
+      "label": "sl810.cbl",
+      "type": "program",
+      "path": "sales/sl810.cbl",
+      "subsystem": "sales"
+    },
+    {
+      "id": "sl800.cbl",
+      "label": "sl800.cbl",
+      "type": "program",
+      "path": "sales/sl800.cbl",
+      "subsystem": "sales"
+    },
+    {
+      "id": "sl200.cbl",
+      "label": "sl200.cbl",
+      "type": "program",
+      "path": "sales/sl200.cbl",
+      "subsystem": "sales"
+    },
+    {
+      "id": "sl190.cbl",
+      "label": "sl190.cbl",
+      "type": "program",
+      "path": "sales/sl190.cbl",
+      "subsystem": "sales"
+    },
+    {
+      "id": "sl180.cbl",
+      "label": "sl180.cbl",
+      "type": "program",
+      "path": "sales/sl180.cbl",
+      "subsystem": "sales"
+    },
+    {
+      "id": "sl170.cbl",
+      "label": "sl170.cbl",
+      "type": "program",
+      "path": "sales/sl170.cbl",
+      "subsystem": "sales"
+    },
+    {
+      "id": "sl165.cbl",
+      "label": "sl165.cbl",
+      "type": "program",
+      "path": "sales/sl165.cbl",
+      "subsystem": "sales"
+    },
+    {
+      "id": "sl160.cbl",
+      "label": "sl160.cbl",
+      "type": "program",
+      "path": "sales/sl160.cbl",
+      "subsystem": "sales"
+    },
+    {
+      "id": "sl140.cbl",
+      "label": "sl140.cbl",
+      "type": "program",
+      "path": "sales/sl140.cbl",
+      "subsystem": "sales"
+    },
+    {
+      "id": "sl130.cbl",
+      "label": "sl130.cbl",
+      "type": "program",
+      "path": "sales/sl130.cbl",
+      "subsystem": "sales"
+    },
+    {
+      "id": "sl120.cbl",
+      "label": "sl120.cbl",
+      "type": "program",
+      "path": "sales/sl120.cbl",
+      "subsystem": "sales"
+    },
+    {
+      "id": "sl115.cbl",
+      "label": "sl115.cbl",
+      "type": "program",
+      "path": "sales/sl115.cbl",
+      "subsystem": "sales"
+    },
+    {
+      "id": "sl110.cbl",
+      "label": "sl110.cbl",
+      "type": "program",
+      "path": "sales/sl110.cbl",
+      "subsystem": "sales"
+    },
+    {
+      "id": "sl100.cbl",
+      "label": "sl100.cbl",
+      "type": "program",
+      "path": "sales/sl100.cbl",
+      "subsystem": "sales"
+    },
+    {
+      "id": "sl095.cbl",
+      "label": "sl095.cbl",
+      "type": "program",
+      "path": "sales/sl095.cbl",
+      "subsystem": "sales"
+    },
+    {
+      "id": "sl090.cbl",
+      "label": "sl090.cbl",
+      "type": "program",
+      "path": "sales/sl090.cbl",
+      "subsystem": "sales"
+    },
+    {
+      "id": "sl085.cbl",
+      "label": "sl085.cbl",
+      "type": "program",
+      "path": "sales/sl085.cbl",
+      "subsystem": "sales"
+    },
+    {
+      "id": "sl080.cbl",
+      "label": "sl080.cbl",
+      "type": "program",
+      "path": "sales/sl080.cbl",
+      "subsystem": "sales"
+    },
+    {
+      "id": "sl070.cbl",
+      "label": "sl070.cbl",
+      "type": "program",
+      "path": "sales/sl070.cbl",
+      "subsystem": "sales"
+    },
+    {
+      "id": "sl060.cbl",
+      "label": "sl060.cbl",
+      "type": "program",
+      "path": "sales/sl060.cbl",
+      "subsystem": "sales"
+    },
+    {
+      "id": "sl055.cbl",
+      "label": "sl055.cbl",
+      "type": "program",
+      "path": "sales/sl055.cbl",
+      "subsystem": "sales"
+    },
+    {
+      "id": "sl050.cbl",
+      "label": "sl050.cbl",
+      "type": "program",
+      "path": "sales/sl050.cbl",
+      "subsystem": "sales"
+    },
+    {
+      "id": "sl020.cbl",
+      "label": "sl020.cbl",
+      "type": "program",
+      "path": "sales/sl020.cbl",
+      "subsystem": "sales"
+    },
+    {
+      "id": "sl010.cbl",
+      "label": "sl010.cbl",
+      "type": "program",
+      "path": "sales/sl010.cbl",
+      "subsystem": "sales"
+    },
+    {
+      "id": "sl000.cbl",
+      "label": "sl000.cbl",
+      "type": "program",
+      "path": "sales/sl000.cbl",
+      "subsystem": "sales"
+    },
+    {
+      "id": "sales.cbl",
+      "label": "sales.cbl",
+      "type": "program",
+      "path": "sales/sales.cbl",
+      "subsystem": "sales"
+    },
+    {
+      "id": "dummy-rdbmsMT.cbl",
+      "label": "dummy-rdbmsMT.cbl",
+      "type": "program",
+      "path": "sales/dummy-rdbmsMT.cbl",
+      "subsystem": "sales"
+    },
+    {
+      "id": "sl830.cbl",
+      "label": "sl830.cbl",
+      "type": "program",
+      "path": "purchase/sl830.cbl",
+      "subsystem": "purchase"
+    },
+    {
+      "id": "sl820.cbl",
+      "label": "sl820.cbl",
+      "type": "program",
+      "path": "purchase/sl820.cbl",
+      "subsystem": "purchase"
+    },
+    {
+      "id": "sl810.cbl",
+      "label": "sl810.cbl",
+      "type": "program",
+      "path": "purchase/sl810.cbl",
+      "subsystem": "purchase"
+    },
+    {
+      "id": "purchase.cbl",
+      "label": "purchase.cbl",
+      "type": "program",
+      "path": "purchase/purchase.cbl",
+      "subsystem": "purchase"
+    },
+    {
+      "id": "pl960.cbl",
+      "label": "pl960.cbl",
+      "type": "program",
+      "path": "purchase/pl960.cbl",
+      "subsystem": "purchase"
+    },
+    {
+      "id": "pl950.cbl",
+      "label": "pl950.cbl",
+      "type": "program",
+      "path": "purchase/pl950.cbl",
+      "subsystem": "purchase"
+    },
+    {
+      "id": "pl940.cbl",
+      "label": "pl940.cbl",
+      "type": "program",
+      "path": "purchase/pl940.cbl",
+      "subsystem": "purchase"
+    },
+    {
+      "id": "pl930.cbl",
+      "label": "pl930.cbl",
+      "type": "program",
+      "path": "purchase/pl930.cbl",
+      "subsystem": "purchase"
+    },
+    {
+      "id": "pl920.cbl",
+      "label": "pl920.cbl",
+      "type": "program",
+      "path": "purchase/pl920.cbl",
+      "subsystem": "purchase"
+    },
+    {
+      "id": "pl910.cbl",
+      "label": "pl910.cbl",
+      "type": "program",
+      "path": "purchase/pl910.cbl",
+      "subsystem": "purchase"
+    },
+    {
+      "id": "pl900.cbl",
+      "label": "pl900.cbl",
+      "type": "program",
+      "path": "purchase/pl900.cbl",
+      "subsystem": "purchase"
+    },
+    {
+      "id": "pl800.cbl",
+      "label": "pl800.cbl",
+      "type": "program",
+      "path": "purchase/pl800.cbl",
+      "subsystem": "purchase"
+    },
+    {
+      "id": "pl190.cbl",
+      "label": "pl190.cbl",
+      "type": "program",
+      "path": "purchase/pl190.cbl",
+      "subsystem": "purchase"
+    },
+    {
+      "id": "pl180.cbl",
+      "label": "pl180.cbl",
+      "type": "program",
+      "path": "purchase/pl180.cbl",
+      "subsystem": "purchase"
+    },
+    {
+      "id": "pl170.cbl",
+      "label": "pl170.cbl",
+      "type": "program",
+      "path": "purchase/pl170.cbl",
+      "subsystem": "purchase"
+    },
+    {
+      "id": "pl165.cbl",
+      "label": "pl165.cbl",
+      "type": "program",
+      "path": "purchase/pl165.cbl",
+      "subsystem": "purchase"
+    },
+    {
+      "id": "pl160.cbl",
+      "label": "pl160.cbl",
+      "type": "program",
+      "path": "purchase/pl160.cbl",
+      "subsystem": "purchase"
+    },
+    {
+      "id": "pl140.cbl",
+      "label": "pl140.cbl",
+      "type": "program",
+      "path": "purchase/pl140.cbl",
+      "subsystem": "purchase"
+    },
+    {
+      "id": "pl130.cbl",
+      "label": "pl130.cbl",
+      "type": "program",
+      "path": "purchase/pl130.cbl",
+      "subsystem": "purchase"
+    },
+    {
+      "id": "pl120.cbl",
+      "label": "pl120.cbl",
+      "type": "program",
+      "path": "purchase/pl120.cbl",
+      "subsystem": "purchase"
+    },
+    {
+      "id": "pl115.cbl",
+      "label": "pl115.cbl",
+      "type": "program",
+      "path": "purchase/pl115.cbl",
+      "subsystem": "purchase"
+    },
+    {
+      "id": "pl100.cbl",
+      "label": "pl100.cbl",
+      "type": "program",
+      "path": "purchase/pl100.cbl",
+      "subsystem": "purchase"
+    },
+    {
+      "id": "pl095.cbl",
+      "label": "pl095.cbl",
+      "type": "program",
+      "path": "purchase/pl095.cbl",
+      "subsystem": "purchase"
+    },
+    {
+      "id": "pl090.cbl",
+      "label": "pl090.cbl",
+      "type": "program",
+      "path": "purchase/pl090.cbl",
+      "subsystem": "purchase"
+    },
+    {
+      "id": "pl085.cbl",
+      "label": "pl085.cbl",
+      "type": "program",
+      "path": "purchase/pl085.cbl",
+      "subsystem": "purchase"
+    },
+    {
+      "id": "pl080.cbl",
+      "label": "pl080.cbl",
+      "type": "program",
+      "path": "purchase/pl080.cbl",
+      "subsystem": "purchase"
+    },
+    {
+      "id": "pl070.cbl",
+      "label": "pl070.cbl",
+      "type": "program",
+      "path": "purchase/pl070.cbl",
+      "subsystem": "purchase"
+    },
+    {
+      "id": "pl060.cbl",
+      "label": "pl060.cbl",
+      "type": "program",
+      "path": "purchase/pl060.cbl",
+      "subsystem": "purchase"
+    },
+    {
+      "id": "pl055.cbl",
+      "label": "pl055.cbl",
+      "type": "program",
+      "path": "purchase/pl055.cbl",
+      "subsystem": "purchase"
+    },
+    {
+      "id": "pl050.cbl",
+      "label": "pl050.cbl",
+      "type": "program",
+      "path": "purchase/pl050.cbl",
+      "subsystem": "purchase"
+    },
+    {
+      "id": "pl040.cbl",
+      "label": "pl040.cbl",
+      "type": "program",
+      "path": "purchase/pl040.cbl",
+      "subsystem": "purchase"
+    },
+    {
+      "id": "pl030.cbl",
+      "label": "pl030.cbl",
+      "type": "program",
+      "path": "purchase/pl030.cbl",
+      "subsystem": "purchase"
+    },
+    {
+      "id": "pl025.cbl",
+      "label": "pl025.cbl",
+      "type": "program",
+      "path": "purchase/pl025.cbl",
+      "subsystem": "purchase"
+    },
+    {
+      "id": "pl020.cbl",
+      "label": "pl020.cbl",
+      "type": "program",
+      "path": "purchase/pl020.cbl",
+      "subsystem": "purchase"
+    },
+    {
+      "id": "pl015.cbl",
+      "label": "pl015.cbl",
+      "type": "program",
+      "path": "purchase/pl015.cbl",
+      "subsystem": "purchase"
+    },
+    {
+      "id": "pl010.cbl",
+      "label": "pl010.cbl",
+      "type": "program",
+      "path": "purchase/pl010.cbl",
+      "subsystem": "purchase"
+    },
+    {
+      "id": "pl000.cbl",
+      "label": "pl000.cbl",
+      "type": "program",
+      "path": "purchase/pl000.cbl",
+      "subsystem": "purchase"
+    },
+    {
+      "id": "dummy-rdbmsMT.cbl",
+      "label": "dummy-rdbmsMT.cbl",
+      "type": "program",
+      "path": "purchase/dummy-rdbmsMT.cbl",
+      "subsystem": "purchase"
+    },
+    {
+      "id": "irsubp.cbl",
+      "label": "irsubp.cbl",
+      "type": "program",
+      "path": "irs/irsubp.cbl",
+      "subsystem": "irs"
+    },
+    {
+      "id": "irs090.cbl",
+      "label": "irs090.cbl",
+      "type": "program",
+      "path": "irs/irs090.cbl",
+      "subsystem": "irs"
+    },
+    {
+      "id": "irs085.cbl",
+      "label": "irs085.cbl",
+      "type": "program",
+      "path": "irs/irs085.cbl",
+      "subsystem": "irs"
+    },
+    {
+      "id": "irs080.cbl",
+      "label": "irs080.cbl",
+      "type": "program",
+      "path": "irs/irs080.cbl",
+      "subsystem": "irs"
+    },
+    {
+      "id": "irs070.cbl",
+      "label": "irs070.cbl",
+      "type": "program",
+      "path": "irs/irs070.cbl",
+      "subsystem": "irs"
+    },
+    {
+      "id": "irs065.cbl",
+      "label": "irs065.cbl",
+      "type": "program",
+      "path": "irs/irs065.cbl",
+      "subsystem": "irs"
+    },
+    {
+      "id": "irs060.cbl",
+      "label": "irs060.cbl",
+      "type": "program",
+      "path": "irs/irs060.cbl",
+      "subsystem": "irs"
+    },
+    {
+      "id": "irs055.cbl",
+      "label": "irs055.cbl",
+      "type": "program",
+      "path": "irs/irs055.cbl",
+      "subsystem": "irs"
+    },
+    {
+      "id": "irs050.cbl",
+      "label": "irs050.cbl",
+      "type": "program",
+      "path": "irs/irs050.cbl",
+      "subsystem": "irs"
+    },
+    {
+      "id": "irs040.cbl",
+      "label": "irs040.cbl",
+      "type": "program",
+      "path": "irs/irs040.cbl",
+      "subsystem": "irs"
+    },
+    {
+      "id": "irs030.cbl",
+      "label": "irs030.cbl",
+      "type": "program",
+      "path": "irs/irs030.cbl",
+      "subsystem": "irs"
+    },
+    {
+      "id": "irs020.cbl",
+      "label": "irs020.cbl",
+      "type": "program",
+      "path": "irs/irs020.cbl",
+      "subsystem": "irs"
+    },
+    {
+      "id": "irs010.cbl",
+      "label": "irs010.cbl",
+      "type": "program",
+      "path": "irs/irs010.cbl",
+      "subsystem": "irs"
+    },
+    {
+      "id": "irs000.cbl",
+      "label": "irs000.cbl",
+      "type": "program",
+      "path": "irs/irs000.cbl",
+      "subsystem": "irs"
+    },
+    {
+      "id": "irs.cbl",
+      "label": "irs.cbl",
+      "type": "program",
+      "path": "irs/irs.cbl",
+      "subsystem": "irs"
+    },
+    {
+      "id": "dummy-rdbmsMT.cbl",
+      "label": "dummy-rdbmsMT.cbl",
+      "type": "program",
+      "path": "irs/dummy-rdbmsMT.cbl",
+      "subsystem": "irs"
+    },
+    {
+      "id": "gl120.cbl",
+      "label": "gl120.cbl",
+      "type": "program",
+      "path": "general/gl120.cbl",
+      "subsystem": "general"
+    },
+    {
+      "id": "gl105.cbl",
+      "label": "gl105.cbl",
+      "type": "program",
+      "path": "general/gl105.cbl",
+      "subsystem": "general"
+    },
+    {
+      "id": "gl100.cbl",
+      "label": "gl100.cbl",
+      "type": "program",
+      "path": "general/gl100.cbl",
+      "subsystem": "general"
+    },
+    {
+      "id": "gl090b.cbl",
+      "label": "gl090b.cbl",
+      "type": "program",
+      "path": "general/gl090b.cbl",
+      "subsystem": "general"
+    },
+    {
+      "id": "gl090a.cbl",
+      "label": "gl090a.cbl",
+      "type": "program",
+      "path": "general/gl090a.cbl",
+      "subsystem": "general"
+    },
+    {
+      "id": "gl090.cbl",
+      "label": "gl090.cbl",
+      "type": "program",
+      "path": "general/gl090.cbl",
+      "subsystem": "general"
+    },
+    {
+      "id": "gl080.cbl",
+      "label": "gl080.cbl",
+      "type": "program",
+      "path": "general/gl080.cbl",
+      "subsystem": "general"
+    },
+    {
+      "id": "gl072.cbl",
+      "label": "gl072.cbl",
+      "type": "program",
+      "path": "general/gl072.cbl",
+      "subsystem": "general"
+    },
+    {
+      "id": "gl071.cbl",
+      "label": "gl071.cbl",
+      "type": "program",
+      "path": "general/gl071.cbl",
+      "subsystem": "general"
+    },
+    {
+      "id": "gl070.cbl",
+      "label": "gl070.cbl",
+      "type": "program",
+      "path": "general/gl070.cbl",
+      "subsystem": "general"
+    },
+    {
+      "id": "gl060.cbl",
+      "label": "gl060.cbl",
+      "type": "program",
+      "path": "general/gl060.cbl",
+      "subsystem": "general"
+    },
+    {
+      "id": "gl051.cbl",
+      "label": "gl051.cbl",
+      "type": "program",
+      "path": "general/gl051.cbl",
+      "subsystem": "general"
+    },
+    {
+      "id": "gl050.cbl",
+      "label": "gl050.cbl",
+      "type": "program",
+      "path": "general/gl050.cbl",
+      "subsystem": "general"
+    },
+    {
+      "id": "gl030.cbl",
+      "label": "gl030.cbl",
+      "type": "program",
+      "path": "general/gl030.cbl",
+      "subsystem": "general"
+    },
+    {
+      "id": "gl020.cbl",
+      "label": "gl020.cbl",
+      "type": "program",
+      "path": "general/gl020.cbl",
+      "subsystem": "general"
+    },
+    {
+      "id": "gl000.cbl",
+      "label": "gl000.cbl",
+      "type": "program",
+      "path": "general/gl000.cbl",
+      "subsystem": "general"
+    },
+    {
+      "id": "general.cbl",
+      "label": "general.cbl",
+      "type": "program",
+      "path": "general/general.cbl",
+      "subsystem": "general"
+    },
+    {
+      "id": "dummy-rdbmsMT.cbl",
+      "label": "dummy-rdbmsMT.cbl",
+      "type": "program",
+      "path": "general/dummy-rdbmsMT.cbl",
+      "subsystem": "general"
+    },
+    {
+      "id": "create-system-dat.cbl",
+      "label": "create-system-dat.cbl",
+      "type": "program",
+      "path": "create-system-dat.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "xl160.cbl",
+      "label": "xl160.cbl",
+      "type": "program",
+      "path": "common/xl160.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "xl150.cbl",
+      "label": "xl150.cbl",
+      "type": "program",
+      "path": "common/xl150.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "valueUNL.cbl",
+      "label": "valueUNL.cbl",
+      "type": "program",
+      "path": "common/valueUNL.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "valueRES.cbl",
+      "label": "valueRES.cbl",
+      "type": "program",
+      "path": "common/valueRES.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "valueMT.cbl",
+      "label": "valueMT.cbl",
+      "type": "program",
+      "path": "common/valueMT.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "valueLD.cbl",
+      "label": "valueLD.cbl",
+      "type": "program",
+      "path": "common/valueLD.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "systemUNL.cbl",
+      "label": "systemUNL.cbl",
+      "type": "program",
+      "path": "common/systemUNL.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "systemRES.cbl",
+      "label": "systemRES.cbl",
+      "type": "program",
+      "path": "common/systemRES.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "systemMT.cbl",
+      "label": "systemMT.cbl",
+      "type": "program",
+      "path": "common/systemMT.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "systemLD.cbl",
+      "label": "systemLD.cbl",
+      "type": "program",
+      "path": "common/systemLD.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "sys4MT.cbl",
+      "label": "sys4MT.cbl",
+      "type": "program",
+      "path": "common/sys4MT.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "sys4LD.cbl",
+      "label": "sys4LD.cbl",
+      "type": "program",
+      "path": "common/sys4LD.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "sys002.cbl",
+      "label": "sys002.cbl",
+      "type": "program",
+      "path": "common/sys002.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "stockUNL.cbl",
+      "label": "stockUNL.cbl",
+      "type": "program",
+      "path": "common/stockUNL.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "stockRES.cbl",
+      "label": "stockRES.cbl",
+      "type": "program",
+      "path": "common/stockRES.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "stockMT.cbl",
+      "label": "stockMT.cbl",
+      "type": "program",
+      "path": "common/stockMT.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "stockLD.cbl",
+      "label": "stockLD.cbl",
+      "type": "program",
+      "path": "common/stockLD.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "slpostingUNL.cbl",
+      "label": "slpostingUNL.cbl",
+      "type": "program",
+      "path": "common/slpostingUNL.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "slpostingRES.cbl",
+      "label": "slpostingRES.cbl",
+      "type": "program",
+      "path": "common/slpostingRES.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "slpostingMT.cbl",
+      "label": "slpostingMT.cbl",
+      "type": "program",
+      "path": "common/slpostingMT.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "slpostingLD.cbl",
+      "label": "slpostingLD.cbl",
+      "type": "program",
+      "path": "common/slpostingLD.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "slinvoiceUNL.cbl",
+      "label": "slinvoiceUNL.cbl",
+      "type": "program",
+      "path": "common/slinvoiceUNL.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "slinvoiceRES.cbl",
+      "label": "slinvoiceRES.cbl",
+      "type": "program",
+      "path": "common/slinvoiceRES.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "slinvoiceMT.cbl",
+      "label": "slinvoiceMT.cbl",
+      "type": "program",
+      "path": "common/slinvoiceMT.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "slinvoiceLD.cbl",
+      "label": "slinvoiceLD.cbl",
+      "type": "program",
+      "path": "common/slinvoiceLD.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "sldelinvnosUNL.cbl",
+      "label": "sldelinvnosUNL.cbl",
+      "type": "program",
+      "path": "common/sldelinvnosUNL.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "sldelinvnosRES.cbl",
+      "label": "sldelinvnosRES.cbl",
+      "type": "program",
+      "path": "common/sldelinvnosRES.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "sldelinvnosMT.cbl",
+      "label": "sldelinvnosMT.cbl",
+      "type": "program",
+      "path": "common/sldelinvnosMT.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "sldelinvnosLD.cbl",
+      "label": "sldelinvnosLD.cbl",
+      "type": "program",
+      "path": "common/sldelinvnosLD.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "slautogenUNL.cbl",
+      "label": "slautogenUNL.cbl",
+      "type": "program",
+      "path": "common/slautogenUNL.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "slautogenRES.cbl",
+      "label": "slautogenRES.cbl",
+      "type": "program",
+      "path": "common/slautogenRES.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "slautogenMT.cbl",
+      "label": "slautogenMT.cbl",
+      "type": "program",
+      "path": "common/slautogenMT.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "slautogenLD.cbl",
+      "label": "slautogenLD.cbl",
+      "type": "program",
+      "path": "common/slautogenLD.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "send-some-mail2.cbl",
+      "label": "send-some-mail2.cbl",
+      "type": "program",
+      "path": "common/send-some-mail2.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "send-some-mail.cbl",
+      "label": "send-some-mail.cbl",
+      "type": "program",
+      "path": "common/send-some-mail.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "send-mail-test-example.cbl",
+      "label": "send-mail-test-example.cbl",
+      "type": "program",
+      "path": "common/send-mail-test-example.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "salesUNL.cbl",
+      "label": "salesUNL.cbl",
+      "type": "program",
+      "path": "common/salesUNL.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "salesRES.cbl",
+      "label": "salesRES.cbl",
+      "type": "program",
+      "path": "common/salesRES.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "salesMT.cbl",
+      "label": "salesMT.cbl",
+      "type": "program",
+      "path": "common/salesMT.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "salesLD.cbl",
+      "label": "salesLD.cbl",
+      "type": "program",
+      "path": "common/salesLD.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "purchUNL.cbl",
+      "label": "purchUNL.cbl",
+      "type": "program",
+      "path": "common/purchUNL.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "purchRES.cbl",
+      "label": "purchRES.cbl",
+      "type": "program",
+      "path": "common/purchRES.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "purchMT.cbl",
+      "label": "purchMT.cbl",
+      "type": "program",
+      "path": "common/purchMT.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "purchLD.cbl",
+      "label": "purchLD.cbl",
+      "type": "program",
+      "path": "common/purchLD.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "plinvoiceUNL.cbl",
+      "label": "plinvoiceUNL.cbl",
+      "type": "program",
+      "path": "common/plinvoiceUNL.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "plinvoiceRES.cbl",
+      "label": "plinvoiceRES.cbl",
+      "type": "program",
+      "path": "common/plinvoiceRES.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "plinvoiceMT.cbl",
+      "label": "plinvoiceMT.cbl",
+      "type": "program",
+      "path": "common/plinvoiceMT.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "plinvoiceLD.cbl",
+      "label": "plinvoiceLD.cbl",
+      "type": "program",
+      "path": "common/plinvoiceLD.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "plautogenUNL.cbl",
+      "label": "plautogenUNL.cbl",
+      "type": "program",
+      "path": "common/plautogenUNL.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "plautogenRES.cbl",
+      "label": "plautogenRES.cbl",
+      "type": "program",
+      "path": "common/plautogenRES.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "plautogenMT.cbl",
+      "label": "plautogenMT.cbl",
+      "type": "program",
+      "path": "common/plautogenMT.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "plautogenLD.cbl",
+      "label": "plautogenLD.cbl",
+      "type": "program",
+      "path": "common/plautogenLD.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "paymentsUNL.cbl",
+      "label": "paymentsUNL.cbl",
+      "type": "program",
+      "path": "common/paymentsUNL.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "paymentsRES.cbl",
+      "label": "paymentsRES.cbl",
+      "type": "program",
+      "path": "common/paymentsRES.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "paymentsMT.cbl",
+      "label": "paymentsMT.cbl",
+      "type": "program",
+      "path": "common/paymentsMT.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "paymentsLD.cbl",
+      "label": "paymentsLD.cbl",
+      "type": "program",
+      "path": "common/paymentsLD.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "otm5UNL.cbl",
+      "label": "otm5UNL.cbl",
+      "type": "program",
+      "path": "common/otm5UNL.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "otm5RES.cbl",
+      "label": "otm5RES.cbl",
+      "type": "program",
+      "path": "common/otm5RES.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "otm5MT.cbl",
+      "label": "otm5MT.cbl",
+      "type": "program",
+      "path": "common/otm5MT.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "otm5LD.cbl",
+      "label": "otm5LD.cbl",
+      "type": "program",
+      "path": "common/otm5LD.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "otm3UNL.cbl",
+      "label": "otm3UNL.cbl",
+      "type": "program",
+      "path": "common/otm3UNL.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "otm3RES.cbl",
+      "label": "otm3RES.cbl",
+      "type": "program",
+      "path": "common/otm3RES.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "otm3MT.cbl",
+      "label": "otm3MT.cbl",
+      "type": "program",
+      "path": "common/otm3MT.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "otm3LD.cbl",
+      "label": "otm3LD.cbl",
+      "type": "program",
+      "path": "common/otm3LD.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "nominalUNL.cbl",
+      "label": "nominalUNL.cbl",
+      "type": "program",
+      "path": "common/nominalUNL.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "nominalRES.cbl",
+      "label": "nominalRES.cbl",
+      "type": "program",
+      "path": "common/nominalRES.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "nominalMT.cbl",
+      "label": "nominalMT.cbl",
+      "type": "program",
+      "path": "common/nominalMT.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "nominalLD.cbl",
+      "label": "nominalLD.cbl",
+      "type": "program",
+      "path": "common/nominalLD.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "maps09.cbl",
+      "label": "maps09.cbl",
+      "type": "program",
+      "path": "common/maps09.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "maps04.cbl",
+      "label": "maps04.cbl",
+      "type": "program",
+      "path": "common/maps04.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "maps01.cbl",
+      "label": "maps01.cbl",
+      "type": "program",
+      "path": "common/maps01.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "makesqltable-original.cbl",
+      "label": "makesqltable-original.cbl",
+      "type": "program",
+      "path": "common/makesqltable-original.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "makesqltable-free.cbl",
+      "label": "makesqltable-free.cbl",
+      "type": "program",
+      "path": "common/makesqltable-free.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "irspostingUNL.cbl",
+      "label": "irspostingUNL.cbl",
+      "type": "program",
+      "path": "common/irspostingUNL.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "irspostingRES.cbl",
+      "label": "irspostingRES.cbl",
+      "type": "program",
+      "path": "common/irspostingRES.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "irspostingMT.cbl",
+      "label": "irspostingMT.cbl",
+      "type": "program",
+      "path": "common/irspostingMT.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "irspostingLD.cbl",
+      "label": "irspostingLD.cbl",
+      "type": "program",
+      "path": "common/irspostingLD.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "irsnominalUNL2.cbl",
+      "label": "irsnominalUNL2.cbl",
+      "type": "program",
+      "path": "common/irsnominalUNL2.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "irsnominalUNL.cbl",
+      "label": "irsnominalUNL.cbl",
+      "type": "program",
+      "path": "common/irsnominalUNL.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "irsnominalRES.cbl",
+      "label": "irsnominalRES.cbl",
+      "type": "program",
+      "path": "common/irsnominalRES.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "irsnominalMT.cbl",
+      "label": "irsnominalMT.cbl",
+      "type": "program",
+      "path": "common/irsnominalMT.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "irsnominalLD.cbl",
+      "label": "irsnominalLD.cbl",
+      "type": "program",
+      "path": "common/irsnominalLD.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "irsfinalUNL.cbl",
+      "label": "irsfinalUNL.cbl",
+      "type": "program",
+      "path": "common/irsfinalUNL.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "irsfinalRES.cbl",
+      "label": "irsfinalRES.cbl",
+      "type": "program",
+      "path": "common/irsfinalRES.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "irsfinalMT.cbl",
+      "label": "irsfinalMT.cbl",
+      "type": "program",
+      "path": "common/irsfinalMT.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "irsfinalLD.cbl",
+      "label": "irsfinalLD.cbl",
+      "type": "program",
+      "path": "common/irsfinalLD.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "irsdfltUNL.cbl",
+      "label": "irsdfltUNL.cbl",
+      "type": "program",
+      "path": "common/irsdfltUNL.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "irsdfltRES.cbl",
+      "label": "irsdfltRES.cbl",
+      "type": "program",
+      "path": "common/irsdfltRES.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "irsdfltMT.cbl",
+      "label": "irsdfltMT.cbl",
+      "type": "program",
+      "path": "common/irsdfltMT.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "irsdfltLD.cbl",
+      "label": "irsdfltLD.cbl",
+      "type": "program",
+      "path": "common/irsdfltLD.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "glpostingUNL.cbl",
+      "label": "glpostingUNL.cbl",
+      "type": "program",
+      "path": "common/glpostingUNL.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "glpostingRES.cbl",
+      "label": "glpostingRES.cbl",
+      "type": "program",
+      "path": "common/glpostingRES.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "glpostingMT.cbl",
+      "label": "glpostingMT.cbl",
+      "type": "program",
+      "path": "common/glpostingMT.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "glpostingLD.cbl",
+      "label": "glpostingLD.cbl",
+      "type": "program",
+      "path": "common/glpostingLD.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "glbatchUNL.cbl",
+      "label": "glbatchUNL.cbl",
+      "type": "program",
+      "path": "common/glbatchUNL.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "glbatchRES.cbl",
+      "label": "glbatchRES.cbl",
+      "type": "program",
+      "path": "common/glbatchRES.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "glbatchMT.cbl",
+      "label": "glbatchMT.cbl",
+      "type": "program",
+      "path": "common/glbatchMT.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "glbatchLD.cbl",
+      "label": "glbatchLD.cbl",
+      "type": "program",
+      "path": "common/glbatchLD.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "finalMT.cbl",
+      "label": "finalMT.cbl",
+      "type": "program",
+      "path": "common/finalMT.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "finalLD.cbl",
+      "label": "finalLD.cbl",
+      "type": "program",
+      "path": "common/finalLD.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "fhlogger.cbl",
+      "label": "fhlogger.cbl",
+      "type": "program",
+      "path": "common/fhlogger.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "dummy-rdbmsMT.cbl",
+      "label": "dummy-rdbmsMT.cbl",
+      "type": "program",
+      "path": "common/dummy-rdbmsMT.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "dfltMT.cbl",
+      "label": "dfltMT.cbl",
+      "type": "program",
+      "path": "common/dfltMT.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "dfltLD.cbl",
+      "label": "dfltLD.cbl",
+      "type": "program",
+      "path": "common/dfltLD.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "deliveryUNL.cbl",
+      "label": "deliveryUNL.cbl",
+      "type": "program",
+      "path": "common/deliveryUNL.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "deliveryRES.cbl",
+      "label": "deliveryRES.cbl",
+      "type": "program",
+      "path": "common/deliveryRES.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "deliveryMT.cbl",
+      "label": "deliveryMT.cbl",
+      "type": "program",
+      "path": "common/deliveryMT.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "deliveryLD.cbl",
+      "label": "deliveryLD.cbl",
+      "type": "program",
+      "path": "common/deliveryLD.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "delfolioUNL.cbl",
+      "label": "delfolioUNL.cbl",
+      "type": "program",
+      "path": "common/delfolioUNL.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "delfolioRES.cbl",
+      "label": "delfolioRES.cbl",
+      "type": "program",
+      "path": "common/delfolioRES.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "delfolioMT.cbl",
+      "label": "delfolioMT.cbl",
+      "type": "program",
+      "path": "common/delfolioMT.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "delfolioLD.cbl",
+      "label": "delfolioLD.cbl",
+      "type": "program",
+      "path": "common/delfolioLD.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "cobdump.cbl",
+      "label": "cobdump.cbl",
+      "type": "program",
+      "path": "common/cobdump.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "cbl_oc_dump.cbl",
+      "label": "cbl_oc_dump.cbl",
+      "type": "program",
+      "path": "common/cbl_oc_dump.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "auditUNL.cbl",
+      "label": "auditUNL.cbl",
+      "type": "program",
+      "path": "common/auditUNL.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "auditRES.cbl",
+      "label": "auditRES.cbl",
+      "type": "program",
+      "path": "common/auditRES.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "auditMT.cbl",
+      "label": "auditMT.cbl",
+      "type": "program",
+      "path": "common/auditMT.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "auditLD2.cbl",
+      "label": "auditLD2.cbl",
+      "type": "program",
+      "path": "common/auditLD2.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "auditLD.cbl",
+      "label": "auditLD.cbl",
+      "type": "program",
+      "path": "common/auditLD.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "analUNL.cbl",
+      "label": "analUNL.cbl",
+      "type": "program",
+      "path": "common/analUNL.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "analRES.cbl",
+      "label": "analRES.cbl",
+      "type": "program",
+      "path": "common/analRES.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "analMT.cbl",
+      "label": "analMT.cbl",
+      "type": "program",
+      "path": "common/analMT.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "analLD.cbl",
+      "label": "analLD.cbl",
+      "type": "program",
+      "path": "common/analLD.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "acasirsub5.cbl",
+      "label": "acasirsub5.cbl",
+      "type": "program",
+      "path": "common/acasirsub5.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "acasirsub4.cbl",
+      "label": "acasirsub4.cbl",
+      "type": "program",
+      "path": "common/acasirsub4.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "acasirsub3.cbl",
+      "label": "acasirsub3.cbl",
+      "type": "program",
+      "path": "common/acasirsub3.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "acasirsub1.cbl",
+      "label": "acasirsub1.cbl",
+      "type": "program",
+      "path": "common/acasirsub1.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "acasconvert3.cbl",
+      "label": "acasconvert3.cbl",
+      "type": "program",
+      "path": "common/acasconvert3.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "acasconvert2.cbl",
+      "label": "acasconvert2.cbl",
+      "type": "program",
+      "path": "common/acasconvert2.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "acasconvert1.cbl",
+      "label": "acasconvert1.cbl",
+      "type": "program",
+      "path": "common/acasconvert1.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "acas032.cbl",
+      "label": "acas032.cbl",
+      "type": "program",
+      "path": "common/acas032.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "acas030.cbl",
+      "label": "acas030.cbl",
+      "type": "program",
+      "path": "common/acas030.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "acas029.cbl",
+      "label": "acas029.cbl",
+      "type": "program",
+      "path": "common/acas029.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "acas026.cbl",
+      "label": "acas026.cbl",
+      "type": "program",
+      "path": "common/acas026.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "acas023.cbl",
+      "label": "acas023.cbl",
+      "type": "program",
+      "path": "common/acas023.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "acas022.cbl",
+      "label": "acas022.cbl",
+      "type": "program",
+      "path": "common/acas022.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "acas019.cbl",
+      "label": "acas019.cbl",
+      "type": "program",
+      "path": "common/acas019.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "acas017.cbl",
+      "label": "acas017.cbl",
+      "type": "program",
+      "path": "common/acas017.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "acas016.cbl",
+      "label": "acas016.cbl",
+      "type": "program",
+      "path": "common/acas016.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "acas015.cbl",
+      "label": "acas015.cbl",
+      "type": "program",
+      "path": "common/acas015.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "acas014.cbl",
+      "label": "acas014.cbl",
+      "type": "program",
+      "path": "common/acas014.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "acas013.cbl",
+      "label": "acas013.cbl",
+      "type": "program",
+      "path": "common/acas013.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "acas012.cbl",
+      "label": "acas012.cbl",
+      "type": "program",
+      "path": "common/acas012.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "acas011.cbl",
+      "label": "acas011.cbl",
+      "type": "program",
+      "path": "common/acas011.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "acas010.cbl",
+      "label": "acas010.cbl",
+      "type": "program",
+      "path": "common/acas010.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "acas008.cbl",
+      "label": "acas008.cbl",
+      "type": "program",
+      "path": "common/acas008.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "acas007.cbl",
+      "label": "acas007.cbl",
+      "type": "program",
+      "path": "common/acas007.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "acas006.cbl",
+      "label": "acas006.cbl",
+      "type": "program",
+      "path": "common/acas006.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "acas005.cbl",
+      "label": "acas005.cbl",
+      "type": "program",
+      "path": "common/acas005.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "acas004.cbl",
+      "label": "acas004.cbl",
+      "type": "program",
+      "path": "common/acas004.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "acas000.cbl",
+      "label": "acas000.cbl",
+      "type": "program",
+      "path": "common/acas000.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "acas-test-takeon-2.cbl",
+      "label": "acas-test-takeon-2.cbl",
+      "type": "program",
+      "path": "common/acas-test-takeon-2.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "acas-test-takeon-1.cbl",
+      "label": "acas-test-takeon-1.cbl",
+      "type": "program",
+      "path": "common/acas-test-takeon-1.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "acas-get-params.cbl",
+      "label": "acas-get-params.cbl",
+      "type": "program",
+      "path": "common/acas-get-params.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "ACCEPTNM.CPY",
+      "label": "ACCEPTNM.CPY",
+      "type": "program",
+      "path": "common/ACCEPTNM.CPY",
+      "subsystem": "common"
+    },
+    {
+      "id": "ACAS.cbl",
+      "label": "ACAS.cbl",
+      "type": "program",
+      "path": "common/ACAS.cbl",
+      "subsystem": "common"
+    },
+    {
+      "id": "ACAS-Sysout.cbl",
+      "label": "ACAS-Sysout.cbl",
+      "type": "program",
+      "path": "common/ACAS-Sysout.cbl",
+      "subsystem": "common"
+    }
+  ],
+  "edges": [
+    {
+      "from": "stock.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "stock.cbl",
+      "to": "WS-CALLED",
+      "type": "calls"
+    },
+    {
+      "from": "stock.cbl",
+      "to": "SL070",
+      "type": "calls"
+    },
+    {
+      "from": "stock.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "stock.cbl",
+      "to": "SYSTEM",
+      "type": "calls"
+    },
+    {
+      "from": "st060.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "st060.cbl",
+      "to": "ACAS011",
+      "type": "calls"
+    },
+    {
+      "from": "st060.cbl",
+      "to": "AS",
+      "type": "calls"
+    },
+    {
+      "from": "st060.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "st060.cbl",
+      "to": "SL070",
+      "type": "calls"
+    },
+    {
+      "from": "st050.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "st040.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "st030.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "st030.cbl",
+      "to": "SYSTEM",
+      "type": "calls"
+    },
+    {
+      "from": "st030.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "st020.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "st020.cbl",
+      "to": "SYSTEM",
+      "type": "calls"
+    },
+    {
+      "from": "st020.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "st010.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "st010.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "st010.cbl",
+      "to": "MAPS09",
+      "type": "calls"
+    },
+    {
+      "from": "st010.cbl",
+      "to": "SL070",
+      "type": "calls"
+    },
+    {
+      "from": "st010.cbl",
+      "to": "PL010",
+      "type": "calls"
+    },
+    {
+      "from": "st010.cbl",
+      "to": "SYSTEM",
+      "type": "calls"
+    },
+    {
+      "from": "st000.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "sl970.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "sl970.cbl",
+      "to": "SYSTEM",
+      "type": "calls"
+    },
+    {
+      "from": "sl970.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "sl960.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "sl960.cbl",
+      "to": "MAPS09",
+      "type": "calls"
+    },
+    {
+      "from": "sl950.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "sl950.cbl",
+      "to": "SYSTEM",
+      "type": "calls"
+    },
+    {
+      "from": "sl950.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "sl940.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "sl940.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "sl930.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "sl930.cbl",
+      "to": "SYSTEM",
+      "type": "calls"
+    },
+    {
+      "from": "sl930.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "sl920.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "sl920.cbl",
+      "to": "SL070",
+      "type": "calls"
+    },
+    {
+      "from": "sl920.cbl",
+      "to": "FAILED",
+      "type": "calls"
+    },
+    {
+      "from": "sl920.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "sl910.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "sl910.cbl",
+      "to": "SL930",
+      "type": "calls"
+    },
+    {
+      "from": "sl910.cbl",
+      "to": "SL960",
+      "type": "calls"
+    },
+    {
+      "from": "sl910.cbl",
+      "to": "SL070",
+      "type": "calls"
+    },
+    {
+      "from": "sl910.cbl",
+      "to": "FAILED",
+      "type": "calls"
+    },
+    {
+      "from": "sl910.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "sl900.cbl",
+      "to": "WS-CALLED",
+      "type": "calls"
+    },
+    {
+      "from": "sl830.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "sl830.cbl",
+      "to": "SL070",
+      "type": "calls"
+    },
+    {
+      "from": "sl830.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "sl820.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "sl820.cbl",
+      "to": "SYSTEM",
+      "type": "calls"
+    },
+    {
+      "from": "sl820.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "sl810.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "sl810.cbl",
+      "to": "SL960",
+      "type": "calls"
+    },
+    {
+      "from": "sl810.cbl",
+      "to": "SL070",
+      "type": "calls"
+    },
+    {
+      "from": "sl810.cbl",
+      "to": "FAILED",
+      "type": "calls"
+    },
+    {
+      "from": "sl810.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "sl800.cbl",
+      "to": "WS-CALLED",
+      "type": "calls"
+    },
+    {
+      "from": "sl200.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "sl200.cbl",
+      "to": "SYSTEM",
+      "type": "calls"
+    },
+    {
+      "from": "sl200.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "sl190.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "sl190.cbl",
+      "to": "WS-CALLED",
+      "type": "calls"
+    },
+    {
+      "from": "sl190.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "sl180.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "sl180.cbl",
+      "to": "SYSTEM",
+      "type": "calls"
+    },
+    {
+      "from": "sl180.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "sl170.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "sl170.cbl",
+      "to": "SYSTEM",
+      "type": "calls"
+    },
+    {
+      "from": "sl170.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "sl165.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "sl160.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "sl160.cbl",
+      "to": "SYSTEM",
+      "type": "calls"
+    },
+    {
+      "from": "sl160.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "sl140.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "sl140.cbl",
+      "to": "SYSTEM",
+      "type": "calls"
+    },
+    {
+      "from": "sl140.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "sl130.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "sl130.cbl",
+      "to": "SYSTEM",
+      "type": "calls"
+    },
+    {
+      "from": "sl130.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "sl120.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "sl120.cbl",
+      "to": "SYSTEM",
+      "type": "calls"
+    },
+    {
+      "from": "sl120.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "sl115.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "sl110.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "sl110.cbl",
+      "to": "SYSTEM",
+      "type": "calls"
+    },
+    {
+      "from": "sl110.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "sl100.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "sl100.cbl",
+      "to": "SYSTEM",
+      "type": "calls"
+    },
+    {
+      "from": "sl100.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "sl095.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "sl095.cbl",
+      "to": "SYSTEM",
+      "type": "calls"
+    },
+    {
+      "from": "sl095.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "sl090.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "sl085.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "sl085.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "sl080.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "sl080.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "sl070.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "sl070.cbl",
+      "to": "SYSTEM",
+      "type": "calls"
+    },
+    {
+      "from": "sl060.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "sl060.cbl",
+      "to": "SYSTEM",
+      "type": "calls"
+    },
+    {
+      "from": "sl060.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "sl055.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "sl055.cbl",
+      "to": "SL070",
+      "type": "calls"
+    },
+    {
+      "from": "sl055.cbl",
+      "to": "FAILED",
+      "type": "calls"
+    },
+    {
+      "from": "sl050.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "sl050.cbl",
+      "to": "SYSTEM",
+      "type": "calls"
+    },
+    {
+      "from": "sl050.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "sl020.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "sl020.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "sl020.cbl",
+      "to": "SYSTEM",
+      "type": "calls"
+    },
+    {
+      "from": "sl010.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "sl010.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "sl010.cbl",
+      "to": "MAPS09",
+      "type": "calls"
+    },
+    {
+      "from": "sl010.cbl",
+      "to": "SYSTEM",
+      "type": "calls"
+    },
+    {
+      "from": "sl000.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "sales.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "sales.cbl",
+      "to": "WS-CALLED",
+      "type": "calls"
+    },
+    {
+      "from": "sales.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "sales.cbl",
+      "to": "SYSTEM",
+      "type": "calls"
+    },
+    {
+      "from": "sl830.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "sl830.cbl",
+      "to": "SL070",
+      "type": "calls"
+    },
+    {
+      "from": "sl830.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "sl820.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "sl820.cbl",
+      "to": "SYSTEM",
+      "type": "calls"
+    },
+    {
+      "from": "sl820.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "sl810.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "sl810.cbl",
+      "to": "SL960",
+      "type": "calls"
+    },
+    {
+      "from": "sl810.cbl",
+      "to": "SL070",
+      "type": "calls"
+    },
+    {
+      "from": "sl810.cbl",
+      "to": "FAILED",
+      "type": "calls"
+    },
+    {
+      "from": "sl810.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "purchase.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "purchase.cbl",
+      "to": "WS-CALLED",
+      "type": "calls"
+    },
+    {
+      "from": "purchase.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "purchase.cbl",
+      "to": "SYSTEM",
+      "type": "calls"
+    },
+    {
+      "from": "pl960.cbl",
+      "to": "SYSTEM",
+      "type": "calls"
+    },
+    {
+      "from": "pl950.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "pl950.cbl",
+      "to": "SYSTEM",
+      "type": "calls"
+    },
+    {
+      "from": "pl950.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "pl940.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "pl940.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "pl930.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "pl930.cbl",
+      "to": "SYSTEM",
+      "type": "calls"
+    },
+    {
+      "from": "pl930.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "pl920.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "pl910.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "pl910.cbl",
+      "to": "SYSTEM",
+      "type": "calls"
+    },
+    {
+      "from": "pl910.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "pl900.cbl",
+      "to": "WS-CALLED",
+      "type": "calls"
+    },
+    {
+      "from": "pl900.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "pl800.cbl",
+      "to": "WS-CALLED",
+      "type": "calls"
+    },
+    {
+      "from": "pl190.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "pl190.cbl",
+      "to": "SYSTEM",
+      "type": "calls"
+    },
+    {
+      "from": "pl190.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "pl180.cbl",
+      "to": "WS-CALLED",
+      "type": "calls"
+    },
+    {
+      "from": "pl170.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "pl170.cbl",
+      "to": "SYSTEM",
+      "type": "calls"
+    },
+    {
+      "from": "pl170.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "pl165.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "pl160.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "pl160.cbl",
+      "to": "SYSTEM",
+      "type": "calls"
+    },
+    {
+      "from": "pl160.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "pl140.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "pl140.cbl",
+      "to": "SYSTEM",
+      "type": "calls"
+    },
+    {
+      "from": "pl140.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "pl130.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "pl130.cbl",
+      "to": "SYSTEM",
+      "type": "calls"
+    },
+    {
+      "from": "pl130.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "pl120.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "pl120.cbl",
+      "to": "SYSTEM",
+      "type": "calls"
+    },
+    {
+      "from": "pl120.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "pl115.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "pl100.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "pl100.cbl",
+      "to": "SYSTEM",
+      "type": "calls"
+    },
+    {
+      "from": "pl100.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "pl095.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "pl095.cbl",
+      "to": "SYSTEM",
+      "type": "calls"
+    },
+    {
+      "from": "pl095.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "pl090.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "pl085.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "pl085.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "pl080.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "pl080.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "pl070.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "pl070.cbl",
+      "to": "SYSTEM",
+      "type": "calls"
+    },
+    {
+      "from": "pl060.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "pl060.cbl",
+      "to": "SYSTEM",
+      "type": "calls"
+    },
+    {
+      "from": "pl060.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "pl055.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "pl055.cbl",
+      "to": "SL070",
+      "type": "calls"
+    },
+    {
+      "from": "pl050.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "pl050.cbl",
+      "to": "SYSTEM",
+      "type": "calls"
+    },
+    {
+      "from": "pl050.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "pl040.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "pl040.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "pl030.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "pl030.cbl",
+      "to": "SL070",
+      "type": "calls"
+    },
+    {
+      "from": "pl030.cbl",
+      "to": "FAILED",
+      "type": "calls"
+    },
+    {
+      "from": "pl030.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "pl025.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "pl025.cbl",
+      "to": "MAPS09",
+      "type": "calls"
+    },
+    {
+      "from": "pl020.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "pl020.cbl",
+      "to": "PL025",
+      "type": "calls"
+    },
+    {
+      "from": "pl020.cbl",
+      "to": "PL070",
+      "type": "calls"
+    },
+    {
+      "from": "pl020.cbl",
+      "to": "FAILED",
+      "type": "calls"
+    },
+    {
+      "from": "pl020.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "pl015.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "pl015.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "pl015.cbl",
+      "to": "SYSTEM",
+      "type": "calls"
+    },
+    {
+      "from": "pl010.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "pl010.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "pl010.cbl",
+      "to": "MAPS09",
+      "type": "calls"
+    },
+    {
+      "from": "pl010.cbl",
+      "to": "SYSTEM",
+      "type": "calls"
+    },
+    {
+      "from": "pl000.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "irs090.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "irs090.cbl",
+      "to": "SYSTEM",
+      "type": "calls"
+    },
+    {
+      "from": "irs085.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "irs080.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "irs070.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "irs070.cbl",
+      "to": "IRS055",
+      "type": "calls"
+    },
+    {
+      "from": "irs070.cbl",
+      "to": "IRSUBP",
+      "type": "calls"
+    },
+    {
+      "from": "irs065.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "irs060.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "irs060.cbl",
+      "to": "SYSTEM",
+      "type": "calls"
+    },
+    {
+      "from": "irs055.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "irs050.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "irs050.cbl",
+      "to": "IRS055",
+      "type": "calls"
+    },
+    {
+      "from": "irs050.cbl",
+      "to": "IRSUBP",
+      "type": "calls"
+    },
+    {
+      "from": "irs050.cbl",
+      "to": "SYSTEM",
+      "type": "calls"
+    },
+    {
+      "from": "irs040.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "irs040.cbl",
+      "to": "SYSTEM",
+      "type": "calls"
+    },
+    {
+      "from": "irs030.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "irs020.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "irs020.cbl",
+      "to": "SYSTEM",
+      "type": "calls"
+    },
+    {
+      "from": "irs010.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "irs010.cbl",
+      "to": "SYSTEM",
+      "type": "calls"
+    },
+    {
+      "from": "irs000.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "irs.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "irs.cbl",
+      "to": "WS-CALLED",
+      "type": "calls"
+    },
+    {
+      "from": "irs.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "irs.cbl",
+      "to": "IRS000",
+      "type": "calls"
+    },
+    {
+      "from": "irs.cbl",
+      "to": "IRS010",
+      "type": "calls"
+    },
+    {
+      "from": "irs.cbl",
+      "to": "IRS020",
+      "type": "calls"
+    },
+    {
+      "from": "irs.cbl",
+      "to": "IRS030",
+      "type": "calls"
+    },
+    {
+      "from": "irs.cbl",
+      "to": "IRS040",
+      "type": "calls"
+    },
+    {
+      "from": "irs.cbl",
+      "to": "IRS050",
+      "type": "calls"
+    },
+    {
+      "from": "irs.cbl",
+      "to": "IRS065",
+      "type": "calls"
+    },
+    {
+      "from": "irs.cbl",
+      "to": "IRS060",
+      "type": "calls"
+    },
+    {
+      "from": "irs.cbl",
+      "to": "IRS070",
+      "type": "calls"
+    },
+    {
+      "from": "irs.cbl",
+      "to": "IRS085",
+      "type": "calls"
+    },
+    {
+      "from": "irs.cbl",
+      "to": "IRS090",
+      "type": "calls"
+    },
+    {
+      "from": "irs.cbl",
+      "to": "IRS080",
+      "type": "calls"
+    },
+    {
+      "from": "irs.cbl",
+      "to": "SYSTEM",
+      "type": "calls"
+    },
+    {
+      "from": "gl120.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "gl120.cbl",
+      "to": "SYSTEM",
+      "type": "calls"
+    },
+    {
+      "from": "gl120.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "gl105.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "gl105.cbl",
+      "to": "SYSTEM",
+      "type": "calls"
+    },
+    {
+      "from": "gl090b.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "gl090b.cbl",
+      "to": "SYSTEM",
+      "type": "calls"
+    },
+    {
+      "from": "gl090a.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "gl090a.cbl",
+      "to": "SYSTEM",
+      "type": "calls"
+    },
+    {
+      "from": "gl090.cbl",
+      "to": "GL090B",
+      "type": "calls"
+    },
+    {
+      "from": "gl090.cbl",
+      "to": "GL090A",
+      "type": "calls"
+    },
+    {
+      "from": "gl080.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "gl072.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "gl072.cbl",
+      "to": "SYSTEM",
+      "type": "calls"
+    },
+    {
+      "from": "gl070.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "gl070.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "gl060.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "gl060.cbl",
+      "to": "SYSTEM",
+      "type": "calls"
+    },
+    {
+      "from": "gl060.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "gl051.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "gl051.cbl",
+      "to": "SYSTEM",
+      "type": "calls"
+    },
+    {
+      "from": "gl051.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "gl050.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "gl050.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "gl030.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "gl030.cbl",
+      "to": "SYSTEM",
+      "type": "calls"
+    },
+    {
+      "from": "gl030.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "gl020.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "gl020.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "gl000.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "general.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "general.cbl",
+      "to": "WS-CALLED",
+      "type": "calls"
+    },
+    {
+      "from": "general.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "general.cbl",
+      "to": "SYSTEM",
+      "type": "calls"
+    },
+    {
+      "from": "xl150.cbl",
+      "to": "BLK",
+      "type": "calls"
+    },
+    {
+      "from": "xl150.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "xl150.cbl",
+      "to": "WS-CALLER",
+      "type": "calls"
+    },
+    {
+      "from": "valueUNL.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "valueRES.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "valueMT.cbl",
+      "to": "FHLOGGER",
+      "type": "calls"
+    },
+    {
+      "from": "valueLD.cbl",
+      "to": "ACAS-GET-PARAMS",
+      "type": "calls"
+    },
+    {
+      "from": "valueLD.cbl",
+      "to": "ACAS013",
+      "type": "calls"
+    },
+    {
+      "from": "valueLD.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "systemUNL.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "systemRES.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "systemMT.cbl",
+      "to": "FHLOGGER",
+      "type": "calls"
+    },
+    {
+      "from": "systemLD.cbl",
+      "to": "ACAS-GET-PARAMS",
+      "type": "calls"
+    },
+    {
+      "from": "systemLD.cbl",
+      "to": "SYSTEMMT",
+      "type": "calls"
+    },
+    {
+      "from": "systemLD.cbl",
+      "to": "TO",
+      "type": "calls"
+    },
+    {
+      "from": "systemLD.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "sys4MT.cbl",
+      "to": "FHLOGGER",
+      "type": "calls"
+    },
+    {
+      "from": "sys4LD.cbl",
+      "to": "ACAS-GET-PARAMS",
+      "type": "calls"
+    },
+    {
+      "from": "sys4LD.cbl",
+      "to": "SYS4MT",
+      "type": "calls"
+    },
+    {
+      "from": "sys4LD.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "sys002.cbl",
+      "to": "SYSTEM",
+      "type": "calls"
+    },
+    {
+      "from": "sys002.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "stockUNL.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "stockRES.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "stockMT.cbl",
+      "to": "FHLOGGER",
+      "type": "calls"
+    },
+    {
+      "from": "stockLD.cbl",
+      "to": "ACAS-GET-PARAMS",
+      "type": "calls"
+    },
+    {
+      "from": "stockLD.cbl",
+      "to": "ACAS011",
+      "type": "calls"
+    },
+    {
+      "from": "stockLD.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "slpostingUNL.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "slpostingRES.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "slpostingMT.cbl",
+      "to": "FHLOGGER",
+      "type": "calls"
+    },
+    {
+      "from": "slpostingLD.cbl",
+      "to": "ACAS-GET-PARAMS",
+      "type": "calls"
+    },
+    {
+      "from": "slpostingLD.cbl",
+      "to": "ACAS008",
+      "type": "calls"
+    },
+    {
+      "from": "slpostingLD.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "slinvoiceUNL.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "slinvoiceRES.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "slinvoiceMT.cbl",
+      "to": "FHLOGGER",
+      "type": "calls"
+    },
+    {
+      "from": "slinvoiceLD.cbl",
+      "to": "ACAS-GET-PARAMS",
+      "type": "calls"
+    },
+    {
+      "from": "slinvoiceLD.cbl",
+      "to": "ACAS016",
+      "type": "calls"
+    },
+    {
+      "from": "slinvoiceLD.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "sldelinvnosUNL.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "sldelinvnosRES.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "sldelinvnosMT.cbl",
+      "to": "FHLOGGER",
+      "type": "calls"
+    },
+    {
+      "from": "sldelinvnosLD.cbl",
+      "to": "ACAS-GET-PARAMS",
+      "type": "calls"
+    },
+    {
+      "from": "sldelinvnosLD.cbl",
+      "to": "ACAS017",
+      "type": "calls"
+    },
+    {
+      "from": "sldelinvnosLD.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "slautogenUNL.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "slautogenRES.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "slautogenMT.cbl",
+      "to": "FHLOGGER",
+      "type": "calls"
+    },
+    {
+      "from": "slautogenLD.cbl",
+      "to": "ACAS-GET-PARAMS",
+      "type": "calls"
+    },
+    {
+      "from": "slautogenLD.cbl",
+      "to": "ACAS004",
+      "type": "calls"
+    },
+    {
+      "from": "slautogenLD.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "send-some-mail2.cbl",
+      "to": "SYSTEM",
+      "type": "calls"
+    },
+    {
+      "from": "send-some-mail.cbl",
+      "to": "SYSTEM",
+      "type": "calls"
+    },
+    {
+      "from": "send-mail-test-example.cbl",
+      "to": "TMPNAM",
+      "type": "calls"
+    },
+    {
+      "from": "send-mail-test-example.cbl",
+      "to": "FOPEN",
+      "type": "calls"
+    },
+    {
+      "from": "send-mail-test-example.cbl",
+      "to": "FPUTS",
+      "type": "calls"
+    },
+    {
+      "from": "send-mail-test-example.cbl",
+      "to": "FCLOSE",
+      "type": "calls"
+    },
+    {
+      "from": "send-mail-test-example.cbl",
+      "to": "SYSTEM",
+      "type": "calls"
+    },
+    {
+      "from": "send-mail-test-example.cbl",
+      "to": "REMOVE",
+      "type": "calls"
+    },
+    {
+      "from": "salesUNL.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "salesRES.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "salesMT.cbl",
+      "to": "FHLOGGER",
+      "type": "calls"
+    },
+    {
+      "from": "salesLD.cbl",
+      "to": "ACAS-GET-PARAMS",
+      "type": "calls"
+    },
+    {
+      "from": "salesLD.cbl",
+      "to": "ACAS012",
+      "type": "calls"
+    },
+    {
+      "from": "salesLD.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "purchUNL.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "purchRES.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "purchMT.cbl",
+      "to": "FHLOGGER",
+      "type": "calls"
+    },
+    {
+      "from": "purchLD.cbl",
+      "to": "ACAS-GET-PARAMS",
+      "type": "calls"
+    },
+    {
+      "from": "purchLD.cbl",
+      "to": "ACAS022",
+      "type": "calls"
+    },
+    {
+      "from": "purchLD.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "plinvoiceUNL.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "plinvoiceRES.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "plinvoiceMT.cbl",
+      "to": "FHLOGGER",
+      "type": "calls"
+    },
+    {
+      "from": "plinvoiceLD.cbl",
+      "to": "ACAS-GET-PARAMS",
+      "type": "calls"
+    },
+    {
+      "from": "plinvoiceLD.cbl",
+      "to": "ACAS026",
+      "type": "calls"
+    },
+    {
+      "from": "plinvoiceLD.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "plautogenUNL.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "plautogenRES.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "plautogenMT.cbl",
+      "to": "FHLOGGER",
+      "type": "calls"
+    },
+    {
+      "from": "plautogenLD.cbl",
+      "to": "ACAS-GET-PARAMS",
+      "type": "calls"
+    },
+    {
+      "from": "plautogenLD.cbl",
+      "to": "ACAS030",
+      "type": "calls"
+    },
+    {
+      "from": "plautogenLD.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "paymentsUNL.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "paymentsRES.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "paymentsMT.cbl",
+      "to": "FHLOGGER",
+      "type": "calls"
+    },
+    {
+      "from": "paymentsLD.cbl",
+      "to": "ACAS-GET-PARAMS",
+      "type": "calls"
+    },
+    {
+      "from": "paymentsLD.cbl",
+      "to": "ACAS032",
+      "type": "calls"
+    },
+    {
+      "from": "paymentsLD.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "otm5UNL.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "otm5RES.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "otm5MT.cbl",
+      "to": "FHLOGGER",
+      "type": "calls"
+    },
+    {
+      "from": "otm5LD.cbl",
+      "to": "ACAS-GET-PARAMS",
+      "type": "calls"
+    },
+    {
+      "from": "otm5LD.cbl",
+      "to": "ACAS029",
+      "type": "calls"
+    },
+    {
+      "from": "otm5LD.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "otm3UNL.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "otm3RES.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "otm3MT.cbl",
+      "to": "FHLOGGER",
+      "type": "calls"
+    },
+    {
+      "from": "otm3LD.cbl",
+      "to": "ACAS-GET-PARAMS",
+      "type": "calls"
+    },
+    {
+      "from": "otm3LD.cbl",
+      "to": "ACAS019",
+      "type": "calls"
+    },
+    {
+      "from": "otm3LD.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "nominalUNL.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "nominalRES.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "nominalMT.cbl",
+      "to": "FHLOGGER",
+      "type": "calls"
+    },
+    {
+      "from": "nominalLD.cbl",
+      "to": "ACAS-GET-PARAMS",
+      "type": "calls"
+    },
+    {
+      "from": "nominalLD.cbl",
+      "to": "ACAS005",
+      "type": "calls"
+    },
+    {
+      "from": "nominalLD.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "irspostingUNL.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "irspostingRES.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "irspostingMT.cbl",
+      "to": "FHLOGGER",
+      "type": "calls"
+    },
+    {
+      "from": "irspostingLD.cbl",
+      "to": "ACAS-GET-PARAMS",
+      "type": "calls"
+    },
+    {
+      "from": "irspostingLD.cbl",
+      "to": "ACASIRSUB4",
+      "type": "calls"
+    },
+    {
+      "from": "irspostingLD.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "irsnominalUNL2.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "irsnominalUNL.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "irsnominalRES.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "irsnominalMT.cbl",
+      "to": "FHLOGGER",
+      "type": "calls"
+    },
+    {
+      "from": "irsnominalLD.cbl",
+      "to": "ACAS-GET-PARAMS",
+      "type": "calls"
+    },
+    {
+      "from": "irsnominalLD.cbl",
+      "to": "ACASIRSUB1",
+      "type": "calls"
+    },
+    {
+      "from": "irsnominalLD.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "irsfinalUNL.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "irsfinalRES.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "irsfinalMT.cbl",
+      "to": "FHLOGGER",
+      "type": "calls"
+    },
+    {
+      "from": "irsfinalLD.cbl",
+      "to": "ACAS-GET-PARAMS",
+      "type": "calls"
+    },
+    {
+      "from": "irsfinalLD.cbl",
+      "to": "ACASIRSUB5",
+      "type": "calls"
+    },
+    {
+      "from": "irsfinalLD.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "irsdfltUNL.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "irsdfltRES.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "irsdfltMT.cbl",
+      "to": "FHLOGGER",
+      "type": "calls"
+    },
+    {
+      "from": "irsdfltLD.cbl",
+      "to": "ACAS-GET-PARAMS",
+      "type": "calls"
+    },
+    {
+      "from": "irsdfltLD.cbl",
+      "to": "ACASIRSUB3",
+      "type": "calls"
+    },
+    {
+      "from": "irsdfltLD.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "glpostingUNL.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "glpostingRES.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "glpostingMT.cbl",
+      "to": "FHLOGGER",
+      "type": "calls"
+    },
+    {
+      "from": "glpostingLD.cbl",
+      "to": "ACAS-GET-PARAMS",
+      "type": "calls"
+    },
+    {
+      "from": "glpostingLD.cbl",
+      "to": "ACAS006",
+      "type": "calls"
+    },
+    {
+      "from": "glpostingLD.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "glbatchUNL.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "glbatchRES.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "glbatchMT.cbl",
+      "to": "FHLOGGER",
+      "type": "calls"
+    },
+    {
+      "from": "glbatchLD.cbl",
+      "to": "ACAS-GET-PARAMS",
+      "type": "calls"
+    },
+    {
+      "from": "glbatchLD.cbl",
+      "to": "ACAS007",
+      "type": "calls"
+    },
+    {
+      "from": "glbatchLD.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "finalMT.cbl",
+      "to": "FHLOGGER",
+      "type": "calls"
+    },
+    {
+      "from": "finalLD.cbl",
+      "to": "ACAS-GET-PARAMS",
+      "type": "calls"
+    },
+    {
+      "from": "finalLD.cbl",
+      "to": "FINALMT",
+      "type": "calls"
+    },
+    {
+      "from": "finalLD.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "dfltMT.cbl",
+      "to": "FHLOGGER",
+      "type": "calls"
+    },
+    {
+      "from": "dfltLD.cbl",
+      "to": "ACAS-GET-PARAMS",
+      "type": "calls"
+    },
+    {
+      "from": "dfltLD.cbl",
+      "to": "DFLTMT",
+      "type": "calls"
+    },
+    {
+      "from": "dfltLD.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "deliveryUNL.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "deliveryRES.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "deliveryMT.cbl",
+      "to": "FHLOGGER",
+      "type": "calls"
+    },
+    {
+      "from": "deliveryLD.cbl",
+      "to": "ACAS-GET-PARAMS",
+      "type": "calls"
+    },
+    {
+      "from": "deliveryLD.cbl",
+      "to": "ACAS014",
+      "type": "calls"
+    },
+    {
+      "from": "deliveryLD.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "delfolioUNL.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "delfolioRES.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "delfolioMT.cbl",
+      "to": "FHLOGGER",
+      "type": "calls"
+    },
+    {
+      "from": "delfolioLD.cbl",
+      "to": "ACAS-GET-PARAMS",
+      "type": "calls"
+    },
+    {
+      "from": "delfolioLD.cbl",
+      "to": "ACAS023",
+      "type": "calls"
+    },
+    {
+      "from": "delfolioLD.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "auditUNL.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "auditRES.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "auditMT.cbl",
+      "to": "FHLOGGER",
+      "type": "calls"
+    },
+    {
+      "from": "auditLD2.cbl",
+      "to": "ACAS010",
+      "type": "calls"
+    },
+    {
+      "from": "auditLD2.cbl",
+      "to": "FHLOGGER",
+      "type": "calls"
+    },
+    {
+      "from": "auditLD.cbl",
+      "to": "ACAS-GET-PARAMS",
+      "type": "calls"
+    },
+    {
+      "from": "auditLD.cbl",
+      "to": "ACAS010",
+      "type": "calls"
+    },
+    {
+      "from": "auditLD.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "analUNL.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "analRES.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "analMT.cbl",
+      "to": "FHLOGGER",
+      "type": "calls"
+    },
+    {
+      "from": "analLD.cbl",
+      "to": "ACAS-GET-PARAMS",
+      "type": "calls"
+    },
+    {
+      "from": "analLD.cbl",
+      "to": "ACAS015",
+      "type": "calls"
+    },
+    {
+      "from": "analLD.cbl",
+      "to": "ACAS-SYSOUT",
+      "type": "calls"
+    },
+    {
+      "from": "acasirsub5.cbl",
+      "to": "IRSFINALMT",
+      "type": "calls"
+    },
+    {
+      "from": "acasirsub5.cbl",
+      "to": "FHLOGGER",
+      "type": "calls"
+    },
+    {
+      "from": "acasirsub4.cbl",
+      "to": "IRSPOSTINGMT",
+      "type": "calls"
+    },
+    {
+      "from": "acasirsub4.cbl",
+      "to": "FHLOGGER",
+      "type": "calls"
+    },
+    {
+      "from": "acasirsub3.cbl",
+      "to": "IRSDFLTMT",
+      "type": "calls"
+    },
+    {
+      "from": "acasirsub3.cbl",
+      "to": "FHLOGGER",
+      "type": "calls"
+    },
+    {
+      "from": "acasirsub1.cbl",
+      "to": "IRSNOMINALMT",
+      "type": "calls"
+    },
+    {
+      "from": "acasirsub1.cbl",
+      "to": "FHLOGGER",
+      "type": "calls"
+    },
+    {
+      "from": "acas032.cbl",
+      "to": "PAYMENTSMT",
+      "type": "calls"
+    },
+    {
+      "from": "acas032.cbl",
+      "to": "FHLOGGER",
+      "type": "calls"
+    },
+    {
+      "from": "acas030.cbl",
+      "to": "PLAUTOGENMT",
+      "type": "calls"
+    },
+    {
+      "from": "acas030.cbl",
+      "to": "FHLOGGER",
+      "type": "calls"
+    },
+    {
+      "from": "acas029.cbl",
+      "to": "OTM5MT",
+      "type": "calls"
+    },
+    {
+      "from": "acas029.cbl",
+      "to": "FHLOGGER",
+      "type": "calls"
+    },
+    {
+      "from": "acas026.cbl",
+      "to": "PLINVOICEMT",
+      "type": "calls"
+    },
+    {
+      "from": "acas026.cbl",
+      "to": "FHLOGGER",
+      "type": "calls"
+    },
+    {
+      "from": "acas023.cbl",
+      "to": "DELFOLIOMT",
+      "type": "calls"
+    },
+    {
+      "from": "acas023.cbl",
+      "to": "FHLOGGER",
+      "type": "calls"
+    },
+    {
+      "from": "acas022.cbl",
+      "to": "PURCHMT",
+      "type": "calls"
+    },
+    {
+      "from": "acas022.cbl",
+      "to": "FHLOGGER",
+      "type": "calls"
+    },
+    {
+      "from": "acas019.cbl",
+      "to": "OTM3MT",
+      "type": "calls"
+    },
+    {
+      "from": "acas019.cbl",
+      "to": "FHLOGGER",
+      "type": "calls"
+    },
+    {
+      "from": "acas017.cbl",
+      "to": "SLDELINVNOSMT",
+      "type": "calls"
+    },
+    {
+      "from": "acas017.cbl",
+      "to": "FHLOGGER",
+      "type": "calls"
+    },
+    {
+      "from": "acas016.cbl",
+      "to": "SLINVOICEMT",
+      "type": "calls"
+    },
+    {
+      "from": "acas016.cbl",
+      "to": "FHLOGGER",
+      "type": "calls"
+    },
+    {
+      "from": "acas015.cbl",
+      "to": "ANALMT",
+      "type": "calls"
+    },
+    {
+      "from": "acas015.cbl",
+      "to": "FHLOGGER",
+      "type": "calls"
+    },
+    {
+      "from": "acas014.cbl",
+      "to": "DELIVERYMT",
+      "type": "calls"
+    },
+    {
+      "from": "acas014.cbl",
+      "to": "FHLOGGER",
+      "type": "calls"
+    },
+    {
+      "from": "acas013.cbl",
+      "to": "TO",
+      "type": "calls"
+    },
+    {
+      "from": "acas013.cbl",
+      "to": "VALUEMT",
+      "type": "calls"
+    },
+    {
+      "from": "acas013.cbl",
+      "to": "FHLOGGER",
+      "type": "calls"
+    },
+    {
+      "from": "acas012.cbl",
+      "to": "SALESMT",
+      "type": "calls"
+    },
+    {
+      "from": "acas012.cbl",
+      "to": "FHLOGGER",
+      "type": "calls"
+    },
+    {
+      "from": "acas011.cbl",
+      "to": "STOCKMT",
+      "type": "calls"
+    },
+    {
+      "from": "acas011.cbl",
+      "to": "FHLOGGER",
+      "type": "calls"
+    },
+    {
+      "from": "acas010.cbl",
+      "to": "AUDITMT",
+      "type": "calls"
+    },
+    {
+      "from": "acas010.cbl",
+      "to": "FHLOGGER",
+      "type": "calls"
+    },
+    {
+      "from": "acas008.cbl",
+      "to": "SLPOSTINGMT",
+      "type": "calls"
+    },
+    {
+      "from": "acas008.cbl",
+      "to": "FHLOGGER",
+      "type": "calls"
+    },
+    {
+      "from": "acas007.cbl",
+      "to": "GLBATCHMT",
+      "type": "calls"
+    },
+    {
+      "from": "acas007.cbl",
+      "to": "FHLOGGER",
+      "type": "calls"
+    },
+    {
+      "from": "acas006.cbl",
+      "to": "GLPOSTINGMT",
+      "type": "calls"
+    },
+    {
+      "from": "acas006.cbl",
+      "to": "FHLOGGER",
+      "type": "calls"
+    },
+    {
+      "from": "acas005.cbl",
+      "to": "NOMINALMT",
+      "type": "calls"
+    },
+    {
+      "from": "acas005.cbl",
+      "to": "FHLOGGER",
+      "type": "calls"
+    },
+    {
+      "from": "acas004.cbl",
+      "to": "SLAUTOGENMT",
+      "type": "calls"
+    },
+    {
+      "from": "acas004.cbl",
+      "to": "FHLOGGER",
+      "type": "calls"
+    },
+    {
+      "from": "acas000.cbl",
+      "to": "SYSTEMMT",
+      "type": "calls"
+    },
+    {
+      "from": "acas000.cbl",
+      "to": "DFLTMT",
+      "type": "calls"
+    },
+    {
+      "from": "acas000.cbl",
+      "to": "FINALMT",
+      "type": "calls"
+    },
+    {
+      "from": "acas000.cbl",
+      "to": "SYS4MT",
+      "type": "calls"
+    },
+    {
+      "from": "acas000.cbl",
+      "to": "FHLOGGER",
+      "type": "calls"
+    },
+    {
+      "from": "acas-test-takeon-2.cbl",
+      "to": "ACAS022",
+      "type": "calls"
+    },
+    {
+      "from": "acas-test-takeon-2.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "acas-test-takeon-2.cbl",
+      "to": "MAPS09",
+      "type": "calls"
+    },
+    {
+      "from": "acas-test-takeon-1.cbl",
+      "to": "ACAS012",
+      "type": "calls"
+    },
+    {
+      "from": "acas-test-takeon-1.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "acas-test-takeon-1.cbl",
+      "to": "MAPS09",
+      "type": "calls"
+    },
+    {
+      "from": "ACCEPTNM.CPY",
+      "to": "CBL-ACCEPT",
+      "type": "calls"
+    },
+    {
+      "from": "ACAS.cbl",
+      "to": "WS-CALLED",
+      "type": "calls"
+    },
+    {
+      "from": "ACAS.cbl",
+      "to": "MAPS04",
+      "type": "calls"
+    },
+    {
+      "from": "ACAS.cbl",
+      "to": "ACAS000",
+      "type": "calls"
+    }
+  ],
+  "mainPrograms": [
+    "stock.cbl",
+    "sales.cbl",
+    "purchase.cbl",
+    "irs.cbl",
+    "general.cbl",
+    "ACAS.cbl"
+  ],
+  "subsystems": {
+    "irs": {
+      "programs": [
+        "irsubp.cbl",
+        "irs090.cbl",
+        "irs085.cbl",
+        "irs080.cbl",
+        "irs070.cbl",
+        "irs065.cbl",
+        "irs060.cbl",
+        "irs055.cbl",
+        "irs050.cbl",
+        "irs040.cbl",
+        "irs030.cbl",
+        "irs020.cbl",
+        "irs010.cbl",
+        "irs000.cbl",
+        "irs.cbl",
+        "dummy-rdbmsMT.cbl"
+      ],
+      "calls": [
+        {
+          "from": "irs090.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "irs090.cbl",
+          "to": "SYSTEM",
+          "type": "calls"
+        },
+        {
+          "from": "irs085.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "irs080.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "irs070.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "irs070.cbl",
+          "to": "IRS055",
+          "type": "calls"
+        },
+        {
+          "from": "irs070.cbl",
+          "to": "IRSUBP",
+          "type": "calls"
+        },
+        {
+          "from": "irs065.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "irs060.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "irs060.cbl",
+          "to": "SYSTEM",
+          "type": "calls"
+        },
+        {
+          "from": "irs055.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "irs050.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "irs050.cbl",
+          "to": "IRS055",
+          "type": "calls"
+        },
+        {
+          "from": "irs050.cbl",
+          "to": "IRSUBP",
+          "type": "calls"
+        },
+        {
+          "from": "irs050.cbl",
+          "to": "SYSTEM",
+          "type": "calls"
+        },
+        {
+          "from": "irs040.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "irs040.cbl",
+          "to": "SYSTEM",
+          "type": "calls"
+        },
+        {
+          "from": "irs030.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "irs020.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "irs020.cbl",
+          "to": "SYSTEM",
+          "type": "calls"
+        },
+        {
+          "from": "irs010.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "irs010.cbl",
+          "to": "SYSTEM",
+          "type": "calls"
+        },
+        {
+          "from": "irs000.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "irs.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "irs.cbl",
+          "to": "WS-CALLED",
+          "type": "calls"
+        },
+        {
+          "from": "irs.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "irs.cbl",
+          "to": "IRS000",
+          "type": "calls"
+        },
+        {
+          "from": "irs.cbl",
+          "to": "IRS010",
+          "type": "calls"
+        },
+        {
+          "from": "irs.cbl",
+          "to": "IRS020",
+          "type": "calls"
+        },
+        {
+          "from": "irs.cbl",
+          "to": "IRS030",
+          "type": "calls"
+        },
+        {
+          "from": "irs.cbl",
+          "to": "IRS040",
+          "type": "calls"
+        },
+        {
+          "from": "irs.cbl",
+          "to": "IRS050",
+          "type": "calls"
+        },
+        {
+          "from": "irs.cbl",
+          "to": "IRS065",
+          "type": "calls"
+        },
+        {
+          "from": "irs.cbl",
+          "to": "IRS060",
+          "type": "calls"
+        },
+        {
+          "from": "irs.cbl",
+          "to": "IRS070",
+          "type": "calls"
+        },
+        {
+          "from": "irs.cbl",
+          "to": "IRS085",
+          "type": "calls"
+        },
+        {
+          "from": "irs.cbl",
+          "to": "IRS090",
+          "type": "calls"
+        },
+        {
+          "from": "irs.cbl",
+          "to": "IRS080",
+          "type": "calls"
+        },
+        {
+          "from": "irs.cbl",
+          "to": "SYSTEM",
+          "type": "calls"
+        }
+      ]
+    },
+    "sales": {
+      "programs": [
+        "sl970.cbl",
+        "sl960.cbl",
+        "sl950.cbl",
+        "sl940.cbl",
+        "sl930.cbl",
+        "sl920.cbl",
+        "sl910.cbl",
+        "sl900.cbl",
+        "sl830.cbl",
+        "sl820.cbl",
+        "sl810.cbl",
+        "sl800.cbl",
+        "sl200.cbl",
+        "sl190.cbl",
+        "sl180.cbl",
+        "sl170.cbl",
+        "sl165.cbl",
+        "sl160.cbl",
+        "sl140.cbl",
+        "sl130.cbl",
+        "sl120.cbl",
+        "sl115.cbl",
+        "sl110.cbl",
+        "sl100.cbl",
+        "sl095.cbl",
+        "sl090.cbl",
+        "sl085.cbl",
+        "sl080.cbl",
+        "sl070.cbl",
+        "sl060.cbl",
+        "sl055.cbl",
+        "sl050.cbl",
+        "sl020.cbl",
+        "sl010.cbl",
+        "sl000.cbl",
+        "sales.cbl",
+        "dummy-rdbmsMT.cbl"
+      ],
+      "calls": [
+        {
+          "from": "sl970.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "sl970.cbl",
+          "to": "SYSTEM",
+          "type": "calls"
+        },
+        {
+          "from": "sl970.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "sl960.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "sl960.cbl",
+          "to": "MAPS09",
+          "type": "calls"
+        },
+        {
+          "from": "sl950.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "sl950.cbl",
+          "to": "SYSTEM",
+          "type": "calls"
+        },
+        {
+          "from": "sl950.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "sl940.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "sl940.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "sl930.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "sl930.cbl",
+          "to": "SYSTEM",
+          "type": "calls"
+        },
+        {
+          "from": "sl930.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "sl920.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "sl920.cbl",
+          "to": "SL070",
+          "type": "calls"
+        },
+        {
+          "from": "sl920.cbl",
+          "to": "FAILED",
+          "type": "calls"
+        },
+        {
+          "from": "sl920.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "sl910.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "sl910.cbl",
+          "to": "SL930",
+          "type": "calls"
+        },
+        {
+          "from": "sl910.cbl",
+          "to": "SL960",
+          "type": "calls"
+        },
+        {
+          "from": "sl910.cbl",
+          "to": "SL070",
+          "type": "calls"
+        },
+        {
+          "from": "sl910.cbl",
+          "to": "FAILED",
+          "type": "calls"
+        },
+        {
+          "from": "sl910.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "sl900.cbl",
+          "to": "WS-CALLED",
+          "type": "calls"
+        },
+        {
+          "from": "sl830.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "sl830.cbl",
+          "to": "SL070",
+          "type": "calls"
+        },
+        {
+          "from": "sl830.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "sl820.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "sl820.cbl",
+          "to": "SYSTEM",
+          "type": "calls"
+        },
+        {
+          "from": "sl820.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "sl810.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "sl810.cbl",
+          "to": "SL960",
+          "type": "calls"
+        },
+        {
+          "from": "sl810.cbl",
+          "to": "SL070",
+          "type": "calls"
+        },
+        {
+          "from": "sl810.cbl",
+          "to": "FAILED",
+          "type": "calls"
+        },
+        {
+          "from": "sl810.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "sl800.cbl",
+          "to": "WS-CALLED",
+          "type": "calls"
+        },
+        {
+          "from": "sl200.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "sl200.cbl",
+          "to": "SYSTEM",
+          "type": "calls"
+        },
+        {
+          "from": "sl200.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "sl190.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "sl190.cbl",
+          "to": "WS-CALLED",
+          "type": "calls"
+        },
+        {
+          "from": "sl190.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "sl180.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "sl180.cbl",
+          "to": "SYSTEM",
+          "type": "calls"
+        },
+        {
+          "from": "sl180.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "sl170.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "sl170.cbl",
+          "to": "SYSTEM",
+          "type": "calls"
+        },
+        {
+          "from": "sl170.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "sl165.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "sl160.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "sl160.cbl",
+          "to": "SYSTEM",
+          "type": "calls"
+        },
+        {
+          "from": "sl160.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "sl140.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "sl140.cbl",
+          "to": "SYSTEM",
+          "type": "calls"
+        },
+        {
+          "from": "sl140.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "sl130.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "sl130.cbl",
+          "to": "SYSTEM",
+          "type": "calls"
+        },
+        {
+          "from": "sl130.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "sl120.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "sl120.cbl",
+          "to": "SYSTEM",
+          "type": "calls"
+        },
+        {
+          "from": "sl120.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "sl115.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "sl110.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "sl110.cbl",
+          "to": "SYSTEM",
+          "type": "calls"
+        },
+        {
+          "from": "sl110.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "sl100.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "sl100.cbl",
+          "to": "SYSTEM",
+          "type": "calls"
+        },
+        {
+          "from": "sl100.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "sl095.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "sl095.cbl",
+          "to": "SYSTEM",
+          "type": "calls"
+        },
+        {
+          "from": "sl095.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "sl090.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "sl085.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "sl085.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "sl080.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "sl080.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "sl070.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "sl070.cbl",
+          "to": "SYSTEM",
+          "type": "calls"
+        },
+        {
+          "from": "sl060.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "sl060.cbl",
+          "to": "SYSTEM",
+          "type": "calls"
+        },
+        {
+          "from": "sl060.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "sl055.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "sl055.cbl",
+          "to": "SL070",
+          "type": "calls"
+        },
+        {
+          "from": "sl055.cbl",
+          "to": "FAILED",
+          "type": "calls"
+        },
+        {
+          "from": "sl050.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "sl050.cbl",
+          "to": "SYSTEM",
+          "type": "calls"
+        },
+        {
+          "from": "sl050.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "sl020.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "sl020.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "sl020.cbl",
+          "to": "SYSTEM",
+          "type": "calls"
+        },
+        {
+          "from": "sl010.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "sl010.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "sl010.cbl",
+          "to": "MAPS09",
+          "type": "calls"
+        },
+        {
+          "from": "sl010.cbl",
+          "to": "SYSTEM",
+          "type": "calls"
+        },
+        {
+          "from": "sl000.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "sales.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "sales.cbl",
+          "to": "WS-CALLED",
+          "type": "calls"
+        },
+        {
+          "from": "sales.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "sales.cbl",
+          "to": "SYSTEM",
+          "type": "calls"
+        }
+      ]
+    },
+    "purchase": {
+      "programs": [
+        "sl830.cbl",
+        "sl820.cbl",
+        "sl810.cbl",
+        "purchase.cbl",
+        "pl960.cbl",
+        "pl950.cbl",
+        "pl940.cbl",
+        "pl930.cbl",
+        "pl920.cbl",
+        "pl910.cbl",
+        "pl900.cbl",
+        "pl800.cbl",
+        "pl190.cbl",
+        "pl180.cbl",
+        "pl170.cbl",
+        "pl165.cbl",
+        "pl160.cbl",
+        "pl140.cbl",
+        "pl130.cbl",
+        "pl120.cbl",
+        "pl115.cbl",
+        "pl100.cbl",
+        "pl095.cbl",
+        "pl090.cbl",
+        "pl085.cbl",
+        "pl080.cbl",
+        "pl070.cbl",
+        "pl060.cbl",
+        "pl055.cbl",
+        "pl050.cbl",
+        "pl040.cbl",
+        "pl030.cbl",
+        "pl025.cbl",
+        "pl020.cbl",
+        "pl015.cbl",
+        "pl010.cbl",
+        "pl000.cbl",
+        "dummy-rdbmsMT.cbl"
+      ],
+      "calls": [
+        {
+          "from": "sl830.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "sl830.cbl",
+          "to": "SL070",
+          "type": "calls"
+        },
+        {
+          "from": "sl830.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "sl820.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "sl820.cbl",
+          "to": "SYSTEM",
+          "type": "calls"
+        },
+        {
+          "from": "sl820.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "sl810.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "sl810.cbl",
+          "to": "SL960",
+          "type": "calls"
+        },
+        {
+          "from": "sl810.cbl",
+          "to": "SL070",
+          "type": "calls"
+        },
+        {
+          "from": "sl810.cbl",
+          "to": "FAILED",
+          "type": "calls"
+        },
+        {
+          "from": "sl810.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "purchase.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "purchase.cbl",
+          "to": "WS-CALLED",
+          "type": "calls"
+        },
+        {
+          "from": "purchase.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "purchase.cbl",
+          "to": "SYSTEM",
+          "type": "calls"
+        },
+        {
+          "from": "pl960.cbl",
+          "to": "SYSTEM",
+          "type": "calls"
+        },
+        {
+          "from": "pl950.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "pl950.cbl",
+          "to": "SYSTEM",
+          "type": "calls"
+        },
+        {
+          "from": "pl950.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "pl940.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "pl940.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "pl930.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "pl930.cbl",
+          "to": "SYSTEM",
+          "type": "calls"
+        },
+        {
+          "from": "pl930.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "pl920.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "pl910.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "pl910.cbl",
+          "to": "SYSTEM",
+          "type": "calls"
+        },
+        {
+          "from": "pl910.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "pl900.cbl",
+          "to": "WS-CALLED",
+          "type": "calls"
+        },
+        {
+          "from": "pl900.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "pl800.cbl",
+          "to": "WS-CALLED",
+          "type": "calls"
+        },
+        {
+          "from": "pl190.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "pl190.cbl",
+          "to": "SYSTEM",
+          "type": "calls"
+        },
+        {
+          "from": "pl190.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "pl180.cbl",
+          "to": "WS-CALLED",
+          "type": "calls"
+        },
+        {
+          "from": "pl170.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "pl170.cbl",
+          "to": "SYSTEM",
+          "type": "calls"
+        },
+        {
+          "from": "pl170.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "pl165.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "pl160.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "pl160.cbl",
+          "to": "SYSTEM",
+          "type": "calls"
+        },
+        {
+          "from": "pl160.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "pl140.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "pl140.cbl",
+          "to": "SYSTEM",
+          "type": "calls"
+        },
+        {
+          "from": "pl140.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "pl130.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "pl130.cbl",
+          "to": "SYSTEM",
+          "type": "calls"
+        },
+        {
+          "from": "pl130.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "pl120.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "pl120.cbl",
+          "to": "SYSTEM",
+          "type": "calls"
+        },
+        {
+          "from": "pl120.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "pl115.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "pl100.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "pl100.cbl",
+          "to": "SYSTEM",
+          "type": "calls"
+        },
+        {
+          "from": "pl100.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "pl095.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "pl095.cbl",
+          "to": "SYSTEM",
+          "type": "calls"
+        },
+        {
+          "from": "pl095.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "pl090.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "pl085.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "pl085.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "pl080.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "pl080.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "pl070.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "pl070.cbl",
+          "to": "SYSTEM",
+          "type": "calls"
+        },
+        {
+          "from": "pl060.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "pl060.cbl",
+          "to": "SYSTEM",
+          "type": "calls"
+        },
+        {
+          "from": "pl060.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "pl055.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "pl055.cbl",
+          "to": "SL070",
+          "type": "calls"
+        },
+        {
+          "from": "pl050.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "pl050.cbl",
+          "to": "SYSTEM",
+          "type": "calls"
+        },
+        {
+          "from": "pl050.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "pl040.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "pl040.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "pl030.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "pl030.cbl",
+          "to": "SL070",
+          "type": "calls"
+        },
+        {
+          "from": "pl030.cbl",
+          "to": "FAILED",
+          "type": "calls"
+        },
+        {
+          "from": "pl030.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "pl025.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "pl025.cbl",
+          "to": "MAPS09",
+          "type": "calls"
+        },
+        {
+          "from": "pl020.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "pl020.cbl",
+          "to": "PL025",
+          "type": "calls"
+        },
+        {
+          "from": "pl020.cbl",
+          "to": "PL070",
+          "type": "calls"
+        },
+        {
+          "from": "pl020.cbl",
+          "to": "FAILED",
+          "type": "calls"
+        },
+        {
+          "from": "pl020.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "pl015.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "pl015.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "pl015.cbl",
+          "to": "SYSTEM",
+          "type": "calls"
+        },
+        {
+          "from": "pl010.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "pl010.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "pl010.cbl",
+          "to": "MAPS09",
+          "type": "calls"
+        },
+        {
+          "from": "pl010.cbl",
+          "to": "SYSTEM",
+          "type": "calls"
+        },
+        {
+          "from": "pl000.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        }
+      ]
+    },
+    "stock": {
+      "programs": [
+        "stockconvert3.cbl",
+        "stockconvert2.cbl",
+        "stock.cbl",
+        "st060.cbl",
+        "st050.cbl",
+        "st040.cbl",
+        "st030.cbl",
+        "st020.cbl",
+        "st010.cbl",
+        "st000.cbl",
+        "dummy-rdbmsMT.cbl",
+        "acasconvert1.cbl"
+      ],
+      "calls": [
+        {
+          "from": "stock.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "stock.cbl",
+          "to": "WS-CALLED",
+          "type": "calls"
+        },
+        {
+          "from": "stock.cbl",
+          "to": "SL070",
+          "type": "calls"
+        },
+        {
+          "from": "stock.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "stock.cbl",
+          "to": "SYSTEM",
+          "type": "calls"
+        },
+        {
+          "from": "st060.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "st060.cbl",
+          "to": "ACAS011",
+          "type": "calls"
+        },
+        {
+          "from": "st060.cbl",
+          "to": "AS",
+          "type": "calls"
+        },
+        {
+          "from": "st060.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "st060.cbl",
+          "to": "SL070",
+          "type": "calls"
+        },
+        {
+          "from": "st050.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "st040.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "st030.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "st030.cbl",
+          "to": "SYSTEM",
+          "type": "calls"
+        },
+        {
+          "from": "st030.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "st020.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "st020.cbl",
+          "to": "SYSTEM",
+          "type": "calls"
+        },
+        {
+          "from": "st020.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "st010.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "st010.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "st010.cbl",
+          "to": "MAPS09",
+          "type": "calls"
+        },
+        {
+          "from": "st010.cbl",
+          "to": "SL070",
+          "type": "calls"
+        },
+        {
+          "from": "st010.cbl",
+          "to": "PL010",
+          "type": "calls"
+        },
+        {
+          "from": "st010.cbl",
+          "to": "SYSTEM",
+          "type": "calls"
+        },
+        {
+          "from": "st000.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        }
+      ]
+    },
+    "general": {
+      "programs": [
+        "gl120.cbl",
+        "gl105.cbl",
+        "gl100.cbl",
+        "gl090b.cbl",
+        "gl090a.cbl",
+        "gl090.cbl",
+        "gl080.cbl",
+        "gl072.cbl",
+        "gl071.cbl",
+        "gl070.cbl",
+        "gl060.cbl",
+        "gl051.cbl",
+        "gl050.cbl",
+        "gl030.cbl",
+        "gl020.cbl",
+        "gl000.cbl",
+        "general.cbl",
+        "dummy-rdbmsMT.cbl"
+      ],
+      "calls": [
+        {
+          "from": "gl120.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "gl120.cbl",
+          "to": "SYSTEM",
+          "type": "calls"
+        },
+        {
+          "from": "gl120.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "gl105.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "gl105.cbl",
+          "to": "SYSTEM",
+          "type": "calls"
+        },
+        {
+          "from": "gl090b.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "gl090b.cbl",
+          "to": "SYSTEM",
+          "type": "calls"
+        },
+        {
+          "from": "gl090a.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "gl090a.cbl",
+          "to": "SYSTEM",
+          "type": "calls"
+        },
+        {
+          "from": "gl090.cbl",
+          "to": "GL090B",
+          "type": "calls"
+        },
+        {
+          "from": "gl090.cbl",
+          "to": "GL090A",
+          "type": "calls"
+        },
+        {
+          "from": "gl080.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "gl072.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "gl072.cbl",
+          "to": "SYSTEM",
+          "type": "calls"
+        },
+        {
+          "from": "gl070.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "gl070.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "gl060.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "gl060.cbl",
+          "to": "SYSTEM",
+          "type": "calls"
+        },
+        {
+          "from": "gl060.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "gl051.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "gl051.cbl",
+          "to": "SYSTEM",
+          "type": "calls"
+        },
+        {
+          "from": "gl051.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "gl050.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "gl050.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "gl030.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "gl030.cbl",
+          "to": "SYSTEM",
+          "type": "calls"
+        },
+        {
+          "from": "gl030.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "gl020.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "gl020.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "gl000.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "general.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "general.cbl",
+          "to": "WS-CALLED",
+          "type": "calls"
+        },
+        {
+          "from": "general.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "general.cbl",
+          "to": "SYSTEM",
+          "type": "calls"
+        }
+      ]
+    },
+    "common": {
+      "programs": [
+        "create-system-dat.cbl",
+        "xl160.cbl",
+        "xl150.cbl",
+        "valueUNL.cbl",
+        "valueRES.cbl",
+        "valueMT.cbl",
+        "valueLD.cbl",
+        "systemUNL.cbl",
+        "systemRES.cbl",
+        "systemMT.cbl",
+        "systemLD.cbl",
+        "sys4MT.cbl",
+        "sys4LD.cbl",
+        "sys002.cbl",
+        "stockUNL.cbl",
+        "stockRES.cbl",
+        "stockMT.cbl",
+        "stockLD.cbl",
+        "slpostingUNL.cbl",
+        "slpostingRES.cbl",
+        "slpostingMT.cbl",
+        "slpostingLD.cbl",
+        "slinvoiceUNL.cbl",
+        "slinvoiceRES.cbl",
+        "slinvoiceMT.cbl",
+        "slinvoiceLD.cbl",
+        "sldelinvnosUNL.cbl",
+        "sldelinvnosRES.cbl",
+        "sldelinvnosMT.cbl",
+        "sldelinvnosLD.cbl",
+        "slautogenUNL.cbl",
+        "slautogenRES.cbl",
+        "slautogenMT.cbl",
+        "slautogenLD.cbl",
+        "send-some-mail2.cbl",
+        "send-some-mail.cbl",
+        "send-mail-test-example.cbl",
+        "salesUNL.cbl",
+        "salesRES.cbl",
+        "salesMT.cbl",
+        "salesLD.cbl",
+        "purchUNL.cbl",
+        "purchRES.cbl",
+        "purchMT.cbl",
+        "purchLD.cbl",
+        "plinvoiceUNL.cbl",
+        "plinvoiceRES.cbl",
+        "plinvoiceMT.cbl",
+        "plinvoiceLD.cbl",
+        "plautogenUNL.cbl",
+        "plautogenRES.cbl",
+        "plautogenMT.cbl",
+        "plautogenLD.cbl",
+        "paymentsUNL.cbl",
+        "paymentsRES.cbl",
+        "paymentsMT.cbl",
+        "paymentsLD.cbl",
+        "otm5UNL.cbl",
+        "otm5RES.cbl",
+        "otm5MT.cbl",
+        "otm5LD.cbl",
+        "otm3UNL.cbl",
+        "otm3RES.cbl",
+        "otm3MT.cbl",
+        "otm3LD.cbl",
+        "nominalUNL.cbl",
+        "nominalRES.cbl",
+        "nominalMT.cbl",
+        "nominalLD.cbl",
+        "maps09.cbl",
+        "maps04.cbl",
+        "maps01.cbl",
+        "makesqltable-original.cbl",
+        "makesqltable-free.cbl",
+        "irspostingUNL.cbl",
+        "irspostingRES.cbl",
+        "irspostingMT.cbl",
+        "irspostingLD.cbl",
+        "irsnominalUNL2.cbl",
+        "irsnominalUNL.cbl",
+        "irsnominalRES.cbl",
+        "irsnominalMT.cbl",
+        "irsnominalLD.cbl",
+        "irsfinalUNL.cbl",
+        "irsfinalRES.cbl",
+        "irsfinalMT.cbl",
+        "irsfinalLD.cbl",
+        "irsdfltUNL.cbl",
+        "irsdfltRES.cbl",
+        "irsdfltMT.cbl",
+        "irsdfltLD.cbl",
+        "glpostingUNL.cbl",
+        "glpostingRES.cbl",
+        "glpostingMT.cbl",
+        "glpostingLD.cbl",
+        "glbatchUNL.cbl",
+        "glbatchRES.cbl",
+        "glbatchMT.cbl",
+        "glbatchLD.cbl",
+        "finalMT.cbl",
+        "finalLD.cbl",
+        "fhlogger.cbl",
+        "dummy-rdbmsMT.cbl",
+        "dfltMT.cbl",
+        "dfltLD.cbl",
+        "deliveryUNL.cbl",
+        "deliveryRES.cbl",
+        "deliveryMT.cbl",
+        "deliveryLD.cbl",
+        "delfolioUNL.cbl",
+        "delfolioRES.cbl",
+        "delfolioMT.cbl",
+        "delfolioLD.cbl",
+        "cobdump.cbl",
+        "cbl_oc_dump.cbl",
+        "auditUNL.cbl",
+        "auditRES.cbl",
+        "auditMT.cbl",
+        "auditLD2.cbl",
+        "auditLD.cbl",
+        "analUNL.cbl",
+        "analRES.cbl",
+        "analMT.cbl",
+        "analLD.cbl",
+        "acasirsub5.cbl",
+        "acasirsub4.cbl",
+        "acasirsub3.cbl",
+        "acasirsub1.cbl",
+        "acasconvert3.cbl",
+        "acasconvert2.cbl",
+        "acasconvert1.cbl",
+        "acas032.cbl",
+        "acas030.cbl",
+        "acas029.cbl",
+        "acas026.cbl",
+        "acas023.cbl",
+        "acas022.cbl",
+        "acas019.cbl",
+        "acas017.cbl",
+        "acas016.cbl",
+        "acas015.cbl",
+        "acas014.cbl",
+        "acas013.cbl",
+        "acas012.cbl",
+        "acas011.cbl",
+        "acas010.cbl",
+        "acas008.cbl",
+        "acas007.cbl",
+        "acas006.cbl",
+        "acas005.cbl",
+        "acas004.cbl",
+        "acas000.cbl",
+        "acas-test-takeon-2.cbl",
+        "acas-test-takeon-1.cbl",
+        "acas-get-params.cbl",
+        "ACCEPTNM.CPY",
+        "ACAS.cbl",
+        "ACAS-Sysout.cbl"
+      ],
+      "calls": [
+        {
+          "from": "xl150.cbl",
+          "to": "BLK",
+          "type": "calls"
+        },
+        {
+          "from": "xl150.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "xl150.cbl",
+          "to": "WS-CALLER",
+          "type": "calls"
+        },
+        {
+          "from": "valueUNL.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "valueRES.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "valueMT.cbl",
+          "to": "FHLOGGER",
+          "type": "calls"
+        },
+        {
+          "from": "valueLD.cbl",
+          "to": "ACAS-GET-PARAMS",
+          "type": "calls"
+        },
+        {
+          "from": "valueLD.cbl",
+          "to": "ACAS013",
+          "type": "calls"
+        },
+        {
+          "from": "valueLD.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "systemUNL.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "systemRES.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "systemMT.cbl",
+          "to": "FHLOGGER",
+          "type": "calls"
+        },
+        {
+          "from": "systemLD.cbl",
+          "to": "ACAS-GET-PARAMS",
+          "type": "calls"
+        },
+        {
+          "from": "systemLD.cbl",
+          "to": "SYSTEMMT",
+          "type": "calls"
+        },
+        {
+          "from": "systemLD.cbl",
+          "to": "TO",
+          "type": "calls"
+        },
+        {
+          "from": "systemLD.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "sys4MT.cbl",
+          "to": "FHLOGGER",
+          "type": "calls"
+        },
+        {
+          "from": "sys4LD.cbl",
+          "to": "ACAS-GET-PARAMS",
+          "type": "calls"
+        },
+        {
+          "from": "sys4LD.cbl",
+          "to": "SYS4MT",
+          "type": "calls"
+        },
+        {
+          "from": "sys4LD.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "sys002.cbl",
+          "to": "SYSTEM",
+          "type": "calls"
+        },
+        {
+          "from": "sys002.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "stockUNL.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "stockRES.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "stockMT.cbl",
+          "to": "FHLOGGER",
+          "type": "calls"
+        },
+        {
+          "from": "stockLD.cbl",
+          "to": "ACAS-GET-PARAMS",
+          "type": "calls"
+        },
+        {
+          "from": "stockLD.cbl",
+          "to": "ACAS011",
+          "type": "calls"
+        },
+        {
+          "from": "stockLD.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "slpostingUNL.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "slpostingRES.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "slpostingMT.cbl",
+          "to": "FHLOGGER",
+          "type": "calls"
+        },
+        {
+          "from": "slpostingLD.cbl",
+          "to": "ACAS-GET-PARAMS",
+          "type": "calls"
+        },
+        {
+          "from": "slpostingLD.cbl",
+          "to": "ACAS008",
+          "type": "calls"
+        },
+        {
+          "from": "slpostingLD.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "slinvoiceUNL.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "slinvoiceRES.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "slinvoiceMT.cbl",
+          "to": "FHLOGGER",
+          "type": "calls"
+        },
+        {
+          "from": "slinvoiceLD.cbl",
+          "to": "ACAS-GET-PARAMS",
+          "type": "calls"
+        },
+        {
+          "from": "slinvoiceLD.cbl",
+          "to": "ACAS016",
+          "type": "calls"
+        },
+        {
+          "from": "slinvoiceLD.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "sldelinvnosUNL.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "sldelinvnosRES.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "sldelinvnosMT.cbl",
+          "to": "FHLOGGER",
+          "type": "calls"
+        },
+        {
+          "from": "sldelinvnosLD.cbl",
+          "to": "ACAS-GET-PARAMS",
+          "type": "calls"
+        },
+        {
+          "from": "sldelinvnosLD.cbl",
+          "to": "ACAS017",
+          "type": "calls"
+        },
+        {
+          "from": "sldelinvnosLD.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "slautogenUNL.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "slautogenRES.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "slautogenMT.cbl",
+          "to": "FHLOGGER",
+          "type": "calls"
+        },
+        {
+          "from": "slautogenLD.cbl",
+          "to": "ACAS-GET-PARAMS",
+          "type": "calls"
+        },
+        {
+          "from": "slautogenLD.cbl",
+          "to": "ACAS004",
+          "type": "calls"
+        },
+        {
+          "from": "slautogenLD.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "send-some-mail2.cbl",
+          "to": "SYSTEM",
+          "type": "calls"
+        },
+        {
+          "from": "send-some-mail.cbl",
+          "to": "SYSTEM",
+          "type": "calls"
+        },
+        {
+          "from": "send-mail-test-example.cbl",
+          "to": "TMPNAM",
+          "type": "calls"
+        },
+        {
+          "from": "send-mail-test-example.cbl",
+          "to": "FOPEN",
+          "type": "calls"
+        },
+        {
+          "from": "send-mail-test-example.cbl",
+          "to": "FPUTS",
+          "type": "calls"
+        },
+        {
+          "from": "send-mail-test-example.cbl",
+          "to": "FCLOSE",
+          "type": "calls"
+        },
+        {
+          "from": "send-mail-test-example.cbl",
+          "to": "SYSTEM",
+          "type": "calls"
+        },
+        {
+          "from": "send-mail-test-example.cbl",
+          "to": "REMOVE",
+          "type": "calls"
+        },
+        {
+          "from": "salesUNL.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "salesRES.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "salesMT.cbl",
+          "to": "FHLOGGER",
+          "type": "calls"
+        },
+        {
+          "from": "salesLD.cbl",
+          "to": "ACAS-GET-PARAMS",
+          "type": "calls"
+        },
+        {
+          "from": "salesLD.cbl",
+          "to": "ACAS012",
+          "type": "calls"
+        },
+        {
+          "from": "salesLD.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "purchUNL.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "purchRES.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "purchMT.cbl",
+          "to": "FHLOGGER",
+          "type": "calls"
+        },
+        {
+          "from": "purchLD.cbl",
+          "to": "ACAS-GET-PARAMS",
+          "type": "calls"
+        },
+        {
+          "from": "purchLD.cbl",
+          "to": "ACAS022",
+          "type": "calls"
+        },
+        {
+          "from": "purchLD.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "plinvoiceUNL.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "plinvoiceRES.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "plinvoiceMT.cbl",
+          "to": "FHLOGGER",
+          "type": "calls"
+        },
+        {
+          "from": "plinvoiceLD.cbl",
+          "to": "ACAS-GET-PARAMS",
+          "type": "calls"
+        },
+        {
+          "from": "plinvoiceLD.cbl",
+          "to": "ACAS026",
+          "type": "calls"
+        },
+        {
+          "from": "plinvoiceLD.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "plautogenUNL.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "plautogenRES.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "plautogenMT.cbl",
+          "to": "FHLOGGER",
+          "type": "calls"
+        },
+        {
+          "from": "plautogenLD.cbl",
+          "to": "ACAS-GET-PARAMS",
+          "type": "calls"
+        },
+        {
+          "from": "plautogenLD.cbl",
+          "to": "ACAS030",
+          "type": "calls"
+        },
+        {
+          "from": "plautogenLD.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "paymentsUNL.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "paymentsRES.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "paymentsMT.cbl",
+          "to": "FHLOGGER",
+          "type": "calls"
+        },
+        {
+          "from": "paymentsLD.cbl",
+          "to": "ACAS-GET-PARAMS",
+          "type": "calls"
+        },
+        {
+          "from": "paymentsLD.cbl",
+          "to": "ACAS032",
+          "type": "calls"
+        },
+        {
+          "from": "paymentsLD.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "otm5UNL.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "otm5RES.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "otm5MT.cbl",
+          "to": "FHLOGGER",
+          "type": "calls"
+        },
+        {
+          "from": "otm5LD.cbl",
+          "to": "ACAS-GET-PARAMS",
+          "type": "calls"
+        },
+        {
+          "from": "otm5LD.cbl",
+          "to": "ACAS029",
+          "type": "calls"
+        },
+        {
+          "from": "otm5LD.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "otm3UNL.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "otm3RES.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "otm3MT.cbl",
+          "to": "FHLOGGER",
+          "type": "calls"
+        },
+        {
+          "from": "otm3LD.cbl",
+          "to": "ACAS-GET-PARAMS",
+          "type": "calls"
+        },
+        {
+          "from": "otm3LD.cbl",
+          "to": "ACAS019",
+          "type": "calls"
+        },
+        {
+          "from": "otm3LD.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "nominalUNL.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "nominalRES.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "nominalMT.cbl",
+          "to": "FHLOGGER",
+          "type": "calls"
+        },
+        {
+          "from": "nominalLD.cbl",
+          "to": "ACAS-GET-PARAMS",
+          "type": "calls"
+        },
+        {
+          "from": "nominalLD.cbl",
+          "to": "ACAS005",
+          "type": "calls"
+        },
+        {
+          "from": "nominalLD.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "irspostingUNL.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "irspostingRES.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "irspostingMT.cbl",
+          "to": "FHLOGGER",
+          "type": "calls"
+        },
+        {
+          "from": "irspostingLD.cbl",
+          "to": "ACAS-GET-PARAMS",
+          "type": "calls"
+        },
+        {
+          "from": "irspostingLD.cbl",
+          "to": "ACASIRSUB4",
+          "type": "calls"
+        },
+        {
+          "from": "irspostingLD.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "irsnominalUNL2.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "irsnominalUNL.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "irsnominalRES.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "irsnominalMT.cbl",
+          "to": "FHLOGGER",
+          "type": "calls"
+        },
+        {
+          "from": "irsnominalLD.cbl",
+          "to": "ACAS-GET-PARAMS",
+          "type": "calls"
+        },
+        {
+          "from": "irsnominalLD.cbl",
+          "to": "ACASIRSUB1",
+          "type": "calls"
+        },
+        {
+          "from": "irsnominalLD.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "irsfinalUNL.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "irsfinalRES.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "irsfinalMT.cbl",
+          "to": "FHLOGGER",
+          "type": "calls"
+        },
+        {
+          "from": "irsfinalLD.cbl",
+          "to": "ACAS-GET-PARAMS",
+          "type": "calls"
+        },
+        {
+          "from": "irsfinalLD.cbl",
+          "to": "ACASIRSUB5",
+          "type": "calls"
+        },
+        {
+          "from": "irsfinalLD.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "irsdfltUNL.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "irsdfltRES.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "irsdfltMT.cbl",
+          "to": "FHLOGGER",
+          "type": "calls"
+        },
+        {
+          "from": "irsdfltLD.cbl",
+          "to": "ACAS-GET-PARAMS",
+          "type": "calls"
+        },
+        {
+          "from": "irsdfltLD.cbl",
+          "to": "ACASIRSUB3",
+          "type": "calls"
+        },
+        {
+          "from": "irsdfltLD.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "glpostingUNL.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "glpostingRES.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "glpostingMT.cbl",
+          "to": "FHLOGGER",
+          "type": "calls"
+        },
+        {
+          "from": "glpostingLD.cbl",
+          "to": "ACAS-GET-PARAMS",
+          "type": "calls"
+        },
+        {
+          "from": "glpostingLD.cbl",
+          "to": "ACAS006",
+          "type": "calls"
+        },
+        {
+          "from": "glpostingLD.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "glbatchUNL.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "glbatchRES.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "glbatchMT.cbl",
+          "to": "FHLOGGER",
+          "type": "calls"
+        },
+        {
+          "from": "glbatchLD.cbl",
+          "to": "ACAS-GET-PARAMS",
+          "type": "calls"
+        },
+        {
+          "from": "glbatchLD.cbl",
+          "to": "ACAS007",
+          "type": "calls"
+        },
+        {
+          "from": "glbatchLD.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "finalMT.cbl",
+          "to": "FHLOGGER",
+          "type": "calls"
+        },
+        {
+          "from": "finalLD.cbl",
+          "to": "ACAS-GET-PARAMS",
+          "type": "calls"
+        },
+        {
+          "from": "finalLD.cbl",
+          "to": "FINALMT",
+          "type": "calls"
+        },
+        {
+          "from": "finalLD.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "dfltMT.cbl",
+          "to": "FHLOGGER",
+          "type": "calls"
+        },
+        {
+          "from": "dfltLD.cbl",
+          "to": "ACAS-GET-PARAMS",
+          "type": "calls"
+        },
+        {
+          "from": "dfltLD.cbl",
+          "to": "DFLTMT",
+          "type": "calls"
+        },
+        {
+          "from": "dfltLD.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "deliveryUNL.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "deliveryRES.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "deliveryMT.cbl",
+          "to": "FHLOGGER",
+          "type": "calls"
+        },
+        {
+          "from": "deliveryLD.cbl",
+          "to": "ACAS-GET-PARAMS",
+          "type": "calls"
+        },
+        {
+          "from": "deliveryLD.cbl",
+          "to": "ACAS014",
+          "type": "calls"
+        },
+        {
+          "from": "deliveryLD.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "delfolioUNL.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "delfolioRES.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "delfolioMT.cbl",
+          "to": "FHLOGGER",
+          "type": "calls"
+        },
+        {
+          "from": "delfolioLD.cbl",
+          "to": "ACAS-GET-PARAMS",
+          "type": "calls"
+        },
+        {
+          "from": "delfolioLD.cbl",
+          "to": "ACAS023",
+          "type": "calls"
+        },
+        {
+          "from": "delfolioLD.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "auditUNL.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "auditRES.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "auditMT.cbl",
+          "to": "FHLOGGER",
+          "type": "calls"
+        },
+        {
+          "from": "auditLD2.cbl",
+          "to": "ACAS010",
+          "type": "calls"
+        },
+        {
+          "from": "auditLD2.cbl",
+          "to": "FHLOGGER",
+          "type": "calls"
+        },
+        {
+          "from": "auditLD.cbl",
+          "to": "ACAS-GET-PARAMS",
+          "type": "calls"
+        },
+        {
+          "from": "auditLD.cbl",
+          "to": "ACAS010",
+          "type": "calls"
+        },
+        {
+          "from": "auditLD.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "analUNL.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "analRES.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "analMT.cbl",
+          "to": "FHLOGGER",
+          "type": "calls"
+        },
+        {
+          "from": "analLD.cbl",
+          "to": "ACAS-GET-PARAMS",
+          "type": "calls"
+        },
+        {
+          "from": "analLD.cbl",
+          "to": "ACAS015",
+          "type": "calls"
+        },
+        {
+          "from": "analLD.cbl",
+          "to": "ACAS-SYSOUT",
+          "type": "calls"
+        },
+        {
+          "from": "acasirsub5.cbl",
+          "to": "IRSFINALMT",
+          "type": "calls"
+        },
+        {
+          "from": "acasirsub5.cbl",
+          "to": "FHLOGGER",
+          "type": "calls"
+        },
+        {
+          "from": "acasirsub4.cbl",
+          "to": "IRSPOSTINGMT",
+          "type": "calls"
+        },
+        {
+          "from": "acasirsub4.cbl",
+          "to": "FHLOGGER",
+          "type": "calls"
+        },
+        {
+          "from": "acasirsub3.cbl",
+          "to": "IRSDFLTMT",
+          "type": "calls"
+        },
+        {
+          "from": "acasirsub3.cbl",
+          "to": "FHLOGGER",
+          "type": "calls"
+        },
+        {
+          "from": "acasirsub1.cbl",
+          "to": "IRSNOMINALMT",
+          "type": "calls"
+        },
+        {
+          "from": "acasirsub1.cbl",
+          "to": "FHLOGGER",
+          "type": "calls"
+        },
+        {
+          "from": "acas032.cbl",
+          "to": "PAYMENTSMT",
+          "type": "calls"
+        },
+        {
+          "from": "acas032.cbl",
+          "to": "FHLOGGER",
+          "type": "calls"
+        },
+        {
+          "from": "acas030.cbl",
+          "to": "PLAUTOGENMT",
+          "type": "calls"
+        },
+        {
+          "from": "acas030.cbl",
+          "to": "FHLOGGER",
+          "type": "calls"
+        },
+        {
+          "from": "acas029.cbl",
+          "to": "OTM5MT",
+          "type": "calls"
+        },
+        {
+          "from": "acas029.cbl",
+          "to": "FHLOGGER",
+          "type": "calls"
+        },
+        {
+          "from": "acas026.cbl",
+          "to": "PLINVOICEMT",
+          "type": "calls"
+        },
+        {
+          "from": "acas026.cbl",
+          "to": "FHLOGGER",
+          "type": "calls"
+        },
+        {
+          "from": "acas023.cbl",
+          "to": "DELFOLIOMT",
+          "type": "calls"
+        },
+        {
+          "from": "acas023.cbl",
+          "to": "FHLOGGER",
+          "type": "calls"
+        },
+        {
+          "from": "acas022.cbl",
+          "to": "PURCHMT",
+          "type": "calls"
+        },
+        {
+          "from": "acas022.cbl",
+          "to": "FHLOGGER",
+          "type": "calls"
+        },
+        {
+          "from": "acas019.cbl",
+          "to": "OTM3MT",
+          "type": "calls"
+        },
+        {
+          "from": "acas019.cbl",
+          "to": "FHLOGGER",
+          "type": "calls"
+        },
+        {
+          "from": "acas017.cbl",
+          "to": "SLDELINVNOSMT",
+          "type": "calls"
+        },
+        {
+          "from": "acas017.cbl",
+          "to": "FHLOGGER",
+          "type": "calls"
+        },
+        {
+          "from": "acas016.cbl",
+          "to": "SLINVOICEMT",
+          "type": "calls"
+        },
+        {
+          "from": "acas016.cbl",
+          "to": "FHLOGGER",
+          "type": "calls"
+        },
+        {
+          "from": "acas015.cbl",
+          "to": "ANALMT",
+          "type": "calls"
+        },
+        {
+          "from": "acas015.cbl",
+          "to": "FHLOGGER",
+          "type": "calls"
+        },
+        {
+          "from": "acas014.cbl",
+          "to": "DELIVERYMT",
+          "type": "calls"
+        },
+        {
+          "from": "acas014.cbl",
+          "to": "FHLOGGER",
+          "type": "calls"
+        },
+        {
+          "from": "acas013.cbl",
+          "to": "TO",
+          "type": "calls"
+        },
+        {
+          "from": "acas013.cbl",
+          "to": "VALUEMT",
+          "type": "calls"
+        },
+        {
+          "from": "acas013.cbl",
+          "to": "FHLOGGER",
+          "type": "calls"
+        },
+        {
+          "from": "acas012.cbl",
+          "to": "SALESMT",
+          "type": "calls"
+        },
+        {
+          "from": "acas012.cbl",
+          "to": "FHLOGGER",
+          "type": "calls"
+        },
+        {
+          "from": "acas011.cbl",
+          "to": "STOCKMT",
+          "type": "calls"
+        },
+        {
+          "from": "acas011.cbl",
+          "to": "FHLOGGER",
+          "type": "calls"
+        },
+        {
+          "from": "acas010.cbl",
+          "to": "AUDITMT",
+          "type": "calls"
+        },
+        {
+          "from": "acas010.cbl",
+          "to": "FHLOGGER",
+          "type": "calls"
+        },
+        {
+          "from": "acas008.cbl",
+          "to": "SLPOSTINGMT",
+          "type": "calls"
+        },
+        {
+          "from": "acas008.cbl",
+          "to": "FHLOGGER",
+          "type": "calls"
+        },
+        {
+          "from": "acas007.cbl",
+          "to": "GLBATCHMT",
+          "type": "calls"
+        },
+        {
+          "from": "acas007.cbl",
+          "to": "FHLOGGER",
+          "type": "calls"
+        },
+        {
+          "from": "acas006.cbl",
+          "to": "GLPOSTINGMT",
+          "type": "calls"
+        },
+        {
+          "from": "acas006.cbl",
+          "to": "FHLOGGER",
+          "type": "calls"
+        },
+        {
+          "from": "acas005.cbl",
+          "to": "NOMINALMT",
+          "type": "calls"
+        },
+        {
+          "from": "acas005.cbl",
+          "to": "FHLOGGER",
+          "type": "calls"
+        },
+        {
+          "from": "acas004.cbl",
+          "to": "SLAUTOGENMT",
+          "type": "calls"
+        },
+        {
+          "from": "acas004.cbl",
+          "to": "FHLOGGER",
+          "type": "calls"
+        },
+        {
+          "from": "acas000.cbl",
+          "to": "SYSTEMMT",
+          "type": "calls"
+        },
+        {
+          "from": "acas000.cbl",
+          "to": "DFLTMT",
+          "type": "calls"
+        },
+        {
+          "from": "acas000.cbl",
+          "to": "FINALMT",
+          "type": "calls"
+        },
+        {
+          "from": "acas000.cbl",
+          "to": "SYS4MT",
+          "type": "calls"
+        },
+        {
+          "from": "acas000.cbl",
+          "to": "FHLOGGER",
+          "type": "calls"
+        },
+        {
+          "from": "acas-test-takeon-2.cbl",
+          "to": "ACAS022",
+          "type": "calls"
+        },
+        {
+          "from": "acas-test-takeon-2.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "acas-test-takeon-2.cbl",
+          "to": "MAPS09",
+          "type": "calls"
+        },
+        {
+          "from": "acas-test-takeon-1.cbl",
+          "to": "ACAS012",
+          "type": "calls"
+        },
+        {
+          "from": "acas-test-takeon-1.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "acas-test-takeon-1.cbl",
+          "to": "MAPS09",
+          "type": "calls"
+        },
+        {
+          "from": "ACCEPTNM.CPY",
+          "to": "CBL-ACCEPT",
+          "type": "calls"
+        },
+        {
+          "from": "ACAS.cbl",
+          "to": "WS-CALLED",
+          "type": "calls"
+        },
+        {
+          "from": "ACAS.cbl",
+          "to": "MAPS04",
+          "type": "calls"
+        },
+        {
+          "from": "ACAS.cbl",
+          "to": "ACAS000",
+          "type": "calls"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flowchart: st040</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 10px;
+        }
+        .info {
+            background-color: #e8f5e9;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .mermaid {
+            text-align: center;
+            background-color: #fafafa;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        .legend {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Flowchart: st040</h1>
+        
+        <div class="info">
+            <strong>Source:</strong> stock/st040.cbl<br>
+            <strong>Divisions:</strong> 4<br>
+            <strong>Sections:</strong> 9<br>
+            <strong>Paragraphs:</strong> 16<br>
+            <strong>PERFORM statements:</strong> 0<br>
+            <strong>CALL statements:</strong> 1<br>
+            <strong>File operations:</strong> 0
+        </div>
+        
+        <div class="mermaid">
+graph TD
+    Start([Start])
+    Start --> Divisions
+    Divisions[/"4 Divisions"\]
+    Section0["input-output            section."]
+    Section1["file section."]
+    Section2["working-storage section."]
+    Section3["linkage section."]
+    Section4["aa000-Core                 section."]
+    Section5["ba000-Clear-Totals    section."]
+    Section6["exit     section."]
+    Section7["zz070-Convert-Date        section."]
+    Section8["exit     section."]
+    Para0("file-control")
+    Para1("file-defs")
+    Para2("goback")
+    Para3("aa010-Questions")
+    Para4("aa015-Questions-2")
+    Para5("aa020-Accept-Loop")
+    Para6("aa030-U-Sure")
+    Para7("aa040-Process-All")
+    Para8("end-if")
+    Para9("aa999-Exit")
+    Para10("goback")
+    Para11("ba000-Clear-Totals-Main")
+    Para12("ba999-Exit")
+    Para13("WS-Current-Month")
+    Para14("WS-Current-Day")
+    Para15("zz070-Exit")
+    %% External CALL relationships
+    Call0[["BLK"]]
+    Para0 ==>|CALL| Call0
+    End([End])
+
+        </div>
+        
+        <div class="legend">
+            <h3>Legend</h3>
+            <ul>
+                <li><strong>Rounded rectangles:</strong> Start/End points</li>
+                <li><strong>Rectangles:</strong> Sections and divisions</li>
+                <li><strong>Rounded rectangles with parentheses:</strong> Paragraphs</li>
+                <li><strong>Double-bordered rectangles:</strong> External CALL targets</li>
+                <li><strong>Cylinders:</strong> File operations</li>
+                <li><strong>Dashed arrows:</strong> PERFORM relationships</li>
+                <li><strong>Thick arrows:</strong> CALL relationships</li>
+            </ul>
+        </div>
+    </div>
+    
+    <script>
+        mermaid.initialize({ 
+            startOnLoad: true,
+            theme: 'default',
+            flowchart: {
+                useMaxWidth: true,
+                htmlLabels: true,
+                curve: 'basis'
+            }
+        });
+    </script>
+</body>
+</html>

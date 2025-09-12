@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flowchart: st010</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 10px;
+        }
+        .info {
+            background-color: #e8f5e9;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .mermaid {
+            text-align: center;
+            background-color: #fafafa;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        .legend {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Flowchart: st010</h1>
+        
+        <div class="info">
+            <strong>Source:</strong> stock/st010.cbl<br>
+            <strong>Divisions:</strong> 4<br>
+            <strong>Sections:</strong> 41<br>
+            <strong>Paragraphs:</strong> 80<br>
+            <strong>PERFORM statements:</strong> 0<br>
+            <strong>CALL statements:</strong> 6<br>
+            <strong>File operations:</strong> 0
+        </div>
+        
+        <div class="mermaid">
+graph TD
+    Start([Start])
+    Start --> Divisions
+    Divisions[/"4 Divisions"\]
+    Section0["input-output            section."]
+    Section1["file section."]
+    Section2["working-storage section."]
+    Section3["linkage section."]
+    Section4["screen section."]
+    Section5["aa000-Core                 section."]
+    Section6["ba000-Setup-Stock      section."]
+    Section7["exit     section."]
+    Section8["ca000-Amend-Stock          section."]
+    Section9["exit     section."]
+    Section10["da000-Delete-Stock         section."]
+    Section11["exit     section."]
+    Section12["ea000-Report-Stock         section."]
+    Section13["exit     section."]
+    Section14["ea200-Produce-Report       section."]
+    Section15["exit     section."]
+    Section16["exit     section."]
+    Section17["ga000-Renumber-Stock        section."]
+    Section18["exit     section."]
+    Section19["zz010-Display-Heading      section."]
+    Section20["exit     section."]
+    Section21["zz020-Convert-Date  section."]
+    Section22["exit     section."]
+    Section23["zz020-Display-Outline      section."]
+    Section24["exit     section."]
+    Section25["zz030-common-routines      section."]
+    Section26["exit     section."]
+    Section27["zz040-Check-for-Supplier   section."]
+    Section28["exit     section."]
+    Section29["zz050-Validate-Date        section."]
+    Section30["exit     section."]
+    Section31["zz060-Convert-Date        section."]
+    Section32["exit     section."]
+    Section33["zz070-Initialize-Stock-Record section."]
+    Section34["exit     section."]
+    Section35["zz080-Copy-To-SS  section."]
+    Section36["exit     section."]
+    Section37["zz090-Copy-From-SS  section."]
+    Section38["exit     section."]
+    Section39["zz100-test-escape          section."]
+    Section40["exit     section."]
+    Para0("file-control")
+    Para1("file-defs")
+    Para2("aa010-Menu-Return")
+    Para3("aa020-Menu-Input")
+    Para4("maps04")
+    Para5("maps09")
+    Para6("end-if")
+    Para7("end-if")
+    Para8("end-if")
+    Para9("Clear-Error-Line")
+    Para10("aa999-Exit")
+    Para11("end-if")
+    Para12("ba010-Display-Stock-Headings")
+    Para13("ba020-Stock-Item-Accept")
+    Para14("ba030-Stock-Abrev-Item-Accept")
+    Para15("ba040-Accept-Block")
+    Para16("ba042-Get-Stock-Retail")
+    Para17("ba044-Get-Stock-Cost")
+    Para18("ba046-Get-Stock-Value")
+    Para19("ba050-Main-Output")
+    Para20("ba998-Main-End")
+    Para21("ba999-Exit")
+    Para22("ca010-Display-Stock-Headings")
+    Para23("ca020-Stock-Item-Accept")
+    Para24("WS-Temp-Stock-Key")
+    Para25("ca030-Get-Record")
+    Para26("ca040-Accept-Block")
+    Para27("ca042-Get-Stock-Retail")
+    Para28("ca044-Get-Stock-Cost")
+    Para29("ca046-Get-Stock-Value")
+    Para30("ca050-Main-Output")
+    Para31("ca998-Main-End")
+    Para32("ca999-Exit")
+    Para33("da010-Display-Stock-Headings")
+    Para34("da020-Stock-Item-Accept")
+    Para35("Customer-Code")
+    Para36("WS-Temp-Stock-Key")
+    Para37("da030-Get-Record")
+    Para38("da040-Accept-Delete")
+    Para39("da999-Exit")
+    Para40("ea999-exit")
+    Para41("ea210-Read-Stock")
+    Para42("ea220-Heads")
+    Para43("end-if")
+    Para44("ea230-Totals")
+    Para45("ea299-Exit")
+    Para46("fa010-Display-Stock-Headings")
+    Para47("fa020-Stock-Item-Accept")
+    Para48("Customer-Code")
+    Para49("WS-Temp-Stock-Key")
+    Para50("fa030-Get-Record")
+    Para51("fa999-Exit")
+    Para52("ga010-Display-Stock-Headings")
+    Para53("ga020-Stock-Item-Accept")
+    Para54("Customer-Code")
+    Para55("WS-Temp-Stock-Key")
+    Para56("ga030-Get-Record")
+    Para57("WS-Temp-Stock-Key")
+    Para58("WS-Save-Abrev-Key")
+    Para59("ga040-Accept-New-Stock-No")
+    Para60("ga050-Accept-Renumber")
+    Para61("ga999-Exit")
+    Para62("zz010-Exit")
+    Para63("end-if")
+    Para64("zz020-exit")
+    Para65("zz020-exit")
+    Para66("zz030-exit")
+    Para67("WS-File-Key")
+    Para68("zz040-Exit")
+    Para69("zz050-test-date")
+    Para70("zz050-exit")
+    Para71("zz060-Exit")
+    Para72("Stock-Services-Flag")
+    Para73("Stock-Wip-Deds")
+    Para74("end-perform")
+    Para75("zz070-Exit")
+    Para76("zz080-Exit")
+    Para77("zz090-Exit")
+    Para78("zz100-get-escape")
+    Para79("zz100-exit")
+    %% External CALL relationships
+    Call0[["BLK"]]
+    Para0 ==>|CALL| Call0
+    Call1[["MAPS04"]]
+    Para0 ==>|CALL| Call1
+    Call2[["MAPS09"]]
+    Para0 ==>|CALL| Call2
+    Call3[["SL070"]]
+    Para0 ==>|CALL| Call3
+    Call4[["PL010"]]
+    Para0 ==>|CALL| Call4
+    Call5[["SYSTEM"]]
+    Para0 ==>|CALL| Call5
+    End([End])
+
+        </div>
+        
+        <div class="legend">
+            <h3>Legend</h3>
+            <ul>
+                <li><strong>Rounded rectangles:</strong> Start/End points</li>
+                <li><strong>Rectangles:</strong> Sections and divisions</li>
+                <li><strong>Rounded rectangles with parentheses:</strong> Paragraphs</li>
+                <li><strong>Double-bordered rectangles:</strong> External CALL targets</li>
+                <li><strong>Cylinders:</strong> File operations</li>
+                <li><strong>Dashed arrows:</strong> PERFORM relationships</li>
+                <li><strong>Thick arrows:</strong> CALL relationships</li>
+            </ul>
+        </div>
+    </div>
+    
+    <script>
+        mermaid.initialize({ 
+            startOnLoad: true,
+            theme: 'default',
+            flowchart: {
+                useMaxWidth: true,
+                htmlLabels: true,
+                curve: 'basis'
+            }
+        });
+    </script>
+</body>
+</html>

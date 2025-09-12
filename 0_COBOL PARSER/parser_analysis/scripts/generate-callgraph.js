@@ -27,9 +27,19 @@ async function generateCallGraph() {
         common: { color: '#c9ada7', label: 'Common' }
     };
     
-    // Process each file
+    // First pass: collect all valid program names
+    const validPrograms = new Set();
     for (const file of jsonFiles) {
         const data = await fs.readJson(path.join(PARSED_DIR, file));
+        if (!data.sourceFile) continue; // Skip if no sourceFile
+        const programName = path.basename(data.sourceFile, path.extname(data.sourceFile));
+        validPrograms.add(programName.toLowerCase());
+    }
+    
+    // Second pass: process each file
+    for (const file of jsonFiles) {
+        const data = await fs.readJson(path.join(PARSED_DIR, file));
+        if (!data.sourceFile) continue; // Skip if no sourceFile
         const programName = path.basename(data.sourceFile, path.extname(data.sourceFile));
         const subsystem = getSubsystem(data.sourceFile);
         
@@ -47,30 +57,67 @@ async function generateCallGraph() {
         // Add edges for CALL statements
         if (data.structure.callStatements) {
             for (const called of data.structure.callStatements) {
-                edges.push({
-                    from: programName,
-                    to: called.toLowerCase(),
-                    arrows: 'to',
-                    color: { color: '#666666' },
-                    smooth: { type: 'curvedCW', roundness: 0.2 }
-                });
+                const calledLower = called.toLowerCase();
+                // Only add edge if the called program exists in our system
+                if (validPrograms.has(calledLower)) {
+                    // Find the actual program name with correct case
+                    let targetProgram = calledLower;
+                    for (const prog of validPrograms) {
+                        if (prog.toLowerCase() === calledLower) {
+                            // Find the original case from nodes
+                            for (const [nodeName, nodeData] of nodes) {
+                                if (nodeName.toLowerCase() === calledLower) {
+                                    targetProgram = nodeName;
+                                    break;
+                                }
+                            }
+                            break;
+                        }
+                    }
+                    
+                    edges.push({
+                        from: programName,
+                        to: targetProgram,
+                        arrows: 'to',
+                        color: { color: '#666666' },
+                        smooth: { type: 'curvedCW', roundness: 0.2 }
+                    });
+                }
             }
         }
         
         // Add edges for COPY statements (different style)
         if (data.structure.copyStatements) {
             for (const copied of data.structure.copyStatements) {
-                edges.push({
-                    from: programName,
-                    to: copied.toLowerCase(),
-                    arrows: 'to',
-                    dashes: true,
-                    color: { color: '#999999' },
-                    smooth: { type: 'curvedCW', roundness: 0.2 }
-                });
+                const copiedLower = copied.toLowerCase();
+                // Only add edge if the copybook exists in our system
+                if (validPrograms.has(copiedLower)) {
+                    // Find the actual copybook name with correct case
+                    let targetCopybook = copiedLower;
+                    for (const [nodeName, nodeData] of nodes) {
+                        if (nodeName.toLowerCase() === copiedLower) {
+                            targetCopybook = nodeName;
+                            break;
+                        }
+                    }
+                    
+                    edges.push({
+                        from: programName,
+                        to: targetCopybook,
+                        arrows: 'to',
+                        dashes: true,
+                        color: { color: '#999999' },
+                        smooth: { type: 'curvedCW', roundness: 0.2 }
+                    });
+                }
             }
         }
     }
+    
+    // Log statistics
+    console.log(`Total nodes: ${nodes.size}`);
+    console.log(`Total edges: ${edges.length}`);
+    console.log(`Programs with connections: ${new Set(edges.map(e => e.from)).size}`);
     
     // Generate HTML visualization
     const htmlContent = `<!DOCTYPE html>
@@ -199,6 +246,12 @@ async function generateCallGraph() {
                 var connectedNodes = network.getConnectedNodes(nodeId);
                 var allNodes = nodes.get();
                 
+                // Create a map to preserve original colors
+                var originalColors = {};
+                allNodes.forEach(function(node) {
+                    originalColors[node.id] = subsystems[node.group] ? subsystems[node.group].color : '#999999';
+                });
+                
                 // Update node colors
                 allNodes.forEach(function(node) {
                     if (node.id === nodeId) {
@@ -206,7 +259,7 @@ async function generateCallGraph() {
                     } else if (connectedNodes.includes(node.id)) {
                         node.color = '#ffa500';
                     } else {
-                        node.color = node.group ? subsystems[node.group].color : '#999999';
+                        node.color = originalColors[node.id];
                     }
                 });
                 

@@ -1,0 +1,2483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACAS Technical Manual</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #f6f8fa;
+        }
+        
+        /* Layout */
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+        
+        /* Sidebar Navigation */
+        .sidebar {
+            width: 350px;
+            background-color: #ffffff;
+            border-right: 1px solid #e1e4e8;
+            padding: 24px;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+        
+        .sidebar h2 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #24292e;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Table of Contents */
+        .sidebar > ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .sidebar ul ul {
+            list-style: none;
+            padding-left: 20px;
+            margin-top: 4px;
+        }
+        
+        .sidebar li {
+            margin: 4px 0;
+        }
+        
+        .sidebar a {
+            color: #0969da;
+            text-decoration: none;
+            display: block;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+        
+        .sidebar a:hover {
+            background-color: #f3f4f6;
+            color: #0550ae;
+        }
+        
+        .sidebar a.active {
+            background-color: #dbeafe;
+            color: #0550ae;
+            font-weight: 500;
+        }
+        
+        /* Main Content */
+        .main-content {
+            margin-left: 350px;
+            flex: 1;
+            background-color: #ffffff;
+            min-height: 100vh;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #0969da 0%, #0550ae 100%);
+            color: white;
+            padding: 48px 0;
+            text-align: center;
+            border-bottom: 1px solid #e1e4e8;
+        }
+        
+        .header h1 {
+            font-size: 40px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+        
+        .header .subtitle {
+            font-size: 20px;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+        
+        .header .version {
+            margin-top: 16px;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        
+        .content {
+            padding: 32px 48px;
+            max-width: 980px;
+            margin: 0 auto;
+        }
+        
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #24292e;
+        }
+        
+        h1 {
+            font-size: 32px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #e1e4e8;
+            margin-top: 32px;
+        }
+        
+        h2 {
+            font-size: 24px;
+            margin-top: 32px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #e1e4e8;
+        }
+        
+        h3 {
+            font-size: 20px;
+            margin-top: 24px;
+        }
+        
+        h4 {
+            font-size: 16px;
+        }
+        
+        p {
+            margin-bottom: 16px;
+            line-height: 1.7;
+        }
+        
+        /* Lists */
+        ul, ol {
+            margin-left: 24px;
+            margin-bottom: 16px;
+        }
+        
+        li {
+            margin-bottom: 4px;
+            line-height: 1.7;
+        }
+        
+        /* Code */
+        pre {
+            background-color: #f6f8fa;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 16px;
+            overflow-x: auto;
+            margin: 16px 0;
+            font-family: 'SF Mono', Consolas, 'Liberation Mono', Menlo, monospace;
+            font-size: 14px;
+            line-height: 1.45;
+        }
+        
+        code {
+            background-color: rgba(175,184,193,0.2);
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'SF Mono', Consolas, 'Liberation Mono', Menlo, monospace;
+            font-size: 85%;
+        }
+        
+        pre code {
+            background-color: transparent;
+            padding: 0;
+            font-size: 14px;
+        }
+        
+        /* Tables */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 16px 0;
+            font-size: 14px;
+        }
+        
+        th, td {
+            border: 1px solid #e1e4e8;
+            padding: 8px 16px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #f6f8fa;
+            font-weight: 600;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f6f8fa;
+        }
+        
+        /* Mermaid Diagrams */
+        .mermaid {
+            margin: 24px 0;
+            text-align: center;
+            background-color: #f6f8fa;
+            padding: 24px;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+            overflow-x: auto;
+        }
+        
+        /* Links */
+        a {
+            color: #0969da;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Source citations */
+        .source-citation {
+            color: #57606a;
+            font-style: italic;
+            font-size: 14px;
+            margin-top: -8px;
+        }
+        
+        /* Strong text */
+        strong {
+            font-weight: 600;
+            color: #24292e;
+        }
+        
+        /* HR */
+        hr {
+            margin: 32px 0;
+            border: 0;
+            border-top: 1px solid #e1e4e8;
+        }
+        
+        /* Status badges */
+        .status-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+        
+        .not-implemented {
+            background-color: #fb8500;
+            color: white;
+        }
+        
+        .complete {
+            background-color: #2da44e;
+            color: white;
+        }
+        
+        /* Print styles */
+        @media print {
+            .sidebar {
+                display: none;
+            }
+            
+            .main-content {
+                margin-left: 0;
+            }
+            
+            .header {
+                background: none;
+                color: black;
+                border-bottom: 2px solid black;
+            }
+            
+            pre {
+                border: 1px solid #ccc;
+            }
+            
+            .mermaid {
+                page-break-inside: avoid;
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .sidebar {
+                position: relative;
+                width: 100%;
+                height: auto;
+                border-right: none;
+                border-bottom: 1px solid #e1e4e8;
+            }
+            
+            .main-content {
+                margin-left: 0;
+            }
+            
+            .content {
+                padding: 24px;
+            }
+        }
+        
+        /* Syntax highlighting */
+        .language-bash {
+            color: #032f62;
+        }
+        
+        .language-sql {
+            color: #0550ae;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <h2>📚 Table of Contents</h2>
+            <ul>
+<li><a href="#acas-technical-manual">ACAS Technical Manual</a></li>
+<ul>
+<li><a href="#table-of-contents">Table of Contents</a></li>
+<li><a href="#1-executive-overview">1. Executive Overview</a></li>
+<ul>
+<li><a href="#11-purpose-of-the-accounting-system">1.1 Purpose of the Accounting System</a></li>
+<li><a href="#12-key-business-processes-supported">1.2 Key Business Processes Supported</a></li>
+</ul>
+<li><a href="#2-user-interaction-and-navigation">2. User Interaction and Navigation</a></li>
+<ul>
+<li><a href="#21-main-system-menus">2.1 Main System Menus</a></li>
+<li><a href="#22-sub-menu-navigation-flow">2.2 Sub-Menu Navigation Flow</a></li>
+<li><a href="#23-screen-layout-and-user-guidance">2.3 Screen Layout and User Guidance</a></li>
+</ul>
+<li><a href="#3-general-ledger-management">3. General Ledger Management</a></li>
+<ul>
+<li><a href="#31-chart-of-accounts-maintenance">3.1 Chart of Accounts Maintenance</a></li>
+<li><a href="#32-default-account-settings">3.2 Default Account Settings</a></li>
+<li><a href="#33-batch-posting-creation-and-amendment">3.3 Batch Posting Creation and Amendment</a></li>
+<li><a href="#34-batch-status-reporting">3.4 Batch Status Reporting</a></li>
+<li><a href="#35-end-of-cycle-archiving-and-period-closure">3.5 End-of-Cycle Archiving and Period Closure</a></li>
+</ul>
+<li><a href="#4-sales-ledger-management">4. Sales Ledger Management</a></li>
+<ul>
+<li><a href="#41-customer-master-creation-and-maintenance">4.1 Customer Master Creation and Maintenance</a></li>
+<li><a href="#42-invoice-entry-amendment-and-deletion">4.2 Invoice Entry, Amendment and Deletion</a></li>
+<li><a href="#43-payment-recording-and-allocation">4.3 Payment Recording and Allocation</a></li>
+<li><a href="#44-invoice-proofing-and-posting-to-ledger">4.4 Invoice Proofing and Posting to Ledger</a></li>
+<li><a href="#45-sales-analysis-and-reporting">4.5 Sales Analysis and Reporting</a></li>
+<li><a href="#46-back-order-tracking-and-management">4.6 Back-Order Tracking and Management</a></li>
+</ul>
+<li><a href="#5-purchase-ledger-management">5. Purchase Ledger Management</a></li>
+<ul>
+<li><a href="#51-supplier-master-creation-and-maintenance">5.1 Supplier Master Creation and Maintenance</a></li>
+<li><a href="#52-purchase-order-entry-amendment-and-deletion">5.2 Purchase Order Entry, Amendment and Deletion</a></li>
+<li><a href="#53-receipt-and-credit-note-processing">5.3 Receipt and Credit Note Processing</a></li>
+<li><a href="#54-payment-posting-to-supplier-accounts">5.4 Payment Posting to Supplier Accounts</a></li>
+<li><a href="#55-purchase-analysis-and-reporting">5.5 Purchase Analysis and Reporting</a></li>
+</ul>
+<li><a href="#6-stock-control-and-inventory-management">6. Stock Control and Inventory Management</a></li>
+<ul>
+<li><a href="#61-stock-item-master-maintenance">6.1 Stock Item Master Maintenance</a></li>
+<li><a href="#62-recording-stock-movements">6.2 Recording Stock Movements</a></li>
+<li><a href="#63-stock-audit-and-value-management">6.3 Stock Audit and Value Management</a></li>
+<li><a href="#64-stock-reporting">6.4 Stock Reporting</a></li>
+</ul>
+<li><a href="#7-reporting-suite">7. Reporting Suite</a></li>
+<ul>
+<li><a href="#71-trial-balance-generation">7.1 Trial Balance Generation</a></li>
+<li><a href="#72-profit-loss-statement">7.2 Profit & Loss Statement</a></li>
+<li><a href="#73-balance-sheet-preparation">7.3 Balance Sheet Preparation</a></li>
+<li><a href="#74-aged-receivables-and-payables-reports">7.4 Aged Receivables and Payables Reports</a></li>
+<li><a href="#75-cash-flow-and-bank-reconciliation-reports">7.5 Cash Flow and Bank Reconciliation Reports</a></li>
+<li><a href="#76-delivery-note-and-cheque-register-reports">7.6 Delivery Note and Cheque Register Reports</a></li>
+</ul>
+<li><a href="#8-system-configuration-and-setup">8. System Configuration and Setup</a></li>
+<ul>
+<li><a href="#81-system-parameter-management">8.1 System Parameter Management</a></li>
+<li><a href="#82-database-connectivity-and-access-settings">8.2 Database Connectivity and Access Settings</a></li>
+<li><a href="#83-user-access-controls-and-security-settings">8.3 User Access Controls and Security Settings</a></li>
+</ul>
+<li><a href="#9-data-migration-conversion-and-backup">9. Data Migration, Conversion and Backup</a></li>
+<ul>
+<li><a href="#91-legacy-data-load-into-modern-tables">9.1 Legacy Data Load into Modern Tables</a></li>
+<li><a href="#92-file-format-conversion-for-legacy-records">9.2 File Format Conversion for Legacy Records</a></li>
+<li><a href="#93-backup-creation-of-critical-data-files">9.3 Backup Creation of Critical Data Files</a></li>
+</ul>
+</ul>
+<li><a href="#example-backup-structure">Example backup structure</a></li>
+<ul>
+<ul>
+<li><a href="#94-restoration-of-data-from-backup-archives">9.4 Restoration of Data from Backup Archives</a></li>
+</ul>
+<li><a href="#10-validation-error-handling-and-audit-trail">10. Validation, Error Handling and Audit Trail</a></li>
+<ul>
+<li><a href="#101-input-validation-rules">10.1 Input Validation Rules</a></li>
+<li><a href="#102-error-detection-and-user-notification">10.2 Error Detection and User Notification</a></li>
+<li><a href="#103-transaction-logging-and-audit-trail">10.3 Transaction Logging and Audit Trail</a></li>
+<li><a href="#104-compliance-and-regulatory-support">10.4 Compliance and Regulatory Support</a></li>
+</ul>
+<li><a href="#11-appendices">11. Appendices</a></li>
+<ul>
+<li><a href="#glossary-of-terms">Glossary of Terms</a></li>
+<li><a href="#contact-information">Contact Information</a></li>
+</ul>
+<li><a href="#verification-checklist">Verification Checklist</a></li>
+<ul>
+<li><a href="#documentation-coverage-assessment">Documentation Coverage Assessment</a></li>
+<li><a href="#source-verification">Source Verification</a></li>
+</ul>
+</ul>
+</ul>
+        </nav>
+        
+        <main class="main-content">
+            <header class="header">
+                <h1>ACAS Technical Manual</h1>
+                <div class="subtitle">Applewood Computers Accounting System</div>
+                <div class="version">Version 1.0 • September 16, 2025</div>
+            </header>
+            
+            <div class="content">
+                <h1 id="acas-technical-manual">ACAS Technical Manual</h1>
+
+<h2 id="table-of-contents">Table of Contents</h2>
+
+<p>
+<ol>
+<li><a href="#1-executive-overview">Executive Overview</a></li>
+<li><a href="#2-user-interaction-and-navigation">User Interaction and Navigation</a></li>
+<li><a href="#3-general-ledger-management">General Ledger Management</a></li>
+<li><a href="#4-sales-ledger-management">Sales Ledger Management</a></li>
+<li><a href="#5-purchase-ledger-management">Purchase Ledger Management</a></li>
+<li><a href="#6-stock-control-and-inventory-management">Stock Control and Inventory Management</a></li>
+<li><a href="#7-reporting-suite">Reporting Suite</a></li>
+<li><a href="#8-system-configuration-and-setup">System Configuration and Setup</a></li>
+<li><a href="#9-data-migration-conversion-and-backup">Data Migration, Conversion and Backup</a></li>
+<li><a href="#10-validation-error-handling-and-audit-trail">Validation, Error Handling and Audit Trail</a></li>
+<li><a href="#11-appendices">Appendices</a></li>
+</ol>
+</p>
+
+<hr>
+
+<h2 id="1-executive-overview">1. Executive Overview</h2>
+
+<h3 id="11-purpose-of-the-accounting-system">1.1 Purpose of the Accounting System</h3>
+
+<p>
+ACAS (Applewood Computers Accounting System) is a comprehensive COBOL-based accounting and business management system that provides integrated modules for complete financial management. The system has been actively maintained since its original development in 1976, demonstrating exceptional longevity and reliability.
+</p>
+
+<p class="source-citation"><strong>Core Purpose:</strong></p>
+<p>
+<ul>
+<li>Provide full accounting capabilities for small to medium-sized businesses</li>
+<li>Support both traditional double-entry bookkeeping and simplified accounting for incomplete records</li>
+<li>Ensure compliance with UK VAT regulations and accounting standards</li>
+<li>Maintain complete audit trails for all financial transactions</li>
+</ul>
+</p>
+
+<p class="source-citation"><strong>System Architecture:</strong></p>
+<div class="mermaid">
+flowchart TD
+    UI[Character-Based Terminal Interface<br/>80x24 minimum]
+    UI --> MENU[Menu System]
+    MENU --> MODULES[Business Modules]
+    
+    MODULES --> IRS[IRS<br/>Incomplete Records]
+    MODULES --> SL[Sales Ledger<br/>Accounts Receivable]
+    MODULES --> PL[Purchase Ledger<br/>Accounts Payable]
+    MODULES --> ST[Stock Control<br/>Inventory]
+    MODULES --> GL[General Ledger<br/>Financial Books]
+    
+    MODULES --> DAL[Data Access Layer]
+    DAL --> FILES[COBOL Files<br/>ISAM/Sequential]
+    DAL --> DB[MySQL/MariaDB<br/>RDBMS Option]
+
+</div>
+
+<p class="source-citation"><em>Source: /1_FUNCTIONAL DOCUMENTATION/00_ACAS_Executive_Summary.md</em></p>
+
+<h3 id="12-key-business-processes-supported">1.2 Key Business Processes Supported</h3>
+
+<p>
+The ACAS system supports comprehensive business processes across the entire accounting cycle:
+</p>
+
+<p class="source-citation"><strong>Financial Management:</strong></p>
+<p>
+<ul>
+<li>Complete order-to-cash cycle (customer orders through payment collection)</li>
+<li>Full procure-to-pay cycle (purchase requisitions through supplier payment)</li>
+<li>Period-end closing procedures (monthly, quarterly, annual)</li>
+<li>Financial statement preparation (Trial Balance, P&L, Balance Sheet)</li>
+<li>Tax compliance and VAT reporting</li>
+</ul>
+</p>
+
+<p class="source-citation"><strong>Operational Management:</strong></p>
+<p>
+<ul>
+<li>Inventory control with multiple valuation methods</li>
+<li>Customer credit management and collections</li>
+<li>Supplier relationship management</li>
+<li>Multi-location stock management</li>
+<li>Reorder point optimization</li>
+</ul>
+</p>
+
+<p class="source-citation"><strong>Reporting and Analysis:</strong></p>
+<p>
+<ul>
+<li>Real-time financial position reporting</li>
+<li>Aged receivables and payables analysis</li>
+<li>Sales and purchase trend analysis</li>
+<li>Stock valuation and movement reports</li>
+<li>Management dashboards and KPIs</li>
+</ul>
+</p>
+
+<p class="source-citation"><em>Source: /1_FUNCTIONAL DOCUMENTATION/00_ACAS_Executive_Summary.md, /1_FUNCTIONAL DOCUMENTATION/05_ACAS_Business_Flows_Enhanced.md</em></p>
+
+<hr>
+
+<h2 id="2-user-interaction-and-navigation">2. User Interaction and Navigation</h2>
+
+<h3 id="21-main-system-menus">2.1 Main System Menus</h3>
+
+<p>
+The ACAS system uses a hierarchical menu structure with the main ACAS program as the entry point. Navigation is performed through numeric menu selections on character-based terminals.
+</p>
+
+<p class="source-citation"><strong>Main Menu Structure:</strong></p>
+<pre><code>ACAS MAIN MENU
+==============
+1. Incomplete Records System (IRS)
+2. Sales Ledger
+3. Purchase Ledger  
+4. Stock Control
+5. General Ledger
+6. System Administration
+0. Exit
+</code></pre>
+
+<p>
+Each module has its own sub-menu accessed through the module's main program:
+<ul>
+<li><code>irs</code> - IRS module menu</li>
+<li><code>sales</code> - Sales Ledger menu</li>
+<li><code>purchase</code> - Purchase Ledger menu</li>
+<li><code>stock</code> - Stock Control menu</li>
+<li><code>general</code> - General Ledger menu</li>
+</ul>
+</p>
+
+<p class="source-citation"><em>Source: /1_FUNCTIONAL DOCUMENTATION/01_ACAS_Program_Catalog.md</em></p>
+
+<h3 id="22-sub-menu-navigation-flow">2.2 Sub-Menu Navigation Flow</h3>
+
+<p>
+Each module follows a consistent sub-menu pattern:
+</p>
+
+<div class="mermaid">
+flowchart LR
+    MAIN[Main Menu] --> MODULE[Module Menu]
+    MODULE --> MAINT[Maintenance<br/>10-series]
+    MODULE --> TRANS[Transactions<br/>20-90 series]
+    MODULE --> REPORTS[Reports<br/>100+ series]
+    MODULE --> SPECIAL[Special<br/>800+ series]
+    MODULE --> EOD[End of Day<br/>000 program]
+
+</div>
+
+<p class="source-citation"><strong>Standard Program Numbering:</strong></p>
+<p>
+<ul>
+<li>xx000: Start of day initialization</li>
+<li>xx010-xx090: Maintenance and transaction entry</li>
+<li>xx100-xx190: Reports and inquiries</li>
+<li>xx800-xx970: Special functions (standing orders, batch processes)</li>
+</ul>
+</p>
+
+<p class="source-citation"><em>Source: /1_FUNCTIONAL DOCUMENTATION/01_ACAS_Program_Catalog.md</em></p>
+
+<h3 id="23-screen-layout-and-user-guidance">2.3 Screen Layout and User Guidance</h3>
+
+<p>
+The system uses a standardized 80x24 character screen layout:
+</p>
+
+<pre><code>Line 1-2:   System Header (Company Name, Module, Date)
+Line 3-4:   Screen Title and Function
+Line 5-20:  Data Entry/Display Area
+Line 21:    Message Line
+Line 22:    Status Line  
+Line 23-24: Function Key Options
+</code></pre>
+
+<p class="source-citation"><strong>User Interface Standards:</strong></p>
+<p>
+<ul>
+<li>Function keys: F1=Help, F3=Exit, F5=Accept, F7=Delete</li>
+<li>Data entry: Tab between fields, Enter to confirm</li>
+<li>Navigation: Numeric menu choices, PgUp/PgDn for lists</li>
+<li>Messages: Error messages in red, confirmations in green</li>
+</ul>
+</p>
+
+<p class="source-citation"><strong>Screen Navigation Example (Customer Maintenance):</strong></p>
+<pre><code>====================================== ACAS SALES LEDGER ======================================
+                               CUSTOMER MAINTENANCE - sl010
+                                     
+Customer Code: [_______]  Check Digit: [_]
+
+Name:          [______________________________]
+Address:       [______________________________]
+               [______________________________]
+               [______________________________]
+Post Code:     [________]
+
+Credit Limit:  [________]  Credit Period (days): [___]
+Discount %:    [___.__]    Late Charge Flag:     [_]
+
+Current Balance: £______.__  
+                                     
+================================================================================
+Message: Enter customer code or press F3 to exit
+================================================================================
+F1=Help  F3=Exit  F5=Accept  F7=Delete  F9=Search
+</code></pre>
+
+<p class="source-citation"><em>Source: /1_FUNCTIONAL DOCUMENTATION/01_ACAS_Program_Catalog.md, /0_COBOL PARSER/parser_analysis/docs/sales-documentation.md</em></p>
+
+<hr>
+
+<h2 id="3-general-ledger-management">3. General Ledger Management</h2>
+
+<h3 id="31-chart-of-accounts-maintenance">3.1 Chart of Accounts Maintenance</h3>
+
+<p>
+The Chart of Accounts is maintained through program <code>gl020</code> with a hierarchical structure supporting multiple reporting levels.
+</p>
+
+<p class="source-citation"><strong>Account Structure:</strong></p>
+<p>
+<ul>
+<li>Account Number: 6 digits + 2 digit profit center = 8 total</li>
+<li>Account Types:</li>
+<ul>
+<li>1 = Balance Sheet accounts</li>
+<li>2 = Profit & Loss accounts  </li>
+<li>9 = Header/grouping accounts</li>
+</ul>
+</ul>
+</p>
+
+<p class="source-citation"><strong>Account Hierarchy Levels:</strong></p>
+<p>
+<ul>
+<li>Level 1-9: Used for report aggregation and grouping</li>
+<li>Headers (type 9) provide structure without balances</li>
+<li>Detail accounts (types 1-2) hold actual balances</li>
+</ul>
+</p>
+
+<p class="source-citation"><strong>Maintenance Process Flow:</strong></p>
+<div class="mermaid">
+flowchart TD
+    START[gl020 Start] --> MENU[Account Menu]
+    MENU --> ADD[Add Account]
+    MENU --> MODIFY[Modify Account]
+    MENU --> DELETE[Delete Account]
+    
+    ADD --> VALIDATE[Validate<br/>Account Number]
+    VALIDATE --> CHECKDUP{Duplicate?}
+    CHECKDUP -->|Yes| ERROR[Error Message]
+    CHECKDUP -->|No| ENTER[Enter Details]
+    ENTER --> TYPE[Select Type<br/>1=BS 2=PL 9=Header]
+    TYPE --> LEVEL[Set Level 1-9]
+    LEVEL --> NAME[Enter Name]
+    NAME --> SAVE[Save Account]
+    
+    MODIFY --> FIND[Find Account]
+    FIND --> UPDATE[Update Fields]
+    UPDATE --> SAVE
+    
+    DELETE --> FIND2[Find Account]
+    FIND2 --> CHECKBAL{Has Balance?}
+    CHECKBAL -->|Yes| ERRORBAL[Cannot Delete]
+    CHECKBAL -->|No| CONFIRM[Confirm Delete]
+    CONFIRM --> REMOVE[Mark Deleted]
+
+</div>
+
+<p class="source-citation"><em>Source: /2_SUBSYSTEMS DOCUMENTATION/Subsystems/GL_CORE/GL_CORE_SPECIFICATION.md</em></p>
+
+<h3 id="32-default-account-settings">3.2 Default Account Settings</h3>
+
+<p>
+Default accounts are configured through program <code>gl030</code> to automate posting from subsidiary ledgers.
+</p>
+
+<p class="source-citation"><strong>Key Default Accounts:</strong></p>
+<p>
+<ul>
+<li>Sales Control Account (from Sales Ledger)</li>
+<li>Purchase Control Account (from Purchase Ledger)</li>
+<li>VAT Control Accounts (Input/Output)</li>
+<li>Bank Accounts (by currency/type)</li>
+<li>Retained Earnings</li>
+<li>Suspense Account</li>
+</ul>
+</p>
+
+<p class="source-citation"><strong>Configuration Requirements:</strong></p>
+<p>
+<ul>
+<li>Each subsidiary ledger must have control accounts defined</li>
+<li>VAT accounts must match system VAT rate configuration</li>
+<li>Profit centers must have complete default sets</li>
+</ul>
+</p>
+
+<p class="source-citation"><em>Source: /2_SUBSYSTEMS DOCUMENTATION/Subsystems/GL_CORE/GL_CORE_SPECIFICATION.md</em></p>
+
+<h3 id="33-batch-posting-creation-and-amendment">3.3 Batch Posting Creation and Amendment</h3>
+
+<p>
+GL uses a two-phase batch posting system through programs <code>gl050</code> (entry) and <code>gl051</code> (amendment):
+</p>
+
+<p class="source-citation"><strong>Batch Creation Process:</strong></p>
+<p>
+<ol>
+<li>System assigns sequential 6-digit batch number</li>
+<li>Enter batch header (date, description, control total)</li>
+<li>Add journal lines:</li>
+<ul>
+<li>Debit/Credit account selection</li>
+<li>Amount entry with automatic balancing</li>
+<li>Description/reference fields</li>
+</ul>
+</li>
+<li>System validates debits = credits continuously</li>
+</ol>
+</p>
+
+<p class="source-citation"><strong>Batch Status Workflow:</strong></p>
+<pre><code>0 = Open (entry/modification allowed)
+1 = Proofed (validated, ready to post)
+2 = Posted (committed to ledger)
+</code></pre>
+
+<p class="source-citation"><strong>Amendment Rules:</strong></p>
+<p>
+<ul>
+<li>Only Open (status 0) batches can be modified</li>
+<li>Proofed batches must be re-opened for changes</li>
+<li>Posted batches cannot be changed (must reverse)</li>
+</ul>
+</p>
+
+<p class="source-citation"><em>Source: /2_SUBSYSTEMS DOCUMENTATION/Subsystems/GL_CORE/GL_CORE_SPECIFICATION.md</em></p>
+
+<h3 id="34-batch-status-reporting">3.4 Batch Status Reporting</h3>
+
+<p>
+Program <code>gl072</code> provides comprehensive batch status reporting:
+</p>
+
+<p class="source-citation"><strong>Report Contents:</strong></p>
+<p>
+<ul>
+<li>Batch number, date, and description</li>
+<li>Entry status (Open/Proofed/Posted)</li>
+<li>Control totals vs actual totals</li>
+<li>Line count and validation status</li>
+<li>User ID and timestamps</li>
+</ul>
+</p>
+
+<p class="source-citation"><strong>Report Selection Options:</strong></p>
+<p>
+<ul>
+<li>All batches</li>
+<li>Open batches only</li>
+<li>Date range selection</li>
+<li>Specific batch number</li>
+</ul>
+</p>
+
+<p class="source-citation"><em>Source: /1_FUNCTIONAL DOCUMENTATION/01_ACAS_Program_Catalog.md</em></p>
+
+<h3 id="35-end-of-cycle-archiving-and-period-closure">3.5 End-of-Cycle Archiving and Period Closure</h3>
+
+<p>
+Period closure is managed through program <code>gl080</code>:
+</p>
+
+<p class="source-citation"><strong>End-of-Period Process:</strong></p>
+<p>
+<ol>
+<li>Verify all batches posted (no open/proofed batches)</li>
+<li>Run trial balance to confirm debits = credits</li>
+<li>Generate period-end reports</li>
+<li>Archive posted transactions to sequential file</li>
+<li>Clear posting file for next period</li>
+<li>Update account period balances</li>
+<li>Advance system period</li>
+</ol>
+</p>
+
+<p class="source-citation"><strong>Year-End Additional Steps:</strong></p>
+<p>
+<ul>
+<li>Calculate P&L net income/loss</li>
+<li>Post to retained earnings</li>
+<li>Zero out P&L accounts</li>
+<li>Create opening balances for new year</li>
+<li>Archive full year transactions</li>
+</ul>
+</p>
+
+<p class="source-citation"><strong>NOT IMPLEMENTED: Programs gl040 (Final Accounts Setup), gl130 (Print Final Accounts), and gl190 (File Garbage Collector) are missing from the system. These programs are required for complete final accounts processing.</strong></p>
+
+<p class="source-citation"><em>Source: /2_SUBSYSTEMS DOCUMENTATION/Subsystems/GL_CORE/GL_CORE_SPECIFICATION.md, /4_DOCUMENTATION/ACAS_COMPREHENSIVE_REPORT.md</em></p>
+
+<hr>
+
+<h2 id="4-sales-ledger-management">4. Sales Ledger Management</h2>
+
+<h3 id="41-customer-master-creation-and-maintenance">4.1 Customer Master Creation and Maintenance</h3>
+
+<p>
+Customer records are managed through program <code>sl010</code> with comprehensive credit control features:
+</p>
+
+<p class="source-citation"><strong>Customer Setup Process:</strong></p>
+<div class="mermaid">
+flowchart TD
+    START[sl010 Start] --> NEW{New or<br/>Existing?}
+    NEW -->|New| CODE[Enter Customer Code<br/>7 characters]
+    CODE --> CHECK[Check Digit<br/>Calculation]
+    CHECK --> DETAILS[Enter Customer Details]
+    DETAILS --> NAME[Name - 30 chars]
+    NAME --> ADDRESS[Address - 4 lines]
+    ADDRESS --> CREDIT[Credit Terms Setup]
+    CREDIT --> LIMIT[Credit Limit £]
+    LIMIT --> TERMS[Payment Terms Days]
+    TERMS --> DISCOUNT[Discount %]
+    DISCOUNT --> LATE[Late Charge Settings]
+    LATE --> EMAIL[Email Options]
+    EMAIL --> DELIVERY[Delivery Addresses]
+    DELIVERY --> SAVE[Save Customer]
+    
+    NEW -->|Existing| SEARCH[Search Customer]
+    SEARCH --> VIEW[View/Edit Details]
+    VIEW --> SAVE
+
+</div>
+
+<p class="source-citation"><strong>Key Customer Attributes:</strong></p>
+<p>
+<ul>
+<li>Customer Code: 7 characters with check digit validation</li>
+<li>Credit Limit: Maximum outstanding balance allowed</li>
+<li>Payment Terms: Days until payment due</li>
+<li>Settlement Discount: % for early payment</li>
+<li>Late Charge Flag: Y/N for automatic charges</li>
+<li>Email Flags: For statements and invoices</li>
+</ul>
+</p>
+
+<p class="source-citation"><em>Source: /2_SUBSYSTEMS DOCUMENTATION/Subsystems/SL_MGMT/SL_MGMT_SPECIFICATION.md, /1_FUNCTIONAL DOCUMENTATION/05_ACAS_Business_Flows_Enhanced.md</em></p>
+
+<h3 id="42-invoice-entry-amendment-and-deletion">4.2 Invoice Entry, Amendment and Deletion</h3>
+
+<p>
+Invoice management uses multiple programs for different modes:
+<ul>
+<li><code>sl910</code>: Immediate invoice entry and printing</li>
+<li><code>sl900</code>: Batch invoice entry</li>
+<li><code>sl920</code>: Invoice amendment (unposted only)</li>
+<li><code>sl950</code>: Invoice deletion</li>
+</ul>
+</p>
+
+<p class="source-citation"><strong>Invoice Entry Flow:</strong></p>
+<div class="mermaid">
+flowchart TD
+    ENTRY[Invoice Entry<br/>sl910/sl900] --> CUST[Select Customer]
+    CUST --> VALIDATE[Validate Status]
+    VALIDATE --> CREDITCHECK{Credit OK?}
+    CREDITCHECK -->|No| WARNING[Warning Message]
+    CREDITCHECK -->|Yes| HEADER[Invoice Header]
+    WARNING --> HEADER
+    
+    HEADER --> DATE[Invoice Date]
+    DATE --> REF[Your Reference]
+    REF --> LINES[Line Items]
+    
+    LINES --> PRODUCT[Product/Service Code]
+    PRODUCT --> QTY[Quantity]
+    QTY --> PRICE[Unit Price]
+    PRICE --> DISC[Line Discount]
+    DISC --> VAT[VAT Code]
+    VAT --> STOCKCHECK{Stock Item?}
+    
+    STOCKCHECK -->|Yes| AVAILABLE{Available?}
+    AVAILABLE -->|No| BACKORDER[Create Back Order]
+    AVAILABLE -->|Yes| NEXT[Next Line]
+    STOCKCHECK -->|No| NEXT
+    BACKORDER --> NEXT
+    
+    NEXT --> MORE{More Lines?}
+    MORE -->|Yes| PRODUCT
+    MORE -->|No| TOTALS[Calculate Totals]
+    TOTALS --> SAVE[Save Invoice]
+
+</div>
+
+<p class="source-citation"><strong>Amendment Rules:</strong></p>
+<p>
+<ul>
+<li>Only unposted invoices can be amended</li>
+<li>Posted invoices require credit note and re-invoice</li>
+<li>Deleted invoice numbers tracked for audit</li>
+</ul>
+</p>
+
+<p class="source-citation"><em>Source: /1_FUNCTIONAL DOCUMENTATION/05_ACAS_Business_Flows_Enhanced.md, /0_COBOL PARSER/parser_analysis/docs/sales-documentation.md</em></p>
+
+<h3 id="43-payment-recording-and-allocation">4.3 Payment Recording and Allocation</h3>
+
+<p>
+Customer payments are processed through programs <code>sl080</code> (entry) and <code>sl100</code> (posting):
+</p>
+
+<p class="source-citation"><strong>Payment Processing Flow:</strong></p>
+<p>
+<ol>
+<li>Select customer account</li>
+<li>Enter payment details:</li>
+<ul>
+<li>Payment amount</li>
+<li>Check/reference number</li>
+<li>Payment date</li>
+<li>Payment method</li>
+</ul>
+</li>
+<li>System displays open invoices</li>
+<li>Allocation options:</li>
+<ul>
+<li>Automatic (oldest first)</li>
+<li>Manual selection</li>
+</ul>
+</li>
+<li>Early payment discount calculation</li>
+<li>Generate allocation list</li>
+</ol>
+</p>
+
+<p class="source-citation"><strong>Allocation Rules:</strong></p>
+<p>
+<ul>
+<li>FIFO default (configurable)</li>
+<li>Partial payments allowed</li>
+<li>Discount only if within terms</li>
+<li>Over-payments create credit balance</li>
+</ul>
+</p>
+
+<p class="source-citation"><em>Source: /1_FUNCTIONAL DOCUMENTATION/05_ACAS_Business_Flows_Enhanced.md</em></p>
+
+<h3 id="44-invoice-proofing-and-posting-to-ledger">4.4 Invoice Proofing and Posting to Ledger</h3>
+
+<p>
+Invoice validation and posting uses a two-stage process:
+</p>
+
+<p class="source-citation"><strong>Stage 1 - Proofing (sl055):</strong></p>
+<p>
+<ul>
+<li>List all unposted invoices</li>
+<li>Validate totals and VAT calculations</li>
+<li>Check analysis codes</li>
+<li>Verify customer credit status</li>
+<li>Identify potential issues</li>
+</ul>
+</p>
+
+<p class="source-citation"><strong>Stage 2 - Posting (sl060):</strong></p>
+<div class="mermaid">
+flowchart TD
+    POST[sl060 Start] --> SELECT[Select Invoices]
+    SELECT --> PROCESS[Process Each Invoice]
+    PROCESS --> UPDATE[Update Customer Balance]
+    UPDATE --> OPENITEMS[Create Open Items]
+    OPENITEMS --> STOCK[Update Stock]
+    STOCK --> GL[Generate GL Postings]
+    
+    GL --> ENTRIES[Create Entries]
+    ENTRIES --> DR1[DR: Customer Control]
+    ENTRIES --> CR1[CR: Sales Account]
+    ENTRIES --> CR2[CR: VAT Account]
+    
+    DR1 --> SLPOST[Write to SLPOSTING]
+    CR1 --> SLPOST
+    CR2 --> SLPOST
+    
+    SLPOST --> STATUS[Update Status=Posted]
+    STATUS --> NEXT{More?}
+    NEXT -->|Yes| PROCESS
+    NEXT -->|No| END[End]
+
+</div>
+
+<p class="source-citation"><em>Source: /2_SUBSYSTEMS DOCUMENTATION/Subsystems/SL_MGMT/SL_MGMT_SPECIFICATION.md</em></p>
+
+<h3 id="45-sales-analysis-and-reporting">4.5 Sales Analysis and Reporting</h3>
+
+<p>
+Sales analysis provided through multiple report programs:
+</p>
+
+<p class="source-citation"><strong>sl130 - Product Analysis Report:</strong></p>
+<p>
+<ul>
+<li>Sales by product/service code</li>
+<li>Period and year-to-date comparisons</li>
+<li>Quantity and value analysis</li>
+<li>Profit margins (if cost available)</li>
+<li>Top sellers identification</li>
+</ul>
+</p>
+
+<p class="source-citation"><strong>sl180 - Customer Turnover Report:</strong></p>
+<p>
+<ul>
+<li>Customer ranking by revenue</li>
+<li>Period comparisons</li>
+<li>Payment performance</li>
+<li>Credit utilization</li>
+</ul>
+</p>
+
+<p class="source-citation"><strong>Report Selection Options:</strong></p>
+<p>
+<ul>
+<li>Date ranges</li>
+<li>Product categories</li>
+<li>Customer groups</li>
+<li>Minimum values</li>
+<li>Sort sequences</li>
+</ul>
+</p>
+
+<p class="source-citation"><em>Source: /1_FUNCTIONAL DOCUMENTATION/01_ACAS_Program_Catalog.md</em></p>
+
+<h3 id="46-back-order-tracking-and-management">4.6 Back-Order Tracking and Management</h3>
+
+<p>
+Back-order handling is integrated into the invoice entry process:
+</p>
+
+<p class="source-citation"><strong>Automatic Back-Order Creation:</strong></p>
+<p>
+<ul>
+<li>Triggered when stock unavailable</li>
+<li>Maintains original order details</li>
+<li>Links to customer and invoice</li>
+<li>Tracks expected delivery date</li>
+</ul>
+</p>
+
+<p class="source-citation"><strong>Back-Order Processing:</strong></p>
+<p>
+<ul>
+<li>Review through sl020 (enquiry)</li>
+<li>Automatic allocation when stock received</li>
+<li>Priority allocation rules</li>
+<li>Customer notification options</li>
+</ul>
+</p>
+
+<p class="source-citation"><strong>Back-Order Reports:</strong></p>
+<p>
+<ul>
+<li>Outstanding by customer</li>
+<li>Outstanding by product</li>
+<li>Aging analysis</li>
+<li>Expected fulfillment dates</li>
+</ul>
+</p>
+
+<p class="source-citation"><em>Source: /1_FUNCTIONAL DOCUMENTATION/05_ACAS_Business_Flows_Enhanced.md</em></p>
+
+<hr>
+
+<h2 id="5-purchase-ledger-management">5. Purchase Ledger Management</h2>
+
+<h3 id="51-supplier-master-creation-and-maintenance">5.1 Supplier Master Creation and Maintenance</h3>
+
+<p>
+Supplier records are managed through program <code>pl010</code>:
+</p>
+
+<p class="source-citation"><strong>Supplier Setup Requirements:</strong></p>
+<div class="mermaid">
+flowchart TD
+    START[pl010 Start] --> CODE[Enter Supplier Code<br/>7 chars + check digit]
+    CODE --> BASIC[Basic Information]
+    BASIC --> NAME[Supplier Name]
+    NAME --> ADDRESS[Address Details]
+    ADDRESS --> CONTACT[Contact Information]
+    CONTACT --> BANK[Banking Details]
+    
+    BANK --> SORT[Sort Code<br/>6 digits]
+    SORT --> ACCOUNT[Account Number<br/>8 digits]
+    ACCOUNT --> TERMS[Payment Terms]
+    
+    TERMS --> CREDIT[Credit Limit<br/>They give us]
+    CREDIT --> PERIOD[Payment Days]
+    PERIOD --> DISCOUNT[Settlement Discount]
+    DISCOUNT --> DISCDAYS[Discount Days]
+    DISCDAYS --> SAVE[Save Supplier]
+    
+    SAVE --> LINK{Link to Stock?}
+    LINK -->|Yes| STOCK[Update Stock<br/>Supplier Links]
+    LINK -->|No| END[Complete]
+    STOCK --> END
+
+</div>
+
+<p class="source-citation"><strong>Key Supplier Attributes:</strong></p>
+<p>
+<ul>
+<li>Supplier Code: 7 characters with check digit</li>
+<li>Bank Details: For payment processing</li>
+<li>Credit Terms: Payment days allowed</li>
+<li>Settlement Discount: % and days for early payment</li>
+<li>Delivery addresses: Multiple locations</li>
+<li>Stock linkage: Up to 3 suppliers per item</li>
+</ul>
+</p>
+
+<p class="source-citation"><em>Source: /2_SUBSYSTEMS DOCUMENTATION/Subsystems/PL_MGMT/PL_MGMT_SPECIFICATION.md, /1_FUNCTIONAL DOCUMENTATION/05_ACAS_Business_Flows_Enhanced.md</em></p>
+
+<h3 id="52-purchase-order-entry-amendment-and-deletion">5.2 Purchase Order Entry, Amendment and Deletion</h3>
+
+<p>
+Purchase order management through programs:
+<ul>
+<li><code>pl020</code>: Order entry</li>
+<li><code>pl030</code>: Order amendment</li>
+<li><code>pl040</code>: Order/Invoice deletion</li>
+<li><code>pl900</code>: Batch order processing</li>
+</ul>
+</p>
+
+<p class="source-citation"><strong>Order Entry Process:</strong></p>
+<p>
+<ol>
+<li>Select supplier</li>
+<li>Enter order header:</li>
+<ul>
+<li>Order date</li>
+<li>Required delivery date</li>
+<li>Delivery instructions</li>
+<li>Buyer reference</li>
+</ul>
+</li>
+<li>Add line items:</li>
+<ul>
+<li>Product/service code</li>
+<li>Quantity required</li>
+<li>Agreed unit price</li>
+<li>VAT code</li>
+</ul>
+</li>
+<li>System calculates totals</li>
+<li>Print or queue order</li>
+</ol>
+</p>
+
+<p class="source-citation"><em>Source: /1_FUNCTIONAL DOCUMENTATION/05_ACAS_Business_Flows_Enhanced.md</em></p>
+
+<h3 id="53-receipt-and-credit-note-processing">5.3 Receipt and Credit Note Processing</h3>
+
+<p>
+Goods receipt through program <code>pl025</code>:
+</p>
+
+<p class="source-citation"><strong>Receipt Process Flow:</strong></p>
+<div class="mermaid">
+flowchart TD
+    RECEIPT[pl025 Start] --> ORDER[Select Order]
+    ORDER --> CHECK[Display Order Lines]
+    CHECK --> LINE[Select Line]
+    LINE --> QTY[Enter Received Qty]
+    QTY --> COMPARE{Qty vs Ordered}
+    
+    COMPARE -->|Under| PARTIAL[Partial Receipt]
+    COMPARE -->|Match| FULL[Full Receipt]
+    COMPARE -->|Over| TOLERANCE{Within<br/>Tolerance?}
+    
+    TOLERANCE -->|Yes| ACCEPT[Accept Overage]
+    TOLERANCE -->|No| REJECT[Reject Excess]
+    
+    PARTIAL --> UPDATE[Update Order]
+    FULL --> UPDATE
+    ACCEPT --> UPDATE
+    REJECT --> NOTE[Create Note]
+    NOTE --> UPDATE
+    
+    UPDATE --> STOCK{Update<br/>Stock?}
+    STOCK -->|Yes| STOCKUPD[Add to Inventory]
+    STOCK -->|No| NEXT[Next Line]
+    STOCKUPD --> NEXT
+    
+    NEXT --> MORE{More Lines?}
+    MORE -->|Yes| LINE
+    MORE -->|No| COMPLETE[Complete Receipt]
+
+</div>
+
+<p class="source-citation"><strong>Credit Note Processing:</strong></p>
+<p>
+<ul>
+<li>Create through order entry with negative quantities</li>
+<li>Link to original invoice for tracking</li>
+<li>Automatic supplier balance adjustment</li>
+<li>Stock adjustment if applicable</li>
+</ul>
+</p>
+
+<p class="source-citation"><em>Source: /2_SUBSYSTEMS DOCUMENTATION/Subsystems/PL_MGMT/PL_MGMT_SPECIFICATION.md</em></p>
+
+<h3 id="54-payment-posting-to-supplier-accounts">5.4 Payment Posting to Supplier Accounts</h3>
+
+<p>
+Payment processing uses programs:
+<ul>
+<li><code>pl080</code>: Payment selection</li>
+<li><code>pl085</code>: Payment amendment</li>
+<li><code>pl095</code>: Check printing</li>
+<li><code>pl100</code>: Payment posting</li>
+</ul>
+</p>
+
+<p class="source-citation"><strong>Payment Selection Process:</strong></p>
+<p>
+<ol>
+<li>Automatic selection by due date</li>
+<li>Consider settlement discounts</li>
+<li>Review cash requirements</li>
+<li>Manual override options</li>
+<li>Generate payment batch</li>
+</ol>
+</p>
+
+<p class="source-citation"><strong>Payment Posting Flow:</strong></p>
+<div class="mermaid">
+flowchart TD
+    POST[pl100 Start] --> BATCH[Select Payment Batch]
+    BATCH --> PROCESS[Process Payments]
+    PROCESS --> CLEAR[Clear Invoices]
+    CLEAR --> UPDATE[Update Supplier]
+    UPDATE --> GL[Create GL Postings]
+    
+    GL --> ENTRIES[Generate Entries]
+    ENTRIES --> DR[DR: Supplier Control]
+    ENTRIES --> CR[CR: Bank Account]
+    
+    DR --> PLPOST[Write PLPOSTING]
+    CR --> PLPOST
+    
+    PLPOST --> CHECK{Print Checks?}
+    CHECK -->|Yes| PRINT[Print Checks]
+    CHECK -->|No| NEXT[Next Payment]
+    PRINT --> NEXT
+    
+    NEXT --> MORE{More?}
+    MORE -->|Yes| PROCESS
+    MORE -->|No| END[Complete]
+
+</div>
+
+<p class="source-citation"><em>Source: /1_FUNCTIONAL DOCUMENTATION/05_ACAS_Business_Flows_Enhanced.md</em></p>
+
+<h3 id="55-purchase-analysis-and-reporting">5.5 Purchase Analysis and Reporting</h3>
+
+<p>
+Purchase analysis through specialized reports:
+</p>
+
+<p class="source-citation"><strong>pl130 - Product Analysis:</strong></p>
+<p>
+<ul>
+<li>Purchases by category</li>
+<li>Supplier performance</li>
+<li>Price variance analysis</li>
+<li>Volume trends</li>
+</ul>
+</p>
+
+<p class="source-citation"><strong>pl120 - Aged Creditors:</strong></p>
+<p>
+<ul>
+<li>Outstanding by age buckets</li>
+<li>Payment due forecasting</li>
+<li>Supplier balance ranking</li>
+<li>Cash requirement planning</li>
+</ul>
+</p>
+
+<p class="source-citation"><strong>Analysis Features:</strong></p>
+<p>
+<ul>
+<li>Multi-period comparisons</li>
+<li>Exception reporting</li>
+<li>Supplier scorecards</li>
+<li>Spend optimization</li>
+</ul>
+</p>
+
+<p class="source-citation"><em>Source: /1_FUNCTIONAL DOCUMENTATION/01_ACAS_Program_Catalog.md</em></p>
+
+<hr>
+
+<h2 id="6-stock-control-and-inventory-management">6. Stock Control and Inventory Management</h2>
+
+<h3 id="61-stock-item-master-maintenance">6.1 Stock Item Master Maintenance</h3>
+
+<p>
+Stock items managed through program <code>st010</code>:
+</p>
+
+<p class="source-citation"><strong>Item Setup Structure:</strong></p>
+<div class="mermaid">
+flowchart TD
+    START[st010 Start] --> TYPE{Item Type?}
+    TYPE -->|Physical| PHYSICAL[Physical Item Setup]
+    TYPE -->|Service| SERVICE[Service Item Setup]
+    
+    PHYSICAL --> CODE[Stock Code<br/>13 characters]
+    CODE --> ABBREV[Abbreviated Code<br/>7 characters]
+    ABBREV --> DESC[Description<br/>32 characters]
+    DESC --> LOC[Location Code]
+    LOC --> ANAL[Analysis Code]
+    ANAL --> VALUES[Value Fields]
+    
+    VALUES --> COST[Cost Price]
+    COST --> SELL[Selling Price]
+    SELL --> REORDER[Reorder Params]
+    
+    REORDER --> LEVEL[Reorder Level]
+    LEVEL --> QTY[Reorder Quantity]
+    QTY --> LEAD[Lead Time Days]
+    LEAD --> SUPPLIERS[Supplier Links]
+    
+    SUPPLIERS --> SUPP1[Primary Supplier]
+    SUPP1 --> SUPP2[Secondary Supplier]
+    SUPP2 --> SUPP3[Tertiary Supplier]
+    SUPP3 --> SAVE[Save Item]
+    
+    SERVICE --> CODES[Code Setup]
+    CODES --> DESCS[Description]
+    DESCS --> PRICES[Pricing Only]
+    PRICES --> SAVE
+
+</div>
+
+<p class="source-citation"><strong>Key Item Attributes:</strong></p>
+<p>
+<ul>
+<li>Stock Code: 13-character unique identifier</li>
+<li>Service Flag: Y/N for non-physical items</li>
+<li>Valuation Method: Average cost</li>
+<li>Multiple suppliers: Priority ordering</li>
+<li>Location tracking: Warehouse/bin</li>
+<li>Reorder parameters: Automated purchasing</li>
+</ul>
+</p>
+
+<p class="source-citation"><em>Source: /2_SUBSYSTEMS DOCUMENTATION/Subsystems/ST_CTRL/ST_CTRL_SPECIFICATION.md, /1_FUNCTIONAL DOCUMENTATION/05_ACAS_Business_Flows_Enhanced.md</em></p>
+
+<h3 id="62-recording-stock-movements">6.2 Recording Stock Movements</h3>
+
+<p>
+Stock movements through multiple sources:
+</p>
+
+<p class="source-citation"><strong>Automatic Movements:</strong></p>
+<p>
+<ul>
+<li>Sales invoicing (deductions)</li>
+<li>Purchase receipts (additions)</li>
+<li>Stock transfers (location changes)</li>
+</ul>
+</p>
+
+<p class="source-citation"><strong>Manual Movements (st020):</strong></p>
+<p>
+<ul>
+<li>Adjustments (damage, loss, finds)</li>
+<li>Production consumption</li>
+<li>Sample withdrawals</li>
+<li>Stock takes corrections</li>
+</ul>
+</p>
+
+<p class="source-citation"><strong>Movement Recording Process:</strong></p>
+<div class="mermaid">
+flowchart TD
+    TRIGGER[Movement Trigger] --> TYPE{Movement Type}
+    TYPE -->|Sale| AUTO1[From Invoice Posting]
+    TYPE -->|Purchase| AUTO2[From Goods Receipt]
+    TYPE -->|Manual| MANUAL[st020 Entry]
+    
+    AUTO1 --> PROCESS[Movement Processing]
+    AUTO2 --> PROCESS
+    MANUAL --> PROCESS
+    
+    PROCESS --> VALIDATE[Validate Quantity]
+    VALIDATE --> CHECK{Would Go<br/>Negative?}
+    CHECK -->|Yes| ERROR[Error - Insufficient]
+    CHECK -->|No| UPDATE[Update Balances]
+    
+    UPDATE --> ONHAND[Adjust On-Hand]
+    UPDATE --> AVAILABLE[Calc Available]
+    UPDATE --> VALUE[Recalc Value]
+    
+    VALUE --> AUDIT[Create Audit Record]
+    AUDIT --> DATE[Date/Time Stamp]
+    DATE --> USER[User ID]
+    USER --> SOURCE[Source Document]
+    SOURCE --> COMPLETE[Movement Complete]
+
+</div>
+
+<p class="source-citation"><em>Source: /2_SUBSYSTEMS DOCUMENTATION/Subsystems/ST_CTRL/ST_CTRL_SPECIFICATION.md</em></p>
+
+<h3 id="63-stock-audit-and-value-management">6.3 Stock Audit and Value Management</h3>
+
+<p class="source-citation"><strong>Audit Trail Creation:</strong></p>
+<p>
+Every movement creates an audit record:
+<ul>
+<li>Movement date and time</li>
+<li>Stock item affected</li>
+<li>Movement type (A/D/T)</li>
+<li>Quantity and value</li>
+<li>Source document reference</li>
+<li>User identification</li>
+</ul>
+</p>
+
+<p class="source-citation"><strong>Value Management:</strong></p>
+<p>
+<ul>
+<li>Average Cost Method:</li>
+<ul>
+<li>New Average = (Old Value + Receipt Value) / Total Quantity</li>
+</ul>
+</li>
+<li>Valuation at each movement</li>
+<li>Period-end valuation reports</li>
+<li>Work-in-progress tracking</li>
+</ul>
+</p>
+
+<p class="source-citation"><em>Source: /2_SUBSYSTEMS DOCUMENTATION/Subsystems/ST_CTRL/ST_CTRL_SPECIFICATION.md</em></p>
+
+<h3 id="64-stock-reporting">6.4 Stock Reporting</h3>
+
+<p class="source-citation"><strong>st030 - Reorder Report:</strong></p>
+<div class="mermaid">
+flowchart TD
+    START[Daily Review] --> SCAN[Scan All Items]
+    SCAN --> CALC[Calculate Available<br/>On-Hand - Allocated + On-Order]
+    CALC --> CHECK{Below Reorder<br/>Level?}
+    CHECK -->|Yes| SUGGEST[Add to Report]
+    CHECK -->|No| NEXT[Next Item]
+    
+    SUGGEST --> DETAILS[Include Details]
+    DETAILS --> CURR[Current Level]
+    CURR --> REORD[Reorder Qty]
+    REORD --> SUPP[Suggested Supplier]
+    SUPP --> NEXT
+    
+    NEXT --> MORE{More Items?}
+    MORE -->|Yes| CALC
+    MORE -->|No| REPORT[Generate Report]
+
+</div>
+
+<p class="source-citation"><strong>st040 - Stock Valuation:</strong></p>
+<p>
+<ul>
+<li>Item-by-item valuation</li>
+<li>Category subtotals</li>
+<li>Location analysis</li>
+<li>Period comparisons</li>
+<li>ABC classification</li>
+</ul>
+</p>
+
+<p class="source-citation"><strong>Additional Reports:</strong></p>
+<p>
+<ul>
+<li>Movement history</li>
+<li>Slow-moving items</li>
+<li>Stock take sheets</li>
+<li>Variance reports</li>
+</ul>
+</p>
+
+<p class="source-citation"><em>Source: /1_FUNCTIONAL DOCUMENTATION/01_ACAS_Program_Catalog.md, /1_FUNCTIONAL DOCUMENTATION/05_ACAS_Business_Flows_Enhanced.md</em></p>
+
+<hr>
+
+<h2 id="7-reporting-suite">7. Reporting Suite</h2>
+
+<h3 id="71-trial-balance-generation">7.1 Trial Balance Generation</h3>
+
+<p>
+Trial Balance produced by module-specific programs:
+<ul>
+<li><code>gl090</code>: General Ledger trial balance</li>
+<li><code>irs040</code>: IRS module trial balance</li>
+</ul>
+</p>
+
+<p class="source-citation"><strong>Trial Balance Components:</strong></p>
+<p>
+<ul>
+<li>Account number and description</li>
+<li>Opening balance (debit/credit)</li>
+<li>Period movements (debit/credit)</li>
+<li>Closing balance (debit/credit)</li>
+<li>Totals verification (debits = credits)</li>
+</ul>
+</p>
+
+<p class="source-citation"><strong>Report Options:</strong></p>
+<p>
+<ul>
+<li>Detail or summary level</li>
+<li>Specific profit centers</li>
+<li>Zero balance suppression</li>
+<li>Comparative periods</li>
+</ul>
+</p>
+
+<p class="source-citation"><em>Source: /2_SUBSYSTEMS DOCUMENTATION/Subsystems/RPT_ENGINE/RPT_ENGINE_SPECIFICATION.md</em></p>
+
+<h3 id="72-profit-loss-statement">7.2 Profit & Loss Statement</h3>
+
+<p>
+P&L generation through:
+<ul>
+<li><code>gl100</code>: General Ledger P&L</li>
+<li><code>irs050</code>: IRS module P&L</li>
+<li><code>irs055</code>: Quarterly P&L analysis</li>
+</ul>
+</p>
+
+<p class="source-citation"><strong>P&L Structure:</strong></p>
+<pre><code>REVENUE
+  Sales Revenue           xxx,xxx
+  Other Income             xx,xxx
+  Total Revenue          xxx,xxx
+
+COST OF SALES  
+  Opening Stock           xx,xxx
+  Purchases               xx,xxx
+  Less: Closing Stock    (xx,xxx)
+  Cost of Sales           xx,xxx
+
+GROSS PROFIT             xxx,xxx
+
+EXPENSES
+  Administrative          xx,xxx
+  Selling                 xx,xxx
+  Financial               xx,xxx
+  Total Expenses          xx,xxx
+
+NET PROFIT/(LOSS)        xxx,xxx
+</code></pre>
+
+<p class="source-citation"><strong>Report Features:</strong></p>
+<p>
+<ul>
+<li>Multi-period comparison</li>
+<li>Percentage analysis</li>
+<li>Department/profit center breakdown</li>
+<li>Budget vs actual (if available)</li>
+</ul>
+</p>
+
+<p class="source-citation"><em>Source: /1_FUNCTIONAL DOCUMENTATION/01_ACAS_Program_Catalog.md</em></p>
+
+<h3 id="73-balance-sheet-preparation">7.3 Balance Sheet Preparation</h3>
+
+<p>
+Balance Sheet through:
+<ul>
+<li><code>gl105</code>: General Ledger balance sheet</li>
+<li><code>irs060</code>: IRS module balance sheet</li>
+<li><code>irs065</code>: Quarterly balance sheet</li>
+</ul>
+</p>
+
+<p class="source-citation"><strong>Balance Sheet Format:</strong></p>
+<pre><code>ASSETS
+Fixed Assets
+  Property               xxx,xxx
+  Equipment               xx,xxx
+  Less: Depreciation    (xx,xxx)
+                         xxx,xxx
+Current Assets
+  Stock                   xx,xxx
+  Debtors                 xx,xxx
+  Bank                    xx,xxx
+                          xx,xxx
+TOTAL ASSETS            xxx,xxx
+
+LIABILITIES
+Current Liabilities
+  Creditors               xx,xxx
+  Accruals                xx,xxx
+                          xx,xxx
+Long Term Liabilities
+  Loans                   xx,xxx
+
+EQUITY
+  Share Capital           xx,xxx
+  Retained Earnings      xxx,xxx
+                         xxx,xxx
+TOTAL LIABILITIES       xxx,xxx
+</code></pre>
+
+<p class="source-citation"><em>Source: /2_SUBSYSTEMS DOCUMENTATION/Subsystems/GL_CORE/GL_CORE_SPECIFICATION.md</em></p>
+
+<h3 id="74-aged-receivables-and-payables-reports">7.4 Aged Receivables and Payables Reports</h3>
+
+<p class="source-citation"><strong>Aged Debtors (sl120):</strong></p>
+<pre><code>Customer Analysis by Age:
+Current    (0-30 days):  £xxx,xxx  xx%
+Overdue   (31-60 days):  £xx,xxx   xx%
+Overdue   (61-90 days):  £xx,xxx   xx%
+Overdue    (90+ days):   £xx,xxx   xx%
+Total Outstanding:       £xxx,xxx  100%
+</code></pre>
+
+<p class="source-citation"><strong>Aged Creditors (pl120):</strong></p>
+<p>
+<ul>
+<li>Same aging buckets as debtors</li>
+<li>Payment due forecasting</li>
+<li>Supplier concentration analysis</li>
+<li>Cash requirement planning</li>
+</ul>
+</p>
+
+<p class="source-citation"><strong>Report Options:</strong></p>
+<p>
+<ul>
+<li>Detail by customer/supplier</li>
+<li>Summary totals only</li>
+<li>Credit limit exceptions</li>
+<li>Export to file</li>
+</ul>
+</p>
+
+<p class="source-citation"><em>Source: /1_FUNCTIONAL DOCUMENTATION/01_ACAS_Program_Catalog.md</em></p>
+
+<h3 id="75-cash-flow-and-bank-reconciliation-reports">7.5 Cash Flow and Bank Reconciliation Reports</h3>
+
+<p class="source-citation"><strong>Cash Flow Analysis:</strong></p>
+<p>
+<ul>
+<li>Receipts from customers</li>
+<li>Payments to suppliers</li>
+<li>Operating cash flow</li>
+<li>Cash position forecast</li>
+<li>Working capital changes</li>
+</ul>
+</p>
+
+<p class="source-citation"><strong>Bank Reconciliation Features:</strong></p>
+<p>
+<ul>
+<li>NOT IMPLEMENTED: No bank reconciliation functionality exists in the current system. Bank reconciliation must be performed manually outside of ACAS.</li>
+</ul>
+</p>
+
+<p class="source-citation"><em>Source: /4_DOCUMENTATION/ACAS_COMPREHENSIVE_REPORT.md</em></p>
+
+<h3 id="76-delivery-note-and-cheque-register-reports">7.6 Delivery Note and Cheque Register Reports</h3>
+
+<p class="source-citation"><strong>Delivery Note Printing (sl960):</strong></p>
+<p>
+<ul>
+<li>Pick list generation</li>
+<li>Delivery instructions</li>
+<li>Multiple delivery addresses</li>
+<li>Batch or individual printing</li>
+</ul>
+</p>
+
+<p class="source-citation"><strong>Cheque Register:</strong></p>
+<p>
+<ul>
+<li>Check number tracking</li>
+<li>Payment details</li>
+<li>Void check management</li>
+<li>Bank account reconciliation</li>
+</ul>
+</p>
+
+<p class="source-citation"><em>Source: /1_FUNCTIONAL DOCUMENTATION/01_ACAS_Program_Catalog.md</em></p>
+
+<hr>
+
+<h2 id="8-system-configuration-and-setup">8. System Configuration and Setup</h2>
+
+<h3 id="81-system-parameter-management">8.1 System Parameter Management</h3>
+
+<p>
+System parameters centrally managed through <code>sys002</code> program accessing SYSTEM-REC file:
+</p>
+
+<p class="source-citation"><strong>Core System Parameters:</strong></p>
+<div class="mermaid">
+flowchart TD
+    SYS002[sys002 Menu] --> COMPANY[Company Setup]
+    SYS002 --> VAT[VAT Configuration]
+    SYS002 --> PERIOD[Period Control]
+    SYS002 --> MODULE[Module Settings]
+    SYS002 --> RDBMS[Database Config]
+    
+    COMPANY --> NAME[Company Name]
+    NAME --> REG[Registration Numbers]
+    REG --> ADDR[Address Details]
+    
+    VAT --> RATES[VAT Rates 1-5]
+    RATES --> ACCTS[VAT GL Accounts]
+    ACCTS --> RULES[Exemption Rules]
+    
+    PERIOD --> CURRENT[Current Period]
+    CURRENT --> YEAR[Financial Year]
+    YEAR --> STATUS[Open/Closed Status]
+    
+    MODULE --> ACTIVE[Active Modules]
+    ACTIVE --> OPTIONS[Processing Options]
+    
+    RDBMS --> MODE[File/DB/Dual Mode]
+    MODE --> CONN[Connection Details]
+
+</div>
+
+<p class="source-citation"><strong>Parameter Categories:</strong></p>
+<p>
+<ol>
+<li>Company Information</li>
+<li>Tax Configuration</li>
+<li>Period Management</li>
+<li>Module Activation</li>
+<li>Processing Options</li>
+<li>Integration Settings</li>
+</ol>
+</p>
+
+<p class="source-citation"><em>Source: /2_SUBSYSTEMS DOCUMENTATION/Subsystems/SYS_ADMIN/SYS_ADMIN_SPECIFICATION.md</em></p>
+
+<h3 id="82-database-connectivity-and-access-settings">8.2 Database Connectivity and Access Settings</h3>
+
+<p class="source-citation"><strong>Storage Mode Configuration:</strong></p>
+<p>
+<ul>
+<li>COBOL Files Only (default)</li>
+<li>MySQL/MariaDB Only</li>
+<li>Dual Mode (migration)</li>
+</ul>
+</p>
+
+<p class="source-citation"><strong>RDBMS Configuration Requirements:</strong></p>
+<pre><code>Database Host:     [_________________]
+Database Name:     [ACASDB__________]
+Database Port:     [3306_]
+Username:          [_________________]
+Password:          [_________________]
+
+Connection Test:   [ ] Passed
+                  [ ] Failed
+</code></pre>
+
+<p class="source-citation"><strong>Data Access Layer (DAL) Configuration:</strong></p>
+<p>
+<ul>
+<li>Automatic mode detection</li>
+<li>Connection pooling settings</li>
+<li>Transaction isolation levels</li>
+<li>Error retry parameters</li>
+</ul>
+</p>
+
+<p class="source-citation"><em>Source: /2_SUBSYSTEMS DOCUMENTATION/Subsystems/DAL/DAL_SPECIFICATION.md</em></p>
+
+<h3 id="83-user-access-controls-and-security-settings">8.3 User Access Controls and Security Settings</h3>
+
+<p class="source-citation"><strong>Current Security Implementation:</strong></p>
+<p>
+<ul>
+<li>Application-level security: NOT IMPLEMENTED</li>
+<li>Database security: Basic MySQL/MariaDB user authentication only</li>
+<li>File security: Relies on operating system file permissions</li>
+<li>User audit trail: Limited to stock movements and batch postings</li>
+</ul>
+</p>
+
+<p class="source-citation"><strong>Database User Setup (from Building manual):</strong></p>
+<pre><code class="language-sql">CREATE USER &#39;acasuser&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;password&#39;;
+GRANT ALL PRIVILEGES ON ACASDB.* TO &#39;acasuser&#39;@&#39;localhost&#39;;
+FLUSH PRIVILEGES;
+</code></pre>
+
+<p class="source-citation"><strong>Security Limitations:</strong></p>
+<p>
+<ul>
+<li>No application authentication or authorization</li>
+<li>No role-based access control</li>
+<li>No field-level security</li>
+<li>No encryption of sensitive data</li>
+<li>Password protection was removed for open source release</li>
+</ul>
+</p>
+
+<p class="source-citation"><strong>Technical Debt Assessment Recommendations:</strong></p>
+<p>
+<ol>
+<li>Implement authentication framework</li>
+<li>Add role-based access control</li>
+<li>Enable comprehensive audit logging</li>
+<li>Encrypt sensitive financial data</li>
+<li>Add session management</li>
+</ol>
+</p>
+
+<p class="source-citation"><em>Source: /1_FUNCTIONAL DOCUMENTATION/04_ACAS_Technical_Debt_Assessment.md</em></p>
+
+<hr>
+
+<h2 id="9-data-migration-conversion-and-backup">9. Data Migration, Conversion and Backup</h2>
+
+<h3 id="91-legacy-data-load-into-modern-tables">9.1 Legacy Data Load into Modern Tables</h3>
+
+<p>
+Data migration uses specialized load programs (*LD suffix):
+</p>
+
+<p class="source-citation"><strong>Load Program Inventory:</strong></p>
+<div class="mermaid">
+flowchart LR
+    FILES[COBOL Files] --> LOAD[Load Programs]
+    LOAD --> DB[(MySQL/MariaDB)]
+    
+    LOAD --> salesLD[Sales Data]
+    LOAD --> purchLD[Purchase Data]
+    LOAD --> stockLD[Stock Data]
+    LOAD --> nominalLD[GL Data]
+
+</div>
+
+<p class="source-citation"><strong>Load Process Steps:</strong></p>
+<p>
+<ol>
+<li>Verify source files exist and are valid</li>
+<li>Create/verify target database schema</li>
+<li>Run load program for each module:</li>
+</ol>
+</p>
+   <pre><code>   ./salesLD    # Load sales ledger
+   ./purchLD    # Load purchase ledger
+   ./stockLD    # Load stock file
+   ./nominalLD  # Load GL accounts
+   </code></pre>
+<p>
+<ol>
+<li>Verify record counts match</li>
+<li>Run validation reports</li>
+<li>Switch system to RDBMS mode</li>
+</ol>
+</p>
+
+<p class="source-citation"><em>Source: /2_SUBSYSTEMS DOCUMENTATION/Subsystems/DAL/DAL_SPECIFICATION.md</em></p>
+
+<h3 id="92-file-format-conversion-for-legacy-records">9.2 File Format Conversion for Legacy Records</h3>
+
+<p class="source-citation"><strong>File Type Conversions:</strong></p>
+<p>
+<ul>
+<li>Indexed (ISAM) to relational tables</li>
+<li>Sequential files to archive format</li>
+<li>Fixed-length to variable records</li>
+</ul>
+</p>
+
+<p class="source-citation"><strong>Conversion Utilities:</strong></p>
+<p>
+<ul>
+<li>Maps date formats (maps04)</li>
+<li>Character set conversion</li>
+<li>Numeric format alignment</li>
+<li>Check digit validation (maps09)</li>
+</ul>
+</p>
+
+<p class="source-citation"><em>Source: /1_FUNCTIONAL DOCUMENTATION/01_ACAS_Program_Catalog.md</em></p>
+
+<h3 id="93-backup-creation-of-critical-data-files">9.3 Backup Creation of Critical Data Files</h3>
+
+<p class="source-citation"><strong>Current Backup Process:</strong></p>
+<p>
+<ul>
+<li>Manual execution required</li>
+<li>File-based backup scripts</li>
+<li>USB device recommended</li>
+<li>No automated scheduling</li>
+</ul>
+</p>
+
+<p class="source-citation"><strong>Backup Script Components:</strong></p>
+<pre><code class="language-bash"># Example backup structure
+backup/
+  ├── data/         # COBOL data files
+  ├── params/       # System parameters
+  ├── archive/      # Historical data
+  └── logs/         # Processing logs
+</code></pre>
+
+<p class="source-citation"><strong>Backup Recommendations:</strong></p>
+<p>
+<ul>
+<li>Daily incremental backups</li>
+<li>Weekly full backups</li>
+<li>Off-site storage</li>
+<li>Automated scheduling</li>
+<li>Backup verification</li>
+</ul>
+</p>
+
+<p class="source-citation"><em>Source: /1_FUNCTIONAL DOCUMENTATION/04_ACAS_Technical_Debt_Assessment.md</em></p>
+
+<h3 id="94-restoration-of-data-from-backup-archives">9.4 Restoration of Data from Backup Archives</h3>
+
+<p class="source-citation">*<em>Restore Programs (</em>RES suffix):**</p>
+<p>
+<ul>
+<li>analRES - Restore analysis files</li>
+<li>auditRES - Restore audit trail</li>
+<li>delfolioRES - Restore delivery records</li>
+<li>deliveryRES - Restore delivery notes</li>
+<li>glbatchRES - Restore GL batches</li>
+<li>glpostingRES - Restore GL postings</li>
+<li>irsdfltRES - Restore IRS defaults</li>
+<li>irsfinalRES - Restore IRS final accounts</li>
+<li>irsnominalRES - Restore IRS nominals</li>
+<li>irspostingRES - Restore IRS postings</li>
+<li>nominalRES - Restore nominal ledger</li>
+<li>otm3RES/otm5RES - Restore open items</li>
+<li>paymentsRES - Restore payment records</li>
+<li>plautogenRES - Restore PL standing orders</li>
+<li>plinvoiceRES - Restore purchase invoices</li>
+<li>purchRES - Restore purchase ledger</li>
+<li>salesRES - Restore sales ledger</li>
+<li>slautogenRES - Restore SL standing orders</li>
+<li>sldelinvnosRES - Restore deleted invoice numbers</li>
+<li>slinvoiceRES - Restore sales invoices</li>
+<li>slpostingRES - Restore SL postings</li>
+<li>stockRES - Restore stock file</li>
+<li>systemRES - Restore system parameters</li>
+<li>valueRES - Restore stock values</li>
+</ul>
+</p>
+
+<p class="source-citation"><strong>Detailed Restore Process (from IRS Manual):</strong></p>
+<p>
+<ol>
+<li>Create temporary directory:</li>
+</ol>
+</p>
+   <pre><code class="language-bash">   mkdir /tmp/restore
+   cd /tmp/restore
+   </code></pre>
+
+<p>
+<ol>
+<li>Extract backup archive:</li>
+</ol>
+</p>
+   <pre><code class="language-bash">   tar -xzf /path/to/backup.tar.gz
+   </code></pre>
+
+<p>
+<ol>
+<li>Test restored files:</li>
+</ol>
+</p>
+   <pre><code class="language-bash">   ls -la
+   # Verify all expected files present
+   </code></pre>
+
+<p>
+<ol>
+<li>Stop ACAS system:</li>
+</ol>
+</p>
+   <pre><code class="language-bash">   # Ensure no ACAS programs running
+   ps -ef | grep -i acas
+   </code></pre>
+
+<p>
+<ol>
+<li>Backup current data (safety):</li>
+</ol>
+</p>
+   <pre><code class="language-bash">   cp -r /home/acas/data /home/acas/data.old
+   </code></pre>
+
+<p>
+<ol>
+<li>Copy restored files:</li>
+</ol>
+</p>
+   <pre><code class="language-bash">   cp -r * /home/acas/data/
+   </code></pre>
+
+<p>
+<ol>
+<li>Set correct permissions:</li>
+</ol>
+</p>
+   <pre><code class="language-bash">   chown -R acas:acas /home/acas/data
+   chmod -R 640 /home/acas/data/*.dat
+   </code></pre>
+
+<p>
+<ol>
+<li>Verify restoration:</li>
+</ol>
+</p>
+   <pre><code class="language-bash">   # Run each module&#39;s start-of-day program
+   ./irs000
+   ./sl000
+   ./pl000
+   ./st000
+   ./gl000
+   </code></pre>
+
+<p>
+<ol>
+<li>Run validation reports:</li>
+<ul>
+<li>Trial balance to verify GL integrity</li>
+<li>Customer/supplier balance reports</li>
+<li>Stock valuation report</li>
+</ul>
+</ol>
+</p>
+
+<p>
+<ol>
+<li>Resume normal operations</li>
+</ol>
+</p>
+
+<p class="source-citation"><em>Source: /2_SUBSYSTEMS DOCUMENTATION/Subsystems/DAL/DAL_SPECIFICATION.md</em></p>
+
+<hr>
+
+<h2 id="10-validation-error-handling-and-audit-trail">10. Validation, Error Handling and Audit Trail</h2>
+
+<h3 id="101-input-validation-rules">10.1 Input Validation Rules</h3>
+
+<p class="source-citation"><strong>Date Validation (maps04):</strong></p>
+<div class="mermaid">
+flowchart TD
+    INPUT[Date Input] --> FORMAT{Format Check}
+    FORMAT -->|Invalid| ERROR1[Invalid Format]
+    FORMAT -->|Valid| CALENDAR{Calendar Check}
+    CALENDAR -->|Invalid| ERROR2[Invalid Date]
+    CALENDAR -->|Valid| RANGE{Range Check}
+    RANGE -->|Outside| ERROR3[Date Out of Range]
+    RANGE -->|Within| SEQUENCE{Sequence Check}
+    SEQUENCE -->|Wrong| ERROR4[Date Before Last]
+    SEQUENCE -->|OK| ACCEPT[Date Accepted]
+
+</div>
+
+<p class="source-citation"><strong>Numeric Validation:</strong></p>
+<p>
+<ul>
+<li>Amount fields: 2 decimal places</li>
+<li>Quantities: 3 decimal places  </li>
+<li>Percentages: 0-99.99 range</li>
+<li>Negative values: Where allowed</li>
+</ul>
+</p>
+
+<p class="source-citation"><strong>Code Validation:</strong></p>
+<p>
+<ul>
+<li>Check digits (maps09)</li>
+<li>Existence checks</li>
+<li>Active status verification</li>
+<li>Cross-reference validation</li>
+</ul>
+</p>
+
+<p class="source-citation"><em>Source: /1_FUNCTIONAL DOCUMENTATION/04_ACAS_Technical_Debt_Assessment.md, /2_SUBSYSTEMS DOCUMENTATION/Subsystems/SYS_ADMIN/SYS_ADMIN_SPECIFICATION.md</em></p>
+
+<h3 id="102-error-detection-and-user-notification">10.2 Error Detection and User Notification</h3>
+
+<p class="source-citation"><strong>Error Handling Patterns:</strong></p>
+<pre><code>File Status Codes:
+00 - Successful operation
+10 - End of file
+23 - Record not found
+30 - Permanent error
+41 - File already open
+42 - File not open
+</code></pre>
+
+<p class="source-citation"><strong>User Notification Methods:</strong></p>
+<p>
+<ul>
+<li>Screen message line (line 21)</li>
+<li>Error popup windows</li>
+<li>Audible alerts (beep)</li>
+<li>Log file entries</li>
+</ul>
+</p>
+
+<p class="source-citation"><strong>Error Recovery:</strong></p>
+<p>
+<ul>
+<li>Retry options</li>
+<li>Transaction rollback</li>
+<li>Alternative actions</li>
+<li>Help text display</li>
+</ul>
+</p>
+
+<p class="source-citation"><em>Source: /1_FUNCTIONAL DOCUMENTATION/04_ACAS_Technical_Debt_Assessment.md</em></p>
+
+<h3 id="103-transaction-logging-and-audit-trail">10.3 Transaction Logging and Audit Trail</h3>
+
+<p class="source-citation"><strong>Audit Trail Components:</strong></p>
+
+<p>
+<ol>
+<li><strong>Stock Movement Audit:</strong></li>
+<ul>
+<li>Every stock movement logged</li>
+<li>Date, time, user, source</li>
+<li>Quantity and value changes</li>
+<li>Cannot be deleted</li>
+</ul>
+</ol>
+</p>
+
+<p>
+<ol>
+<li><strong>Financial Transaction Log:</strong></li>
+<ul>
+<li>Batch numbers for all postings</li>
+<li>User ID and timestamps</li>
+<li>Before/after balances</li>
+<li>Source document references</li>
+</ul>
+</ol>
+</p>
+
+<p>
+<ol>
+<li><strong>Master File Changes:</strong></li>
+<ul>
+<li>NOT IMPLEMENTED: Master file changes (customers, suppliers, chart of accounts) are not logged for audit purposes. This is a known limitation.</li>
+</ul>
+</ol>
+</p>
+
+<p class="source-citation"><strong>Audit Reports Available:</strong></p>
+<p>
+<ul>
+<li>Stock movement history</li>
+<li>Transaction listings by batch</li>
+<li>Deleted record tracking</li>
+<li>Period-end archives</li>
+</ul>
+</p>
+
+<p class="source-citation"><em>Source: /2_SUBSYSTEMS DOCUMENTATION/Subsystems/ST_CTRL/ST_CTRL_SPECIFICATION.md</em></p>
+
+<h3 id="104-compliance-and-regulatory-support">10.4 Compliance and Regulatory Support</h3>
+
+<p class="source-citation"><strong>VAT Compliance Features:</strong></p>
+<p>
+<ul>
+<li>Multiple VAT rates (up to 5)</li>
+<li>Automatic VAT calculation</li>
+<li>VAT return preparation</li>
+<li>Exempt item handling</li>
+<li>EU trading support</li>
+</ul>
+</p>
+
+<p class="source-citation"><strong>Accounting Standards:</strong></p>
+<p>
+<ul>
+<li>Double-entry enforcement</li>
+<li>Period locking</li>
+<li>Trial balance verification</li>
+<li>Audit trail maintenance</li>
+<li>Document retention</li>
+</ul>
+</p>
+
+<p class="source-citation"><strong>Limitations:</strong></p>
+<p>
+<ul>
+<li>No automated regulatory reporting</li>
+<li>Manual submission required</li>
+<li>Limited audit features</li>
+<li>Basic compliance only</li>
+</ul>
+</p>
+
+<p class="source-citation"><em>Source: /1_FUNCTIONAL DOCUMENTATION/00_ACAS_Executive_Summary.md</em></p>
+
+<hr>
+
+<h2 id="11-appendices">11. Appendices</h2>
+
+<h3 id="glossary-of-terms">Glossary of Terms</h3>
+
+<p>
+<strong>ACAS</strong> - Applewood Computers Accounting System
+</p>
+
+<p>
+<strong>Check Digit</strong> - Additional digit calculated from the main code digits to validate data entry accuracy
+</p>
+
+<p>
+<strong>DAL</strong> - Data Access Layer - abstraction between business logic and data storage
+</p>
+
+<p>
+<strong>ISAM</strong> - Indexed Sequential Access Method - file organization for COBOL
+</p>
+
+<p>
+<strong>IRS</strong> - Incomplete Records System - simplified accounting module for businesses without full bookkeeping
+</p>
+
+<p>
+<strong>MT</strong> - MySQL Table handler - suffix for database access modules
+</p>
+
+<p>
+<strong>Open Item</strong> - Unpaid invoice or unallocated payment
+</p>
+
+<p>
+<strong>Posting</strong> - Process of transferring transaction data to ledger accounts
+</p>
+
+<p>
+<strong>Profit Center</strong> - Two-digit code for departmental/branch accounting
+</p>
+
+<p>
+<strong>Settlement Discount</strong> - Reduction offered for early payment
+</p>
+
+<p>
+<strong>Standing Order</strong> - Recurring transaction template
+</p>
+
+<p>
+<strong>VAT</strong> - Value Added Tax (UK sales tax)
+</p>
+
+<h3 id="contact-information">Contact Information</h3>
+
+<p class="source-citation"><strong>System Support:</strong></p>
+<p>
+<ul>
+<li>Technical documentation: This manual</li>
+<li>Source code: Available in ACAS-Nightly repository</li>
+<li>Build instructions: See comp-all.sh scripts</li>
+</ul>
+</p>
+
+<p class="source-citation"><strong>Documentation Sources:</strong></p>
+<p>
+<ul>
+<li>Functional Documentation: /1_FUNCTIONAL DOCUMENTATION/</li>
+<li>Subsystems Documentation: /2_SUBSYSTEMS DOCUMENTATION/</li>
+<li>Parser Analysis: /0_COBOL PARSER/parser_analysis/docs/</li>
+<li>Comprehensive Report: /4_DOCUMENTATION/ACAS_COMPREHENSIVE_REPORT.md</li>
+</ul>
+</p>
+
+<hr>
+
+<h2 id="verification-checklist">Verification Checklist</h2>
+
+<h3 id="documentation-coverage-assessment">Documentation Coverage Assessment</h3>
+
+<p>
+✓ <strong>Complete Sections:</strong>
+<ol>
+<li>Executive Overview - Full coverage from multiple sources</li>
+<li>User Interaction - Menu structure and navigation documented</li>
+<li>General Ledger - Core functions covered, missing programs clearly identified</li>
+<li>Sales Ledger - Comprehensive coverage of all functions</li>
+<li>Purchase Ledger - All major processes documented</li>
+<li>Stock Control - Complete inventory management coverage</li>
+<li>System Configuration - Parameters and setup documented</li>
+<li>Validation and Error Handling - Patterns and rules covered</li>
+<li>Data Restoration - Complete procedures now documented from IRS Manual</li>
+</ol>
+</p>
+
+<p>
+⚠️ <strong>Sections with Limitations Documented:</strong>
+<ul>
+<li>Reporting Suite - All existing reports covered; bank reconciliation marked as not implemented</li>
+<li>Security Settings - Current minimal implementation documented with recommendations</li>
+<li>Audit Trail - Transaction logging present; master file changes not logged</li>
+</ul>
+</p>
+
+<p>
+❌ <strong>Functionality Not Implemented (not documentation gaps):</strong>
+<ul>
+<li>GL programs: gl040, gl130, gl190 (confirmed missing from system)</li>
+<li>Bank reconciliation functionality</li>
+<li>Application-level security and authentication</li>
+<li>Master file change audit logging</li>
+<li>Role-based access control</li>
+</ul>
+</p>
+
+<h3 id="source-verification">Source Verification</h3>
+
+<p>
+All information in this manual has been sourced from:
+<ul>
+<li>10 files from /1_FUNCTIONAL DOCUMENTATION/</li>
+<li>12 files from /2_SUBSYSTEMS DOCUMENTATION/</li>
+<li>7 files from /0_COBOL PARSER/parser_analysis/docs/</li>
+<li>1 comprehensive report from /4_DOCUMENTATION/</li>
+</ul>
+</p>
+
+<p>
+Cross-validation performed where multiple sources available, with conflicts noted and resolved based on most authoritative source.
+</p>
+
+<hr>
+
+<p class="source-citation"><em>End of Manual - Version 1.0</em></p>
+            </div>
+        </main>
+    </div>
+    
+    <script>
+        // Initialize Mermaid
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'default',
+            themeVariables: {
+                primaryColor: '#0969da',
+                primaryTextColor: '#fff',
+                primaryBorderColor: '#0550ae',
+                lineColor: '#57606a',
+                secondaryColor: '#f6f8fa',
+                tertiaryColor: '#dbeafe'
+            }
+        });
+        
+        // Smooth scrolling
+        document.querySelectorAll('.sidebar a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const target = document.getElementById(targetId);
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Highlight NOT IMPLEMENTED
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('strong').forEach(el => {
+                const text = el.textContent;
+                if (text.includes('NOT IMPLEMENTED')) {
+                    el.innerHTML = text.replace(/NOT IMPLEMENTED:?/g, '<span class="status-badge not-implemented">NOT IMPLEMENTED</span>');
+                }
+                if (text.includes('COMPLETE')) {
+                    el.innerHTML = text.replace(/COMPLETE:?/g, '<span class="status-badge complete">COMPLETE</span>');
+                }
+            });
+        });
+        
+        // Active section highlighting
+        function updateActiveSection() {
+            const sections = document.querySelectorAll('h1[id], h2[id], h3[id]');
+            const tocLinks = document.querySelectorAll('.sidebar a');
+            
+            let currentSection = null;
+            const scrollPosition = window.scrollY + 100;
+            
+            sections.forEach(section => {
+                if (section.offsetTop <= scrollPosition) {
+                    currentSection = section.id;
+                }
+            });
+            
+            tocLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', updateActiveSection);
+        updateActiveSection();
+    </script>
+</body>
+</html>
